@@ -22,16 +22,11 @@ code {
 .wrapper {
   width: 100vh;
   background-color: rgba(255, 255, 255);
-  color: lavender;
   display: flex;
   flex-direction: column;
 }
 .routes {
   margin-top: 18vh;
-}
-h1 {
-  font-size: 3rem;
-  margin-top: 2%;
 }
 header {
   display: flex;
@@ -43,6 +38,12 @@ header {
   top: 0;
   z-index: 1000;
   background-color: rgba(46, 46, 46);
+  color: snow;
+}
+h1 {
+  font-size: 3rem;
+  margin-top: 2%;
+  color: lavender;
 }
 nav {
   box-shadow: 0 0 6px inset rgb(143, 143, 143);
@@ -73,7 +74,8 @@ li {
 }
 button {
   background-color: rgba(46, 46, 46, .86);
-  color: lavender;
+  color: snow;
+  border-radius: 3px;
 }
 /* -------------------- */
 .search {
@@ -119,6 +121,7 @@ button {
   display: flex;
   margin-bottom: 2%;
   box-shadow: 1px 1px 3px black;
+  background-color: #e9e9f2;
 }
 .item .text {
   padding: 2% 4%;
@@ -138,8 +141,7 @@ button {
 .item p {
   margin: 3% 0;
 }
-
-
+/* -------------------- */
 .loading-container {
   width: 100%;
   display: flex;

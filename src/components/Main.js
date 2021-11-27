@@ -1,8 +1,6 @@
-import axiosAuthorization from "../utils";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getQueryResults } from "../actions";
-import axios from "axios";
 import { API_KEY } from "../config";
 import Item from "./Item";
 
