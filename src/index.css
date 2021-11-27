@@ -79,7 +79,7 @@ li {
 }
 .search form {
   margin-bottom: 5%;
-  margin-top: 20vh;
+  margin-top: 18vh;
   width: 96vh;
   display: flex;
   justify-content: space-around;
@@ -93,8 +93,9 @@ li {
   height: 30px;
   color: #4f4f4f;
   border-radius: 2px;
+  border: 1px solid lightgrey;
   outline: none;
-  box-shadow: 0 0 5px inset grey;
+  box-shadow: 0 0 5px inset lightgrey;
 }
 .search input {
   width: 50%;
