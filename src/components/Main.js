@@ -1,23 +1,23 @@
 import axiosAuthorization from "../utils";
 import { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { getQueryResults } from "../actions";
 import axios from "axios";
 import { API_KEY } from "../config";
 import Item from "./Item";
 
-export default function Main() {
-    const [query, setQuery] = useState(null);
-    const [queryResults, setQueryResults] = useState([]);
+function Main(props) {
+    const { dispatch, data, isFetching } = props;
+
     const [category, setCategory] = useState("movie");
+    const [query, setQuery] = useState(null);
 
     useEffect(() => {
-       axios.get(`https://api.themoviedb.org/3/search/${category}?api_key=${API_KEY}&query=${query}&`)
-        .then(res => setQueryResults(res.data.results))
-        .catch(err => console.log(err))
-    },[query, category])
+        dispatch(getQueryResults(category, query))
+    },[category, query]);
 
-    const handleQueryChange = e => setQuery(e.target.value);
     const handleSelectCategory = e => setCategory(e.target.value);
-    console.log(queryResults)
+    const handleQueryChange = e => setQuery(e.target.value);
 
     return (
         <div className="search">
@@ -35,8 +35,22 @@ export default function Main() {
                 </select>
             </form>
             <div className="results">
-                {query && queryResults.map(movie => <Item item={movie} category={category}/> )}
+                {isFetching && query ?  
+                <div className="loading-container">
+                    <div className="loading"></div>
+                </div> :
+                query && data.map(movie => <Item item={movie} category={category}/> )}
             </div>
         </div>
     )
 }
+
+const mapStateToProps = (state) => {
+    return {
+        data: state.data,
+        isFetching: state.isFetching,
+        errors: state.errors
+    }
+}
+
+export default connect(mapStateToProps)(Main);
