@@ -17,7 +17,7 @@ code {
   line-height: 1.5;
   margin: 0 auto;
   font-size: 62.5%;
-  border: 1px dotted red;
+  /* border: 1px dotted red; */
 }
 .wrapper {
   width: 100vh;
@@ -27,7 +27,7 @@ code {
   flex-direction: column;
 }
 .routes {
-  margin-top: 26vh;
+  margin-top: 18vh;
 }
 h1 {
   font-size: 3rem;
@@ -43,8 +43,6 @@ header {
   top: 0;
   z-index: 1000;
   background-color: rgba(46, 46, 46);
-  /* background-color: rgb(63, 73, 72); */
-  backdrop-filter: grayscale(90%) blur(2px);
 }
 nav {
   box-shadow: 0 0 6px inset rgb(143, 143, 143);
@@ -74,12 +72,55 @@ li {
   justify-content: center;
 }
 /* -------------------- */
-.movie {
+.search {
   color: #4f4f4f;
   display: flex;
   flex-direction: column;
 }
-.movie img {
+.search form {
+  margin-bottom: 5%;
+  margin-top: 20vh;
+  width: 96vh;
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: grayscale(90%) blur(2px);
+}
+.search input, 
+.search select {
+  font-size: 1.6rem;
+  height: 30px;
+  color: #4f4f4f;
+  border-radius: 2px;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 5px inset grey;
+}
+.search input {
+  width: 50%;
+}
+.results {
+  width: 96vh;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+.item img {
   width: 150px;
-  height: auto;
+  height: 250px;
+}
+.item {
+  width: 50%;
+  display: flex;
+  margin-bottom: 2%;
+  box-shadow: 1px 1px 3px black;
+}
+.item .text {
+  padding: 2% 4%;
+  margin-top: 5%;
+}
+.item p {
+  margin: 3% 0;
 }

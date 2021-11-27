@@ -17,9 +17,10 @@ export default function Main() {
 
     const handleQueryChange = e => setQuery(e.target.value);
     const handleSelectCategory = e => setCategory(e.target.value);
+    console.log(queryResults)
 
     return (
-        <div className="movie">
+        <div className="search">
             <form>
                 <input 
                     type="text"
@@ -33,7 +34,9 @@ export default function Main() {
                     <option value="tv">TV Shows</option>
                 </select>
             </form>
-            {query && queryResults.map(movie => <Item item={movie}/> )}
+            <div className="results">
+                {query && queryResults.map(movie => <Item item={movie} category={category}/> )}
+            </div>
         </div>
     )
 }
