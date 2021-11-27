@@ -4,7 +4,7 @@ export default function Header() {
     return (
         <header>
             <h1>REX</h1>
-            <p>movie and show recommendations</p>
+            <p>A place to share your recommendations</p>
             <nav>
                 <div className="links">
                     <ul>

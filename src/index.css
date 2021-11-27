@@ -17,11 +17,11 @@ code {
   line-height: 1.5;
   margin: 0 auto;
   font-size: 62.5%;
-  /* border: 1px dotted red; */
+  border: 1px dotted red;
 }
 .wrapper {
   width: 100vh;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255);
   color: lavender;
   display: flex;
   flex-direction: column;
@@ -31,26 +31,26 @@ code {
 }
 h1 {
   font-size: 3rem;
-  margin-top: 6%;
+  margin-top: 2%;
 }
 header {
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 100vh;
-  height: 26%;
+  height: 18%;
   position: fixed;
   top: 0;
   z-index: 1000;
-  background-color: rgba(46, 46, 46, 0.8);
-  background-color: rgb(63, 73, 72);
+  background-color: rgba(46, 46, 46);
+  /* background-color: rgb(63, 73, 72); */
   backdrop-filter: grayscale(90%) blur(2px);
 }
 nav {
   box-shadow: 0 0 6px inset rgb(143, 143, 143);
   border-radius: 2px;
   padding: 0 3%;
-  /* background-color: rgb(39, 48, 47); */
+  margin-top: 1%;
 }
 ul {
   list-style: none;
@@ -72,4 +72,14 @@ a:hover {
 li {
   display: flex;
   justify-content: center;
+}
+/* -------------------- */
+.movie {
+  color: #4f4f4f;
+  display: flex;
+  flex-direction: column;
+}
+.movie img {
+  width: 150px;
+  height: auto;
 }
