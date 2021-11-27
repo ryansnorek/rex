@@ -1,13 +1,23 @@
-export default function Item({ item, category }) {
+import { connect } from "react-redux";
+import { POSTER_URL } from "../constants";
+import { addRexy } from "../actions";
+
+function Item(props) {
+    const { dispatch, item, category } = props;
+    
+    const handleClick = id => dispatch(addRexy(id));
+
     return (
         <div className="item">
-            {item.poster_path ? <img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} alt="poster"/> : <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2kjzLg9BzACM4Dibtz-bHQrtXKzdyEWhvzw&usqp=CAU" alt="poster" />}
+            {item.poster_path ? <img src={`${POSTER_URL}${item.poster_path}`} alt="poster"/> : <img src="../../images/unavailable_poster.jpeg" alt="poster" />}
             <div className="text">
                 {category === "tv" ? <h2>{item.original_name}</h2> : <h2>{item.title}</h2>}
                 {item.overview ? <p className="overview">{item.overview}</p> : <p>Description unavailable</p>}
                 {category ==="tv" ? <p>First aired: {item.first_air_date}</p> : <p>Release date: {item.release_date}</p>}
-                <button>Rexy</button>
+                <button onClick={() => handleClick(item.id)}>Rexy</button>
             </div>
         </div>
     )
 }
+
+export default connect()(Item);
