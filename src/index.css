@@ -120,6 +120,10 @@ li {
 .item .text {
   padding: 2% 4%;
   margin-top: 5%;
+  width: 50%;
+  /* white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; */
 }
 .item p {
   margin: 3% 0;
