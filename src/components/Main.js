@@ -25,7 +25,7 @@ export default function Main() {
                 <input 
                     type="text"
                     name="search"
-                    placeholder="search"
+                    placeholder="Rexy search"
                     value={query}
                     onChange={handleQueryChange}
                 />

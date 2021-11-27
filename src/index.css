@@ -94,7 +94,6 @@ li {
   height: 30px;
   color: #4f4f4f;
   border-radius: 2px;
-  border: none;
   outline: none;
   box-shadow: 0 0 5px inset grey;
 }
@@ -108,19 +107,24 @@ li {
   margin-top: 50px;
 }
 .item img {
-  width: 150px;
+  width: 175px;
   height: 250px;
 }
 .item {
-  width: 50%;
+  width: 100%;
   display: flex;
   margin-bottom: 2%;
   box-shadow: 1px 1px 3px black;
 }
 .item .text {
   padding: 2% 4%;
-  margin-top: 5%;
-  width: 50%;
+  /* margin-top: 5%; */
+  font-size: 2rem;
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
   /* white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; */

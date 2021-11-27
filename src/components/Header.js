@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Header() {
     return (
         <header>
-            <h1>REX</h1>
+            <h1>Rexy</h1>
             <p>A place to share your recommendations</p>
             <nav>
                 <div className="links">
