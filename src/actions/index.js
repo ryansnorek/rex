@@ -1,4 +1,5 @@
 import axios from "axios";
+import axiosAuthorization from "../utils";
 
 import { API_KEY } from "../config";
 import { BASE_URL } from "../constants";
@@ -12,7 +13,7 @@ export const FIND_MOVIE = "FIND_MOVIE";
 export const getQueryResults = (category, query) => {
     return (dispatch) => {
         dispatch(fetchStart())
-
+        
         axios.get(`${BASE_URL}/3/search/${category}?api_key=${API_KEY}&query=${query}`)
             .then(res => dispatch(fetchQuery(res.data.results)))
             .catch(err => dispatch(fetchError(err)))

@@ -17,7 +17,6 @@ code {
   line-height: 1.5;
   margin: 0 auto;
   font-size: 62.5%;
-
   /* border: 1px dotted red; */
 }
 .wrapper {
@@ -27,9 +26,7 @@ code {
   display: flex;
   flex-direction: column;
 }
-.routes {
-  margin-top: 18vh;
-}
+.routes { margin-top: 18vh; }
 header {
   display: flex;
   align-items: center;
@@ -48,9 +45,7 @@ h1 {
   margin-top: 2%;
   color: lavender;
 }
-header p {
-  font-size: 1.2rem;
-}
+header p { font-size: 1.2rem; }
 nav {
   box-shadow: 0 0 6px inset rgb(143, 143, 143);
   border-radius: 2px;
@@ -75,10 +70,8 @@ a {
   margin: 0 10px;
 }
 a:hover { color: grey; }
-li {
-  display: flex;
-  justify-content: center;
-}
+li { display: flex; justify-content: center; }
+
 input, select {
   font-size: 1.6rem;
   height: 30px;
@@ -93,10 +86,7 @@ button {
   color: snow;
   border-radius: 3px;
 }
-.icon {
-  width: 20px;
-  height: auto;
-}
+.icon { width: 20px; height: auto; }
 /* ---------SEARCH----------- */
 .search {
   /* color: #4f4f4f; */
@@ -122,10 +112,7 @@ button {
   flex-wrap: wrap;
   margin-top: 50px;
 }
-.item img {
-  width: 175px;
-  height: 250px;
-}
+.item img { width: 175px; height: 250px; }
 .item {
   width: 100%;
   display: flex;
@@ -174,7 +161,6 @@ button {
  .login input::placeholder {
    color: lightgrey;
    text-align: center;
-
  }
 input:focus { background-color: lavender; }
 .login button {
