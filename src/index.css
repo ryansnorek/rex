@@ -161,12 +161,11 @@ button {
   justify-content: center;  
 }
 .login input { width: 50%; }
-input:focus {
-  background-color: lavender;
-}
+input:focus { background-color: lavender; }
 .login button {
   margin-top: 2%;
   font-size: 1.2rem;
+  height: 30px;
 }
 
 /* ---------LOADING----------- */
