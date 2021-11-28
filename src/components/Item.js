@@ -5,7 +5,9 @@ import { addRexy } from "../actions";
 function Item(props) {
     const { dispatch, item, category } = props;
     
-    const handleClick = id => dispatch(addRexy(id));
+    const handleClick = id => {
+        dispatch(addRexy(id))
+    };
 
     return (
         <div className="item">
@@ -14,7 +16,7 @@ function Item(props) {
                 {category === "tv" ? <h2>{item.original_name}</h2> : <h2>{item.title}</h2>}
                 {item.overview ? <p className="overview">{item.overview}</p> : <p>Description unavailable</p>}
                 {category ==="tv" ? <p>First aired: {item.first_air_date}</p> : <p>Release date: {item.release_date}</p>}
-                <button onClick={() => handleClick(item.id)}>Rexy</button>
+                <button onClick={() => handleClick(item.id)}>Add {category === "tv" ? "Show": "Movie"}</button>
             </div>
         </div>
     )

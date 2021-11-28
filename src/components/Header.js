@@ -9,16 +9,13 @@ export default function Header() {
                 <div className="links">
                     <ul>
                         <li>
-                            <Link to="/main">search</Link>
+                            <Link to="/search">{<img className="icon" src="../../images/search.png" alt="search"/>}</Link>
                         </li>
                         <li>
-                            <Link to="/about">about</Link>
+                            <Link to="/account">{<img className="icon" src="../../images/user.png" alt="user-account"/>}</Link>
                         </li>
                         <li>
-                            <Link to="/account">account</Link>
-                        </li>
-                        <li>
-                            <Link to="/login">login</Link>
+                            <Link to="/login">{<img className="icon" src="../../images/friends.png" alt="friends"/>}</Link>
                         </li>
                     </ul>
                 </div>

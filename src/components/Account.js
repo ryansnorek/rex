@@ -12,6 +12,12 @@ function Account(props) {
         });
     },[]);
 
+    // useEffect(() => {
+  //   axiosAuthorization()
+  //     .get("/3/movie/550")
+  //     .then(res => setMovie(res.data))
+  //     .catch(err => console.log(err))
+  // },[])
 
     return (
         <div className="account">
