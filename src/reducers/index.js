@@ -26,7 +26,9 @@ export default function reducer(state = initialState, action) {
                         rexys: {
                             movies: [...state.rexys.movies, action.payload],
                             tvShows: [...state.rexys.tvShows]
-                        }})
+                        },
+                        isFetching: false
+                        })
         default:
             return state;
     }

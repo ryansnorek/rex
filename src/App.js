@@ -5,10 +5,10 @@ import Login from "./components/Login";
 import Search from "./components/Search";
 import Item from "./components/Item";
 import Account from "./components/Account";
+import PrivateRoute from "./components/PrivateRoute";
 
 
 function App() {
-
   return (
     <>
       <div className="wrapper">
@@ -19,7 +19,15 @@ function App() {
             <Route path="/search" element={<Search/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/item" element={<Item/>}/>
-            <Route path="/account" element={<Account/>}/>
+            {/* <Route path="/account" element={<Account/>}/> */}
+            <Route
+              path="/account"
+              element={
+                <PrivateRoute redirectTo="/login">
+                  <Account/>
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </div>
       </div>
