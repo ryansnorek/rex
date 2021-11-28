@@ -82,7 +82,7 @@ button {
 }
 .icon {
   width: 20px;
-
+  height: auto;
 }
 /* -------------------- */
 .search {
