@@ -152,7 +152,9 @@ button {
   margin-top: 10%;
   width: 250px;
   height: 250px;
-  background-color: rgba(46, 46, 46, .9)
+  background-color: rgba(46, 46, 46, .9);
+  box-shadow: 2px 2px 2px black;
+  border-radius: 2px;
 }
 .login form {
   height: 100%;
