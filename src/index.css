@@ -71,12 +71,19 @@ a {
   padding: 2% 10%;
   margin: 0 10px;
 }
-a:hover {
-  color: grey;
-}
+a:hover { color: grey; }
 li {
   display: flex;
   justify-content: center;
+}
+input, select {
+  font-size: 1.6rem;
+  height: 30px;
+  color: #4f4f4f;
+  border-radius: 2px;
+  border: 1px solid lightgrey;
+  outline: none;
+  box-shadow: 0 0 5px inset lightgrey;
 }
 button {
   background-color: rgba(46, 46, 46, .86);
@@ -105,19 +112,7 @@ button {
   top: 0;
   z-index: 1000;
 }
-.search input, 
-.search select {
-  font-size: 1.6rem;
-  height: 30px;
-  color: #4f4f4f;
-  border-radius: 2px;
-  border: 1px solid lightgrey;
-  outline: none;
-  box-shadow: 0 0 5px inset lightgrey;
-}
-.search input {
-  width: 50%;
-}
+.search input { width: 50%; }
 .results {
   /* width: 96vh; */
   display: flex;
@@ -151,9 +146,7 @@ button {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.item p {
-  margin: 3% 0;
-}
+.item p { margin: 3% 0; }
 /* ---------LOGIN----------- */
 .login {
   margin-top: 10%;
@@ -167,16 +160,13 @@ button {
   flex-direction: column;
   justify-content: center;  
 }
-.login input {
-  outline: none;
-}
+.login input { width: 50%; }
 input:focus {
   background-color: lavender;
 }
 .login button {
   margin-top: 2%;
-  /* background-color: lavender;
-  color: #4f4f4f; */
+  font-size: 1.2rem;
 }
 
 /* ---------LOADING----------- */
