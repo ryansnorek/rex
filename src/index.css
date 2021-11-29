@@ -186,13 +186,15 @@ input:focus { background-color: lavender; }
   padding: 3%;
   width: 200px;
 }
-.profile img {
+.pic img {
   width: 50px;
   height: 50px;
   border-radius: 100%;
   box-shadow: 1px 1px 3px #4f4f4f;
 }
-
+.profile span {
+  width: 10px;
+}
 /* ---------LOADING----------- */
 .loading-container {
   width: 100%;
