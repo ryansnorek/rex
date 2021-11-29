@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import Search from "./components/Search";
 import SearchItem from "./components/SearchItem";
 import Account from "./components/Account";
+import Friends from "./components/Friends";
 import PrivateRoute from "./components/PrivateRoute";
 
 
@@ -24,6 +25,14 @@ function App() {
               element={
                 <PrivateRoute redirectTo="/login">
                   <Account/>
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/friends"
+              element={
+                <PrivateRoute redirectTo="/friends">
+                  <Friends/>
                 </PrivateRoute>
               }
             />

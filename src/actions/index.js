@@ -9,6 +9,7 @@ export const FETCH_QUERY = "FETCH_QUERY";
 export const FETCH_ERROR = "FETCH_ERROR";
 export const ADD_REXY = "ADD_REXY";
 export const FIND_MOVIE = "FIND_MOVIE";
+export const GET_FRIENDS = "GET_FRIENDS";
 
 export const getQueryResults = (category, query) => {
     return (dispatch) => {
@@ -27,6 +28,15 @@ export const findMovieById = (id) => {
             .catch(err => dispatch(fetchError(err)))
     }
 }
+export const getFriends = () => {
+    return (dispatch) => {
+        dispatch(fetchStart())
+
+        axios.get("https://randomuser.me/api/?results=10")
+            .then(res => dispatch(friendsList(res.data.results)))
+            .catch(err => dispatch(fetchError(err)))
+    }
+}
 
 export const fetchStart = () => {
     return ({ type: FETCH_START });
@@ -42,4 +52,7 @@ export const addRexy = (id) => {
 }
 export const findMovie = (data) => {
     return ({ type: FIND_MOVIE, payload: data });
+}
+export const friendsList = (friends) => {
+    return ({ type: GET_FRIENDS, payload: friends })
 }

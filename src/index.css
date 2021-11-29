@@ -174,7 +174,7 @@ input:focus { background-color: lavender; }
   width: 100vw;
   background-color: lightgrey;
 }
-.profile {
+.profile, .friend {
   height: 16vh;
   display: flex;
   align-items: center;
@@ -182,7 +182,8 @@ input:focus { background-color: lavender; }
   box-shadow: 1px 1px 3px black;
   padding: 0 3%;
 }
-.profile .text {
+.profile .text,
+.friend .text {
   padding: 3%;
   width: 200px;
 }
@@ -194,6 +195,9 @@ input:focus { background-color: lavender; }
 }
 .profile span {
   width: 10px;
+}
+.friends {
+  width: 100vw;
 }
 /* ---------LOADING----------- */
 .loading-container {
