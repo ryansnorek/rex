@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getQueryResults } from "../actions";
-import Item from "./Item";
+import SearchItem from "./SearchItem";
 
 function Search(props) {
     const { dispatch, data, isFetching } = props;
@@ -36,7 +36,7 @@ function Search(props) {
                 <div className="loading-container">
                     <div className="loading"></div>
                 </div> :
-                query && data.map(movie => <Item item={movie} category={category}/> )}
+                query && data.map(movie => <SearchItem item={movie} category={category}/> )}
             </div>
         </div>
     )

@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import Search from "./components/Search";
-import Item from "./components/Item";
+import SearchItem from "./components/SearchItem";
 import Account from "./components/Account";
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -17,9 +17,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Search/>}/>
             <Route path="/search" element={<Search/>}/>
+            <Route path="/item" element={<SearchItem/>}/>
             <Route path="/login" element={<Login/>}/>
-            <Route path="/item" element={<Item/>}/>
-            {/* <Route path="/account" element={<Account/>}/> */}
             <Route
               path="/account"
               element={

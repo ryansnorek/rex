@@ -2,11 +2,11 @@ import { connect } from "react-redux";
 import { POSTER_URL } from "../constants";
 import { addRexy } from "../actions";
 
-function Item(props) {
+function SearchItem(props) {
     const { dispatch, item, category } = props;
     
     const handleClick = id => {
-        dispatch(addRexy(id))
+        dispatch(addRexy(id));
     };
 
     return (
@@ -22,4 +22,4 @@ function Item(props) {
     )
 }
 
-export default connect()(Item);
+export default connect()(SearchItem);

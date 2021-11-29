@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { findMovieById } from "../actions";
 import { useEffect } from "react";
-import Item from "./Item";
+
 
 function Account(props) {
     const { dispatch, rexyIDs, rexys } = props;
@@ -21,8 +21,17 @@ function Account(props) {
 
     return (
         <div className="account">
-            <h1>Account</h1>
-            {rexys && rexys.movies.map(movie => <Item item={movie} category="movie"/>)}
+            <div className="profile">
+                <div className="text">
+                    <h3>Username</h3>
+                    <p>Tagline andlskna; kdnakldn</p>
+                    <p>Followers: 124</p>
+                    <p>Following: 241</p>
+                    <p>Rexys: Deuce Bigalow, Deuce Bigalow, Deuce Bigalow</p>
+                </div>
+                <img src="../../images/profile_pic_small.jpg" alt="profile-pic"/>
+            </div>
+            {/* {rexys && rexys.movies.map(movie => <Item item={movie} category="movie"/>)} */}
 
         </div>
     )
