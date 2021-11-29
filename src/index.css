@@ -32,7 +32,7 @@ header {
   align-items: center;
   flex-direction: column;
   width: 100vh;
-  height: 18%;
+  height: 15%;
   position: fixed;
   top: 0;
   z-index: 1000;
@@ -41,8 +41,7 @@ header {
   user-select: none;
 }
 h1 {
-  font-size: 3rem;
-  margin-top: 2%;
+  font-size: 2rem;
   color: lavender;
 }
 header p { font-size: 1.2rem; }
@@ -107,7 +106,6 @@ button {
 }
 .search input { width: 50%; }
 .results {
-  /* width: 96vh; */
   display: flex;
   flex-wrap: wrap;
   margin-top: 50px;
@@ -116,7 +114,7 @@ button {
 .item {
   width: 100%;
   display: flex;
-  margin-bottom: 2%;
+  margin-bottom: 1%;
   box-shadow: 1px 1px 3px black;
   background-color: #e9e9f2;
 }
@@ -172,7 +170,7 @@ input:focus { background-color: lavender; }
 /* ---------ACCOUNT----------- */
 .account {
   width: 100vw;
-  background-color: lightgrey;
+
 }
 .profile, .friend {
   height: 16vh;
@@ -181,6 +179,10 @@ input:focus { background-color: lavender; }
   justify-content: space-between;
   box-shadow: 1px 1px 3px black;
   padding: 0 3%;
+}
+.friend {
+  background-color: lightgrey;
+  margin-bottom: 1%;
 }
 .profile .text,
 .friend .text {
