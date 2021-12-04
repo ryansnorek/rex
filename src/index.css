@@ -107,13 +107,20 @@ button {
   flex-wrap: wrap;
   margin-top: 50px;
 }
-.item img { width: 175px; height: 250px; }
+.item img { 
+  width: 175px; 
+  height: 250px; 
+  border-radius: 2%; 
+  padding: 0.5%;
+}
 .item {
   width: 100%;
   display: flex;
   margin-bottom: 1%;
   box-shadow: 1px 1px 3px black;
-  background-color: #e9e9f2;
+  background-color: rgba(46, 46, 46);
+  color: snow;
+  border-radius: 2%;
 }
 .item .text {
   padding: 2% 4%;
@@ -169,7 +176,7 @@ button {
   to   { opacity: 1; }
 }
 .item-details h2 { font-size: 1.6rem }
-.backdrop { border-radius: 2% }
+.backdrop { border-radius: 2%; width: 96vw; }
 .item-details .text { 
   display: flex; 
   padding: 0 2%; 
