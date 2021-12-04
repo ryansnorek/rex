@@ -8,27 +8,34 @@ function Search(props) {
     const { dispatch, data, discover, isFetching } = props;
     const [category, setCategory] = useState("movie");
     const [query, setQuery] = useState(null);
+    const [scrolling, setScrolling] = useState(false);
 
     useEffect(() => dispatch(discoverMovies()),[])
     useEffect(() => dispatch(getQueryResults(category, query)), [category, query]);
 
+    const handleScroll = () => {
+        setScrolling(true);
+        setTimeout(() => setScrolling(false), 2000);
+    };
     const handleSelectCategory = e => setCategory(e.target.value);
     const handleQueryChange = e => setQuery(e.target.value);
     return (
-        <div className="search">
-            <form>
-                <input 
-                    type="text"
-                    name="search"
-                    placeholder="Rexy search"
-                    value={query}
-                    onChange={handleQueryChange}
-                />
-                <select onChange={handleSelectCategory}>
-                    <option value="movie">Movies</option>
-                    <option value="tv">TV Shows</option>
-                </select>
-            </form>
+        <div className="search" onScroll={handleScroll}>
+            <div id={scrolling ? "scrolling" : "not-scrolling"}>
+                <form>
+                    <input 
+                        type="text"
+                        name="search"
+                        placeholder="Rexy search"
+                        value={query}
+                        onChange={handleQueryChange}
+                    />
+                    <select onChange={handleSelectCategory}>
+                        <option value="movie">Movies</option>
+                        <option value="tv">TV Shows</option>
+                    </select>
+                </form>
+            </div>
             <div className="discover">
                 {discover && !query && discover.map(movie => {
                     return (
