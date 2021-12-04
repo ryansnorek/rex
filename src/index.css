@@ -84,19 +84,15 @@ button {
 }
 .icon { width: 20px; height: auto; }
 /* ---------SEARCH----------- */
-.discover {
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 6vh;
-}
+.discover { 
+  margin-top: 50px;
+ }
 .discover img {
   width: 100vw;
   margin: 0;
+  box-shadow: 1px 1px 3px black;
 }
 .search {
-  /* color: #4f4f4f; */
   display: flex;
   flex-direction: column;
   background-color: #f2f2f7;

@@ -29,13 +29,15 @@ function Search(props) {
                     <option value="tv">TV Shows</option>
                 </select>
             </form>
-            {discover && discover.map(movie => {
-                return (
-                    <div className="discover">
-                        {movie.poster_path ? <img src={`${POSTER_URL}${movie.poster_path}`} alt="poster"/> : <img src="../../images/unavailable_poster.jpeg" alt="poster" />}
-                    </div>
-                )
-            })}
+            <div className="discover">
+                {discover && !query && discover.map(movie => {
+                    return (
+                        <div className="discover-item">
+                            {movie.poster_path ? <img src={`${POSTER_URL}${movie.poster_path}`} alt="poster"/> : <img src="../../images/unavailable_poster.jpeg" alt="poster" />}
+                        </div>
+                    )
+                })}
+            </div>
             <div className="results">
                 {isFetching && query ?  
                 <div className="loading-container">
