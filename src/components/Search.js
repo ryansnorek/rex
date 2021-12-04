@@ -20,7 +20,11 @@ function Search(props) {
     const handleSelectCategory = e => setCategory(e.target.value);
     const handleQueryChange = e => setQuery(e.target.value);
     return (
-        <div className="search" onScroll={handleScroll}>
+        <div 
+            className="search" 
+            onScroll={handleScroll}
+            onClick={() => setScrolling(false)}
+            >
             <div id={scrolling ? "scrolling" : "not-scrolling"}>
                 <form>
                     <input 

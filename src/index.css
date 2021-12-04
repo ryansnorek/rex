@@ -17,23 +17,21 @@ code {
   line-height: 1.5;
   margin: 0 auto;
   font-size: 62.5%;
-  /* border: 1px dotted red; */
 }
 .wrapper {
-  width: 100vh;
+  width: 100vw;
   height: 100vh;
   background-color: #f2f2f7;
   display: flex;
   flex-direction: column;
-  background-color: black;
 }
 .routes { margin-top: 18vh }
 header {
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 100vh;
-  height: 15%;
+  width: 100vw;
+  height: 18%;
   position: fixed;
   top: 0;
   z-index: 1000;
@@ -100,6 +98,7 @@ button {
   flex-direction: column;
   width: 100vw;
   overflow: scroll;
+  background-color: rgba(46, 46, 46);
 }
 .search form {
   margin-bottom: 5%;
@@ -112,9 +111,11 @@ button {
   z-index: 1000;
 }
 .search input { width: 50% }
-#scrolling { display: none }
+#scrolling { 
+  display: none;
+}
 #not-scrolling {
-  width: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
@@ -124,10 +125,8 @@ button {
        animation: fadein 1s;
 }
 .results {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 50px;
-  background-color: black;
+  margin-top: 7%;
+  background-color: rgba(46, 46, 46, .5);
 }
 .item img { 
   width: 175px; 
