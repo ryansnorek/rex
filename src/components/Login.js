@@ -10,12 +10,10 @@ export default function Login() {
         e.preventDefault();
         console.log(values);
     };
-
     const handleClick = () => {
         localStorage.setItem("token", 420);
         navigate("/account");
     };
-
     return (
         <div className="login">
             <form onSubmit={handleSubmit}>

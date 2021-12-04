@@ -5,16 +5,12 @@ import { getFriends } from "../actions";
 import Friend from "./Friend";
 
 function Friends(props) {
-
     const { dispatch, friends } = props;
 
     useState(() => {
         dispatch(getFriends())
         console.log(friends)
     },[])
-
-    
-
     return (
         <div className="friends">
             <h1>friends</h1>
@@ -22,8 +18,6 @@ function Friends(props) {
         </div>
     )
 }
-const mapStateToProps = (state) => {
-    return { friends: state.friends };
-};
+const mapStateToProps = (state) => ({ friends: state.friends });
 
 export default connect(mapStateToProps)(Friends);

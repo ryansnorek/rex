@@ -5,17 +5,13 @@ import SearchItem from "./SearchItem";
 
 function Search(props) {
     const { dispatch, data, isFetching } = props;
-
     const [category, setCategory] = useState("movie");
     const [query, setQuery] = useState(null);
 
-    useEffect(() => {
-        dispatch(getQueryResults(category, query))
-    },[category, query]);
+    useEffect(() => dispatch(getQueryResults(category, query)), [category, query]);
 
     const handleSelectCategory = e => setCategory(e.target.value);
     const handleQueryChange = e => setQuery(e.target.value);
-
     return (
         <div className="search">
             <form>
@@ -41,7 +37,6 @@ function Search(props) {
         </div>
     )
 }
-
 const mapStateToProps = (state) => {
     return {
         data: state.data,
@@ -49,5 +44,4 @@ const mapStateToProps = (state) => {
         errors: state.errors
     }
 }
-
 export default connect(mapStateToProps)(Search);

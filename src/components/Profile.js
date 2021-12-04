@@ -1,13 +1,14 @@
+import { connect } from "react-redux";
 import { useState } from "react";
 
-export default function Profile() {
+function Profile(props) {
+    const { friends } = props;
+
     const [editMode, setEditMode] = useState(false);
     const [pic, setPic] = useState("../../images/profile_pic_small.jpg");
     const [input, setInput] = useState("");
 
-    const handleEdit = () => {
-        setEditMode(!editMode);
-    };
+    const handleEdit = () => setEditMode(!editMode);
     const handleChange = e => setInput(e.target.value);
     const handleChangePic = e => {
         e.preventDefault();
@@ -19,8 +20,7 @@ export default function Profile() {
             <div className="text">
                 <h3>Username</h3>
                 <p>Tagline \\da asdasd</p>
-                <p>Followers: 124</p>
-                <p>Following: 241</p>
+                {/* <p>Friends: {friends.length}</p> */}
                 <p>Rexys: Deuce Bigalow, Deuce Bigalow, Deuce Bigalow</p>
             </div>
             <div className="pic">
@@ -40,3 +40,6 @@ export default function Profile() {
         </div>
     )
 }
+const mapStateToProps = (state) => ({ friends: state.friends });
+
+export default connect(mapStateToProps)(Profile);

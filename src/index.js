@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import Rexy from "./Rexy";
 import { BrowserRouter } from "react-router-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -14,7 +14,7 @@ const store = createStore(reducer, applyMiddleware(logger, thunk));
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <Rexy />
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')

@@ -1,6 +1,5 @@
 import axios from "axios";
 import axiosAuthorization from "../utils";
-
 import { API_KEY } from "../config";
 import { BASE_URL } from "../constants";
 
@@ -13,8 +12,7 @@ export const GET_FRIENDS = "GET_FRIENDS";
 
 export const getQueryResults = (category, query) => {
     return (dispatch) => {
-        dispatch(fetchStart())
-        
+        dispatch(fetchStart());
         axios.get(`${BASE_URL}/3/search/${category}?api_key=${API_KEY}&query=${query}`)
             .then(res => dispatch(fetchQuery(res.data.results)))
             .catch(err => dispatch(fetchError(err)))
@@ -22,7 +20,7 @@ export const getQueryResults = (category, query) => {
 }
 export const findMovieById = (id) => {
     return (dispatch) => {
-        dispatch(fetchStart())
+        dispatch(fetchStart());
         axios.get(`${BASE_URL}/3/movie/${id}?api_key=${API_KEY}`)
             .then(res => dispatch(findMovie(res.data)))
             .catch(err => dispatch(fetchError(err)))
@@ -30,14 +28,12 @@ export const findMovieById = (id) => {
 }
 export const getFriends = () => {
     return (dispatch) => {
-        dispatch(fetchStart())
-
+        dispatch(fetchStart());
         axios.get("https://randomuser.me/api/?results=10")
             .then(res => dispatch(friendsList(res.data.results)))
             .catch(err => dispatch(fetchError(err)))
     }
 }
-
 export const fetchStart = () => {
     return ({ type: FETCH_START });
 }

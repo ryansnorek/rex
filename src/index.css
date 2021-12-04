@@ -135,6 +135,13 @@ button {
   text-overflow: ellipsis;
 }
 .item p { margin: 3% 0; }
+.button-container {
+  width: 100%;
+  display: flex;
+}
+.button-container button {
+  font-size: 1.2rem;
+}
 /* ---------LOGIN----------- */
 .login {
   margin-top: 10%;

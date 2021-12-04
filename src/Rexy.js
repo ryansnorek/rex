@@ -3,22 +3,20 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import Search from "./components/Search";
-import SearchItem from "./components/SearchItem";
+import ItemDetails from "./components/ItemDetails";
 import Account from "./components/Account";
 import Friends from "./components/Friends";
 import PrivateRoute from "./components/PrivateRoute";
 
-
-function App() {
+function Rexy() {
   return (
-    <>
       <div className="wrapper">
       <Header/>
         <div className="routes">
           <Routes>
             <Route path="/" element={<Search/>}/>
             <Route path="/search" element={<Search/>}/>
-            <Route path="/item" element={<SearchItem/>}/>
+            <Route path="/item/:id" element={<ItemDetails/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route
               path="/account"
@@ -39,8 +37,7 @@ function App() {
           </Routes>
         </div>
       </div>
-    </>
   );
 }
 
-export default App;
+export default Rexy;
