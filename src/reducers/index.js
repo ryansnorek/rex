@@ -7,11 +7,14 @@ const initialState = {
         movies: [],
         tvShows: []
     },
+    item: {
+        movie: "",
+        tvShow: ""
+    },
     friends: [],
     isFetching: false,
     errors: ""
 };
-
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case (FETCH_START):
@@ -24,10 +27,7 @@ export default function reducer(state = initialState, action) {
             return ({ ...state, rexyIDs: [...state.rexyIDs, action.payload] })
         case (FIND_MOVIE):
             return ({ ...state, 
-                        rexys: {
-                            movies: [...state.rexys.movies, action.payload],
-                            tvShows: [...state.rexys.tvShows]
-                        },
+                        item: { movie: action.payload },
                         isFetching: false
                         })
         case (GET_FRIENDS):

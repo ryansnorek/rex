@@ -26,7 +26,7 @@ code {
   display: flex;
   flex-direction: column;
 }
-.routes { margin-top: 18vh; }
+.routes { margin-top: 18vh }
 header {
   display: flex;
   align-items: center;
@@ -40,11 +40,8 @@ header {
   color: #f2f2f7;
   user-select: none;
 }
-h1 {
-  font-size: 2rem;
-  color: lavender;
-}
-header p { font-size: 1.2rem; }
+h1 { font-size: 2rem; color: lavender; }
+header p { font-size: 1.2rem }
 nav {
   box-shadow: 0 0 6px inset rgb(143, 143, 143);
   border-radius: 2px;
@@ -68,7 +65,7 @@ a {
   padding: 2% 10%;
   margin: 0 10px;
 }
-a:hover { color: grey; }
+a:hover { color: grey }
 li { display: flex; justify-content: center; }
 
 input, select {
@@ -134,14 +131,55 @@ button {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.item p { margin: 3% 0; }
-.button-container {
-  width: 100%;
+.item p { margin: 3% 0 }
+.button-container { width: 100%; display: flex; }
+.button-container button { font-size: 1.2rem }
+/* ---------ITEM-DETAILS----------- */
+.item-details {
+  background-color: rgba(46, 46, 46);
+  color: snow;
+  width: 96vw;
+  height: auto;
+  box-shadow: 1px 1px 3px black;
+  padding: 1%;
+  border-radius: 2%;
   display: flex;
+  flex-direction: column;
+
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+
 }
-.button-container button {
-  font-size: 1.2rem;
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.item-details h2 { font-size: 1.6rem }
+.backdrop { border-radius: 2% }
+.item-details .text { display: flex; padding: 0 2%; }
+.item-details .left { 
+  width: 40%; 
+  border-right: 1px solid lavender;
+  padding: 1%;
+
+}
+.item-details .right { width: 60%; padding: 1% }
+.left .genres { display: flex; flex-wrap: wrap }
 /* ---------LOGIN----------- */
 .login {
   margin-top: 10%;
@@ -163,11 +201,8 @@ button {
   font-size: 5rem;
   text-align: center;
  }
- .login input::placeholder {
-   color: lightgrey;
-   text-align: center;
- }
-input:focus { background-color: lavender; }
+.login input::placeholder { color: lightgrey; text-align: center; }
+input:focus { background-color: lavender }
 .login button {
   margin-top: 3%;
   font-size: 1.2rem;
@@ -177,7 +212,6 @@ input:focus { background-color: lavender; }
 /* ---------ACCOUNT----------- */
 .account {
   width: 100vw;
-
 }
 .profile, .friend {
   height: 16vh;
@@ -187,27 +221,17 @@ input:focus { background-color: lavender; }
   box-shadow: 1px 1px 3px black;
   padding: 0 3%;
 }
-.friend {
-  background-color: lightgrey;
-  margin-bottom: 1%;
-}
+.friend { background-color: lightgrey; margin-bottom: 1%; }
 .profile .text,
-.friend .text {
-  padding: 3%;
-  width: 200px;
-}
+.friend .text { padding: 3%; width: 200px; }
 .pic img {
   width: 50px;
   height: 50px;
   border-radius: 100%;
   box-shadow: 1px 1px 3px #4f4f4f;
 }
-.profile span {
-  width: 10px;
-}
-.friends {
-  width: 100vw;
-}
+.profile span { width: 10px }
+.friends { width: 100vw }
 /* ---------LOADING----------- */
 .loading-container {
   width: 100%;
@@ -222,10 +246,24 @@ input:focus { background-color: lavender; }
   border-radius: 50%;
   width: 90px;
   height: 90px;
-  animation: spin 2s linear infinite;
+  -webkit-animation: spin 2s linear infinite; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: spin 2s linear infinite; /* Firefox < 16 */
+   -ms-animation: spin 2s linear infinite; /* Internet Explorer */
+    -o-animation: spin 2s linear infinite; /* Opera < 12.1 */
+       animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }

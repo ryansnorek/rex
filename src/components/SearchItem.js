@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { POSTER_URL } from "../constants";
-import { addRexy } from "../actions";
+import { addRexy, findMovieById } from "../actions";
 import { useNavigate } from "react-router-dom";
 
 function SearchItem(props) {
@@ -8,7 +8,11 @@ function SearchItem(props) {
     const navigate = useNavigate();
     
     const handleAdd = id => dispatch(addRexy(id));
-    const handleClickDetails = id => navigate(`/item/${id}`);
+    const handleClickDetails = id => {
+        dispatch(findMovieById(id));
+        setTimeout(() => navigate(`/item/${id}`), 100);
+    };
+
     return (
         <div className="item">
             {item.poster_path ? <img src={`${POSTER_URL}${item.poster_path}`} alt="poster"/> : <img src="../../images/unavailable_poster.jpeg" alt="poster" />}
