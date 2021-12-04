@@ -25,6 +25,7 @@ code {
   background-color: #f2f2f7;
   display: flex;
   flex-direction: column;
+  background-color: black;
 }
 .routes { margin-top: 18vh }
 header {
@@ -95,7 +96,7 @@ button {
 .search {
   display: flex;
   flex-direction: column;
-  background-color: #f2f2f7;
+  /* background-color: #f2f2f7; */
   width: 100vw;
 }
 .search form {
@@ -114,6 +115,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   margin-top: 50px;
+  background-color: black;
 }
 .item img { 
   width: 175px; 
@@ -220,7 +222,7 @@ button {
   text-align: center;
  }
 .login input::placeholder { color: lightgrey; text-align: center; }
-input:focus { background-color: lavender }
+input:focus, select:focus { background-color: lavender }
 .login button {
   margin-top: 3%;
   font-size: 1.2rem;
@@ -238,6 +240,7 @@ input:focus { background-color: lavender }
   justify-content: space-between;
   box-shadow: 1px 1px 3px black;
   padding: 0 3%;
+  background-color: lightgrey;
 }
 .friend { background-color: lightgrey; margin-bottom: 1%; }
 .profile .text,
