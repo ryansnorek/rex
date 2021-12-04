@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { getQueryResults } from "../actions";
+import { getQueryResults, discoverMovies } from "../actions";
+import { POSTER_URL } from "../constants";
 import SearchItem from "./SearchItem";
 
 function Search(props) {
-    const { dispatch, data, isFetching } = props;
+    const { dispatch, data, discover, isFetching } = props;
     const [category, setCategory] = useState("movie");
     const [query, setQuery] = useState(null);
 
+    useEffect(() => dispatch(discoverMovies()),[])
     useEffect(() => dispatch(getQueryResults(category, query)), [category, query]);
 
     const handleSelectCategory = e => setCategory(e.target.value);
@@ -27,6 +29,13 @@ function Search(props) {
                     <option value="tv">TV Shows</option>
                 </select>
             </form>
+            {discover && discover.map(movie => {
+                return (
+                    <div className="discover">
+                        {movie.poster_path ? <img src={`${POSTER_URL}${movie.poster_path}`} alt="poster"/> : <img src="../../images/unavailable_poster.jpeg" alt="poster" />}
+                    </div>
+                )
+            })}
             <div className="results">
                 {isFetching && query ?  
                 <div className="loading-container">
@@ -40,6 +49,7 @@ function Search(props) {
 const mapStateToProps = (state) => {
     return {
         data: state.data,
+        discover: state.discover,
         isFetching: state.isFetching,
         errors: state.errors
     }

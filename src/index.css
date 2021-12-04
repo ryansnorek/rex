@@ -84,6 +84,17 @@ button {
 }
 .icon { width: 20px; height: auto; }
 /* ---------SEARCH----------- */
+.discover {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 6vh;
+}
+.discover img {
+  width: 100vw;
+  margin: 0;
+}
 .search {
   /* color: #4f4f4f; */
   display: flex;

@@ -1,7 +1,5 @@
 import { connect } from "react-redux";
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { findMovieById } from "../actions";
 import { POSTER_URL } from "../constants";
 import { addRexy } from "../actions";
 
