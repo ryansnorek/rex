@@ -85,7 +85,7 @@ button {
 .icon { width: 20px; height: auto; }
 /* ---------SEARCH----------- */
 .discover { 
-  margin-top: 50px;
+  margin-top: -18px;
  }
 .discover img {
   width: 100vw;
@@ -108,7 +108,8 @@ button {
   top: 0;
   z-index: 1000;
 }
-.search input { width: 50%; }
+.search input { width: 50%; background-color: transparent; }
+.search select { background-color: transparent; }
 .results {
   display: flex;
   flex-wrap: wrap;
