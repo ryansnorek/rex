@@ -153,8 +153,8 @@ button {
 /* ---------ITEM-DETAILS----------- */
 .item-details {
   color: snow;
-  width: 100vh;
-  height: 100vh;
+  /* width: 100vh;
+  height: 100vh; */
   display: flex;
   flex-direction: column;
   box-shadow: 1px 1px 3px black;
@@ -286,9 +286,6 @@ button {
   .discover img {
     width: 250px;
   }
-  /* .results {
-    width: 768px;
-  } */
 }
 @media (max-width: 600px) {
   .tagline { font-size: 0.7rem; }
