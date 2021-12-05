@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 export default function Header() {
+    const navigate = useNavigate();
     return (
         <header>
-            <h1 className="logo">Rexy</h1>
+            <h1 className="logo" onClick={() => navigate("/")}>Rexy</h1>
             <p className="tagline">A place to share your recommendations</p>
             <nav>
                 <div className="links">
