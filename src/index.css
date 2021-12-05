@@ -10,9 +10,10 @@ code { font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', mon
 * { 
   margin: 0 auto; 
   font-size: 62.5%; 
-  /* background-color: #272727; */
+  background-color: #272727;
   /* border: 1px red solid; */
 }
+nav, ul, li, a, .icon, .logo, .tagline { background-color: transparent; }
 .wrapper {
   width: 100vw;
   height: 100vh;
@@ -35,24 +36,18 @@ header {
   color: #f2f2f7;
   user-select: none;
 }
-/* .routes { margin-top: 18vh } */
 .logo { font-size: 2rem; text-shadow: 0 0 6px lavender; }
-header p { font-size: 1.2rem }
+.tagline { font-size: 1.2rem }
 nav {
-  box-shadow: 0 0 6px inset rgb(143, 143, 143);
+  box-shadow: 0 0 6px inset lavender;
+  background-color: rgb(66, 66, 66);
   border-radius: 2px;
   padding: 0 3%;
-  background-color: #d8d8e8;
   width: 200px;
 }
 ul { list-style: none; display: flex; margin: 0; padding: 0; }
-a {
-  text-decoration: none;
-  color: lavender;
-  font-size: 1.6rem;
-  padding: 2% 10%;
-  margin: 0 10px;
-}
+a { text-decoration: none; }
+.icon { width: 20px; height: 20px; }
 a:hover { color: grey }
 li { display: flex; justify-content: center; }
 input, select {
@@ -64,16 +59,14 @@ input, select {
   box-shadow: 0 0 5px inset lightgrey;
   background-color: rgb(223, 226, 242, .6)
 }
-select {
-  height: 34px;
-}
+select { height: 34px }
 input:focus, select:focus { background-color: rgb(223, 226, 242, .8) }
 button {
   background-color: rgba(46, 46, 46, .86);
   color: snow;
   border-radius: 3px;
 }
-.icon { width: 20px; height: auto; }
+
 /* ---------DISCOVER----------- */
 .home {
   background-color: black;
@@ -143,8 +136,6 @@ button {
   display: flex; 
   flex-direction: column;
   justify-content: center;
-  /* align-items: flex-start; */
-  /* text-align: left; */
   user-select: none;
 }
 .overview { height: 100px; overflow: hidden; text-overflow: ellipsis; }
@@ -158,7 +149,7 @@ button {
   flex-direction: column;
   padding-bottom: 3%;
   box-shadow: 1px 1px 3px black;
-  background-color: rgb(45, 37, 78);
+  background-color: #272727;
   -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 2s; /* Firefox < 16 */
         -ms-animation: fadein 2s; /* Internet Explorer */
@@ -213,15 +204,17 @@ button {
 }
 /* ---------ACCOUNT----------- */
 .account { width: 100vw }
-.friends h1 { color: purple; text-align: center; margin-top: 10%; }
+.friends h1 { color: orange; text-align: center; margin-top: 100px; }
 .profile, .friend {
+  margin-top: 30px;
   height: 16vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-shadow: 1px 1px 3px black;
   padding: 0 3%;
-  background-color: lightgrey;
+  background-color: #272727;
+  color: snow;
 }
 .friend { background-color: lightgrey; margin-bottom: 1%; }
 .profile .text, .friend .text { padding: 3%; width: 200px; }

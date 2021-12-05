@@ -8,7 +8,6 @@ export default function Header() {
             <h1 className="logo" onClick={() => navigate("/")}>Rexy</h1>
             <p className="tagline">A place to share your recommendations</p>
             <nav>
-                <div className="links">
                     <ul>
                         <li>
                             <Link to="/search">{<img className="icon" src="../../images/magnifier.png" alt="search"/>}</Link>
@@ -20,7 +19,6 @@ export default function Header() {
                             <Link to="/friends">{<img className="icon" src="../../images/friends.png" alt="friends"/>}</Link>
                         </li>
                     </ul>
-                </div>
             </nav>
         </header>
     )
