@@ -10,6 +10,7 @@ code { font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', mon
 * { 
   margin: 0 auto; 
   font-size: 62.5%; 
+  /* background-color: #272727; */
   /* border: 1px red solid; */
 }
 .wrapper {
@@ -48,7 +49,6 @@ ul { list-style: none; display: flex; margin: 0; padding: 0; }
 a {
   text-decoration: none;
   color: lavender;
-  background-color: transparent;
   font-size: 1.6rem;
   padding: 2% 10%;
   margin: 0 10px;
@@ -58,12 +58,14 @@ li { display: flex; justify-content: center; }
 input, select {
   font-size: 1.6rem;
   height: 30px;
-  /* color: #4f4f4f; */
   border-radius: 2px;
   border: 1px solid lightgrey;
   outline: none;
   box-shadow: 0 0 5px inset lightgrey;
   background-color: rgb(223, 226, 242, .6)
+}
+select {
+  height: 34px;
 }
 input:focus, select:focus { background-color: rgb(223, 226, 242, .8) }
 button {
@@ -91,7 +93,6 @@ button {
 .search {
   display: flex;
   flex-direction: column;
-  background-color: #272727;
   width: 100vw;
 }
 .search form {
@@ -100,7 +101,7 @@ button {
   display: flex;
   position: fixed;
 }
-.search input { width: 50% }
+.search input { width: 70% }
 .search input, 
 .search select {
   background-color: transparent;  
@@ -142,8 +143,8 @@ button {
   display: flex; 
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  text-align: left;
+  /* align-items: flex-start; */
+  /* text-align: left; */
   user-select: none;
 }
 .overview { height: 100px; overflow: hidden; text-overflow: ellipsis; }
@@ -153,13 +154,11 @@ button {
 /* ---------ITEM-DETAILS----------- */
 .item-details {
   color: snow;
-  /* width: 100vh;
-  height: 100vh; */
   display: flex;
   flex-direction: column;
+  padding-bottom: 3%;
   box-shadow: 1px 1px 3px black;
-  background-color: rgba(40, 40, 40);
-  background-color: rgb(52, 46, 80);
+  background-color: rgb(45, 37, 78);
   -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 2s; /* Firefox < 16 */
         -ms-animation: fadein 2s; /* Internet Explorer */
@@ -280,23 +279,18 @@ button {
   to   { opacity: 1; }
 }
 /* ---------RESPONSIVE MEDIA----------- */
-
 /* iPad 768 x 1024 */
 @media (max-width: 768px) {
-  .discover img {
-    width: 250px;
-  }
+  .discover img { width: 250px }
+  .search form { width: 70% }
 }
 @media (max-width: 600px) {
-  .tagline { font-size: 0.7rem; }
+  .tagline { font-size: 0.7rem }
 }
-
 /* iPhone */
 @media (max-width: 375px) {
-  .discover img {
-    width: 175px;
-  }
+  .discover img { width: 175px }
+  .search form { width: 100% }
 }
-/* 19-inch screen (standard ratio): 1280 x 1024 pixels */
 
 
