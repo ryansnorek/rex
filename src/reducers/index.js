@@ -1,4 +1,4 @@
-import { FETCH_START, FETCH_QUERY, FETCH_ERROR, ADD_REXY, DELETE_REXY, FIND_REXY_MOVIE, FIND_MOVIE, GET_FRIENDS, DISCOVER } from "../actions";
+import { FETCH_START, FETCH_QUERY, FETCH_ERROR, ADD_REXY, DELETE_REXY, FIND_REXY_MOVIE, FIND_MOVIE, GET_FRIENDS, DISCOVER_MOVIE, DISCOVER_TV } from "../actions";
 
 const initialState = {
     data: [],
@@ -12,7 +12,10 @@ const initialState = {
         tvShow: ""
     },
     friends: [],
-    discover: [],
+    discover: {
+        movies: [],
+        tvShows: [] 
+    },
     isFetching: false,
     errors: ""
 };
@@ -39,8 +42,10 @@ export default function reducer(state = initialState, action) {
             return ({ ...state, item: { movie: action.payload }})
         case (GET_FRIENDS):
             return ({ ...state, friends: action.payload })
-        case (DISCOVER): 
-            return ({ ...state, discover: action.payload })
+        case (DISCOVER_MOVIE): 
+            return ({ ...state, discover: { movies: [...action.payload]} })
+        case (DISCOVER_TV): 
+            return ({ ...state, discover: { tvShows: [...action.payload]} })
         default:
             return state;
     }

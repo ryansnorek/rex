@@ -8,13 +8,13 @@ function Search({ dispatch, data, isFetching }) {
     const [category, setCategory] = useState("movie");
     const [query, setQuery] = useState(null);
 
-    useEffect(() => dispatch(discoverMovies()),[]);
+    // useEffect(() => dispatch(discoverMovies()),[]);
     useEffect(() => dispatch(getQueryResults(category, query)), [category, query]);
 
     const handleSelectCategory = e => setCategory(e.target.value);
     const handleQueryChange = e => setQuery(e.target.value);
     return (
-        <div className="search">
+        <div className="search page">
             <div className="search-bar">
                 <form>
                     <input 

@@ -10,11 +10,9 @@ function Account({ dispatch, rexyIDs, rexys }) {
     useEffect(() => rexyIDs.forEach(id => dispatch(findMovieById(id, "rexy"))), []);
 
     return (
-        <div className="account">
+        <div className="account page">
             <AccountProfile/>
-            {/* Movies */}
             {rexys.movies !== [] && rexys.movies.map(movie => <AccountRexy item={movie}/>)}
-            {/* Shows */}
         </div>
     )
 }

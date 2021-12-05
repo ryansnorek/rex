@@ -12,7 +12,7 @@ function Friends(props) {
         console.log(friends)
     },[])
     return (
-        <div className="friends">
+        <div className="friends page">
             <h1>Friends page under construction</h1>
             {/* {friends && friends.map(friend => <Friend friend={friend}/>)} */}
         </div>

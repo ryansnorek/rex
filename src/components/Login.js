@@ -15,7 +15,7 @@ export default function Login() {
         navigate("/account");
     };
     return (
-        <div className="login">
+        <div className="login page">
             <form onSubmit={handleSubmit}>
                 <input 
                     type="text"
