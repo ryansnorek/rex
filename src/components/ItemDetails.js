@@ -3,11 +3,19 @@ import { useParams } from "react-router-dom";
 import { POSTER_URL } from "../constants";
 import { addRexy } from "../actions";
 
-function ItemDetails({ dispatch, item }) {
+function ItemDetails({ dispatch, item, rexyIDs }) {
     const { id } = useParams();
     const movie = item.movie ? item.movie : [];
-    
-    const handleAdd = id => dispatch(addRexy(id));
+
+    const handleAdd = id => {
+        if (rexyIDs !== []) {
+            const alreadyInCollection = rexyIDs.find(rexyID => rexyID === id);
+            if (alreadyInCollection) {
+                return alert("You already have that one");
+            }
+        }
+        dispatch(addRexy(id));
+    };
 
     if (!item.movie) return <h1>If you do not see it, please refresh the page</h1>
     return (
@@ -35,6 +43,5 @@ function ItemDetails({ dispatch, item }) {
         </div>
     )
 };
-const mapStateToProps = (state) => ({ item: state.item });
-
+const mapStateToProps = (state) => ({ item: state.item, rexyIDs: state.rexyIDs });
 export default connect(mapStateToProps)(ItemDetails);

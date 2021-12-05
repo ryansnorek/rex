@@ -13,11 +13,10 @@ function Friends(props) {
     },[])
     return (
         <div className="friends">
-            <h1>friends</h1>
-            {friends && friends.map(friend => <Friend friend={friend}/>)}
+            <h1>Friends page under construction</h1>
+            {/* {friends && friends.map(friend => <Friend friend={friend}/>)} */}
         </div>
     )
 }
 const mapStateToProps = (state) => ({ friends: state.friends });
-
 export default connect(mapStateToProps)(Friends);

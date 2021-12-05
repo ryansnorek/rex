@@ -4,21 +4,20 @@ import { getQueryResults, discoverMovies } from "../actions";
 import { POSTER_URL } from "../constants";
 import SearchItem from "./SearchItem";
 
-function Search(props) {
-    const { dispatch, data, discover, isFetching } = props;
+function Search({ dispatch, data, discover, isFetching }) {
     const [category, setCategory] = useState("movie");
     const [query, setQuery] = useState(null);
     const [scrolling, setScrolling] = useState(false);
 
-    useEffect(() => dispatch(discoverMovies()),[])
+    useEffect(() => dispatch(discoverMovies()),[]);
     useEffect(() => dispatch(getQueryResults(category, query)), [category, query]);
 
+    const handleSelectCategory = e => setCategory(e.target.value);
+    const handleQueryChange = e => setQuery(e.target.value);
     const handleScroll = () => {
         setScrolling(true);
         setTimeout(() => setScrolling(false), 2000);
     };
-    const handleSelectCategory = e => setCategory(e.target.value);
-    const handleQueryChange = e => setQuery(e.target.value);
     return (
         <div 
             className="search" 

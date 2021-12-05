@@ -163,14 +163,15 @@ button {
 .button-container { width: 100%; display: flex; }
 .button-container button { font-size: 1.2rem }
 /* ---------ITEM-DETAILS----------- */
+
 .item-details {
-  background-color: rgba(46, 46, 46);
+  background-color: rgba(40, 40, 40);
   color: snow;
-  width: 96vw;
+  width: 100vw;
   height: auto;
+  height: 100vh;
   box-shadow: 1px 1px 3px black;
   padding: 1%;
-  border-radius: 2%;
   display: flex;
   flex-direction: column;
   -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
@@ -180,11 +181,13 @@ button {
             animation: fadein 2s;
 }
 .item-details h2 { font-size: 1.6rem }
-.backdrop { border-radius: 2%; width: 96vw; }
+.backdrop { border-radius: 1%; width: 96vw; box-shadow: 1px 1px 3px black;}
 .item-details .text { 
   display: flex; 
-  padding: 0 2%; 
+  padding: 2%; 
   margin: 1.5% 0;
+  background-color: rgb(30, 30, 30);
+  border-radius: 2%;
 }
 .item-details .left { 
   width: 40%; 
@@ -223,9 +226,8 @@ button {
   width: 100px;
 }
 /* ---------ACCOUNT----------- */
-.account {
-  width: 100vw;
-}
+.account { width: 100vw }
+.friends h1 { color: purple; text-align: center; margin-top: 10%; }
 .profile, .friend {
   height: 16vh;
   display: flex;
@@ -244,7 +246,6 @@ button {
   border-radius: 100%;
   box-shadow: 1px 1px 3px #4f4f4f;
 }
-.profile span { width: 10px }
 .friends { width: 100vw }
 /* ---------LOADING----------- */
 .loading-container {

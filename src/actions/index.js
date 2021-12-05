@@ -7,6 +7,8 @@ export const FETCH_START = "FETCH_START";
 export const FETCH_QUERY = "FETCH_QUERY";
 export const FETCH_ERROR = "FETCH_ERROR";
 export const ADD_REXY = "ADD_REXY";
+export const DELETE_REXY = "DELETE_REXY";
+export const FIND_REXY_MOVIE = "FIND_REXY_MOVIE";
 export const FIND_MOVIE = "FIND_MOVIE";
 export const GET_FRIENDS = "GET_FRIENDS";
 export const DISCOVER = "DISCOVER";
@@ -19,11 +21,11 @@ export const getQueryResults = (category, query) => {
             .catch(err => dispatch(fetchError(err)))
     }
 }
-export const findMovieById = (id) => {
+export const findMovieById = (id, isRexy) => {
     return (dispatch) => {
         dispatch(fetchStart());
         axios.get(`${BASE_URL}/3/movie/${id}?api_key=${API_KEY}`)
-            .then(res => dispatch(findMovie(res.data)))
+            .then(res => dispatch(isRexy ? findRexyMovie(res.data) : findMovie(res.data)))
             .catch(err => dispatch(fetchError(err)))
     }
 }
@@ -54,6 +56,12 @@ export const fetchError = (error) => {
 }
 export const addRexy = (id) => {
     return ({ type: ADD_REXY, payload: id });
+}
+export const deleteRexy = (id) => {
+    return ({ type: DELETE_REXY, payload: id });
+}
+export const findRexyMovie = (data) => {
+    return ({ type: FIND_REXY_MOVIE, payload: data });
 }
 export const findMovie = (data) => {
     return ({ type: FIND_MOVIE, payload: data });

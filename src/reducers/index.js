@@ -1,4 +1,4 @@
-import { FETCH_START, FETCH_QUERY, FETCH_ERROR, ADD_REXY, FIND_MOVIE, GET_FRIENDS, DISCOVER } from "../actions";
+import { FETCH_START, FETCH_QUERY, FETCH_ERROR, ADD_REXY, DELETE_REXY, FIND_REXY_MOVIE, FIND_MOVIE, GET_FRIENDS, DISCOVER } from "../actions";
 
 const initialState = {
     data: [],
@@ -26,11 +26,17 @@ export default function reducer(state = initialState, action) {
             return ({ ...state, errors: action.payload })
         case (ADD_REXY): 
             return ({ ...state, rexyIDs: [...state.rexyIDs, action.payload] })
-        case (FIND_MOVIE):
+        case (DELETE_REXY):
+            const filteredIDs = state.rexyIDs.filter(id => id !== action.payload);
+            const filteredRexys = state.rexys.movies.filter(rexy => rexy.id !== action.payload);
             return ({ ...state, 
-                        item: { movie: action.payload },
-                        isFetching: false
-                        })
+                        rexyIds: [...filteredIDs],
+                        rexys: { movies: [...filteredRexys] } 
+                    })
+        case (FIND_REXY_MOVIE):
+            return ({ ...state, rexys: { movies: [...state.rexys.movies, action.payload] }})
+        case (FIND_MOVIE):
+            return ({ ...state, item: { movie: action.payload }})
         case (GET_FRIENDS):
             return ({ ...state, friends: action.payload })
         case (DISCOVER): 

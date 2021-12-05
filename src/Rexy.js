@@ -34,6 +34,7 @@ function Rexy() {
                 </PrivateRoute>
               }
             /> */}
+            <Route path="/friends" element={<Friends/>}/>
           </Routes>
         </div>
       </div>

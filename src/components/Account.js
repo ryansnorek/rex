@@ -2,22 +2,19 @@ import { connect } from "react-redux";
 import { findMovieById } from "../actions";
 import { useEffect } from "react";
 
-import Profile from "./Profile";
+import AccountProfile from "./AccountProfile";
+import AccountRexy from "./AccountRexy";
 
-function Account(props) {
-    const { dispatch, rexyIDs, rexys } = props;
+function Account({ dispatch, rexyIDs, rexys }) {
 
-    useEffect(() => rexyIDs.forEach(id => dispatch(findMovieById(id))), []);
-    // useEffect(() => {
-  //   axiosAuthorization()
-  //     .get("/3/movie/550")
-  //     .then(res => setMovie(res.data))
-  //     .catch(err => console.log(err))
-  // },[])
+    useEffect(() => rexyIDs.forEach(id => dispatch(findMovieById(id, "rexy"))), []);
+
     return (
         <div className="account">
-            <Profile/>
-            {/* {rexys && rexys.movies.map(movie => <Item item={movie} category="movie"/>)} */}
+            <AccountProfile/>
+            {/* Movies */}
+            {rexys.movies !== [] && rexys.movies.map(movie => <AccountRexy item={movie}/>)}
+            {/* Shows */}
         </div>
     )
 }

@@ -1,9 +1,7 @@
 import { connect } from "react-redux";
 import { useState } from "react";
 
-function Profile(props) {
-    const { friends } = props;
-
+function AccountProfile({ friends }) {
     const [editMode, setEditMode] = useState(false);
     const [pic, setPic] = useState("../../images/profile_pic_small.jpg");
     const [input, setInput] = useState("");
@@ -19,7 +17,7 @@ function Profile(props) {
         <div className="profile">
             <div className="text">
                 <h3>Username</h3>
-                <p>Tagline \\da asdasd</p>
+                <p>Tagline</p>
                 {/* <p>Friends: {friends.length}</p> */}
                 <p>Rexys: Deuce Bigalow, Deuce Bigalow, Deuce Bigalow</p>
             </div>
@@ -35,11 +33,10 @@ function Profile(props) {
                     </span>}
             </div>
             <span onClick={handleEdit}>
-                <img src="../../images/editing.png" alt="editing"/>
+                <button>Edit profile</button>
             </span>
         </div>
     )
 }
 const mapStateToProps = (state) => ({ friends: state.friends });
-
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps)(AccountProfile);

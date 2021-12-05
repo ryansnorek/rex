@@ -3,16 +3,22 @@ import { POSTER_URL } from "../constants";
 import { addRexy, findMovieById } from "../actions";
 import { useNavigate } from "react-router-dom";
 
-function SearchItem(props) {
-    const { dispatch, item, category } = props;
+function SearchItem({ dispatch, item, category, rexyIDs }) {
     const navigate = useNavigate();
     
-    const handleAdd = id => dispatch(addRexy(id));
+    const handleAdd = id => {
+        if (rexyIDs !== []) {
+            const alreadyInCollection = rexyIDs.find(rexyID => rexyID === id);
+            if (alreadyInCollection) {
+                return alert("You already have that one");
+            }
+        }
+        dispatch(addRexy(id));
+    };
     const handleClickDetails = id => {
         dispatch(findMovieById(id));
         setTimeout(() => navigate(`/item/${id}`), 100);
     };
-
     return (
         <div className="item">
             {item.poster_path ? <img src={`${POSTER_URL}${item.poster_path}`} alt="poster"/> : <img src="../../images/unavailable_poster.jpeg" alt="poster" />}
@@ -28,4 +34,5 @@ function SearchItem(props) {
         </div>
     )
 }
-export default connect()(SearchItem);
+const mapStateToProps = (state) => ({ rexyIDs: state.rexyIDs });
+export default connect(mapStateToProps)(SearchItem);
