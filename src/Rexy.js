@@ -10,6 +10,7 @@ import PrivateRoute from "./components/PrivateRoute";
 
 function Rexy() {
   return (
+    <main>
       <div className="wrapper">
       <Header/>
         <div className="routes">
@@ -38,6 +39,7 @@ function Rexy() {
           </Routes>
         </div>
       </div>
+    </main>
   );
 }
 
