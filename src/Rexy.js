@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
+import Home from "./components/Home";
 import Login from "./components/Login";
 import Search from "./components/Search";
 import ItemDetails from "./components/ItemDetails";
@@ -15,7 +16,8 @@ function Rexy() {
       <Header/>
         <div className="routes">
           <Routes>
-            <Route path="/" element={<Search/>}/>
+            {/* <Route path="/" element={<Search/>}/> */}
+            <Route path="/" element={<Home/>}/>
             <Route path="/search" element={<Search/>}/>
             <Route path="/item/:id" element={<ItemDetails/>}/>
             <Route path="/login" element={<Login/>}/>

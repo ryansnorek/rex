@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 export default function Header() {
     return (
         <header>
-            <h1>Rexy</h1>
-            <p>A place to share your recommendations</p>
+            <h1 className="logo">Rexy</h1>
+            <p className="tagline">A place to share your recommendations</p>
             <nav>
                 <div className="links">
                     <ul>

@@ -4,27 +4,18 @@ import { getQueryResults, discoverMovies } from "../actions";
 import { POSTER_URL } from "../constants";
 import SearchItem from "./SearchItem";
 
-function Search({ dispatch, data, discover, isFetching }) {
+function Search({ dispatch, data, isFetching }) {
     const [category, setCategory] = useState("movie");
     const [query, setQuery] = useState(null);
-    const [scrolling, setScrolling] = useState(false);
 
     useEffect(() => dispatch(discoverMovies()),[]);
     useEffect(() => dispatch(getQueryResults(category, query)), [category, query]);
 
     const handleSelectCategory = e => setCategory(e.target.value);
     const handleQueryChange = e => setQuery(e.target.value);
-    const handleScroll = () => {
-        setScrolling(true);
-        setTimeout(() => setScrolling(false), 2000);
-    };
     return (
-        <div 
-            className="search" 
-            onScroll={handleScroll}
-            onClick={() => setScrolling(false)}
-            >
-            <div id={scrolling ? "scrolling" : "not-scrolling"}>
+        <div className="search">
+            <div className="search-bar">
                 <form>
                     <input 
                         type="text"
@@ -38,15 +29,6 @@ function Search({ dispatch, data, discover, isFetching }) {
                         <option value="tv">TV Shows</option>
                     </select>
                 </form>
-            </div>
-            <div className="discover">
-                {discover && !query && discover.map(movie => {
-                    return (
-                        <div className="discover-item">
-                            {movie.poster_path ? <img src={`${POSTER_URL}${movie.poster_path}`} alt="poster"/> : <img src="../../images/unavailable_poster.jpeg" alt="poster" />}
-                        </div>
-                    )
-                })}
             </div>
             <div className="results">
                 {isFetching && query ?  
