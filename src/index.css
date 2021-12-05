@@ -92,6 +92,7 @@ button {
   display: flex;
   flex-direction: column;
   background-color: #272727;
+  width: 100vw;
 }
 .search form {
   margin-top: 5vh;
