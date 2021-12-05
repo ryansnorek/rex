@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { getQueryResults, discoverMovies } from "../actions";
-import { POSTER_URL } from "../constants";
+import { getQueryResults } from "../actions";
 import SearchItem from "./SearchItem";
 
 function Search({ dispatch, data, isFetching }) {
     const [category, setCategory] = useState("movie");
     const [query, setQuery] = useState(null);
 
-    // useEffect(() => dispatch(discoverMovies()),[]);
     useEffect(() => dispatch(getQueryResults(category, query)), [category, query]);
 
     const handleSelectCategory = e => setCategory(e.target.value);
     const handleQueryChange = e => setQuery(e.target.value);
+    
     return (
         <div className="search page">
             <div className="search-bar">

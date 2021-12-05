@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router";
-import { discoverContent, findMovieById } from "../actions";
+import { discoverContent, findContentById } from "../actions";
 import { POSTER_URL } from "../constants";
 
 function Home({ dispatch, discover }) {
@@ -12,8 +12,8 @@ function Home({ dispatch, discover }) {
     const handleClickMovies = () => dispatch(discoverContent("movie"));
     const handleClickTV = () => dispatch(discoverContent("tv"))
 
-    const handleClick = id => {
-        dispatch(findMovieById(id));
+    const handleClickPoster = (id, type) => {
+        dispatch(findContentById(id, type));
         setTimeout(() => navigate(`/item/${id}`), 100);
     };
     return (
@@ -24,17 +24,18 @@ function Home({ dispatch, discover }) {
                     <button onClick={handleClickTV}>TV Shows</button>
                 </nav>
             </div>
+            {/* discover content component - pass in handlers */}
             <div className="discover">
                 {discover.movies && discover.movies.map(movie => {
                     return (
-                        <div className="discover-item" onClick={() => handleClick(movie.id)}>
+                        <div className="discover-item" onClick={() => handleClickPoster(movie.id, "movie")}>
                             {movie.poster_path ? <img src={`${POSTER_URL}${movie.poster_path}`} alt="poster"/> : <img src="../../images/unavailable_poster.jpeg" alt="poster" />}
                         </div>
                     );
                 })}
                 {discover.tvShows && discover.tvShows.map(show => {
                     return (
-                        <div className="discover-item" onClick={() => handleClick(show.id)}>
+                        <div className="discover-item" onClick={() => handleClickPoster(show.id, "tv")}>
                             {show.poster_path ? <img src={`${POSTER_URL}${show.poster_path}`} alt="poster"/> : <img src="../../images/unavailable_poster.jpeg" alt="poster" />}
                         </div>
                     );

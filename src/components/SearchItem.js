@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { POSTER_URL } from "../constants";
-import { addRexy, findMovieById } from "../actions";
+import { addRexy, findContentById } from "../actions";
 import { useNavigate } from "react-router-dom";
 
 function SearchItem({ dispatch, item, category, rexyIDs }) {
@@ -15,8 +15,8 @@ function SearchItem({ dispatch, item, category, rexyIDs }) {
         }
         dispatch(addRexy(id));
     };
-    const handleClickDetails = id => {
-        dispatch(findMovieById(id));
+    const handleClickDetails = (id, type) => {
+        dispatch(findContentById(id, type));
         setTimeout(() => navigate(`/item/${id}`), 100);
     };
     return (
@@ -27,7 +27,7 @@ function SearchItem({ dispatch, item, category, rexyIDs }) {
                 {item.overview ? <p className="overview">{item.overview}</p> : <p>Description unavailable</p>}
                 {category ==="tv" ? <p>First aired: {item.first_air_date}</p> : <p>Release date: {item.release_date}</p>}
                 <div className="button-container">
-                    <button onClick={() => handleClickDetails(item.id)}>Details</button>
+                    <button onClick={() => handleClickDetails(item.id, "movie")}>Details</button>
                     <button onClick={() => handleAdd(item.id)}>Add {category === "tv" ? "Show": "Movie"}</button>
                 </div>
             </div>

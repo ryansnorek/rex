@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { findMovieById } from "../actions";
+import { findContentById } from "../actions";
 import { useEffect } from "react";
 
 import AccountProfile from "./AccountProfile";
@@ -7,7 +7,7 @@ import AccountRexy from "./AccountRexy";
 
 function Account({ dispatch, rexyIDs, rexys }) {
 
-    useEffect(() => rexyIDs.forEach(id => dispatch(findMovieById(id, "rexy"))), []);
+    useEffect(() => rexyIDs.forEach(id => dispatch(findContentById(id, "movie", "rexy"))), []);
 
     return (
         <div className="account page">
