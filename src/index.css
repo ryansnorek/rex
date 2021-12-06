@@ -181,6 +181,14 @@ button {
 .item-details .right { width: 60%; padding: 1% }
 .genres { display: flex; justify-content: center }
 .genres p { margin: 0 4%; }
+.google-it {
+  background-color: rgba(46, 46, 46);
+  color: snow;
+  border-radius: 3px;
+  padding: 1%;
+  font-size: 1.2rem;
+  box-shadow: 1px 1px 3px inset lavender;
+}
 /* ---------LOGIN----------- */
 .login {
   margin-top: 20vh;
