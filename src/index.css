@@ -86,6 +86,13 @@ button {
   flex-wrap: wrap;
 }
 .discover img { width: 300px; box-shadow: 1px 1px 3px black; }
+.discover-item {
+  -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1s; /* Firefox < 16 */
+   -ms-animation: fadein 1s; /* Internet Explorer */
+    -o-animation: fadein 1s; /* Opera < 12.1 */
+       animation: fadein 1s;
+}
 /* ---------SEARCH----------- */
 .search {
   display: flex;
