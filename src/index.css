@@ -76,7 +76,7 @@ button {
 .toggle-bar { 
   position: fixed; 
   width: 100vw; 
-  height: 3.5vw;
+  height: 5vw;
   background-color: rgb(30, 30, 30, .9);
   display: flex;
   align-items: center;
@@ -87,6 +87,7 @@ button {
 .toggle-bar button {
   margin-left: 2%;
   font-size: 1.2rem;
+  padding: 1% 1.5%;
   color: lavender;
 }
 .discover {
