@@ -2,9 +2,14 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router";
 import { discoverContent, findContentById } from "../actions";
-import { POSTER_URL } from "../constants";
+import HomeItem from "./HomeItem";
 
 function Home({ dispatch, discover }) {
+    const { movies, tvShows } = discover;
+
+    const discoverItems = movies ? movies : tvShows;
+    const discoverType = movies ? "movie" : "tv";
+
     const navigate = useNavigate();
 
     useEffect(() => dispatch(discoverContent("movie")),[]);
@@ -24,21 +29,14 @@ function Home({ dispatch, discover }) {
                     <button onClick={handleClickTV}>TV Shows</button>
                 </nav>
             </div>
-            {/* discover content component - pass in handlers */}
             <div className="discover">
-                {discover.movies && discover.movies.map(movie => {
-                    return (
-                        <div className="discover-item" onClick={() => handleClickPoster(movie.id, "movie")}>
-                            {movie.poster_path ? <img src={`${POSTER_URL}${movie.poster_path}`} alt="poster"/> : <img src="../../images/unavailable_poster.jpeg" alt="poster" />}
-                        </div>
-                    );
-                })}
-                {discover.tvShows && discover.tvShows.map(show => {
-                    return (
-                        <div className="discover-item" onClick={() => handleClickPoster(show.id, "tv")}>
-                            {show.poster_path ? <img src={`${POSTER_URL}${show.poster_path}`} alt="poster"/> : <img src="../../images/unavailable_poster.jpeg" alt="poster" />}
-                        </div>
-                    );
+                {discoverItems && 
+                 discoverItems.map(item => {
+                    return <HomeItem 
+                            handleClickPoster={handleClickPoster} 
+                            type={discoverType} 
+                            item={item}
+                            />
                 })}
             </div>
         </div>
