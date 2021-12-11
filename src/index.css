@@ -11,7 +11,6 @@ code { font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', mon
   margin: 0 auto; 
   font-size: 62.5%; 
   background-color: #272727;
-  /* border: 1px red solid; */
 }
 nav, ul, li, a, .icon, .logo, .tagline { background-color: transparent; }
 nav:hover, .icon:hover, .logo:hover, 
@@ -60,10 +59,10 @@ a { text-decoration: none; }
   -webkit-filter: invert(100%);
   filter: invert(100%);
 }
-.activated-icon {
+/* .activated-icon {
   -webkit-filter: invert(33%);
         filter: invert(33%);
-}
+} */
 a:hover { color: grey }
 li { display: flex; justify-content: center; }
 input, select {
@@ -103,7 +102,7 @@ button {
   color: lavender;
 }
 .activated {
-  background-color: rgb(66, 63, 92, .8);
+  background-color: rgba(122, 120, 146, 0.8);
 }
 .discover {
   width: 100vw;
@@ -381,14 +380,11 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   .item-details p { padding: 2% }
   .item-details .button-container { margin: 2% }
   .item-details button { width: 50%; margin: 1% }
-  .login form,
-  .item-details .center,
-  .item-details .right { width: 96vw; }
-  .item-details .right,
-  .item-details .center,
-  .item-details p { background-color:  transparent; }
-  .heart { font-size: 2rem }
+  .login form, .item-details .center, .item-details .right { width: 96vw; }
+  .item-details .right, .item-details .center, .item-details p { background-color: transparent; }
   .item-details .text { flex-direction: column; text-align: center; }
+  .backdrop { margin-top: 0 }
+  .heart { font-size: 2rem }
 }
 
 

@@ -27,7 +27,6 @@ function Home({ dispatch, discover }) {
         setTvIsActive(true);
         dispatch(discoverContent("tv"));
     };
-
     const handleClickPoster = (id, type) => {
         dispatch(findContentById(id, type));
         setTimeout(() => navigate(`/item/${id}`), 100);

@@ -23,7 +23,7 @@ function Search({ dispatch, data, isFetching }) {
                     <input 
                         type="text"
                         name="search"
-                        placeholder="Rexy search"
+                        placeholder="search"
                         value={query}
                         onChange={handleQueryChange}
                     />
