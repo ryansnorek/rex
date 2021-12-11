@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router";
 import { discoverContent, findContentById } from "../actions";
@@ -7,6 +7,9 @@ import HomeItem from "./HomeItem";
 function Home({ dispatch, discover }) {
     const { movies, tvShows } = discover;
 
+    const [movieIsActive, setMovieIsActive] = useState(true);
+    const [tvIsActive, setTvIsActive] = useState(false);
+
     const discoverItems = movies ? movies : tvShows;
     const discoverType = movies ? "movie" : "tv";
 
@@ -14,8 +17,16 @@ function Home({ dispatch, discover }) {
 
     useEffect(() => dispatch(discoverContent("movie")),[]);
 
-    const handleClickMovies = () => dispatch(discoverContent("movie"));
-    const handleClickTV = () => dispatch(discoverContent("tv"))
+    const handleClickMovies = () => {
+        setMovieIsActive(true);
+        setTvIsActive(false);
+        dispatch(discoverContent("movie"));
+    };
+    const handleClickTV = () => {
+        setTvIsActive(true);
+        setMovieIsActive(false);
+        dispatch(discoverContent("tv"));
+    };
 
     const handleClickPoster = (id, type) => {
         dispatch(findContentById(id, type));
@@ -25,8 +36,8 @@ function Home({ dispatch, discover }) {
         <div className="home page">
             <div className="toggle-bar">
                 <nav>
-                    <button onClick={handleClickMovies}>Movies</button>
-                    <button onClick={handleClickTV}>TV Shows</button>
+                    <button className={"navlink" + (movieIsActive ? " activated" : "")} onClick={handleClickMovies}>Movies</button>
+                    <button className={"navlink" + (tvIsActive ? " activated" : "")} onClick={handleClickTV}>TV Shows</button>
                 </nav>
             </div>
             <div className="discover">

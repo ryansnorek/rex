@@ -91,12 +91,17 @@ button {
   width: 100vw;
   position: fixed; 
 }
-.toggle-bar button {
+.toggle-bar button, 
+.navlink {
   margin-left: 2%;
   font-size: 1.3rem;
   padding: 5px;
   color: lavender;
 }
+.activated {
+  background-color: rgb(66, 63, 92, .8);
+}
+
 .discover {
   width: 100vw;
   display: flex;
