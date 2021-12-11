@@ -6,6 +6,7 @@ export default function Header() {
     return (
         <header>
             <h1 className="logo" onClick={() => navigate("/")}>Rexy</h1>
+            {/* <img className="logo" src="../../logo/android-chrome-192x192.png" alt="logo" /> */}
             <p className="tagline">A place to share your recommendations</p>
             <nav>
                 <ul>

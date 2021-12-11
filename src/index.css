@@ -45,18 +45,21 @@ header {
   font-size: 2rem; 
   text-shadow: 0 0 6px lavender; 
   margin-left: 1%;
+  width: 50px;
 }
 .tagline { font-size: 1.2rem }
 header nav {
-  box-shadow: 0 0 6px inset lavender;
-  background-color: rgb(66, 66, 66);
-  border-radius: 2px;
   padding: 0 3%;
   width: 200px;
 }
 ul { list-style: none; display: flex; margin: 0; padding: 0; }
 a { text-decoration: none; }
-.icon { width: 20px; height: 20px; }
+.icon { 
+  width: 20px; 
+  height: 20px; 
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
 a:hover { color: grey }
 li { display: flex; justify-content: center; }
 input, select {
