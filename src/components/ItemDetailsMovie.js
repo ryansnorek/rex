@@ -31,12 +31,6 @@ function ItemDetailsMovie({ movie, handleAdd }) {
             </div>
             <div className="button-container">
                 <button onClick={() => handleAdd(id)}>Add to collection</button>
-                <a 
-                    className="google-it"
-                    href={`https://www.google.com/search?q=what+is+${title}+streaming+on&oq=what+is+dexter+streaming+on&aqs=chrome..69i57j0i7i30l2j0i8i30l7.27237j0j7&sourceid=chrome&ie=UTF-8`}
-                    target="_blank" 
-                    rel="noreferrer"
-                >Find which streaming service</a>
             </div>
         </div>
     )
