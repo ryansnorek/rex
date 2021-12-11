@@ -356,7 +356,7 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   .results { width: 100vw; }
   .backdrop { width: 100vw; }
   .item-details { width: 100vw }
-  .item-details .text { width: 100vw}
+  .item-details .text { width: 96vw}
   .profile, 
   .friend { width: 96vw; }
   .login form { width: 66vw; }
@@ -372,11 +372,10 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   .item-details .text { font-size: 1rem }
   .item-details p { padding: 2% }
   .item-details .button-container { margin: 2% }
-  .item-details button,
-  .item-details a { width: 50%; margin: 1% }
+  .item-details button { width: 50%; margin: 1% }
   .login form,
   .item-details .center,
-  .item-details .right { width: 100vw; }
+  .item-details .right { width: 96vw; }
   .item-details .right,
   .item-details .center,
   .item-details p { background-color:  transparent; }
