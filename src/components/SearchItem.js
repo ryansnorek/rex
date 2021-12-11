@@ -39,7 +39,7 @@ function SearchItem({ dispatch, item, category, rexyIDs }) {
                 {
                 category ==="tv" ? 
                 <p>First aired: {item.first_air_date}</p> : 
-                <p>Release date: {item.release_date}</p>
+                <p>Released: {item.release_date}</p>
                 }
                 <div className="button-container">
                     <button onClick={() => handleClickDetails(item.id, "movie")}>
