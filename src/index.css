@@ -382,7 +382,7 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   .item-details .center,
   .item-details .right
    { width: 100vw }
-  .item-details .text { flex-direction: column; }
+  .item-details .text { flex-direction: column; text-align: center; }
 }
 
 
