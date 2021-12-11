@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 function SearchItem({ dispatch, item, category, rexyIDs }) {
     const navigate = useNavigate();
     
-    const handleAdd = id => {
+    const handleAdd = (id) => {
         if (rexyIDs !== []) {
             const alreadyInCollection = rexyIDs.find(rexyID => rexyID === id);
             if (alreadyInCollection) {
@@ -16,19 +16,43 @@ function SearchItem({ dispatch, item, category, rexyIDs }) {
         dispatch(addRexy(id));
     };
     const handleClickDetails = (id, type) => {
-        dispatch(findContentById(id, type));
-        setTimeout(() => navigate(`/item/${id}`), 100);
+        dispatch(
+            findContentById(id, type)
+            );
+        setTimeout(() => {
+            navigate(`/item/${id}`)
+        }, 100);
     };
     return (
         <div className="item">
-            {item.poster_path ? <img src={`${POSTER_URL}${item.poster_path}`} alt="poster"/> : <img src="../../images/unavailable_poster.jpeg" alt="poster" />}
+            {
+            item.poster_path ? 
+            <img src={`${POSTER_URL}${item.poster_path}`} alt="poster"/> : 
+            <img src="../../images/unavailable_poster.jpeg" alt="poster" />
+            }
             <div className="text">
-                {category === "tv" ? <h2>{item.original_name}</h2> : <h2>{item.title}</h2>}
-                {item.overview ? <p className="overview">{item.overview}</p> : <p>Description unavailable</p>}
-                {category ==="tv" ? <p>First aired: {item.first_air_date}</p> : <p>Release date: {item.release_date}</p>}
+                {
+                category === "tv" ? 
+                <h2>{item.original_name}</h2> : 
+                <h2>{item.title}</h2>
+                }
+                {
+                item.overview ? 
+                <p className="overview">{item.overview}</p> : 
+                <p>Description unavailable</p>
+                }
+                {
+                category ==="tv" ? 
+                <p>First aired: {item.first_air_date}</p> : 
+                <p>Release date: {item.release_date}</p>
+                }
                 <div className="button-container">
-                    <button onClick={() => handleClickDetails(item.id, "movie")}>Details</button>
-                    <button onClick={() => handleAdd(item.id)}>Add {category === "tv" ? "Show": "Movie"}</button>
+                    <button onClick={() => handleClickDetails(item.id, "movie")}>
+                        Details
+                    </button>
+                    <button onClick={() => handleAdd(item.id)}>
+                        Add {category === "tv" ? "Show": "Movie"}
+                    </button>
                 </div>
             </div>
         </div>

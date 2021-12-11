@@ -7,10 +7,14 @@ function Search({ dispatch, data, isFetching }) {
     const [category, setCategory] = useState("movie");
     const [query, setQuery] = useState(null);
 
-    useEffect(() => dispatch(getQueryResults(category, query)), [category, query]);
+    useEffect(() => {
+        dispatch(
+            getQueryResults(category, query)
+            )
+    }, [category, query]);
 
-    const handleSelectCategory = e => setCategory(e.target.value);
-    const handleQueryChange = e => setQuery(e.target.value);
+    const handleSelectCategory = (e) => setCategory(e.target.value);
+    const handleQueryChange = (e) => setQuery(e.target.value);
     
     return (
         <div className="search page">
@@ -30,11 +34,15 @@ function Search({ dispatch, data, isFetching }) {
                 </form>
             </div>
             <div className="results">
-                {isFetching && query ?  
+                {
+                isFetching && 
+                query ?  
                 <div className="loading-container">
                     <div className="loading"></div>
                 </div> :
-                query && data.map(movie => <SearchItem item={movie} category={category}/> )}
+                query && 
+                data.map(movie => <SearchItem item={movie} category={category}/> )
+                }
             </div>
         </div>
     )

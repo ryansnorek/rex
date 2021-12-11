@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import { useState } from "react";
 import { getFriends } from "../actions";
-
 import Friend from "./Friend";
 
 function Friends(props) {
@@ -9,7 +8,7 @@ function Friends(props) {
 
     useState(() => {
         dispatch(getFriends())
-        console.log(friends)
+        // console.log(friends)
     },[])
     return (
         <div className="friends page">

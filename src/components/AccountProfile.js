@@ -7,8 +7,8 @@ function AccountProfile({ friends }) {
     const [input, setInput] = useState("");
 
     const handleEdit = () => setEditMode(!editMode);
-    const handleChange = e => setInput(e.target.value);
-    const handleChangePic = e => {
+    const handleChange = (e) => setInput(e.target.value);
+    const handleChangePic = (e) => {
         e.preventDefault();
         setPic(input);
         setEditMode(false);
@@ -19,7 +19,7 @@ function AccountProfile({ friends }) {
                 <h3>Username</h3>
                 <p>Tagline</p>
                 {/* <p>Friends: {friends.length}</p> */}
-                <p>Rexys: Deuce Bigalow, Deuce Bigalow, Deuce Bigalow</p>
+                <p>Rexys: Deuce Bigalow</p>
             </div>
             <div className="pic">
                 <img src={pic} alt="profile-pic"/>
@@ -27,7 +27,12 @@ function AccountProfile({ friends }) {
                     <span>
                         <form onSubmit={handleChangePic}>
                             <label for="profile-pic">Select profile pic:</label>
-                            <input onChange={handleChange} type="file" name="profile-pic" accept="image/*" value={input}/>
+                            <input 
+                                onChange={handleChange} 
+                                type="file" 
+                                name="profile-pic" 
+                                accept="image/*" 
+                                value={input}/>
                             <button>select pic</button>
                         </form>
                     </span>}

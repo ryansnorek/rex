@@ -5,8 +5,11 @@ export default function Login() {
     const navigate = useNavigate();
     const [values, setValues] = useState({ username:"", password:"" });
     
-    const handleChange = e => setValues({ ...values, [e.target.name]: e.target.value });
-    const handleSubmit = e => {
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setValues({ ...values, [name]: value })
+    };
+    const handleSubmit = (e) => {
         e.preventDefault();
         console.log(values);
     };

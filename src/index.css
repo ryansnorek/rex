@@ -14,12 +14,16 @@ code { font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', mon
   /* border: 1px red solid; */
 }
 nav, ul, li, a, .icon, .logo, .tagline { background-color: transparent; }
+nav:hover, .icon:hover, .logo:hover, 
+button:hover, .discover-item:hover { cursor: pointer; }
+html { background-color: black; }
 .wrapper {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   line-height: 1.5;
   box-sizing: border-box;
   background-color: #272727;
+  background-color: black;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -74,20 +78,20 @@ button {
 /* ---------HOME----------- */
 .home { background-color: black; width: 100vw; }
 .toggle-bar { 
-  position: fixed; 
   width: 100vw; 
-  height: 5vw;
-  background-color: rgb(30, 30, 30, .9);
+  height: 3.5vw;
+  background-color: black;
   display: flex;
   align-items: center;
  }
 .toggle-bar nav { 
   width: 100vw;
+  position: fixed; 
 }
 .toggle-bar button {
   margin-left: 2%;
-  font-size: 1.2rem;
-  padding: 1% 1.5%;
+  font-size: 1.3rem;
+  padding: 5px;
   color: lavender;
 }
 .discover {
@@ -96,7 +100,7 @@ button {
   flex-direction: row;
   flex-wrap: wrap;
 }
-.discover img { width: 300px; box-shadow: 1px 1px 3px black; }
+.discover img { width: 300px; box-shadow: 1px 1px 6px black; }
 .discover-item {
   -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 1s; /* Firefox < 16 */
@@ -108,12 +112,13 @@ button {
 .search {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  /* width: 100vw; */
 }
 .search form {
   width: 60%;
   display: flex;
   position: fixed;
+  background-color: transparent;
 }
 .search input { width: 70% }
 .search input, 
@@ -121,6 +126,7 @@ button {
   background-color: transparent;  
   color: lavender;
 }
+input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
 .search-bar {
   display: flex;
   justify-content: center;
@@ -131,8 +137,7 @@ button {
        animation: fadein 1s;
 }
 .results { 
-  background-color: #272727;
-  width: 100vw;
+  width: 66vw;
 }
 .item img { 
   width: 175px; 
@@ -140,6 +145,7 @@ button {
   border-radius: 2%; 
 }
 .item {
+  background-color: #272727;
   color: snow;
   width: 100%;
   height: 250px;
@@ -177,7 +183,6 @@ button {
 }
 .item-details h2 { font-size: 1.6rem; margin-top: 2% }
 .backdrop { 
-  width: 100vw;
   border: 1px black solid;
   margin-top: 5vh;
 }
@@ -297,14 +302,18 @@ button {
 @media (max-width: 768px) {
   .discover img { width: 250px }
   .search form { width: 70% }
+  .results { width: 100vw; }
 }
 @media (max-width: 600px) {
   .tagline { font-size: 0.7rem }
 }
 /* iPhone */
 @media (max-width: 375px) {
+  .backdrop { width: 100vw; }
+  .item-details { width: 100vw }
   .discover img { width: 175px }
   .search form { width: 100% }
+  .toggle-bar { height: 11vw }
 }
 
 
