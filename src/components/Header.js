@@ -1,8 +1,28 @@
 import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 export default function Header() {
     const navigate = useNavigate();
+    const [searchIsActive, setSearchIsActive] = useState(false);
+    const [friendsIsActive, setFriendsIsActive] = useState(false);
+    const [accountIsActive, setAccountIsActive] = useState(false);
+
+    const handleSearchClick = () => {
+        setSearchIsActive(true);
+        setFriendsIsActive(false);
+        setAccountIsActive(false);
+    };
+    const handleFriendsClick = () => {
+        setSearchIsActive(false);
+        setFriendsIsActive(true);
+        setAccountIsActive(false);
+    };
+    const handleAccountClick = () => {
+        setSearchIsActive(false);
+        setFriendsIsActive(false);
+        setAccountIsActive(true);
+    };
     return (
         <header>
             <h1 className="logo" onClick={() => navigate("/")}>Rexy</h1>
@@ -13,7 +33,8 @@ export default function Header() {
                     <li>
                         <Link to="/search">
                             {<img 
-                                className="icon" 
+                                className={"icon" + (searchIsActive ? " activated-icon" : "")}  
+                                onClick={handleSearchClick}
                                 src="../../images/magnifier.png" 
                                 alt="search"/>}
                         </Link>
@@ -21,7 +42,8 @@ export default function Header() {
                     <li>
                         <Link to="/friends">
                             {<img 
-                                className="icon" 
+                                className={"icon" + (friendsIsActive ? " activated-icon" : "")}  
+                                onClick={handleFriendsClick}
                                 src="../../images/friends.png" 
                                 alt="friends"/>}
                         </Link>
@@ -29,7 +51,8 @@ export default function Header() {
                     <li>
                         <Link to="/account">
                             {<img 
-                                className="icon" 
+                                className={"icon" + (accountIsActive ? " activated-icon" : "")}  
+                                onClick={handleAccountClick}
                                 src="../../images/user.png" 
                                 alt="user-account"/>}
                         </Link>

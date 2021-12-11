@@ -60,6 +60,10 @@ a { text-decoration: none; }
   -webkit-filter: invert(100%);
   filter: invert(100%);
 }
+.activated-icon {
+  -webkit-filter: invert(33%);
+        filter: invert(33%);
+}
 a:hover { color: grey }
 li { display: flex; justify-content: center; }
 input, select {
@@ -101,7 +105,6 @@ button {
 .activated {
   background-color: rgb(66, 63, 92, .8);
 }
-
 .discover {
   width: 100vw;
   display: flex;

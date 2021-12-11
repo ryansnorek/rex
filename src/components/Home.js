@@ -23,8 +23,8 @@ function Home({ dispatch, discover }) {
         dispatch(discoverContent("movie"));
     };
     const handleClickTV = () => {
-        setTvIsActive(true);
         setMovieIsActive(false);
+        setTvIsActive(true);
         dispatch(discoverContent("tv"));
     };
 
@@ -36,8 +36,16 @@ function Home({ dispatch, discover }) {
         <div className="home page">
             <div className="toggle-bar">
                 <nav>
-                    <button className={"navlink" + (movieIsActive ? " activated" : "")} onClick={handleClickMovies}>Movies</button>
-                    <button className={"navlink" + (tvIsActive ? " activated" : "")} onClick={handleClickTV}>TV Shows</button>
+                    <button 
+                        className={"navlink" + (movieIsActive ? " activated" : "")} 
+                        onClick={handleClickMovies}>
+                            Movies
+                    </button>
+                    <button 
+                        className={"navlink" + (tvIsActive ? " activated" : "")} 
+                        onClick={handleClickTV}>
+                            TV Shows
+                    </button>
                 </nav>
             </div>
             <div className="discover">
