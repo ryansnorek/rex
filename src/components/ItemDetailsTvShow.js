@@ -20,6 +20,7 @@ function ItemDetailsTvShow({ tvShow, handleAdd }) {
                 </div>
                 <div className="center">
                     <p>First Aired: {first_air_date}</p>
+                    {networks && networks.map(n => <p>{n.name}</p>)}
                 </div>
                 <div className="right">
                     <p>{overview}</p>
@@ -27,7 +28,6 @@ function ItemDetailsTvShow({ tvShow, handleAdd }) {
             </div>
             <div className="button-container">
                 <button onClick={() => handleAdd(id)}>Add to collection</button>
-                {networks && networks.map(n => <p>{n.name}</p>)}
             </div>
         </div>
     )

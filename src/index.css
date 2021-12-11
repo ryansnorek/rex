@@ -246,22 +246,18 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
 }
 
 /* ---------LOGIN----------- */
-.login {
-  margin-top: 20vh;
-  width: 350px;
-  height: 250px;
-  box-shadow: 0 0 6px lavender;
-  border-radius: 2px;
-}
 .login form {
-  height: 100%;
+  height: 66vh;
+  width: 33vw;
   display: flex;
   background-color: black;
   flex-direction: column;
   justify-content: center;  
+  align-items: center;
 }
 .login input { 
-  width: 85%;
+  width: 66%;
+  margin: 2%;
  }
 .login input::placeholder { color: lightgrey; }
 .login button {
@@ -270,19 +266,30 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   padding: 1% 2%;
 }
 /* ---------ACCOUNT----------- */
-.account { width: 100vw }
-.friends h1 { color: orange; text-align: center; margin-top: 100px; }
-.profile, .friend {
+.account { 
+  width: 100vw;
+  background-color: black;
+}
+/* .friends h1 { color: orange; text-align: center; margin-top: 100px; } */
+.friends {
+  background-color: black;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.profile, 
+.friend {
+  margin-top: 1.68vh;
   height: 20vh;
+  width: 33vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 1px 1px 3px black;
-  padding: 0 3%;
-  background-color: #272727;
+  box-shadow: 0 0 3px lavender;
   color: snow;
 }
-.friend { background-color: lightgrey; margin-bottom: 1%; }
 .profile .text, .friend .text { padding: 3%; width: 200px; }
 .pic img {
   width: 50px;
@@ -290,7 +297,7 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   border-radius: 100%;
   box-shadow: 1px 1px 3px #4f4f4f;
 }
-.friends { width: 100vw }
+
 /* ---------LOADING / ANIMATIONS----------- */
 .loading-container {
   width: 100%;
@@ -346,6 +353,9 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   .backdrop { width: 100vw; }
   .item-details { width: 100vw }
   .item-details .text { width: 100vw}
+  .profile, 
+  .friend { width: 96vw; }
+  .login form { width: 66vw; }
 }
 @media (max-width: 600px) {
   .tagline { font-size: 0.7rem }
@@ -355,10 +365,12 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   .discover img { width: 175px }
   .search form { width: 100% }
   .toggle-bar { height: 11vw }
-  .item-details .text { font-size: 1rem; }
+  .item-details .text { font-size: 1rem }
+  .item-details p { padding: 2% }
   .item-details .button-container { margin: 2% }
   .item-details button,
   .item-details a { width: 50%; margin: 1% }
+  .login form { width: 100vw; }
 }
 
 
