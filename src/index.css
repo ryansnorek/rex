@@ -169,6 +169,7 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
 }
 .overview { height: 100px; overflow: hidden; text-overflow: ellipsis; }
 .item p { margin: 3% 0 }
+.item h2 { font-size: 2rem; }
 .button-container { 
   width: 100%; 
   display: flex;
