@@ -37,11 +37,6 @@ function SearchItem({ dispatch, item, category, rexyIDs }) {
                 <h2>{item.title}</h2>
                 }
                 {
-                item.overview ? 
-                <p className="overview">{item.overview}</p> : 
-                <p>Description unavailable</p>
-                }
-                {
                 category ==="tv" ? 
                 <p>First aired: {item.first_air_date}</p> : 
                 <p>Release date: {item.release_date}</p>
