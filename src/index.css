@@ -47,7 +47,7 @@ header {
   margin-left: 1%;
   width: 50px;
 }
-.tagline { font-size: 1.2rem }
+.tagline { font-size: 1.2rem; text-align: left; }
 header nav {
   padding: 0 3%;
   width: 200px;
@@ -196,7 +196,7 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
             animation: fadein 2s;
 }
 .item-details h2 { font-size: 2rem; margin-top: 2% }
-.item-details h3, p { font-size: 1.5rem;  }
+.item-details h3, p { font-size: 1.5rem; text-align: center;  }
 .backdrop { 
   border: 1px black solid;
   width: 60vw;
@@ -223,9 +223,10 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   background-color: transparent;
 }
 .heart {
-  width: 29px;
+  width: 42px;
+  height: 42px;
   text-align: center;
-  background-image: url("./assets/images/favicon_io/favicon-32x32.png");
+  background-image: url("./assets/images/favicon_io/android-chrome-192x192.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-color: transparent;
@@ -233,7 +234,7 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   margin: 0;
   color: rgb(78, 38, 116);
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 2.6rem;
 }
 .item-details .center { 
   width: 28%; 
@@ -380,8 +381,8 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   .item-details a { width: 50%; margin: 1% }
   .login form,
   .item-details .center,
-  .item-details .right
-   { width: 100vw }
+  .item-details .right { width: 100vw }
+  .heart { font-size: 2rem }
   .item-details .text { flex-direction: column; text-align: center; }
 }
 
