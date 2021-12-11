@@ -42,7 +42,11 @@ function SearchItem({ dispatch, item, category, rexyIDs }) {
                 <p>Released: {item.release_date}</p>
                 }
                 <div className="button-container">
-                    <button onClick={() => handleClickDetails(item.id, "movie")}>
+                    <button 
+                        onClick={
+                            () => category === "tv" ? 
+                            handleClickDetails(item.id, "tv") : 
+                            handleClickDetails(item.id, "movie")}>
                         Details
                     </button>
                     <button onClick={() => handleAdd(item.id)}>
