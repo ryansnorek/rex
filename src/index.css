@@ -168,10 +168,16 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
 }
 .overview { height: 100px; overflow: hidden; text-overflow: ellipsis; }
 .item p { margin: 3% 0 }
-.button-container { width: 100%; display: flex; }
+.button-container { 
+  width: 100%; 
+  display: flex;
+  justify-content: center;
+}
 .button-container button,
-.button-container a
- { font-size: 1.68rem }
+.button-container a { 
+   font-size: 1.68rem;
+   padding: 2%; 
+}
 
 /* ---------ITEM-DETAILS----------- */
 .item-details {
@@ -372,7 +378,11 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   .item-details .button-container { margin: 2% }
   .item-details button,
   .item-details a { width: 50%; margin: 1% }
-  .login form { width: 100vw; }
+  .login form,
+  .item-details .center,
+  .item-details .right
+   { width: 100vw }
+  .item-details .text { flex-direction: column; }
 }
 
 
