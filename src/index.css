@@ -270,7 +270,6 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   width: 100vw;
   background-color: black;
 }
-/* .friends h1 { color: orange; text-align: center; margin-top: 100px; } */
 .friends {
   background-color: black;
   height: 100%;
