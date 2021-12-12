@@ -366,7 +366,11 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   to   { opacity: 1; }
 }
 /* ---------RESPONSIVE MEDIA----------- */
-/* iPad 768 x 1024 */
+@media (max-width: 1460px) {.discover img { width: 353px }}
+@media (max-width: 1411px) {.discover img { width: 340px }}
+/* iPad Pro */
+@media (max-width: 1024px) {.discover img { width: 330px }}
+/* iPad */
 @media (max-width: 768px) {
   .discover img { width: 250px }
   .search form { width: 70% }
@@ -378,10 +382,11 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   .friend { width: 96vw; }
   .login form { width: 66vw; }
 }
-@media (max-width: 600px) {
-  .tagline { font-size: 0.7rem }
-}
-/* iPhone Plus */
+@media (max-width: 600px) {.tagline { font-size: 0.7rem }}
+@media (max-width: 540px) {.discover img { width: 260px }}
+@media (max-width: 520px) {.discover img { width: 240px }}
+@media (max-width: 500px) {.discover img { width: 200px}}
+/* iPhone 6/7/8 Plus */
 @media (max-width: 414px) {
   .item-details .text { flex-direction: column; padding: 0; border-top: 1px solid black }
   .item-details .left-center,
@@ -390,13 +395,9 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   .backdrop { margin-top: 0 }
   .discover img { width: 200px }
 }
-/* Pixel */
-@media (max-width: 411px) {
-  /* .discover img { width: 200px } */
-}
-/* iPhone */
+/* iPhone 6/7/8/X */
 @media (max-width: 375px) {
-  .discover img { width: 175px }
+  .discover img { width: 185px }
   .search form { width: 100% }
   .toggle-bar { height: 11vw }
   .item-details p { padding: 2% }
@@ -408,5 +409,15 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   .item-details .left-center { width: 96vw; border-top: 1px solid black }
   .heart { font-size: 2rem }
 }
-
-
+/* Moto G4, Galaxy s5 */
+@media (max-width: 360px) {
+  .discover img { width: 175px }
+}
+/* iPhone 5/se */
+@media (max-width: 320px) {
+  .discover img { width: 155px }
+}
+/* Galaxy Fold */
+@media (max-width: 280px) {
+  .discover img { width: 135px }
+}
