@@ -14,7 +14,7 @@ code { font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', mon
 }
 nav, ul, li, a, .icon, 
 .logo, .tagline, p, .genres, 
-.button-container, h2 { background-color: transparent; }
+.button-container, h2, h3 { background-color: transparent; }
 nav:hover, .icon:hover, .logo:hover, 
 button:hover, .discover-item:hover { cursor: pointer; }
 html { 
@@ -205,7 +205,7 @@ input:focus, select:focus { background-color: transparent }
             animation: fadein 2s;
 }
 .item-details h2 { font-size: 2rem; margin-top: 2% }
-.item-details h3, p { font-size: 1.5rem; text-align: center; }
+.item-details h3, p { font-size: 1.5rem; text-align: center; padding: 1.68px; }
 .backdrop { 
   border: 1px black solid;
   width: 60vw;
@@ -214,7 +214,6 @@ input:focus, select:focus { background-color: transparent }
 .item-details .text { 
   display: flex; 
   width: 60vw;
-  padding: 1.68%; 
   background-color: #1f1e1e;
   box-shadow: 0 0 33px #161616;
 }
@@ -389,10 +388,8 @@ input:focus, select:focus { background-color: transparent }
 @media (max-width: 1024px) {.discover img { width: 33vw } .nav-bar { height: 36px }}
 /* iPad */
 @media (max-width: 768px) {
-  .results { width: 100vw; }
-  .backdrop { width: 100vw; }
-  .item-details { width: 100vw }
-  .item-details .text { width: 100vw}
+  .results, .backdrop, .item-details,
+  .item-details .text { width: 100vw; }
   .profile, .friend { width: 96vw; }
   .login form { width: 66vw; }
 }
@@ -402,10 +399,8 @@ input:focus, select:focus { background-color: transparent }
 @media (max-width: 414px) {
   .item-details .text { 
     flex-direction: column; 
-    text-align: center; 
     font-size: 1rem; 
     padding: 0; 
-    width: 100vw; 
   }
   .item-details .left-center,
   .item-details .right { width: 100vw }
