@@ -151,7 +151,7 @@ input:focus, select:focus { background-color: transparent }
   justify-content: center;
 }
 .results { 
-  margin-top: 5vh;
+  margin-top: 3vh;
   width: 60%
 }
 .item {
@@ -209,11 +209,12 @@ input:focus, select:focus { background-color: transparent }
 .item-details h3, p { font-size: 1.5rem; text-align: center; padding: 1.68px; }
 .backdrop { 
   width: 100%;
+  width: 68vw;
   margin: 0;
 }
 .item-details .text { 
   display: flex; 
-  width: 100%;
+  /* width: 100%; */
   background-color: #1f1e1e;
 }
 /* heart container */
@@ -393,14 +394,12 @@ input:focus, select:focus { background-color: transparent }
 @media (max-width: 1024px) {.discover img { width: 33vw } .nav-bar { height: 36px }}
 /* iPad */
 @media (max-width: 768px) {
-  .results, .backdrop, .item-details,
-  .item-details .text { width: 100vw; }
+  .results, .backdrop, .item-details { width: 100vw; }
   .profile, .friend { width: 96vw; }
   .login form { width: 66vw; }
 }
 @media (max-width: 600px) {
-  .item,
-  .results { width: 100vw; }
+  .item, .results { width: 100vw; }
   .tagline { font-size: 0.7rem }
 }
 
