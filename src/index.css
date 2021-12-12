@@ -156,6 +156,7 @@ input:focus, select:focus { background-color: transparent }
   width: 60vw; 
   margin-top: 5vh 
 }
+.results img { width: auto; }
 .item {
   color: snow;
   width: 100%;
