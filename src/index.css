@@ -286,6 +286,12 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   width: 100vw;
   background-color: black;
 }
+.account .item {
+  width: 66vw;
+}
+.account .item .text {
+  border: 1px red solid
+}
 .friends {
   background-color: black;
   height: 100%;
@@ -382,9 +388,11 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   .item-details .right { width: 96vw }
   .toggle-bar { height: 11vw }
   .backdrop { margin-top: 0 }
-}
-@media (max-width: 411px) {
   .discover img { width: 200px }
+}
+/* Pixel */
+@media (max-width: 411px) {
+  /* .discover img { width: 200px } */
 }
 /* iPhone */
 @media (max-width: 375px) {
