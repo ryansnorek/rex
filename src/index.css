@@ -102,7 +102,7 @@ button {
 .nav-bar nav { 
   width: 100vw;
   position: fixed; 
-  margin-left: 16.8px;
+  margin-left: 3%;
 }
 .nav-bar button, 
 .navlink {
