@@ -16,14 +16,16 @@ function ItemDetailsMovie({ movie, handleAdd }) {
                 {genres && genres.map(g => <p>{g.name}</p>)}
             </div>
             <div className="text">
-                <div className="left">
-                    <p className="heart">{vote_average}</p>
-                    {!vote_average && <p>no ratings yet</p>}
-                </div>
-                <div className="center">
-                    <p>Released: {release_date}</p>
-                    <p>Budget: ${budget === 0 ? " unavailable" : budget.toLocaleString()}</p>
-                    <p>Revenue: ${revenue === 0 ? " unavailable" : revenue.toLocaleString()}</p> 
+                <div className="left-center">
+                    <div className="left">
+                        <p className="heart">{vote_average}</p>
+                        {!vote_average && <p>no ratings yet</p>}
+                    </div>
+                    <div className="center">
+                        <p>Released: {release_date}</p>
+                        <p>Budget: ${budget === 0 ? " unavailable" : budget.toLocaleString()}</p>
+                        <p>Revenue: ${revenue === 0 ? " unavailable" : revenue.toLocaleString()}</p> 
+                    </div>
                 </div>
                 <div className="right">
                     <p>{overview ? overview : "overview unavailable"}</p>
