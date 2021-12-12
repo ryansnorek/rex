@@ -15,12 +15,14 @@ function ItemDetailsTvShow({ tvShow, handleAdd }) {
                 {genres && genres.map(g => <p>{g.name}</p>)}
             </div>
             <div className="text">
-                <div className="left">
-                    <p className="heart">{vote_average}</p>
-                </div>
-                <div className="center">
-                    <p>First Aired: {first_air_date}</p>
-                    {networks && networks.map(n => <p>{n.name}</p>)}
+                <div className="left-center">
+                    <div className="left">
+                        <p className="heart">{vote_average}</p>
+                    </div>
+                    <div className="center">
+                        <p>First Aired: {first_air_date}</p>
+                        {networks && networks.map(n => <p>{n.name}</p>)}
+                    </div>
                 </div>
                 <div className="right">
                     <p>{overview}</p>
