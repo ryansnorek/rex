@@ -94,7 +94,6 @@ button {
 .nav-bar { 
   width: 100vw; 
   height: 3.5vw;
-  background-color: #181717;
   background-color: rgba(0, 0, 0, 0.86);
   display: flex;
   align-items: center;
@@ -103,13 +102,19 @@ button {
 .nav-bar nav { 
   width: 100vw;
   position: fixed; 
+  margin-left: 16.8px;
 }
 .nav-bar button, 
 .navlink {
-  margin-left: 2%;
+  margin: 1%;
   font-size: 1.3rem;
   padding: 5px;
   color: lavender;
+  -webkit-animation: fadein 1.68s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1.68s; /* Firefox < 16 */
+   -ms-animation: fadein 1.68s; /* Internet Explorer */
+    -o-animation: fadein 1.68s; /* Opera < 12.1 */
+       animation: fadein 1.68s;
 }
 .activated {
   background-color: rgba(122, 120, 146, 0.8);
@@ -121,13 +126,7 @@ button {
   flex-wrap: wrap;
 }
 .discover img { box-shadow: 1px 1px 6px black; }
-.discover-item {
-  -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 1s; /* Firefox < 16 */
-   -ms-animation: fadein 1s; /* Internet Explorer */
-    -o-animation: fadein 1s; /* Opera < 12.1 */
-       animation: fadein 1s;
-}
+
 /* ---------SEARCH----------- */
 .search {
   display: flex;
@@ -139,20 +138,21 @@ button {
   display: flex;
   position: fixed;
   background-color: transparent;
+  -webkit-animation: fadein 1.68s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1.68s; /* Firefox < 16 */
+   -ms-animation: fadein 1.68s; /* Internet Explorer */
+    -o-animation: fadein 1.68s; /* Opera < 12.1 */
+       animation: fadein 1.68s;
 }
 .search input, 
 .search select {
   color: lavender;
 }
 input:focus, select:focus { background-color: transparent }
-.search-bar {
+.nav-bar {
   display: flex;
   justify-content: center;
-  -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 1s; /* Firefox < 16 */
-   -ms-animation: fadein 1s; /* Internet Explorer */
-    -o-animation: fadein 1s; /* Opera < 12.1 */
-       animation: fadein 1s;
+
 }
 .results { width: 60vw; }
 .item {
