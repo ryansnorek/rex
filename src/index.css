@@ -77,9 +77,9 @@ input, select {
   font-size: 1.6rem;
   height: 30px;
   border-radius: 2px;
-  border: 1px solid rgb(144, 144, 165);
+  border: none;
   outline: none;
-  box-shadow: 0 0 5px inset rgb(144, 144, 165);
+  background-color: transparent;
 }
 select { height: 34px }
 input:focus, select:focus { background-color: rgb(223, 226, 242, .3) }
@@ -94,9 +94,11 @@ button {
 .toggle-bar { 
   width: 100vw; 
   height: 3.5vw;
-  background-color: black;
+  background-color: #181717;
+  background-color: rgba(0, 0, 0, 0.86);
   display: flex;
   align-items: center;
+  position: fixed;
  }
 .toggle-bar nav { 
   width: 100vw;
@@ -132,15 +134,13 @@ button {
   flex-direction: column;
 }
 .search form {
-  width: 60%;
+  width: 100vw;
   display: flex;
   position: fixed;
   background-color: transparent;
 }
-.search input { width: 70% }
 .search input, 
 .search select {
-  background-color: transparent;  
   color: lavender;
 }
 input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
@@ -153,8 +153,7 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
     -o-animation: fadein 1s; /* Opera < 12.1 */
        animation: fadein 1s;
 }
-.results { width: 66vw }
-.item img { width: 175px; height: 250px; }
+.results { width: 60vw; }
 .item {
   color: snow;
   width: 100%;
@@ -181,7 +180,6 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
 .button-container { 
   display: flex;
   justify-content: center;
-  /* width: 100vw; */
 }
 .button-container button { 
    padding: 2%; 
@@ -286,11 +284,7 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
 }
 /* ---------ACCOUNT----------- */
 .account { 
-  /* width: 100vw; */
   background-color: black;
-  /* display: flex;
-  justify-content: center;
-  flex-direction: column; */
 }
 .account .rexys {
   display: flex;
@@ -300,17 +294,17 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   background-color: black;
 }
 .account .item {
-  width: 175px;
+  width: 25vw;
   display: flex;
   flex-direction: column;
   border: 1px red solid;
 }
 .rexys img {
   /* width: px; */
+  width: 25vw;
 }
 .account .item .text {
   border: 1px red solid;
-  width: 100%
 }
 .friends {
   background-color: black;
@@ -391,7 +385,6 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
 @media (max-width: 1024px) {.discover img { width: 33vw } .toggle-bar { height: 36px }}
 /* iPad */
 @media (max-width: 768px) {
-  .search form { width: 70% }
   .results { width: 100vw; }
   .backdrop { width: 100vw; }
   .item-details { width: 100vw }
@@ -418,7 +411,6 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
 }
 /* iPhone 6/7/8/X */
 @media (max-width: 375px) {
-  .search form { width: 100% }
   .item-details p { padding: 2% }
   .item-details .button-container { margin: 2% }
   .item-details button { width: 50%; margin: 1% }

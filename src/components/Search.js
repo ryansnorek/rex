@@ -18,7 +18,7 @@ function Search({ dispatch, data, isFetching }) {
     
     return (
         <div className="search page">
-            <div className="search-bar">
+            <div className="toggle-bar">
                 <form>
                     <input 
                         type="text"
