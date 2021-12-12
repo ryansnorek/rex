@@ -381,6 +381,10 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   .item-details .left-center,
   .item-details .right { width: 96vw }
   .toggle-bar { height: 11vw }
+  .backdrop { margin-top: 0 }
+}
+@media (max-width: 411px) {
+  .discover img { width: 200px }
 }
 /* iPhone */
 @media (max-width: 375px) {
@@ -394,7 +398,6 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   .item-details .right, .item-details .center, .item-details p { background-color: transparent; }
   .item-details .text { flex-direction: column; text-align: center; font-size: 1rem; padding: 0 }
   .item-details .left-center { width: 96vw; border-top: 1px solid black }
-  .backdrop { margin-top: 0 }
   .heart { font-size: 2rem }
 }
 
