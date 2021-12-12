@@ -120,6 +120,7 @@ button {
   background-color: rgba(122, 120, 146, 0.8);
 }
 .discover {
+  margin-top: 5vh;
   width: 100vw;
   display: flex;
   flex-direction: row;
@@ -154,7 +155,7 @@ input:focus, select:focus { background-color: transparent }
   justify-content: center;
 
 }
-.results { width: 60vw; }
+.results { width: 60vw; margin-top: 5vh }
 .item {
   color: snow;
   width: 100%;
