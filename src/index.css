@@ -380,6 +380,7 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   .item-details .text { flex-direction: column; padding: 0; border-top: 1px solid black }
   .item-details .left-center,
   .item-details .right { width: 96vw }
+  .toggle-bar { height: 11vw }
 }
 /* iPhone */
 @media (max-width: 375px) {
