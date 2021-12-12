@@ -257,11 +257,12 @@ input:focus, select:focus { background-color: transparent }
 .item-details .right { width: 60%; padding: 1%; background-color: transparent;
 }
 .genres { 
-  width: 100%;
+  width: auto;
   display: flex; 
+  flex-wrap: wrap;
   justify-content: center; 
 }
-.genres p { margin: 4% 5%; font-size: 1.2rem;}
+.genres p { margin: 3%; font-size: 1.2rem;}
 .item-details button { background-color: #242323;}
 /* ---------LOGIN----------- */
 .login form {
@@ -389,7 +390,7 @@ input:focus, select:focus { background-color: transparent }
   .results { width: 100vw; }
   .backdrop { width: 100vw; }
   .item-details { width: 100vw }
-  .item-details .text { width: 96vw}
+  .item-details .text { width: 100vw}
   .profile, 
   .friend { width: 96vw; }
   .login form { width: 66vw; }
