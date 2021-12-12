@@ -126,8 +126,6 @@ button {
   flex-direction: row;
   flex-wrap: wrap;
 }
-.discover img { box-shadow: 1px 1px 6px black; }
-
 /* ---------SEARCH----------- */
 .search {
   display: flex;
@@ -156,37 +154,37 @@ input:focus, select:focus { background-color: transparent }
   width: 60vw; 
   margin-top: 5vh 
 }
-.results img { width: auto; }
 .item {
   color: snow;
-  width: 66vw;
+  width: 100%;
   height: 25vh;
   display: flex;
-  margin-bottom: 1%;
-  box-shadow: 0 0 5px black;
+  border-bottom: 1.68px solid black;
 }
 .item .text {
-  padding: 2% 4%;
+  margin: 0;
   font-size: 2rem;
-  width: 75%;
+  width: 100%;
   display: flex; 
   flex-direction: column;
   justify-content: center;
-  user-select: none;
   text-align: center;
   background-color: #1d1d1d;
 }
-.overview { height: 100px; overflow: hidden; text-overflow: ellipsis; }
-.item p { margin: 3% 0 }
+.item p { margin: 1% 0 }
 .item h2 { font-size: 2rem }
-.button-container { 
+.item .button-container { 
   display: flex;
   justify-content: center;
+  width: 50%;
 }
-.button-container button { 
+.item .button-container button { 
    padding: 2%; 
+   margin: 2%;
 }
-
+.item img { 
+  margin: 0
+}
 /* ---------ITEM-DETAILS----------- */
 .item-details {
   color: snow;
