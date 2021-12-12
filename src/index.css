@@ -39,7 +39,7 @@ header {
   display: flex;
   align-items: center;
   gap: 2rem;
-  width: 100%;
+  width: 100vw;
   height: 5vh;
   position: fixed;
   z-index: 3;
@@ -81,14 +81,16 @@ input, select {
   outline: none;
   background-color: transparent;
 }
-select { height: 34px }
 input:focus, select:focus { background-color: rgb(223, 226, 242, .3) }
 button {
   background-color: rgba(46, 46, 46, .86);
   color: snow;
   border-radius: 3px;
 }
-.page { margin-top: 5vh }
+.page { 
+  margin-top: 5vh;
+  width: 100vw;
+ }
 /* ---------HOME----------- */
 .home { background-color: black; width: 100vw; }
 .nav-bar { 
@@ -108,16 +110,14 @@ button {
 .navlink {
   margin: 1%;
   font-size: 1.3rem;
-  padding: 5px;
-  color: lavender;
-  -webkit-animation: fadein 1.68s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 1.68s; /* Firefox < 16 */
-   -ms-animation: fadein 1.68s; /* Internet Explorer */
-    -o-animation: fadein 1.68s; /* Opera < 12.1 */
-       animation: fadein 1.68s;
+  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1.618s; /* Firefox < 16 */
+   -ms-animation: fadein 1.618s; /* Internet Explorer */
+    -o-animation: fadein 1.618s; /* Opera < 12.1 */
+       animation: fadein 1.618s;
 }
 .activated {
-  background-color: rgba(122, 120, 146, 0.8);
+  background-color: rgba(226, 25, 25, 0.618);
 }
 .discover {
   margin-top: 5vh;
@@ -137,14 +137,17 @@ button {
   display: flex;
   position: fixed;
   background-color: transparent;
-  -webkit-animation: fadein 1.68s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 1.68s; /* Firefox < 16 */
-   -ms-animation: fadein 1.68s; /* Internet Explorer */
-    -o-animation: fadein 1.68s; /* Opera < 12.1 */
-       animation: fadein 1.68s;
 }
 .search input, 
-.search select { color: lavender; }
+.search select { 
+  color: lavender; 
+  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1.618s; /* Firefox < 16 */
+   -ms-animation: fadein 1.618s; /* Internet Explorer */
+    -o-animation: fadein 1.618s; /* Opera < 12.1 */
+       animation: fadein 1.618s;
+
+}
 input:focus, select:focus { background-color: transparent }
 .nav-bar {
   display: flex;
@@ -285,7 +288,7 @@ input:focus, select:focus { background-color: transparent }
   width: 66%;
   margin: 2%;
  }
-.login input::placeholder { color: lightgrey; }
+input::placeholder { color: rgba(255, 255, 255, .618) }
 .login button {
   margin-top: 3%;
   font-size: 1.2rem;
