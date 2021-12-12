@@ -91,7 +91,7 @@ button {
 .page { margin-top: 5vh }
 /* ---------HOME----------- */
 .home { background-color: black; width: 100vw; }
-.toggle-bar { 
+.nav-bar { 
   width: 100vw; 
   height: 3.5vw;
   background-color: #181717;
@@ -100,11 +100,11 @@ button {
   align-items: center;
   position: fixed;
  }
-.toggle-bar nav { 
+.nav-bar nav { 
   width: 100vw;
   position: fixed; 
 }
-.toggle-bar button, 
+.nav-bar button, 
 .navlink {
   margin-left: 2%;
   font-size: 1.3rem;
@@ -132,6 +132,7 @@ button {
 .search {
   display: flex;
   flex-direction: column;
+  width: 100vw;
 }
 .search form {
   width: 100vw;
@@ -382,7 +383,7 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
 /* ---------RESPONSIVE MEDIA----------- */
 @media (max-width: 1460px) {.discover img { width: 25vw }}
 /* iPad Pro */
-@media (max-width: 1024px) {.discover img { width: 33vw } .toggle-bar { height: 36px }}
+@media (max-width: 1024px) {.discover img { width: 33vw } .nav-bar { height: 36px }}
 /* iPad */
 @media (max-width: 768px) {
   .results { width: 100vw; }

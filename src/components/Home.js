@@ -56,7 +56,7 @@ function Home({ dispatch, discover }) {
 
     return (
         <div className="home page">
-            <div className="toggle-bar">
+            <div className="nav-bar">
                 <nav>
                     <button 
                         className={"navlink" + (trendingIsActive ? " activated" : "")} 
