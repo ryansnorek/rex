@@ -25,11 +25,13 @@ function SearchItem({ dispatch, item, category, rexyIDs }) {
     };
     return (
         <div className="item">
-            {
-            item.poster_path ? 
-            <img src={`${POSTER_URL}${item.poster_path}`} alt="poster"/> : 
-            <img src="../../images/unavailable_poster.jpeg" alt="poster" />
-            }
+            <div className="poster">
+                {
+                item.poster_path ? 
+                <img src={`${POSTER_URL}${item.poster_path}`} alt="poster"/> : 
+                <img src="../../images/unavailable_poster.jpeg" alt="poster" />
+                }
+            </div>
             <div className="text">
                 {
                 category === "tv" ? 

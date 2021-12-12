@@ -151,25 +151,32 @@ input:focus, select:focus { background-color: transparent }
   justify-content: center;
 }
 .results { 
-  width: 60vw; 
-  margin-top: 5vh 
+  margin-top: 5vh;
+  width: 60%
 }
 .item {
   color: snow;
-  width: 60vw;
-  height: 25vh;
   display: flex;
   border-bottom: 1.68px solid black;
+  width: 100%;
 }
 .item .text {
+  width: 100%;
   margin: 0;
   font-size: 2rem;
-  width: 100%;
   display: flex; 
   flex-direction: column;
   justify-content: center;
   text-align: center;
   background-color: #1d1d1d;
+}
+.item .poster {
+  width: 150px;
+  height: 200px;
+}
+.item img {
+  width: 150px;
+  height: 200px;
 }
 .item p { margin: 1% 0 }
 .item h2 { font-size: 2rem }
@@ -181,10 +188,6 @@ input:focus, select:focus { background-color: transparent }
 .item .button-container button { 
    padding: 2%; 
    margin: 2%;
-}
-.item img { 
-  margin: 0;
-  width: auto;
 }
 /* ---------ITEM-DETAILS----------- */
 .item-details {
@@ -396,7 +399,8 @@ input:focus, select:focus { background-color: transparent }
   .login form { width: 66vw; }
 }
 @media (max-width: 600px) {
-  .item { width: 100vw; }
+  .item,
+  .results { width: 100vw; }
   .tagline { font-size: 0.7rem }
 }
 
@@ -411,7 +415,6 @@ input:focus, select:focus { background-color: transparent }
   .item-details .right { width: 100vw }
   .backdrop { margin-top: 0 }
   .discover img { width: 50vw }
-  .results { width: 100vw }
 }
 /* iPhone 6/7/8/X */
 @media (max-width: 375px) {
