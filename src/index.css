@@ -184,7 +184,7 @@ input:focus, select:focus { background-color: transparent }
 }
 .item img { 
   margin: 0;
-  display: none;
+  width: auto;
 }
 /* ---------ITEM-DETAILS----------- */
 .item-details {
