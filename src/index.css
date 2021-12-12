@@ -14,7 +14,7 @@ code { font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', mon
 }
 nav, ul, li, a, .icon, 
 .logo, .tagline, p, .genres, 
-.button-container { background-color: transparent; }
+.button-container, h2 { background-color: transparent; }
 nav:hover, .icon:hover, .logo:hover, 
 button:hover, .discover-item:hover { cursor: pointer; }
 html { 
@@ -196,7 +196,7 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   width: 66vw;
   height: 100vh;
   align-items: center;
-  background-color: #1d1d1d;
+  background-color: #161616;
   -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 2s; /* Firefox < 16 */
         -ms-animation: fadein 2s; /* Internet Explorer */
@@ -214,8 +214,8 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   display: flex; 
   width: 60vw;
   padding: 1.68%; 
-  background-color: #242323;
-  box-shadow: 0 0 33px #1d1d1d;
+  background-color: #1f1e1e;
+  box-shadow: 0 0 33px #161616;
 }
 .item-details .left { 
   width: 30%; 
