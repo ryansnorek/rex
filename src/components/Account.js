@@ -17,8 +17,10 @@ function Account({ dispatch, rexyIDs, rexys }) {
     return (
         <div className="account page">
             <AccountProfile/>
-            {rexys.movies !== [] && 
-                rexys.movies.map(movie => <AccountRexy item={movie}/>)}
+            <div className="rexys">
+                {rexys.movies !== [] && 
+                    rexys.movies.map(movie => <AccountRexy item={movie}/>)}
+            </div>
         </div>
     )
 }

@@ -12,17 +12,25 @@ code { font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', mon
   font-size: 62.5%; 
   background-color: #272727;
 }
-nav, ul, li, a, .icon, .logo, .tagline { background-color: transparent; }
+nav, ul, li, a, .icon, 
+.logo, .tagline, p, .genres, 
+.button-container { background-color: transparent; }
 nav:hover, .icon:hover, .logo:hover, 
 button:hover, .discover-item:hover { cursor: pointer; }
-html { background-color: black; }
+html { 
+  /* background-image: linear-gradient(black, #272727, black);  */
+  /* background-image: linear-gradient(#272727, black, #272727);  */
+  background-color: #272727;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100%;
+}
 .wrapper {
   width: 100vw;
   height: 100%;
   line-height: 1.5;
   box-sizing: border-box;
   background-color: #272727;
-  background-color: black;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -69,9 +77,9 @@ input, select {
   font-size: 1.6rem;
   height: 30px;
   border-radius: 2px;
-  border: 1px solid lightgrey;
+  border: 1px solid rgb(144, 144, 165);
   outline: none;
-  box-shadow: 0 0 5px inset lightgrey;
+  box-shadow: 0 0 5px inset rgb(144, 144, 165);
 }
 select { height: 34px }
 input:focus, select:focus { background-color: rgb(223, 226, 242, .3) }
@@ -110,7 +118,7 @@ button {
   flex-direction: row;
   flex-wrap: wrap;
 }
-.discover img { width: 300px; box-shadow: 1px 1px 6px black; }
+.discover img { box-shadow: 1px 1px 6px black; }
 .discover-item {
   -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 1s; /* Firefox < 16 */
@@ -122,7 +130,6 @@ button {
 .search {
   display: flex;
   flex-direction: column;
-  /* width: 100vw; */
 }
 .search form {
   width: 60%;
@@ -146,23 +153,15 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
     -o-animation: fadein 1s; /* Opera < 12.1 */
        animation: fadein 1s;
 }
-.results { 
-  width: 66vw;
-}
-.item img { 
-  width: 175px; 
-  height: 250px; 
-  border-radius: 2%; 
-}
+.results { width: 66vw }
+.item img { width: 175px; height: 250px; }
 .item {
-  background-color: #272727;
   color: snow;
   width: 100%;
   height: 250px;
   display: flex;
   margin-bottom: 1%;
-  border-radius: 2%;
-  box-shadow: 1px 1px 3px black;
+  box-shadow: 0 0 5px black;
 }
 .item .text {
   padding: 2% 4%;
@@ -173,18 +172,18 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   justify-content: center;
   user-select: none;
   text-align: center;
+  background-color: #1d1d1d;
 }
+.item p, .item h2, .button-container { background-color: transparent; }
 .overview { height: 100px; overflow: hidden; text-overflow: ellipsis; }
 .item p { margin: 3% 0 }
-.item h2 { font-size: 2rem; }
+.item h2 { font-size: 2rem }
 .button-container { 
-  width: 100%; 
   display: flex;
   justify-content: center;
+  /* width: 100vw; */
 }
-.button-container button,
-.button-container a { 
-   font-size: 1.68rem;
+.button-container button { 
    padding: 2%; 
 }
 
@@ -195,9 +194,9 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   flex-direction: column;
   padding-bottom: 3%;
   width: 66vw;
+  height: 100vh;
   align-items: center;
-  box-shadow: 1px 1px 3px black;
-  background-color: #272727;
+  background-color: #1d1d1d;
   -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 2s; /* Firefox < 16 */
         -ms-animation: fadein 2s; /* Internet Explorer */
@@ -205,21 +204,18 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
             animation: fadein 2s;
 }
 .item-details h2 { font-size: 2rem; margin-top: 2% }
-.item-details h3, p { font-size: 1.5rem; text-align: center;  }
+.item-details h3, p { font-size: 1.5rem; text-align: center; }
 .backdrop { 
   border: 1px black solid;
   width: 60vw;
   margin: 0;
-  margin-top: 5vh;
 }
 .item-details .text { 
   display: flex; 
   width: 60vw;
   padding: 1.68%; 
-  margin: 1% 0;
-  gap: 2%;
-  background-color: rgb(30, 30, 30);
-  border-radius: 2%;
+  background-color: #242323;
+  box-shadow: 0 0 33px #1d1d1d;
 }
 .item-details .left { 
   width: 30%; 
@@ -234,6 +230,7 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
 .item-details .left-center {
   display: flex;
   width: 40%;
+  background-color: transparent;
 }
 .heart {
   width: 42px;
@@ -256,11 +253,17 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background-color: transparent;
 }
-.item-details .right { width: 60%; padding: 1% }
-.genres { display: flex; justify-content: center }
-.genres p { margin: 4% 5%; font-size: 1.2rem; }
-
+.item-details .right { width: 60%; padding: 1%; background-color: transparent;
+}
+.genres { 
+  width: 100%;
+  display: flex; 
+  justify-content: center; 
+}
+.genres p { margin: 4% 5%; font-size: 1.2rem;}
+.item-details button { background-color: #242323;}
 /* ---------LOGIN----------- */
 .login form {
   height: 66vh;
@@ -283,14 +286,31 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
 }
 /* ---------ACCOUNT----------- */
 .account { 
+  /* width: 100vw; */
+  background-color: black;
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column; */
+}
+.account .rexys {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px green solid;
   width: 100vw;
   background-color: black;
 }
 .account .item {
-  width: 66vw;
+  width: 175px;
+  display: flex;
+  flex-direction: column;
+  border: 1px red solid;
+}
+.rexys img {
+  /* width: px; */
 }
 .account .item .text {
-  border: 1px red solid
+  border: 1px red solid;
+  width: 100%
 }
 .friends {
   background-color: black;
@@ -304,7 +324,7 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
 .friend {
   margin-top: 1.68vh;
   height: 20vh;
-  width: 33vw;
+  width: 66vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -366,13 +386,11 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   to   { opacity: 1; }
 }
 /* ---------RESPONSIVE MEDIA----------- */
-@media (max-width: 1460px) {.discover img { width: 353px }}
-@media (max-width: 1411px) {.discover img { width: 340px }}
+@media (max-width: 1460px) {.discover img { width: 25vw }}
 /* iPad Pro */
-@media (max-width: 1024px) {.discover img { width: 330px }}
+@media (max-width: 1024px) {.discover img { width: 33vw } .toggle-bar { height: 36px }}
 /* iPad */
 @media (max-width: 768px) {
-  .discover img { width: 250px }
   .search form { width: 70% }
   .results { width: 100vw; }
   .backdrop { width: 100vw; }
@@ -383,41 +401,36 @@ input:focus, select:focus { background-color: rgb(20, 20, 20, .7); }
   .login form { width: 66vw; }
 }
 @media (max-width: 600px) {.tagline { font-size: 0.7rem }}
-@media (max-width: 540px) {.discover img { width: 260px }}
-@media (max-width: 520px) {.discover img { width: 240px }}
-@media (max-width: 500px) {.discover img { width: 200px}}
+
 /* iPhone 6/7/8 Plus */
 @media (max-width: 414px) {
-  .item-details .text { flex-direction: column; padding: 0; border-top: 1px solid black }
+  .item-details .text { 
+    flex-direction: column; 
+    text-align: center; 
+    font-size: 1rem; 
+    padding: 0; 
+    width: 100vw; 
+  }
   .item-details .left-center,
-  .item-details .right { width: 96vw }
-  .toggle-bar { height: 11vw }
+  .item-details .right { width: 100vw }
   .backdrop { margin-top: 0 }
-  .discover img { width: 200px }
+  .discover img { width: 50vw }
 }
 /* iPhone 6/7/8/X */
 @media (max-width: 375px) {
-  .discover img { width: 185px }
   .search form { width: 100% }
-  .toggle-bar { height: 11vw }
   .item-details p { padding: 2% }
   .item-details .button-container { margin: 2% }
   .item-details button { width: 50%; margin: 1% }
-  .login form, .item-details .right { width: 96vw; }
-  .item-details .right, .item-details .center, .item-details p { background-color: transparent; }
-  .item-details .text { flex-direction: column; text-align: center; font-size: 1rem; padding: 0 }
-  .item-details .left-center { width: 96vw; border-top: 1px solid black }
+  .login form { width: 96vw; }
   .heart { font-size: 2rem }
 }
 /* Moto G4, Galaxy s5 */
 @media (max-width: 360px) {
-  .discover img { width: 175px }
 }
 /* iPhone 5/se */
 @media (max-width: 320px) {
-  .discover img { width: 155px }
 }
 /* Galaxy Fold */
 @media (max-width: 280px) {
-  .discover img { width: 135px }
 }
