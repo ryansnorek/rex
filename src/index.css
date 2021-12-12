@@ -156,7 +156,7 @@ input:focus, select:focus { background-color: transparent }
 }
 .item {
   color: snow;
-  width: 100%;
+  width: 60vw;
   height: 25vh;
   display: flex;
   border-bottom: 1.68px solid black;
