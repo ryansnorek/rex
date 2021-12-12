@@ -159,7 +159,7 @@ input:focus, select:focus { background-color: transparent }
 .results img { width: auto; }
 .item {
   color: snow;
-  width: 100%;
+  width: 66vw;
   height: 25vh;
   display: flex;
   margin-bottom: 1%;
@@ -176,7 +176,6 @@ input:focus, select:focus { background-color: transparent }
   text-align: center;
   background-color: #1d1d1d;
 }
-.item p, .item h2, .button-container { background-color: transparent; }
 .overview { height: 100px; overflow: hidden; text-overflow: ellipsis; }
 .item p { margin: 3% 0 }
 .item h2 { font-size: 2rem }
@@ -194,7 +193,7 @@ input:focus, select:focus { background-color: transparent }
   display: flex;
   flex-direction: column;
   padding-bottom: 3%;
-  width: 66vw;
+  width: 68vw;
   height: 100vh;
   align-items: center;
   background-color: #161616;
@@ -207,16 +206,15 @@ input:focus, select:focus { background-color: transparent }
 .item-details h2 { font-size: 2rem; margin-top: 2% }
 .item-details h3, p { font-size: 1.5rem; text-align: center; padding: 1.68px; }
 .backdrop { 
-  border: 1px black solid;
-  width: 60vw;
+  width: 100%;
   margin: 0;
 }
 .item-details .text { 
   display: flex; 
-  width: 60vw;
+  width: 100%;
   background-color: #1f1e1e;
-  box-shadow: 0 0 33px #161616;
 }
+/* heart container */
 .item-details .left { 
   width: 30%; 
   padding: 1%; 
@@ -227,11 +225,27 @@ input:focus, select:focus { background-color: transparent }
   text-align: center;
   background-color: transparent;
 }
+.item-details .center { 
+  width: 100%; 
+  padding: 1%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: transparent;
+}
+/* ----together = 100% of screen------ */
 .item-details .left-center {
   display: flex;
   width: 40%;
   background-color: transparent;
 }
+.item-details .right { 
+  width: 60%; 
+  padding: 1%; 
+  background-color: transparent;
+}
+/* ----------------------------------- */
 .heart {
   width: 42px;
   height: 42px;
@@ -245,17 +259,6 @@ input:focus, select:focus { background-color: transparent }
   color: rgb(78, 38, 116);
   font-weight: bold;
   font-size: 2.6rem;
-}
-.item-details .center { 
-  width: 70%; 
-  padding: 1%; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: transparent;
-}
-.item-details .right { width: 60%; padding: 1%; background-color: transparent;
 }
 .genres { 
   width: auto;
@@ -393,7 +396,10 @@ input:focus, select:focus { background-color: transparent }
   .profile, .friend { width: 96vw; }
   .login form { width: 66vw; }
 }
-@media (max-width: 600px) {.tagline { font-size: 0.7rem }}
+@media (max-width: 600px) {
+  .item { width: 100vw; }
+  .tagline { font-size: 0.7rem }
+}
 
 /* iPhone 6/7/8 Plus */
 @media (max-width: 414px) {
