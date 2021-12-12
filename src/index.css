@@ -183,7 +183,8 @@ input:focus, select:focus { background-color: transparent }
    margin: 2%;
 }
 .item img { 
-  margin: 0
+  margin: 0;
+  display: none;
 }
 /* ---------ITEM-DETAILS----------- */
 .item-details {
