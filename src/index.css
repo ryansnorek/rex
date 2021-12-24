@@ -175,11 +175,11 @@ input:focus, select:focus { background-color: transparent }
 }
 .item .poster {
   width: 150px;
-  height: 200px;
+  height: 225px;
 }
 .item img {
   width: 150px;
-  height: 200px;
+  height: 225px;
 }
 .item p { margin: 1% 0 }
 .item h2 { font-size: 2rem }
@@ -217,7 +217,6 @@ input:focus, select:focus { background-color: transparent }
 }
 .item-details .text { 
   display: flex; 
-  /* width: 100%; */
   background-color: #1f1e1e;
 }
 /* heart container */
@@ -273,6 +272,7 @@ input:focus, select:focus { background-color: transparent }
   justify-content: center; 
 }
 .genres p { margin: 3%; font-size: 1.2rem;}
+.item-details .button-container { margin-top: 3%; }
 .item-details button { background-color: #242323;}
 /* ---------LOGIN----------- */
 .login form {
@@ -297,6 +297,7 @@ input::placeholder { color: rgba(255, 255, 255, .618) }
 /* ---------ACCOUNT----------- */
 .account { 
   background-color: black;
+  width: 100vw;
 }
 .account .rexys {
   display: flex;
@@ -307,13 +308,20 @@ input::placeholder { color: rgba(255, 255, 255, .618) }
 }
 .account .item {
   width: 25vw;
+  /* height: ; */
   display: flex;
   flex-direction: column;
   border: 1px red solid;
 }
-.rexys img {
-  /* width: px; */
+.rexys .poster {
   width: 25vw;
+  /* width: 150px;
+  height: 225px; */
+}
+.rexys img {
+  width: 25vw;
+  /* width: 150px;
+  height: 225px; */
 }
 .account .item .text {
   border: 1px red solid;

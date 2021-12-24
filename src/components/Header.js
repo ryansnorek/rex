@@ -1,10 +1,8 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
-import { useState } from "react";
 
 export default function Header() {
     const navigate = useNavigate();
-
     return (
         <header>
             <h1 className="logo" onClick={() => navigate("/")}>Rexy</h1>
