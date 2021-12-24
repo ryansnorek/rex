@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router";
-import { discoverContent, findContentById } from "../actions";
+import { findContentById } from "../actions";
 import HomeItem from "./HomeItem";
 import useDisplayItems from "../hooks/useDisplayItems";
 
 function Home({ dispatch, discover }) {
-  const { movies, tvShows, trending } = discover;
+  const [displayItems, displayType, handleToggleItem] = useDisplayItems(
+    dispatch,
+    discover
+  );
 
-  const [displayItems, displayType, handleToggleItem] = useDisplayItems(dispatch, discover)
-
-  // Posters
   const navigate = useNavigate();
   const handleClickPoster = (id, type) => {
     dispatch(findContentById(id, type));

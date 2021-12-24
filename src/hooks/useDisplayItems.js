@@ -5,26 +5,16 @@ function useDisplayItems(dispatch, itemObject) {
   const [displayItems, setDisplayItems] = useState([]);
   const [displayType, setDisplayType] = useState("trending");
 
-  const { movies, tvShows, trending } = itemObject;
-
   useEffect(() => {
-    dispatch(
-        discoverContent(displayType)
-        );
+    dispatch(discoverContent(displayType));
   }, [displayType]);
 
   const handleToggleItem = (e) => setDisplayType(e.target.name);
 
   useEffect(() => {
-    if (trending) {
-      setDisplayItems(trending);
-    } else if (movies) {
-      setDisplayItems(movies);
-    } else if (tvShows) {
-      setDisplayItems(tvShows);
-    }
+    setDisplayItems(itemObject[displayType]);
   }, [handleToggleItem]);
-  
+
   return [displayItems, displayType, handleToggleItem];
 }
 

@@ -13,8 +13,8 @@ const initialState = {
     },
     friends: [],
     discover: {
-        movies: [],
-        tvShows: [],
+        movie: [],
+        tv: [],
         trending: [] 
     },
     isFetching: false,
@@ -46,9 +46,9 @@ export default function reducer(state = initialState, action) {
         case (GET_FRIENDS):
             return ({ ...state, friends: action.payload })
         case (DISCOVER_MOVIE): 
-            return ({ ...state, discover: { movies: [...action.payload] }})
+            return ({ ...state, discover: { movie: [...action.payload] }})
         case (DISCOVER_TV): 
-            return ({ ...state, discover: { tvShows: [...action.payload] }})
+            return ({ ...state, discover: { tv: [...action.payload] }})
         case (TRENDING):
             return ({ ...state, discover: { trending: [...action.payload] }})
         default:
