@@ -78,11 +78,20 @@ input, select {
   font-size: 1.6rem;
   height: 30px;
   border-radius: 2px;
+  color: lavender; 
   border: none;
-  outline: none;
   background-color: transparent;
+  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1.618s; /* Firefox < 16 */
+   -ms-animation: fadein 1.618s; /* Internet Explorer */
+    -o-animation: fadein 1.618s; /* Opera < 12.1 */
+       animation: fadein 1.618s;
 }
-input:focus, select:focus { background-color: rgb(223, 226, 242, .3) }
+input:focus, select:focus { 
+  background-color: rgb(223, 226, 242, .3);
+  outline-color: rgb(168, 168, 192)
+ }
+input::placeholder { color: rgba(255, 255, 255, .618) }
 button {
   background-color: rgba(46, 46, 46, .86);
   color: snow;
@@ -91,6 +100,11 @@ button {
 .page { 
   margin-top: 5vh;
   width: 100vw;
+  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1.618s; /* Firefox < 16 */
+   -ms-animation: fadein 1.618s; /* Internet Explorer */
+    -o-animation: fadein 1.618s; /* Opera < 12.1 */
+       animation: fadein 1.618s;
  }
  .nav-bar {
   width: 100vw; 
@@ -141,19 +155,8 @@ button {
   position: fixed;
   background-color: transparent;
 }
-.search input, 
-.search select { 
-  color: lavender; 
-  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 1.618s; /* Firefox < 16 */
-   -ms-animation: fadein 1.618s; /* Internet Explorer */
-    -o-animation: fadein 1.618s; /* Opera < 12.1 */
-       animation: fadein 1.618s;
-
-}
 input:focus, select:focus { background-color: transparent }
 .search .nav-bar {
-  display: flex;
   justify-content: center;
 }
 .results { 
@@ -214,7 +217,6 @@ input:focus, select:focus { background-color: transparent }
 .item-details h2 { font-size: 2rem; margin-top: 2% }
 .item-details h3, p { font-size: 1.5rem; text-align: center; padding: 1.68px; }
 .backdrop { 
-  width: 100%;
   width: 68vw;
   margin: 0;
 }
@@ -279,23 +281,35 @@ input:focus, select:focus { background-color: transparent }
 .item-details button { background-color: #242323;}
 /* ---------LOGIN----------- */
 .login form {
+  margin-top: 9vh;
   height: 66vh;
-  width: 33vw;
+  width: 400px;
   display: flex;
-  background-color: black;
+  background-color: rgb(24, 24, 24);
   flex-direction: column;
   justify-content: center;  
   align-items: center;
+  box-shadow: 0 0 3px lavender;
+  border-radius: 9px;
 }
 .login input { 
   width: 66%;
   margin: 2%;
+  background-color: rgba(0, 0, 0, 0.86);
+  border-radius: 3px;
  }
-input::placeholder { color: rgba(255, 255, 255, .618) }
+
 .login button {
+  width: 69px;
+  height: 69px;
+  border-radius: 50%;
+  border: 1px solid lavender;
   margin-top: 3%;
-  font-size: 1.2rem;
-  padding: 1% 2%;
+  font-size: 1.3rem;
+  cursor: auto;
+}
+.login button:hover {
+  box-shadow: 0 0 9px inset rgb(131, 131, 143);
 }
 /* ---------ACCOUNT----------- */
 .account { 
@@ -410,7 +424,6 @@ input::placeholder { color: rgba(255, 255, 255, .618) }
 @media (max-width: 768px) {
   .results, .backdrop, .item-details { width: 100vw; }
   .profile, .friend { width: 96vw; }
-  .login form { width: 66vw; }
 }
 @media (max-width: 600px) {
   .item, .results { width: 100vw; }

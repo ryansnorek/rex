@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getQueryResults } from "../actions";
 
-function useSearch(dispatch, initialValue) {
+export default function useSearch(dispatch, initialValue) {
   const [queryType, setQueryType] = useState(initialValue || null);
   const [query, setQuery] = useState(null);
 
@@ -16,5 +16,3 @@ function useSearch(dispatch, initialValue) {
 
   return [queryType, query, handleSelectQueryType, handleQueryChange];
 }
-
-export default useSearch;

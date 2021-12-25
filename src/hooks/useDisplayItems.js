@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { discoverContent } from "../actions";
 
-function useDisplayItems(dispatch, itemObject) {
+export default function useDisplayItems(dispatch, itemObject) {
   const [displayItems, setDisplayItems] = useState([]);
   const [displayType, setDisplayType] = useState("trending");
 
@@ -18,4 +18,4 @@ function useDisplayItems(dispatch, itemObject) {
   return [displayItems, displayType, handleToggleItem];
 }
 
-export default useDisplayItems;
+

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
     const navigate = useNavigate();
     const [values, setValues] = useState({ username:"", password:"" });
+
     
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -23,14 +24,14 @@ export default function Login() {
                 <input 
                     type="text"
                     name="username"
-                    placeholder="username"
+                    placeholder="Username"
                     value={values.username}
                     onChange={handleChange}
                 />
                 <input 
                     type="password"
                     name="password"
-                    placeholder="password"
+                    placeholder="Password"
                     value={values.password}
                     onChange={handleChange}
                 />
