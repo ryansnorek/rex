@@ -287,16 +287,29 @@ input:focus, select:focus { background-color: transparent }
   display: flex;
   background-color: rgb(24, 24, 24);
   flex-direction: column;
-  justify-content: center;  
+  justify-content: space-evenly;  
   align-items: center;
   box-shadow: 0 0 3px lavender;
   border-radius: 9px;
 }
+.login .top {
+  width: 69%;
+  height: 30%;
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
 .login input { 
-  width: 66%;
+  width: 100%;
+  height: 90%;
   margin: 2%;
-  background-color: rgba(0, 0, 0, 0.86);
-  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.66);
+  border-radius: 6px;
+  padding: 0 3%;
+  font-size: 2rem;
  }
 
 .login button {
@@ -306,11 +319,33 @@ input:focus, select:focus { background-color: transparent }
   border: 1px solid lavender;
   margin-top: 3%;
   font-size: 1.3rem;
-  cursor: auto;
 }
+/* * {
+  border: 1px grey solid;
+} */
 .login button:hover {
   box-shadow: 0 0 9px inset rgb(131, 131, 143);
 }
+.join-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1%;
+}
+.join-btn button {
+  border-radius: 0;
+  width: 60px;
+  height: 30px;
+  cursor: default;
+}
+/* ---------JOIN-------------- */
+.join .top {
+  height: 60%;
+}
+.join button {
+  margin-bottom: 3%;
+}
+
 /* ---------ACCOUNT----------- */
 .account { 
   background-color: black;

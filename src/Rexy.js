@@ -2,8 +2,9 @@ import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
 import Home from "./components/Home";
-import Login from "./components/Login";
 import Search from "./components/Search";
+import Login from "./components/Login";
+import Join from "./components/Join";
 import ItemDetails from "./components/ItemDetails";
 import Account from "./components/Account";
 import Friends from "./components/Friends";
@@ -21,6 +22,7 @@ function Rexy() {
             <Route path="/search" element={<Search/>}/>
             <Route path="/item/:id" element={<ItemDetails/>}/>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/join" element={<Join/>}/>
             <Route
               path="/account"
               element={
