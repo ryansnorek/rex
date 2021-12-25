@@ -18,8 +18,8 @@ function Home({ dispatch, discover }) {
 
   return (
     <div className="home page">
-      <div className="nav-bar">
-        <nav>
+      {/* <div className="nav-bar"> */}
+        <nav className="nav-bar">
           <button
             className={
               "navlink" + (displayType === "trending" ? " activated" : "")
@@ -46,7 +46,7 @@ function Home({ dispatch, discover }) {
             TV Shows
           </button>
         </nav>
-      </div>
+      {/* </div> */}
       <div className="discover">
         {displayItems &&
           displayItems.map((item) => {
