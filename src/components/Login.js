@@ -10,7 +10,7 @@ const initialValues = {
 export default function Login() {
   const navigate = useNavigate();
 
-  const [values, handleChange, clearForm] = useForm(initialValues);
+  const [values, handleChange, clearForm] = useForm("login",initialValues);
 
   const handleSubmit = (e) => {
     clearForm(e);
