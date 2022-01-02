@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import useForm from "../hooks/useForm";
 import useInputMask from "../hooks/useInputMask";
+import { registerNewUser } from "../helper";
 
 const initialValues = {
   username: "",
@@ -17,7 +18,7 @@ export default function Join() {
 
   const handleSubmit = (e) => {
     values.phone = phone;
-    console.log(values)
+    registerNewUser(values);
     clearForm(e);
     setTimeout(() => {
       navigate("/profile");

@@ -65,6 +65,7 @@ export const discoverContent = (type) => {
             .catch(err => dispatch(fetchError(err)))
     };
 }
+
 export const fetchStart = () => {
     return ({ type: FETCH_START });
 }
