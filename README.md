@@ -9,5 +9,21 @@
 
 ### Introduction
 
-This is a full-stack application for collecting and sharing movie and show recommendations with friends. The frontend for this application was built using **React** with **Redux/thunk** for state management. The backend was built with **Node, Express, and Postgres**. The repo can be found here https://github.com/ryansnorek/rexy-backend
+This is a full-stack application for collecting and sharing movie and show recommendations with friends. Users can create an account, browse trending shows, and search for content or friends to connect with. The frontend for this application was built using **React**. The backend was built with **Node, Express, and Postgres**. The repo can be found here https://github.com/ryansnorek/rexy-backend
 
+### Engineering Notes
+#### Frontend
+- [ ] Redux w/ thunk middleware for state management
+- [ ] Custom hooks for phone input mask, forms, search bar, etc
+- [ ] React Router for page navigation
+- [ ] Responsive design CSS for mobile and tablet devices
+
+#### Backend
+- [ ] Authentication / Authorization w/ JSON web token
+- [ ] Schemas built with Knex js
+- [ ] REST API deployed using Heroku
+- [ ] Password encryption with bcrypt js
+
+### Sources
+- [ ] Content: www.themoviedb.org API
+- [ ] Icons: https://www.flaticon.com - Authors: smashicons, freepik
