@@ -1,5 +1,6 @@
 # Rexy
 **A place to share recommendations with friends**
+-
 **website URL: https://rexy.netlify.app/**
 
 ## Project Set Up
