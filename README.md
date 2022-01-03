@@ -21,7 +21,7 @@ This is a full-stack application for collecting and sharing movie and show recom
 
 #### Backend
 - [ ] Authentication / Authorization w/ JSON web token
-- [ ] Schemas built with Knex js
+- [ ] Schema for users and user-profiles built with Knex js 
 - [ ] REST API deployed using Heroku
 - [ ] Password encryption with bcrypt js
 
