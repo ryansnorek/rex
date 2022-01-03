@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useForm from "../hooks/useForm";
+import { loginUser } from "../helper";
 
 const initialValues = {
   username: "",
@@ -9,16 +10,19 @@ const initialValues = {
 
 export default function Login() {
   const navigate = useNavigate();
+  const [values, handleChange, clearForm] = useForm("login", initialValues);
 
-  const [values, handleChange, clearForm] = useForm("login",initialValues);
+  const handleSubmit = async (e) => {
+    try {
+      await loginUser(values);
+      setTimeout(() => {
+        navigate("/account");
+      }, 1618)
 
-  const handleSubmit = (e) => {
+    } catch (err) {
+      console.log(err)
+    }
     clearForm(e);
-    localStorage.setItem("token", 420);
-
-    setTimeout(() => {
-      navigate("/account");
-    }, 1618);
   };
   return (
     <div className="login page">

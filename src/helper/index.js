@@ -9,3 +9,15 @@ export const registerNewUser = (newUser) => {
     })
     .catch((err) => console.log(err));
 };
+
+export const loginUser = (credentials) => {
+  let result;
+  axios
+    .post(`${BACKEND_URL}/auth/login`, credentials)
+    .then((res) => {
+      localStorage.setItem("token", res.data.token);
+      result = res.data;
+    })
+    .catch((err) => (result = err));
+  return result;
+};
