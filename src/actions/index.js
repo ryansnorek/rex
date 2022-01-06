@@ -80,34 +80,32 @@ export const loginUser = (credentials) => {
     axios
       .post(`${BACKEND_URL}/auth/login`, credentials)
       .then((res) => {
-        dispatch(authorizeUser(res.data));
-        getUser(res.data.user_id);
-        getProfile(res.data.user_id);
         localStorage.setItem("token", res.data.token);
+        dispatch(authorizeUser(res.data));
+        dispatch(getUser(res.data.user_id));
+        dispatch(getProfile(res.data.user_id));
       })
       .catch((err) => dispatch(fetchError(err)));
   };
 };
 export const getUser = (user_id) => {
   return (dispatch) => {
-    dispatch(fetchStart());
     axios
       .get(`${BACKEND_URL}/users/${user_id}`)
       .then((res) => {
         dispatch(setUser(res.data));
       })
-      .catch((err) => dispatch(fetchError(err)))
-  }
-}
+      .catch((err) => console.log(err));
+  };
+};
 export const getProfile = (user_id) => {
   return (dispatch) => {
-    dispatch(fetchStart());
     axios
       .get(`${BACKEND_URL}/profile/${user_id}`)
       .then((res) => {
         dispatch(setProfile(res.data));
       })
-      .catch((err) => dispatch(fetchError(err)));
+      .catch((err) => console.log(err));
   };
 };
 

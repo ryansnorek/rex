@@ -19,7 +19,7 @@ function Login({ dispatch }) {
     clearForm(e);
     setTimeout(() => {
       navigate("/account");
-    }, 1500)
+    }, 3000)
   };
 
   return (
