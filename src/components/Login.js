@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -10,7 +9,7 @@ const initialValues = {
   password: "",
 };
 
-function Login({ dispatch, auth }) {
+function Login({ dispatch }) {
   const navigate = useNavigate();
   const [values, handleChange, clearForm] = useForm("login", initialValues);
 
