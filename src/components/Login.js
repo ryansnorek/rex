@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useForm from "../hooks/useForm";
-// import { loginUser } from "../helper";
 import { loginUser } from "../actions";
 
 const initialValues = {
@@ -15,8 +14,13 @@ function Login({ dispatch, user, isFetching }) {
   const [values, handleChange, clearForm] = useForm("login", initialValues);
 
   const handleSubmit = async (e) => {
-    dispatch(loginUser(values));
-    clearForm(e);
+      e.preventDefault();
+      dispatch(loginUser(values));
+      setTimeout(() => {
+        alert(user.message);
+        navigate("/account");
+        clearForm(e);
+      }, 1000)
   };
   return (
     <div className="login page">

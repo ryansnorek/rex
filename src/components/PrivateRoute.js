@@ -1,6 +1,14 @@
 import { Navigate } from "react-router-dom";
+import { connect } from "react-redux";
 
-export default function PrivateRoute({ children, redirectTo }) {
+function PrivateRoute({ children, redirectTo, user }) {
+    let authorized = false;
     const token = localStorage.getItem("token");
-    return token ? children : <Navigate to={redirectTo}/>
+    if (token === user.token) {
+        authorized = true;
+    }
+    return authorized ? children : <Navigate to={redirectTo}/>
 }
+
+const mapStateToProps = (state) => ({ user: state.user })
+export default connect(mapStateToProps)(PrivateRoute);
