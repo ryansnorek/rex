@@ -1,27 +1,21 @@
+import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useForm from "../hooks/useForm";
-import { loginUser } from "../helper";
+// import { loginUser } from "../helper";
+import { loginUser } from "../actions";
 
 const initialValues = {
   username: "",
   password: "",
 };
 
-export default function Login() {
+function Login({ dispatch, user, isFetching }) {
   const navigate = useNavigate();
   const [values, handleChange, clearForm] = useForm("login", initialValues);
 
   const handleSubmit = async (e) => {
-    try {
-      await loginUser(values);
-      setTimeout(() => {
-        navigate("/account");
-      }, 1618)
-
-    } catch (err) {
-      console.log(err)
-    }
+    dispatch(loginUser(values));
     clearForm(e);
   };
   return (
@@ -54,3 +48,6 @@ export default function Login() {
     </div>
   );
 }
+
+const mapStateToProps = (state) => ({ user: state.user, isFetching: state.isFetching })
+export default connect(mapStateToProps)(Login)
