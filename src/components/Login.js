@@ -22,6 +22,7 @@ function Login({ dispatch }) {
     }, 3000)
   };
 
+  // Add loading wheel 
   return (
     <div className="login page">
       <form onSubmit={handleSubmit}>
