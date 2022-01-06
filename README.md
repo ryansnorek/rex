@@ -27,4 +27,4 @@ This is a full-stack application for collecting and sharing movie and show recom
 
 ### Sources
 - [ ] Content: www.themoviedb.org API
-- [ ] Icons: https://www.flaticon.com - Authors: smashicons, freepik
+- [ ] Icons: https://www.flaticon.com - Authors: smashicons, freepik, becris

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { useState } from "react";
 
-function AccountProfile({ friends }) {
+function AccountProfile({ friends, dispatch, user, profile }) {
     const [editMode, setEditMode] = useState(false);
     const [pic, setPic] = useState("../../images/profile_pic_small.jpg");
     const [input, setInput] = useState("");
@@ -13,6 +13,7 @@ function AccountProfile({ friends }) {
         setPic(input);
         setEditMode(false);
     };
+
     return (
         <div className="profile">
             <div className="text">
@@ -43,5 +44,9 @@ function AccountProfile({ friends }) {
         </div>
     )
 }
-const mapStateToProps = (state) => ({ friends: state.friends });
+const mapStateToProps = (state) => ({ 
+    friends: state.friends, 
+    user: state.user,
+    profile: state.profile, 
+});
 export default connect(mapStateToProps)(AccountProfile);

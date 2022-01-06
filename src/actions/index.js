@@ -14,7 +14,9 @@ export const GET_FRIENDS = "GET_FRIENDS";
 export const DISCOVER_MOVIE = "DISCOVER_MOVIE";
 export const DISCOVER_TV = "DISCOVER_TV";
 export const TRENDING = "TRENDING";
+export const AUTHORIZE_USER = "AUTHORIZE_USER";
 export const SET_USER = "SET_USER";
+export const SET_PROFILE = "SET_PROFILE";
 
 export const getQueryResults = (category, query) => {
   return (dispatch) => {
@@ -78,8 +80,32 @@ export const loginUser = (credentials) => {
     axios
       .post(`${BACKEND_URL}/auth/login`, credentials)
       .then((res) => {
+        dispatch(authorizeUser(res.data));
+        getUser(res.data.user_id);
+        getProfile(res.data.user_id);
         localStorage.setItem("token", res.data.token);
+      })
+      .catch((err) => dispatch(fetchError(err)));
+  };
+};
+export const getUser = (user_id) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axios
+      .get(`${BACKEND_URL}/users/${user_id}`)
+      .then((res) => {
         dispatch(setUser(res.data));
+      })
+      .catch((err) => dispatch(fetchError(err)))
+  }
+}
+export const getProfile = (user_id) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axios
+      .get(`${BACKEND_URL}/profile/${user_id}`)
+      .then((res) => {
+        dispatch(setProfile(res.data));
       })
       .catch((err) => dispatch(fetchError(err)));
   };
@@ -121,6 +147,12 @@ export const discoverTvList = (tvShows) => {
 export const trendingList = (trending) => {
   return { type: TRENDING, payload: trending };
 };
+export const authorizeUser = (auth) => {
+  return { type: AUTHORIZE_USER, payload: auth };
+};
 export const setUser = (user) => {
   return { type: SET_USER, payload: user };
+};
+export const setProfile = (profile) => {
+  return { type: SET_PROFILE, payload: profile };
 };
