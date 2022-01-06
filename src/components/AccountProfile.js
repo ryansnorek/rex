@@ -17,7 +17,7 @@ function AccountProfile({ friends, dispatch, user, profile }) {
     return (
         <div className="profile">
             <div className="text">
-                <h3>Username</h3>
+                <h3>{user.username}</h3>
                 <p>Tagline</p>
                 {/* <p>Friends: {friends.length}</p> */}
                 <p>Rexys: Deuce Bigalow</p>

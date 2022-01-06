@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useForm from "../hooks/useForm";
-import { loginUser, getUser, getProfile } from "../actions";
+import { loginUser } from "../actions";
 
 const initialValues = {
   username: "",
   password: "",
 };
 
-function Login({ dispatch, auth, isFetching }) {
+function Login({ dispatch, auth }) {
   const navigate = useNavigate();
   const [values, handleChange, clearForm] = useForm("login", initialValues);
 
@@ -18,11 +18,10 @@ function Login({ dispatch, auth, isFetching }) {
     e.preventDefault();
     dispatch(loginUser(values));
     clearForm(e);
+    setTimeout(() => {
+      navigate("/account");
+    }, 1500)
   };
-
-  useEffect(() => {
-    navigate("/account");
-  },[clearForm])
 
   return (
     <div className="login page">
@@ -56,6 +55,5 @@ function Login({ dispatch, auth, isFetching }) {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  isFetching: state.isFetching,
 });
 export default connect(mapStateToProps)(Login);
