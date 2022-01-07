@@ -18,7 +18,6 @@ function Home({ dispatch, discover }) {
 
   return (
     <div className="home page">
-      {/* <div className="nav-bar"> */}
         <nav className="nav-bar">
           <button
             className={
@@ -46,7 +45,6 @@ function Home({ dispatch, discover }) {
             TV Shows
           </button>
         </nav>
-      {/* </div> */}
       <div className="discover">
         {displayItems &&
           displayItems.map((item) => {

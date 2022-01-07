@@ -32,9 +32,21 @@ export default function reducer(state = initialState, action) {
     case a.FETCH_ERROR:
       return { ...state, errors: action.payload };
     case a.SET_USER_MOVIES:
-      return { ...state, userContent: { movies: [...action.payload] }};
+      return { 
+        ...state, 
+        userContent: { 
+          movies: [...action.payload],
+          tvShows: [...state.userContent.tvShows] 
+        }
+      };
     case a.SET_USER_TV_SHOWS:
-      return { ...state, userContent: { tvShows: [...action.payload] }};
+      return { 
+        ...state, 
+        userContent: { 
+          movies: [...state.userContent.movies],
+          tvShows: [...action.payload] 
+        }
+      };
     case a.DELETE_REXY:
       const filteredIDs = state.rexyIDs.filter((id) => id !== action.payload);
       const filteredRexys = state.rexys.movies.filter(

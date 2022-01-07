@@ -1,30 +1,23 @@
 import { connect } from "react-redux";
-import { findContentById } from "../actions";
-import { useEffect } from "react";
 import AccountProfile from "./AccountProfile";
 import AccountRexy from "./AccountRexy";
 
-function Account({ dispatch, rexyIDs, rexys }) {
-  // useEffect(() => {
-  //   rexyIDs.forEach((id) => {
-  //     dispatch(findContentById(id, "movie", "rexy"));
-  //   });
-  // }, []);
+function Account({ dispatch, user, userContent }) {
+  const { movies, tvShows } = userContent;
 
   return (
     <div className="account page">
       <AccountProfile />
-      {/* <div className="rexys">
-        {rexys.movies !== [] &&
-          rexys.movies.map((movie) => <AccountRexy item={movie} />)}
-      </div> */}
+      <div className="rexys">
+        { movies && movies.map(item => <AccountRexy item={item} />) }
+      </div>
     </div>
   );
 }
 const mapStateToProps = (state) => {
   return {
-    rexyIDs: state.rexyIDs,
-    rexys: state.rexys,
+    user: state.user,
+    userContent: state.userContent,
   };
 };
 export default connect(mapStateToProps)(Account);
