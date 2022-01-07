@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useForm from "../hooks/useForm";
 import { loginUser } from "../actions";
-import { useEffect } from "react";
 
 const initialValues = {
   username: "",
