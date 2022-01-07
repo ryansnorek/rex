@@ -18,17 +18,10 @@ function Login({ dispatch, isFetching, loginComplete }) {
     e.preventDefault();
     dispatch(loginUser(values));
     clearForm(e);
-    // setTimeout(() => {
-    //   navigate("/account");
-    // }, 3000);
   };
-
   if (loginComplete) {
-    console.log("----===--=-==--==--= navigate")
     navigate("/account");
   }
-  
-
   if (isFetching) {
     return (
       <div className="loading-container">

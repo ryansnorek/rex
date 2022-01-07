@@ -31,7 +31,7 @@ export default function reducer(state = initialState, action) {
     case a.FETCH_QUERY:
       return { ...state, queryResults: action.payload, isFetching: false };
     case a.FETCH_ERROR:
-      return { ...state, errors: action.payload };
+      return { ...state, errors: action.payload, isFetching: false };
     case a.SET_USER_MOVIES:
       return {
         ...state,
