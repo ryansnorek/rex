@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useForm from "../hooks/useForm";
 import { loginUser } from "../actions";
+import { useEffect } from "react";
 
 const initialValues = {
   username: "",
   password: "",
 };
 
-function Login({ dispatch }) {
+function Login({ dispatch, isFetching, loginComplete }) {
   const navigate = useNavigate();
   const [values, handleChange, clearForm] = useForm("login", initialValues);
 
@@ -17,12 +18,24 @@ function Login({ dispatch }) {
     e.preventDefault();
     dispatch(loginUser(values));
     clearForm(e);
-    setTimeout(() => {
-      navigate("/account");
-    }, 3000)
+    // setTimeout(() => {
+    //   navigate("/account");
+    // }, 3000);
   };
 
-  // Add loading wheel 
+  if (loginComplete) {
+    console.log("----===--=-==--==--= navigate")
+    navigate("/account");
+  }
+  
+
+  if (isFetching) {
+    return (
+      <div className="loading-container">
+        <div className="loading"></div>
+      </div>
+    );
+  }
   return (
     <div className="login page">
       <form onSubmit={handleSubmit}>
@@ -55,5 +68,7 @@ function Login({ dispatch }) {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  isFetching: state.isFetching,
+  loginComplete: state.loginComplete,
 });
 export default connect(mapStateToProps)(Login);

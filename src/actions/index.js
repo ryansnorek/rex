@@ -16,6 +16,7 @@ export const DISCOVER_MOVIE = "DISCOVER_MOVIE";
 export const DISCOVER_TV = "DISCOVER_TV";
 export const TRENDING = "TRENDING";
 export const AUTHORIZE_USER = "AUTHORIZE_USER";
+export const LOGIN_COMPLETE = "LOGIN_COMPLETE";
 export const SET_USER = "SET_USER";
 export const SET_PROFILE = "SET_PROFILE";
 
@@ -99,7 +100,8 @@ export const loginUser = (credentials) => {
         dispatch(getUserTvShows(user_id));
         return user_id;
       })
-      .catch((err) => dispatch(fetchError(err)));
+      .catch((err) => dispatch(fetchError(err)))
+      .finally(() => dispatch(loginComplete()))
   };
 };
 export const getUser = (user_id) => {
@@ -185,6 +187,9 @@ export const trendingList = (trending) => {
 };
 export const authorizeUser = (auth) => {
   return { type: AUTHORIZE_USER, payload: auth };
+};
+export const loginComplete = () => {
+  return { type: LOGIN_COMPLETE };
 };
 export const setUser = (user) => {
   return { type: SET_USER, payload: user };

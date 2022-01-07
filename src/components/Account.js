@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import AccountProfile from "./AccountProfile";
 import AccountRexy from "./AccountRexy";
 
-function Account({ dispatch, user, userContent }) {
+function Account({ userContent }) {
   const { movies, tvShows } = userContent;
 
   return (
@@ -10,6 +10,7 @@ function Account({ dispatch, user, userContent }) {
       <AccountProfile />
       <div className="rexys">
         { movies && movies.map(item => <AccountRexy item={item} />) }
+        { tvShows && tvShows.map(item => <AccountRexy item={item} />) }
       </div>
     </div>
   );
