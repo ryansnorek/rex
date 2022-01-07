@@ -7,7 +7,9 @@ function ItemDetails({ item, user }) {
   const tvShow = item.tvShow ? item.tvShow : [];
 
   const handleAddContent = (content_id, addContent) => {
-    if (!user.user_id) return alert("login to add content");
+    if (!user.user_id) {
+      return alert("login to add content");
+    }
     addContent(content_id, user.user_id);
   };
 

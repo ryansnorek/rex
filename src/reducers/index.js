@@ -31,7 +31,7 @@ export default function reducer(state = initialState, action) {
       return { ...state, data: action.payload, isFetching: false };
     case a.FETCH_ERROR:
       return { ...state, errors: action.payload };
-    case a.ADD_REXY:
+    case a.ADD_MOVIE:
       return { ...state, rexyIDs: [...state.rexyIDs, action.payload] };
     case a.DELETE_REXY:
       const filteredIDs = state.rexyIDs.filter((id) => id !== action.payload);
@@ -43,14 +43,9 @@ export default function reducer(state = initialState, action) {
         rexyIds: [...filteredIDs],
         rexys: { movies: [...filteredRexys] },
       };
-    case a.FIND_REXY_MOVIE:
-      return {
-        ...state,
-        rexys: { movies: [...state.rexys.movies, action.payload] },
-      };
-    case a.FIND_MOVIE:
+    case a.SET_ITEM_MOVIE:
       return { ...state, item: { movie: action.payload } };
-    case a.FIND_TV:
+    case a.SET_ITEM_TV_SHOW:
       return { ...state, item: { tvShow: action.payload } };
     case a.GET_FRIENDS:
       return { ...state, friends: action.payload };

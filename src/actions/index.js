@@ -5,11 +5,11 @@ import { BASE_URL, BACKEND_URL } from "../constants";
 export const FETCH_START = "FETCH_START";
 export const FETCH_QUERY = "FETCH_QUERY";
 export const FETCH_ERROR = "FETCH_ERROR";
-export const ADD_REXY = "ADD_REXY";
+export const ADD_MOVIE = "ADD_MOVIE";
 export const DELETE_REXY = "DELETE_REXY";
 export const FIND_REXY_MOVIE = "FIND_REXY_MOVIE";
-export const FIND_MOVIE = "FIND_MOVIE";
-export const FIND_TV = "FIND_TV";
+export const SET_ITEM_MOVIE = "SET_ITEM_MOVIE";
+export const SET_ITEM_TV_SHOW = "SET_ITEM_TV_SHOW";
 export const GET_FRIENDS = "GET_FRIENDS";
 export const DISCOVER_MOVIE = "DISCOVER_MOVIE";
 export const DISCOVER_TV = "DISCOVER_TV";
@@ -27,17 +27,15 @@ export const getQueryResults = (category, query) => {
       .catch((err) => dispatch(fetchError(err)));
   };
 };
-export const findContentById = (id, type, isRexy) => {
+export const findContentById = (id, type) => {
   return (dispatch) => {
     dispatch(fetchStart());
     axios
       .get(`${BASE_URL}/3/${type}/${id}?api_key=${API_KEY}`)
       .then((res) => {
-        if (type === "movie") {
-          dispatch(isRexy ? findRexyMovie(res.data) : findMovie(res.data));
-        } else {
-          dispatch(findTVShow(res.data));
-        }
+        type === "movie" 
+        ? dispatch(setItemMovie(res.data))
+        : dispatch(setItemTvShow(res.data));
       })
       .catch((err) => dispatch(fetchError(err)));
   };
@@ -84,6 +82,7 @@ export const loginUser = (credentials) => {
         dispatch(authorizeUser(res.data));
         dispatch(getUser(res.data.user_id));
         dispatch(getProfile(res.data.user_id));
+        dispatch(getUserMovies(res.data.user_id));
       })
       .catch((err) => dispatch(fetchError(err)));
   };
@@ -108,6 +107,16 @@ export const getProfile = (user_id) => {
       .catch((err) => console.log(err));
   };
 };
+export const getUserMovies = (user_id) => {
+  return (dispatch) => {
+    axios
+      .get(`${BACKEND_URL}/profile/${user_id}/movies`)
+      .then((res) => {
+        dispatch(addMovie(res.data));
+      })
+      .catch((err) => console.log(err));
+  };
+};
 
 export const fetchStart = () => {
   return { type: FETCH_START };
@@ -118,20 +127,17 @@ export const fetchQuery = (query) => {
 export const fetchError = (error) => {
   return { type: FETCH_ERROR, payload: error };
 };
-export const addRexy = (id) => {
-  return { type: ADD_REXY, payload: id };
+export const addMovie = (movie_id) => {
+  return { type: ADD_MOVIE, payload: movie_id };
 };
 export const deleteRexy = (id) => {
   return { type: DELETE_REXY, payload: id };
 };
-export const findRexyMovie = (rexyMovie) => {
-  return { type: FIND_REXY_MOVIE, payload: rexyMovie };
+export const setItemMovie = (movie) => {
+  return { type: SET_ITEM_MOVIE, payload: movie };
 };
-export const findMovie = (movie) => {
-  return { type: FIND_MOVIE, payload: movie };
-};
-export const findTVShow = (show) => {
-  return { type: FIND_TV, payload: show };
+export const setItemTvShow = (show) => {
+  return { type: SET_ITEM_TV_SHOW, payload: show };
 };
 export const friendsList = (friends) => {
   return { type: GET_FRIENDS, payload: friends };

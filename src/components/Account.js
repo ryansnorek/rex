@@ -5,29 +5,26 @@ import AccountProfile from "./AccountProfile";
 import AccountRexy from "./AccountRexy";
 
 function Account({ dispatch, rexyIDs, rexys }) {
+  // useEffect(() => {
+  //   rexyIDs.forEach((id) => {
+  //     dispatch(findContentById(id, "movie", "rexy"));
+  //   });
+  // }, []);
 
-    useEffect(() => {
-        rexyIDs.forEach(id => {
-            dispatch(
-                findContentById(id, "movie", "rexy")
-                )
-        })
-    }, []);
-
-    return (
-        <div className="account page">
-            <AccountProfile/>
-            <div className="rexys">
-                {rexys.movies !== [] && 
-                    rexys.movies.map(movie => <AccountRexy item={movie}/>)}
-            </div>
-        </div>
-    )
+  return (
+    <div className="account page">
+      <AccountProfile />
+      {/* <div className="rexys">
+        {rexys.movies !== [] &&
+          rexys.movies.map((movie) => <AccountRexy item={movie} />)}
+      </div> */}
+    </div>
+  );
 }
 const mapStateToProps = (state) => {
-    return { 
-            rexyIDs: state.rexyIDs,
-            rexys: state.rexys 
-        }
+  return {
+    rexyIDs: state.rexyIDs,
+    rexys: state.rexys,
+  };
 };
 export default connect(mapStateToProps)(Account);

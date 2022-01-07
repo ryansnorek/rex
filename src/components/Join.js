@@ -25,7 +25,6 @@ export default function Join() {
     }, 1618);
   };
 
-
   return (
     <div className="login join page">
       <form onSubmit={handleSubmit}>

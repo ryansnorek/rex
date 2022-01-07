@@ -10,5 +10,5 @@ function PrivateRoute({ children, redirectTo, auth }) {
     return authorized ? children : <Navigate to={redirectTo}/>
 }
 
-const mapStateToProps = (state) => ({ auth: state.auth })
+const mapStateToProps = (state) => ({ auth: state.auth });
 export default connect(mapStateToProps)(PrivateRoute);
