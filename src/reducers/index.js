@@ -3,7 +3,7 @@ import  * as a from "../actions";
 const initialState = {
   data: [],
   rexyIDs: [],
-  rexys: {
+  userContent: {
     movies: [],
     tvShows: [],
   },
@@ -31,8 +31,10 @@ export default function reducer(state = initialState, action) {
       return { ...state, data: action.payload, isFetching: false };
     case a.FETCH_ERROR:
       return { ...state, errors: action.payload };
-    case a.ADD_MOVIE:
-      return { ...state, rexyIDs: [...state.rexyIDs, action.payload] };
+    case a.SET_USER_MOVIES:
+      return { ...state, userContent: { movies: [...action.payload] }};
+    case a.SET_USER_TV_SHOWS:
+      return { ...state, userContent: { tvShows: [...action.payload] }};
     case a.DELETE_REXY:
       const filteredIDs = state.rexyIDs.filter((id) => id !== action.payload);
       const filteredRexys = state.rexys.movies.filter(

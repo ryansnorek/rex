@@ -5,7 +5,8 @@ import { BASE_URL, BACKEND_URL } from "../constants";
 export const FETCH_START = "FETCH_START";
 export const FETCH_QUERY = "FETCH_QUERY";
 export const FETCH_ERROR = "FETCH_ERROR";
-export const ADD_MOVIE = "ADD_MOVIE";
+export const SET_USER_MOVIES = "SET_USER_MOVIES";
+export const SET_USER_TV_SHOWS = "SET_USER_TV_SHOWS";
 export const DELETE_REXY = "DELETE_REXY";
 export const FIND_REXY_MOVIE = "FIND_REXY_MOVIE";
 export const SET_ITEM_MOVIE = "SET_ITEM_MOVIE";
@@ -112,7 +113,17 @@ export const getUserMovies = (user_id) => {
     axios
       .get(`${BACKEND_URL}/profile/${user_id}/movies`)
       .then((res) => {
-        dispatch(addMovie(res.data));
+        dispatch(setUserMovies(res.data));
+      })
+      .catch((err) => console.log(err));
+  };
+};
+export const getUserTvShows = (user_id) => {
+  return (dispatch) => {
+    axios
+      .get(`${BACKEND_URL}/profile/${user_id}/tv-shows`)
+      .then((res) => {
+        dispatch(setUserTvShows(res.data));
       })
       .catch((err) => console.log(err));
   };
@@ -127,8 +138,11 @@ export const fetchQuery = (query) => {
 export const fetchError = (error) => {
   return { type: FETCH_ERROR, payload: error };
 };
-export const addMovie = (movie_id) => {
-  return { type: ADD_MOVIE, payload: movie_id };
+export const setUserMovies = (movies) => {
+  return { type: SET_USER_MOVIES, payload: movies };
+};
+export const setUserTvShows = (tvShows) => {
+  return { type: SET_USER_TV_SHOWS, payload: tvShows };
 };
 export const deleteRexy = (id) => {
   return { type: DELETE_REXY, payload: id };
