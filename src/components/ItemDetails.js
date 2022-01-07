@@ -1,31 +1,38 @@
 import { connect } from "react-redux";
-import { addRexy } from "../actions";
 import ItemDetailsMovie from "./ItemDetailsMovie";
 import ItemDetailsTvShow from "./ItemDetailsTvShow";
 
-function ItemDetails({ dispatch, item, rexyIDs }) {
-    const movie = item.movie ? item.movie : [];
-    const tvShow = item.tvShow ? item.tvShow : [];
+function ItemDetails({ item, user }) {
+  const movie = item.movie ? item.movie : [];
+  const tvShow = item.tvShow ? item.tvShow : [];
 
-    const handleAdd = (id) => {
-        if (rexyIDs !== []) {
-            const alreadyInCollection = rexyIDs.find(rexyID => rexyID === id);
-            if (alreadyInCollection) {
-                return alert("You already have that one");
-            }
-        }
-        dispatch(addRexy(id));
-    };
+  const handleAddContent = (content_id, addContent) => {
+    if (!user.user_id) return alert("login to add content");
+    addContent(content_id, user.user_id);
+  };
 
-    if (!item.movie && !item.tvShow) {
-        return <h1>If you do not see it, please refresh the page</h1>
-    }
-    return (
-        <div className="page">
-            {item.movie && <ItemDetailsMovie movie={movie} handleAdd={handleAdd}/>}
-            {item.tvShow && <ItemDetailsTvShow tvShow={tvShow} handleAdd={handleAdd}/>}
-        </div>
-    )
-};
-const mapStateToProps = (state) => ({ item: state.item, rexyIDs: state.rexyIDs });
+  if (!item.movie && !item.tvShow) {
+    return <h1>Please refresh the page</h1>;
+  }
+  return (
+    <div className="page">
+      {item.movie && (
+        <ItemDetailsMovie 
+          movie={movie} 
+          handleAddContent={handleAddContent} 
+        />
+      )}
+      {item.tvShow && (
+        <ItemDetailsTvShow
+          tvShow={tvShow}
+          handleAddContent={handleAddContent}
+        />
+      )}
+    </div>
+  );
+}
+const mapStateToProps = (state) => ({
+  item: state.item,
+  user: state.user,
+});
 export default connect(mapStateToProps)(ItemDetails);

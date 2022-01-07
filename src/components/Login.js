@@ -42,7 +42,7 @@ function Login({ dispatch }) {
             onChange={handleChange}
           />
         </div>
-        <button>Login</button>
+        <button className="round-button">Login</button>
         <div className="join-btn">
           <Link to="/join">
             <button>Join</button>

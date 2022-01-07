@@ -135,6 +135,17 @@ button {
   color: snow;
   border-radius: 3px;
 }
+.round-button {
+    width: 69px;
+    height: 69px;
+    border-radius: 50%;
+    border: 1px solid lavender;
+    margin-top: 3%;
+    font-size: 1.3rem;
+  }
+.round-button:hover {
+  box-shadow: 0 0 9px inset rgb(131, 131, 143);
+}
 .page {
   margin-top: 5vh;
   width: 100vw;
@@ -374,20 +385,6 @@ p {
   font-size: 2rem;
 }
 
-.login button {
-  width: 69px;
-  height: 69px;
-  border-radius: 50%;
-  border: 1px solid lavender;
-  margin-top: 3%;
-  font-size: 1.3rem;
-}
-/* * {
-  border: 1px grey solid;
-} */
-.login button:hover {
-  box-shadow: 0 0 9px inset rgb(131, 131, 143);
-}
 .join-btn {
   display: flex;
   align-items: center;
