@@ -79,18 +79,32 @@ export const loginUser = (credentials) => {
     axios
       .post(`${BACKEND_URL}/auth/login`, credentials)
       .then((res) => {
-        localStorage.setItem("token", res.data.token);
+        res.data.authorized = true;
         dispatch(authorizeUser(res.data));
-        dispatch(getUser(res.data.user_id));
-        dispatch(getProfile(res.data.user_id));
-        dispatch(getUserMovies(res.data.user_id));
-        dispatch(getUserTvShows(res.data.user_id));
+        return res.data.user_id;
+      })
+      .then((user_id) => {
+        dispatch(getUser(user_id));
+        return user_id;
+      })
+      .then((user_id) => {
+        dispatch(getProfile(user_id));
+        return user_id;
+      })
+      .then((user_id) => {
+        dispatch(getUserMovies(user_id));
+        return user_id;
+      })
+      .then((user_id) => {
+        dispatch(getUserTvShows(user_id));
+        return user_id;
       })
       .catch((err) => dispatch(fetchError(err)));
   };
 };
 export const getUser = (user_id) => {
   return (dispatch) => {
+    dispatch(fetchStart());
     axios
       .get(`${BACKEND_URL}/users/${user_id}`)
       .then((res) => {
@@ -101,6 +115,7 @@ export const getUser = (user_id) => {
 };
 export const getProfile = (user_id) => {
   return (dispatch) => {
+    dispatch(fetchStart());
     axios
       .get(`${BACKEND_URL}/profile/${user_id}`)
       .then((res) => {
@@ -111,6 +126,7 @@ export const getProfile = (user_id) => {
 };
 export const getUserMovies = (user_id) => {
   return (dispatch) => {
+    dispatch(fetchStart());
     axios
       .get(`${BACKEND_URL}/profile/${user_id}/movies`)
       .then((res) => {
@@ -121,6 +137,7 @@ export const getUserMovies = (user_id) => {
 };
 export const getUserTvShows = (user_id) => {
   return (dispatch) => {
+    dispatch(fetchStart());
     axios
       .get(`${BACKEND_URL}/profile/${user_id}/tv-shows`)
       .then((res) => {

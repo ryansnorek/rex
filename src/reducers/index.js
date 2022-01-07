@@ -46,9 +46,9 @@ export default function reducer(state = initialState, action) {
         rexys: { movies: [...filteredRexys] },
       };
     case a.SET_ITEM_MOVIE:
-      return { ...state, item: { movie: action.payload } };
+      return { ...state, item: { movie: action.payload }, isFetching: false };
     case a.SET_ITEM_TV_SHOW:
-      return { ...state, item: { tvShow: action.payload } };
+      return { ...state, item: { tvShow: action.payload }, isFetching: false };
     case a.GET_FRIENDS:
       return { ...state, friends: action.payload };
     case a.DISCOVER_MOVIE:

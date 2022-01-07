@@ -46,7 +46,7 @@ function ItemDetailsMovie({ movie, handleAddContent }) {
       </div>
       <div className="button-container">
         <button className="round-button" 
-          onClick={() => handleAddContent(id, addUserMovie)}
+          onClick={() => handleAddContent(id, addUserMovie, "movie")}
         >
           Add to collection
         </button>
