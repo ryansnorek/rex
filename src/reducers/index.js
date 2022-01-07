@@ -1,7 +1,7 @@
 import  * as a from "../actions";
 
 const initialState = {
-  data: [],
+  queryResults: [],
   rexyIDs: [],
   userContent: {
     movies: [],
@@ -28,7 +28,7 @@ export default function reducer(state = initialState, action) {
     case a.FETCH_START:
       return { ...state, isFetching: true };
     case a.FETCH_QUERY:
-      return { ...state, data: action.payload, isFetching: false };
+      return { ...state, queryResults: action.payload, isFetching: false };
     case a.FETCH_ERROR:
       return { ...state, errors: action.payload };
     case a.SET_USER_MOVIES:

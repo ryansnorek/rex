@@ -84,6 +84,7 @@ export const loginUser = (credentials) => {
         dispatch(getUser(res.data.user_id));
         dispatch(getProfile(res.data.user_id));
         dispatch(getUserMovies(res.data.user_id));
+        dispatch(getUserTvShows(res.data.user_id));
       })
       .catch((err) => dispatch(fetchError(err)));
   };
@@ -132,8 +133,8 @@ export const getUserTvShows = (user_id) => {
 export const fetchStart = () => {
   return { type: FETCH_START };
 };
-export const fetchQuery = (query) => {
-  return { type: FETCH_QUERY, payload: query };
+export const fetchQuery = (queryResults) => {
+  return { type: FETCH_QUERY, payload: queryResults };
 };
 export const fetchError = (error) => {
   return { type: FETCH_ERROR, payload: error };

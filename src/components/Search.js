@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import SearchItem from "./SearchItem";
 import useSearch from "../hooks/useSearch";
 
-function Search({ dispatch, data, isFetching }) {
+function Search({ dispatch, queryResults, isFetching }) {
   const [
       queryType, 
       query, 
@@ -34,8 +34,8 @@ function Search({ dispatch, data, isFetching }) {
           </div>
         ) : (
           query &&
-          data.map((movie) => {
-            return <SearchItem item={movie} queryType={queryType} />
+          queryResults.map((result) => {
+            return <SearchItem item={result} queryType={queryType} />
           })
         )}
       </div>
@@ -44,7 +44,7 @@ function Search({ dispatch, data, isFetching }) {
 }
 const mapStateToProps = (state) => {
   return {
-    data: state.data,
+    queryResults: state.queryResults,
     discover: state.discover,
     isFetching: state.isFetching,
     errors: state.errors,
