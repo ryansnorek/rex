@@ -15,6 +15,10 @@ const initialState = {
   user: {},
   profile: {},
   friends: [],
+  userContentList: {
+    movies: [],
+    tvShows: [],
+  },
   discover: {
     movie: [],
     tv: [],
@@ -83,6 +87,22 @@ export default function reducer(state = initialState, action) {
         ...state,
         friends: action.payload,
         isFetching: false,
+      };
+    case a.ADD_USER_MOVIE_CONTENT:
+      return {
+        ...state,
+        userContentList: {
+          movies: [...state.userContentList.movies, ...action.payload],
+          tvShows: [...state.userContentList.tvShows],
+        },
+      };
+    case a.ADD_USER_TV_CONTENT:
+      return {
+        ...state,
+        userContentList: {
+          movies: [...state.userContentList.movies],
+          tvShows: [...state.userContentList.tvShows, ...action.payload],
+        },
       };
     case a.DISCOVER_MOVIE:
       return {

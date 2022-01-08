@@ -1,12 +1,11 @@
 import axios from "axios";
-import { API_TOKEN } from "../config";
-import { BASE_URL } from "../constants";
+import { BACKEND_URL } from "../constants";
 
-export default function axiosAuthorization() {
+export default function axiosAuthorization(token) {
     return axios.create({
-        baseURL: BASE_URL,
+        baseURL: BACKEND_URL,
         headers: { 
-            authorization: `Bearer ${API_TOKEN}`
+            authorization: token
         }
     })
 }

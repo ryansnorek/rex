@@ -1,4 +1,5 @@
 import axios from "axios";
+import axiosAuthorization from "../utils";
 import { API_KEY } from "../config";
 import { BASE_URL, BACKEND_URL } from "../constants";
 
@@ -19,6 +20,8 @@ export const AUTHORIZE_USER = "AUTHORIZE_USER";
 export const LOGIN_COMPLETE = "LOGIN_COMPLETE";
 export const SET_USER = "SET_USER";
 export const SET_PROFILE = "SET_PROFILE";
+export const ADD_USER_MOVIE_CONTENT = "ADD_USER_MOVIE_CONTENT";
+export const ADD_USER_TV_CONTENT = "ADD_USER_TV_CONTENT";
 
 export const getQueryResults = (category, query) => {
   return (dispatch) => {
@@ -35,9 +38,9 @@ export const findContentById = (id, type) => {
     axios
       .get(`${BASE_URL}/3/${type}/${id}?api_key=${API_KEY}`)
       .then((res) => {
-        type === "movie" 
-        ? dispatch(setItemMovie(res.data))
-        : dispatch(setItemTvShow(res.data));
+        type === "movie"
+          ? dispatch(setItemMovie(res.data))
+          : dispatch(setItemTvShow(res.data));
       })
       .catch((err) => dispatch(fetchError(err)));
   };
@@ -82,70 +85,85 @@ export const loginUser = (credentials) => {
       .then((res) => {
         res.data.authorized = true;
         dispatch(authorizeUser(res.data));
-        return res.data.user_id;
+        return res.data;
       })
-      .then((user_id) => {
-        dispatch(getUser(user_id));
-        return user_id;
+      .then((data) => {
+        dispatch(getUser(data));
+        return data;
       })
-      .then((user_id) => {
-        dispatch(getProfile(user_id));
-        return user_id;
+      .then((data) => {
+        dispatch(getProfile(data));
+        return data;
       })
-      .then((user_id) => {
-        dispatch(getUserMovies(user_id));
-        return user_id;
+      .then((data) => {
+        dispatch(getUserMovies(data));
+        return data;
       })
-      .then((user_id) => {
-        dispatch(getUserTvShows(user_id));
-        return user_id;
+      .then((data) => {
+        dispatch(getUserTvShows(data));
+        return data;
       })
       .catch((err) => dispatch(fetchError(err)))
-      .finally(() => dispatch(loginComplete()))
+      .finally(() => dispatch(loginComplete()));
   };
 };
-export const getUser = (user_id) => {
+export const getUser = (data) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    axios
-      .get(`${BACKEND_URL}/users/${user_id}`)
+    axiosAuthorization(data.token)
+      .get(`/users/${data.user_id}`)
       .then((res) => {
         dispatch(setUser(res.data));
       })
       .catch((err) => console.log(err));
   };
 };
-export const getProfile = (user_id) => {
+export const getProfile = (data) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    axios
-      .get(`${BACKEND_URL}/profile/${user_id}`)
+    axiosAuthorization(data.token)
+      .get(`/profile/${data.user_id}`)
       .then((res) => {
         dispatch(setProfile(res.data));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err));      
   };
 };
-export const getUserMovies = (user_id) => {
+export const getUserMovies = (data) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    axios
-      .get(`${BACKEND_URL}/profile/${user_id}/movies`)
+    axiosAuthorization(data.token)
+      .get(`/profile/${data.user_id}/movies`)
       .then((res) => {
         dispatch(setUserMovies(res.data));
       })
       .catch((err) => console.log(err));
   };
 };
-export const getUserTvShows = (user_id) => {
+export const getUserTvShows = (data) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    axios
-      .get(`${BACKEND_URL}/profile/${user_id}/tv-shows`)
+    axiosAuthorization(data.token)
+      .get(`/profile/${data.user_id}/tv-shows`)
       .then((res) => {
         dispatch(setUserTvShows(res.data));
       })
       .catch((err) => console.log(err));
+  };
+};
+export const findUserContentById = (id, type) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    console.log("id", id)
+    console.log("type", type)
+    axios
+      .get(`${BASE_URL}/3/${type}/${id}?api_key=${API_KEY}`)
+      .then((res) => {
+        type === "movie"
+          ? dispatch(addUserMovieContent(res.data))
+          : dispatch(addUserTvContent(res.data));
+      })
+      .catch((err) => dispatch(fetchError(err)));
   };
 };
 export const fetchStart = () => {
@@ -195,4 +213,10 @@ export const setUser = (user) => {
 };
 export const setProfile = (profile) => {
   return { type: SET_PROFILE, payload: profile };
+};
+export const addUserMovieContent = (movie) => {
+  return { type: ADD_USER_MOVIE_CONTENT, payload: movie };
+};
+export const addUserTvContent = (tvShow) => {
+  return { type: ADD_USER_TV_CONTENT, payload: tvShow };
 };

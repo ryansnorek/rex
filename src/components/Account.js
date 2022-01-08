@@ -1,9 +1,16 @@
 import { connect } from "react-redux";
 import AccountProfile from "./AccountProfile";
 import AccountRexy from "./AccountRexy";
+import { useEffect } from "react";
+import { loadUserContent } from "../helper";
 
-function Account({ userContent }) {
+function Account({ userContent, dispatch }) {
   const { movies, tvShows } = userContent;
+
+  useEffect(() => {
+    console.log("launching load-=-=-=====-=-=--==-=-")
+    loadUserContent(userContent, dispatch)
+  }, [])
 
   return (
     <div className="account page">
