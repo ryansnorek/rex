@@ -92,7 +92,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         userContentList: {
-          movies: [...state.userContentList.movies, ...action.payload],
+          movies: [...state.userContentList.movies, action.payload],
           tvShows: [...state.userContentList.tvShows],
         },
       };
@@ -101,7 +101,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         userContentList: {
           movies: [...state.userContentList.movies],
-          tvShows: [...state.userContentList.tvShows, ...action.payload],
+          tvShows: [...state.userContentList.tvShows, action.payload],
         },
       };
     case a.DISCOVER_MOVIE:

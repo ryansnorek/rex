@@ -11,7 +11,7 @@ function AccountRexy({ dispatch, item }) {
             <div className="poster">
                 {
                 item.poster_path ? 
-                <img src={`${POSTER_URL}${item.poster_path}`} alt="poster"/> :
+                <img src={`${POSTER_URL}${item.backdrop_path}`} alt="poster"/> :
                 <img src="../../images/unavailable_poster.jpeg" alt="poster" />
                 }
             </div>

@@ -1,6 +1,7 @@
 import { BACKEND_URL } from "../constants";
 import { findUserContentById } from "../actions";
 import axios from "axios";
+import axiosAuthorization from "../utils";
 
 export const registerNewUser = (newUser) => {
   axios
@@ -9,8 +10,9 @@ export const registerNewUser = (newUser) => {
     .catch((err) => console.log(err));
 };
 export const addUserMovie = (movie_id, user_id) => {
-  axios
-    .post(`${BACKEND_URL}/profile/movies`, {
+  const token = localStorage.getItem("token");
+  axiosAuthorization(token)
+    .post(`/profile/movies`, {
       movie_id,
       user_id,
     })
@@ -18,8 +20,9 @@ export const addUserMovie = (movie_id, user_id) => {
     .catch((err) => console.log(err));
 };
 export const addUserTvShow = (tv_show_id, user_id) => {
-  axios
-    .post(`${BACKEND_URL}/profile/tv-shows`, {
+  const token = localStorage.getItem("token");
+  axiosAuthorization(token)
+    .post(`/profile/tv-shows`, {
       tv_show_id,
       user_id,
     })
@@ -29,6 +32,14 @@ export const addUserTvShow = (tv_show_id, user_id) => {
 
 export const loadUserContent = (contentIds, dispatch) => {
   const { movies, tvShows } = contentIds;
-  movies.forEach((id) => dispatch(findUserContentById(id, "movie")));
-  tvShows.forEach((id) => dispatch(findUserContentById(id, "tv")));
+  if (movies !== []) {
+    movies.forEach((movie) => {
+      dispatch(findUserContentById(movie.movie_id, "movie"));
+    });
+  }
+  if (tvShows !== []) {
+    tvShows.forEach((tvShow) => {
+      dispatch(findUserContentById(tvShow.tv_show_id, "tv"));
+    });
+  }
 };

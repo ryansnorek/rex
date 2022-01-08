@@ -85,6 +85,7 @@ export const loginUser = (credentials) => {
       .then((res) => {
         res.data.authorized = true;
         dispatch(authorizeUser(res.data));
+        localStorage.setItem("token", res.data.token)
         return res.data;
       })
       .then((data) => {

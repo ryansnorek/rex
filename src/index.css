@@ -436,6 +436,8 @@ p {
   width: 100%;
   height: 100px;
   display: flex;
+  color: snow;
+  font-size: 4rem;
 }
 .friends {
   background-color: black;
