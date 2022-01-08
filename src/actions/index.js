@@ -148,7 +148,6 @@ export const getUserTvShows = (user_id) => {
       .catch((err) => console.log(err));
   };
 };
-
 export const fetchStart = () => {
   return { type: FETCH_START };
 };

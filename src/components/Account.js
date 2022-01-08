@@ -9,7 +9,9 @@ function Account({ userContent }) {
     <div className="account page">
       <AccountProfile />
       <div className="rexys">
+        <h2>Movies</h2>
         { movies && movies.map(item => <AccountRexy item={item} />) }
+        <h2>Tv Shows</h2>
         { tvShows && tvShows.map(item => <AccountRexy item={item} />) }
       </div>
     </div>

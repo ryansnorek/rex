@@ -29,16 +29,16 @@ export default function reducer(state = initialState, action) {
     case a.FETCH_START:
       return { ...state, isFetching: true };
     case a.FETCH_QUERY:
-      return { 
-        ...state, 
-        queryResults: action.payload, 
-        isFetching: false 
+      return {
+        ...state,
+        queryResults: action.payload,
+        isFetching: false,
       };
     case a.FETCH_ERROR:
-      return { 
-        ...state, 
-        errors: action.payload, 
-        isFetching: false 
+      return {
+        ...state,
+        errors: action.payload,
+        isFetching: false,
       };
     case a.SET_USER_MOVIES:
       return {
@@ -67,60 +67,60 @@ export default function reducer(state = initialState, action) {
         rexys: { movies: [...filteredRexys] },
       };
     case a.SET_ITEM_MOVIE:
-      return { 
-        ...state, 
-        item: { movie: action.payload }, 
-        isFetching: false 
+      return {
+        ...state,
+        item: { movie: action.payload },
+        isFetching: false,
       };
     case a.SET_ITEM_TV_SHOW:
-      return { 
-        ...state, 
-        item: { tvShow: action.payload }, 
-        isFetching: false 
+      return {
+        ...state,
+        item: { tvShow: action.payload },
+        isFetching: false,
       };
     case a.GET_FRIENDS:
-      return { 
-        ...state, 
-        friends: action.payload, 
-        isFetching: false 
+      return {
+        ...state,
+        friends: action.payload,
+        isFetching: false,
       };
     case a.DISCOVER_MOVIE:
-      return { 
-        ...state, 
-        discover: { movie: [...action.payload] }, 
-        isFetching: false 
+      return {
+        ...state,
+        discover: { movie: [...action.payload] },
+        isFetching: false,
       };
     case a.DISCOVER_TV:
-      return { 
-        ...state, 
-        discover: { tv: [...action.payload] }, 
-        isFetching: false 
+      return {
+        ...state,
+        discover: { tv: [...action.payload] },
+        isFetching: false,
       };
     case a.TRENDING:
-      return { 
-        ...state, 
-        discover: { trending: [...action.payload] }, 
-        isFetching: false 
+      return {
+        ...state,
+        discover: { trending: [...action.payload] },
+        isFetching: false,
       };
     case a.AUTHORIZE_USER:
-      return { 
-        ...state, 
-        auth: { ...action.payload }, 
-        isFetching: false 
+      return {
+        ...state,
+        auth: { ...action.payload },
+        isFetching: false,
       };
     case a.LOGIN_COMPLETE:
       return { ...state, loginComplete: true };
     case a.SET_USER:
-      return { 
-        ...state, 
-        user: { ...action.payload }, 
-        isFetching: false 
+      return {
+        ...state,
+        user: { ...action.payload },
+        isFetching: false,
       };
     case a.SET_PROFILE:
-      return { 
-        ...state, 
-        profile: { ...action.payload }, 
-        isFetching: false 
+      return {
+        ...state,
+        profile: { ...action.payload },
+        isFetching: false,
       };
     default:
       return state;

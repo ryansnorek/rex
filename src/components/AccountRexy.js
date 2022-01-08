@@ -2,12 +2,12 @@ import { connect } from "react-redux";
 import { POSTER_URL } from "../constants";
 import { deleteRexy } from "../actions";
 
-function AccountRexy({ dispatch, item, rexys }) {
+function AccountRexy({ dispatch, item }) {
     
     const handleRemove = (id) => dispatch(deleteRexy(id));
 
     return (
-        <div className="item">
+        <div className="account-item">
             <div className="poster">
                 {
                 item.poster_path ? 
@@ -24,6 +24,7 @@ function AccountRexy({ dispatch, item, rexys }) {
         </div>
     )
 };
+// delete?
 const mapStateToProps = (state) => ({ rexys: state.rexys });
 export default connect(mapStateToProps)(AccountRexy);
 
