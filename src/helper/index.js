@@ -29,17 +29,3 @@ export const addUserTvShow = (tv_show_id, user_id) => {
     .then((res) => console.log(res.data))
     .catch((err) => console.log(err));
 };
-
-export const loadUserContent = (contentIds, dispatch) => {
-  const { movies, tvShows } = contentIds;
-  if (movies !== []) {
-    movies.forEach((movie) => {
-      dispatch(findUserContentById(movie.movie_id, "movie"));
-    });
-  }
-  if (tvShows !== []) {
-    tvShows.forEach((tvShow) => {
-      dispatch(findUserContentById(tvShow.tv_show_id, "tv"));
-    });
-  }
-};
