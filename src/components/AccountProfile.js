@@ -33,7 +33,7 @@ function AccountProfile({ user, profile }) {
             </div>
             <div className="text">
                 <h3>{profile.display_name}</h3>
-                <h3>{user.username}</h3>
+                <h3>@{user.username}</h3>
             </div>
             <span onClick={handleEdit}>
                 <button>Edit profile</button>
