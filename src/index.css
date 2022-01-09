@@ -649,6 +649,9 @@ p {
   .friend-search .nav-bar input {
     width: 96vw;
   }
+  .tagline {
+    display: none;
+  }
 }
 /* iPhone 6/7/8/X */
 @media (max-width: 375px) {
