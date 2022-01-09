@@ -10,6 +10,9 @@ function Home({ dispatch, discover }) {
     discover
   );
 
+  // Load each category type on mount and store in state
+  // Does not make api call twice
+
   const navigate = useNavigate();
   const handleClickPoster = (id, type) => {
     dispatch(findContentById(id, type));

@@ -28,7 +28,7 @@ function AccountRexy({ dispatch, item, type, user }) {
         )}
       </div>
       <div className="text">
-        <h3>{item.title}</h3>
+        <h3>{item.title || item.name}</h3>
       </div>
       <div className="actions">
         <button onClick={() => handleSend(item.id)}>Send</button>

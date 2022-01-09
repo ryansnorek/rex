@@ -148,7 +148,6 @@ export const loginComplete = () => {
   return { type: LOGIN_COMPLETE };
 };
 
-
 // USER MOVIES //
 export const addUserMovie = (movie_id, user_id) => {
   return (dispatch) => {
@@ -159,7 +158,7 @@ export const addUserMovie = (movie_id, user_id) => {
         user_id,
       })
       .then(() => {
-        dispatch(getUserMovies(user_id))
+        dispatch(getUserMovies(user_id));
       })
       .catch((err) => console.log(err));
   };
@@ -190,7 +189,7 @@ export const deleteUserMovie = (content_id, user_id) => {
     axiosAuthorization()
       .delete("/profile/movies", {
         movie_id: content_id,
-        user_id: user_id
+        user_id: user_id,
       })
       .then((res) => {
         console.log(res);
@@ -204,17 +203,18 @@ export const addUserTvShow = (tv_show_id, user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());
     axiosAuthorization()
-    .post(`/profile/tv-shows`, {
-      tv_show_id,
-      user_id,
-    })
-    .then(() => dispatch(getUserTvShows(user_id)))
-    .catch((err) => console.log(err));
-  }
+      .post(`/profile/tv-shows`, {
+        tv_show_id,
+        user_id,
+      })
+      .then(() => dispatch(getUserTvShows(user_id)))
+      .catch((err) => console.log(err));
+  };
 };
 export const getUserTvShows = (user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());
+    dispatch(clearUserTvShowList());
     axiosAuthorization()
       .get(`/profile/${user_id}/tv-shows`)
       .then((res) => {
@@ -288,5 +288,3 @@ export const discoverTvList = (tvShows) => {
 export const trendingList = (trending) => {
   return { type: TRENDING, payload: trending };
 };
-
-
