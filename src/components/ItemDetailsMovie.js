@@ -38,7 +38,7 @@ function ItemDetailsMovie({ movie, handleAddContent }) {
         <button className="round-button" 
           onClick={() => handleAddContent(id, "movie")}
         >
-          Add to collection
+          Add Movie
         </button>
       </div>
     </div>

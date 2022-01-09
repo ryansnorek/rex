@@ -16,6 +16,7 @@ function ItemDetails({ dispatch, item, user }) {
         ? addUserMovie(contentId, user.user_id)
         : addUserTvShow(contentId, user.user_id)
     );
+    alert("added rexy")
   };
 
   if (!item.movie && !item.tvShow) {

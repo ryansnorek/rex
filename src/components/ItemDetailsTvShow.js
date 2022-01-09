@@ -40,7 +40,7 @@ function ItemDetailsTvShow({ tvShow, handleAddContent }) {
           className="round-button"
           onClick={() => handleAddContent(id, "tv")}
         >
-          Add to collection
+          Add Show
         </button>
       </div>
     </div>
