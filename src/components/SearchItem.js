@@ -3,9 +3,8 @@ import { POSTER_URL } from "../constants";
 import { findContentById } from "../actions";
 import { addUserMovie, addUserTvShow } from "../actions";
 import { useNavigate } from "react-router-dom";
-import { loadUserContent } from "../helper";
 
-function SearchItem({ userContent, userContentList, dispatch, item, category, user }) {
+function SearchItem({ dispatch, item, category, user }) {
   const navigate = useNavigate();
 
   const handleAddContent = (contentId, type) => {
@@ -17,7 +16,6 @@ function SearchItem({ userContent, userContentList, dispatch, item, category, us
         ? addUserMovie(contentId, user.user_id)
         : addUserTvShow(contentId, user.user_id)
     );
-    // loadUserContent(userContent, dispatch, userContentList);
   };
   const handleClickDetails = (id, type) => {
     dispatch(findContentById(id, type));

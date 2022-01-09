@@ -190,7 +190,7 @@ export const deleteUserMovie = (content_id, user_id) => {
     axiosAuthorization()
       .delete("/profile/movies", {
         movie_id: content_id,
-        user_id: user_id,
+        user_id: user_id
       })
       .then((res) => {
         console.log(res);
@@ -218,7 +218,9 @@ export const getUserTvShows = (user_id) => {
     axiosAuthorization()
       .get(`/profile/${user_id}/tv-shows`)
       .then((res) => {
-        dispatch(setUserTvShows(res.data));
+        res.data.forEach((tvShow) => {
+          dispatch(findUserContentById(tvShow.tv_show_id, "tv"));
+        });
       })
       .catch((err) => console.log(err));
   };

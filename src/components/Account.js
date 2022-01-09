@@ -1,23 +1,10 @@
 import { connect } from "react-redux";
 import AccountProfile from "./AccountProfile";
 import AccountRexy from "./AccountRexy";
-import useLoadContent from "../hooks/useLoadContent";
-import { loadUserContent } from "../helper";
-import { useEffect } from "react";
 
-function Account({ userContent, dispatch, userContentList }) {
-  // const [movies, tvShows] = useLoadContent(
-  //   userContent,
-  //   dispatch,
-  //   userContentList
-  // );
+function Account({ userContentList }) {
   const { movies, tvShows } = userContentList;
-  useEffect(() => {
-    if (movies.length === 0 && tvShows.length === 0) {
-      loadUserContent(userContent, dispatch, userContentList);
-    }
-  }, [userContent]);
-
+ 
   return (
     <div className="account page">
       <AccountProfile />

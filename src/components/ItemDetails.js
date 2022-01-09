@@ -1,10 +1,9 @@
 import { connect } from "react-redux";
 import { addUserMovie, addUserTvShow } from "../actions";
-import { loadUserContent } from "../helper";
 import ItemDetailsMovie from "./ItemDetailsMovie";
 import ItemDetailsTvShow from "./ItemDetailsTvShow";
 
-function ItemDetails({ userContent, userContentList, dispatch, item, user }) {
+function ItemDetails({ dispatch, item, user }) {
   const movie = item.movie ? item.movie : [];
   const tvShow = item.tvShow ? item.tvShow : [];
 
@@ -17,7 +16,6 @@ function ItemDetails({ userContent, userContentList, dispatch, item, user }) {
         ? addUserMovie(contentId, user.user_id)
         : addUserTvShow(contentId, user.user_id)
     );
-    // loadUserContent(userContent, dispatch, userContentList);
   };
 
   if (!item.movie && !item.tvShow) {
