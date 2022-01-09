@@ -6,8 +6,6 @@ function ItemDetailsMovie({ movie, handleAddContent }) {
     title,
     tagline,
     genres,
-    budget,
-    revenue,
     vote_average,
     release_date,
     overview,
@@ -30,13 +28,6 @@ function ItemDetailsMovie({ movie, handleAddContent }) {
           </div>
           <div className="center">
             <p>Released: {release_date}</p>
-            <p>
-              Budget: ${budget === 0 ? " unavailable" : budget.toLocaleString()}
-            </p>
-            <p>
-              Revenue: $
-              {revenue === 0 ? " unavailable" : revenue.toLocaleString()}
-            </p>
           </div>
         </div>
         <div className="right">

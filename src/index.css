@@ -618,10 +618,8 @@ p {
   .item-details p {
     padding: 2%;
   }
-  .item-details .button-container {
-    /* margin: 2%; */
-  }
-  .item-details button {
+  .genres {
+    display: none;
   }
   .login form {
     width: 96vw;
