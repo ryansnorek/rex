@@ -1,19 +1,16 @@
 import { connect } from "react-redux";
 import { POSTER_URL } from "../constants";
-import { deleteUserMovie, deleteUserTvShow } from '../actions';
+import { deleteUserMovie, deleteUserTvShow } from "../actions";
 import { useEffect } from "react";
 
 function AccountRexy({ dispatch, item, type, user }) {
-
-  useEffect(() => {
-
-  }, [])  
+  useEffect(() => {}, []);
   const handleRemove = (itemId) => {
-      dispatch(
-        type === "movie"
+    dispatch(
+      type === "movie"
         ? deleteUserMovie(itemId, user.user_id)
         : deleteUserTvShow(itemId, user.user_id)
-      )
+    );
   };
 
   const handleSend = () => {};
@@ -37,6 +34,7 @@ function AccountRexy({ dispatch, item, type, user }) {
     </div>
   );
 }
-// delete?
-const mapStateToProps = (state) => ({ user: state.user });
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
 export default connect(mapStateToProps)(AccountRexy);
