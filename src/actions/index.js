@@ -1,7 +1,7 @@
 import axios from "axios";
 import axiosAuthorization from "../utils";
 import { API_KEY } from "../config";
-import { BASE_URL, BACKEND_URL, TOKEN } from "../constants";
+import { BASE_URL, BACKEND_URL } from "../constants";
 
 export const FETCH_START = "FETCH_START";
 export const FETCH_QUERY = "FETCH_QUERY";
@@ -188,11 +188,12 @@ export const deleteUserMovie = (content_id, user_id) => {
     dispatch(fetchStart());
     axiosAuthorization()
       .delete("/profile/movies", {
-        movie_id: content_id,
-        user_id: user_id,
+        data: {
+          movie_id: content_id,
+          user_id: user_id,
+        },
       })
       .then((res) => {
-        console.log(res);
         dispatch(getUserMovies(user_id));
       })
       .catch((err) => dispatch(fetchError(err)));
@@ -236,11 +237,13 @@ export const deleteUserTvShow = (content_id, user_id) => {
     dispatch(fetchStart());
     axiosAuthorization()
       .delete("/profile/tv-shows", {
-        tv_show_id: content_id,
-        user_id: user_id,
+        data: {
+          tv_show_id: content_id,
+          user_id: user_id,
+        },
       })
       .then(() => {
-        dispatch(getUserMovies(user_id));
+        dispatch(getUserTvShows(user_id));
       })
       .catch((err) => dispatch(fetchError(err)));
   };
