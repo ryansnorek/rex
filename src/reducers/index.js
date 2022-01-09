@@ -83,6 +83,7 @@ export default function reducer(state = initialState, action) {
     case a.ADD_USER_MOVIE_CONTENT:
       return {
         ...state,
+        isFetching: false,
         userContentList: {
           movies: [...state.userContentList.movies, action.payload],
           tvShows: [...state.userContentList.tvShows],
@@ -91,6 +92,7 @@ export default function reducer(state = initialState, action) {
     case a.CLEAR_USER_MOVIE_LIST:
       return {
         ...state,
+        isFetching: false,
         userContentList: {
           movies: [],
           tvShows: [...state.userContentList.tvShows],
@@ -99,6 +101,7 @@ export default function reducer(state = initialState, action) {
     case a.ADD_USER_TV_CONTENT:
       return {
         ...state,
+        isFetching: false,
         userContentList: {
           movies: [...state.userContentList.movies],
           tvShows: [...state.userContentList.tvShows, action.payload],
@@ -107,6 +110,7 @@ export default function reducer(state = initialState, action) {
       case a.CLEAR_USER_TV_LIST:
         return {
           ...state,
+          isFetching: false,
           userContentList: {
             movies: [...state.userContentList.movies],
             tvShows: [],

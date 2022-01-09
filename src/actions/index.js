@@ -234,14 +234,13 @@ export const setUserTvShows = (tvShows) => {
 export const deleteUserTvShow = (content_id, user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    const token = localStorage.getItem("token");
     axiosAuthorization()
       .delete("/profile/tv-shows", {
         tv_show_id: content_id,
         user_id: user_id,
       })
       .then(() => {
-        dispatch(getUserMovies({ token, user_id }));
+        dispatch(getUserMovies(user_id));
       })
       .catch((err) => dispatch(fetchError(err)));
   };
@@ -258,6 +257,12 @@ export const findUserContentById = (id, type) => {
       })
       .catch((err) => dispatch(fetchError(err)));
   };
+};
+export const addUserMovieContent = (movie) => {
+  return { type: ADD_USER_MOVIE_CONTENT, payload: movie };
+};
+export const addUserTvContent = (tvShow) => {
+  return { type: ADD_USER_TV_CONTENT, payload: tvShow };
 };
 export const fetchStart = () => {
   return { type: FETCH_START };
@@ -283,9 +288,5 @@ export const discoverTvList = (tvShows) => {
 export const trendingList = (trending) => {
   return { type: TRENDING, payload: trending };
 };
-export const addUserMovieContent = (movie) => {
-  return { type: ADD_USER_MOVIE_CONTENT, payload: movie };
-};
-export const addUserTvContent = (tvShow) => {
-  return { type: ADD_USER_TV_CONTENT, payload: tvShow };
-};
+
+

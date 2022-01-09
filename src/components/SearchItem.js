@@ -4,7 +4,7 @@ import { findContentById } from "../actions";
 import { addUserMovie, addUserTvShow } from "../actions";
 import { useNavigate } from "react-router-dom";
 
-function SearchItem({ dispatch, item, category, user }) {
+function SearchItem({ dispatch, item, queryType, user }) {
   const navigate = useNavigate();
 
   const handleAddContent = (contentId, type) => {
@@ -33,12 +33,12 @@ function SearchItem({ dispatch, item, category, user }) {
         )}
       </div>
       <div className="text">
-        {category === "tv" ? (
+        {queryType === "tv" ? (
           <h2>{item.original_name}</h2>
         ) : (
           <h2>{item.title}</h2>
         )}
-        {category === "tv" ? (
+        {queryType === "tv" ? (
           <p>First aired: {item.first_air_date}</p>
         ) : (
           <p>Released: {item.release_date}</p>
@@ -46,7 +46,7 @@ function SearchItem({ dispatch, item, category, user }) {
         <div className="button-container">
           <button
             onClick={() =>
-              category === "tv"
+              queryType === "tv"
                 ? handleClickDetails(item.id, "tv")
                 : handleClickDetails(item.id, "movie")
             }
@@ -57,11 +57,11 @@ function SearchItem({ dispatch, item, category, user }) {
             onClick={() =>
               handleAddContent(
                 item.id,
-                category === "tv" ? "Show" : "movie"
+                queryType === "tv" ? "Show" : "movie"
               )
             }
           >
-            Add {category === "tv" ? "Show" : "Movie"}
+            Add {queryType === "tv" ? "Show" : "Movie"}
           </button>
         </div>
       </div>

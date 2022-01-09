@@ -11,8 +11,8 @@ function AccountRexy({ dispatch, item, type, user }) {
   const handleRemove = (itemId) => {
       dispatch(
         type === "movie"
-        ? deleteUserMovie(itemId, user.user_id, "movies")
-        : deleteUserTvShow(itemId, user.user_id, "tv-shows")
+        ? deleteUserMovie(itemId, user.user_id)
+        : deleteUserTvShow(itemId, user.user_id)
       )
   };
 
