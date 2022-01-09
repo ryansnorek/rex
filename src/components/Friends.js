@@ -10,9 +10,8 @@ function Friends({ dispatch, queryResults, isFetching }) {
         handleQueryChange
       ] = useSearch(dispatch, "users");
 
-  console.log(queryResults)
   return (
-    <div className="search page">
+    <div className="friend-search search page">
       <div className="nav-bar">
         <form>
           <input

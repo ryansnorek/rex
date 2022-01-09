@@ -441,6 +441,33 @@ p {
   border-radius: 100%;
   box-shadow: 1px 1px 3px #4f4f4f;
 }
+.edit-profile {
+  background-color: #2b3135;
+  width: 90vw;
+  height: 300px;
+  color: snow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8vh;
+  border-radius: 4px;
+  box-shadow: 0 0 1px lavender;
+  font-size: 3rem;
+}
+.edit-profile p {
+  width: 80%;
+}
+.edit-profile form {
+  display: flex;
+  flex-direction: column;
+  margin: 3%;
+  width: 200px;
+  background-color: transparent;
+}
+.edit-profile input {
+  background-color: #2b3135;
+}
 .account-item {
   height: 90px;
   display: flex;
@@ -481,9 +508,12 @@ p {
   justify-content: space-between;
   box-shadow: 0 0 1px lavender;
   background-color: #1d1d1d;
+  border-radius: 3px;
   color: snow;
 }
-
+.friend-search .nav-bar input {
+  width: 66vw;
+}
 /* ---------LOADING / ANIMATIONS----------- */
 .loading-container {
   width: 100%;
@@ -615,6 +645,9 @@ p {
   }
   .friend {
     width: 100vw;
+  }
+  .friend-search .nav-bar input {
+    width: 96vw;
   }
 }
 /* iPhone 6/7/8/X */

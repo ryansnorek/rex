@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { useState } from "react";
 
-function AccountProfile({ friends, user, profile }) {
+function AccountProfile({ user, profile }) {
     const [editMode, setEditMode] = useState(false);
     const [input, setInput] = useState("");
 
@@ -32,6 +32,7 @@ function AccountProfile({ friends, user, profile }) {
                     </span>} */}
             </div>
             <div className="text">
+                <h3>{profile.display_name}</h3>
                 <h3>{user.username}</h3>
             </div>
             <span onClick={handleEdit}>

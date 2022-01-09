@@ -1,4 +1,4 @@
-export default function Friend({ user }) {
+export default function Friend({ user, profile }) {
     return (
         <div className="friend">
             <div className="pic">

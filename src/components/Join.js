@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import useForm from "../hooks/useForm";
 import useInputMask from "../hooks/useInputMask";
-import { registerNewUser } from "../helper";
+import { registerNewUser } from "../actions";
+import { connect } from "react-redux";
 
 const initialValues = {
   username: "",
@@ -10,21 +11,26 @@ const initialValues = {
   phone: "",
 };
 
-export default function Join() {
+function Join({ isFetching, loginComplete, dispatch }) {
   const navigate = useNavigate();
-
   const [values, handleChange, clearForm] = useForm("join", initialValues);
   const [phone, inputPhone, handlePhoneChange] = useInputMask();
 
   const handleSubmit = (e) => {
     values.phone = phone;
-    registerNewUser(values);
+    dispatch(registerNewUser(values));
     clearForm(e);
-    setTimeout(() => {
-      navigate("/profile");
-    }, 1618);
   };
-
+  if (loginComplete) {
+    navigate("/account");
+  }
+  if (isFetching) {
+    return (
+      <div className="loading-container">
+        <div className="loading"></div>
+      </div>
+    );
+  }
   return (
     <div className="login join page">
       <form onSubmit={handleSubmit}>
@@ -62,8 +68,15 @@ export default function Join() {
             ref={inputPhone}
           />
         </div>
-        <button>Join</button>
+        <button className="round-button">Join</button>
       </form>
     </div>
   );
 }
+const mapStateToProps = (state) => {
+  return ({
+    isFetching: state.isFetching,
+    loginComplete: state.loginComplete,
+  })
+}
+export default connect(mapStateToProps)(Join);

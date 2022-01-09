@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
 import AccountProfile from "./AccountProfile";
 import AccountRexy from "./AccountRexy";
+import WelcomeNewUser from "./WelcomeNewUser";
 
-function Account({ userContentList, isFetching }) {
+function Account({ user, userContentList, isFetching, firstTimeUser, dispatch }) {
   const { movies, tvShows } = userContentList;
 
   if (isFetching) {
@@ -11,6 +12,11 @@ function Account({ userContentList, isFetching }) {
         <div className="loading"></div>
       </div>
     );
+  }
+  if (firstTimeUser) {
+    return (
+      <WelcomeNewUser user={user} dispatch={dispatch}/>
+    )
   }
   return (
     <div className="account page">
@@ -36,6 +42,7 @@ const mapStateToProps = (state) => {
     userContent: state.userContent,
     userContentList: state.userContentList,
     isFetching: state.isFetching,
+    firstTimeUser: state.firstTimeUser,
   };
 };
 export default connect(mapStateToProps)(Account);

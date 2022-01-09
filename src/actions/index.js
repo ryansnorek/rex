@@ -16,6 +16,8 @@ export const GET_FRIENDS = "GET_FRIENDS";
 export const DISCOVER_MOVIE = "DISCOVER_MOVIE";
 export const DISCOVER_TV = "DISCOVER_TV";
 export const TRENDING = "TRENDING";
+export const SET_FIRST_TIME_USER = "SET_FIRST_TIME_USER";
+export const UNSET_FIRST_TIME_USER = "UNSET_FIRST_TIME_USER";
 export const AUTHORIZE_USER = "AUTHORIZE_USER";
 export const LOGIN_COMPLETE = "LOGIN_COMPLETE";
 export const SET_USER = "SET_USER";
@@ -89,6 +91,25 @@ export const discoverContent = (type) => {
       .catch((err) => dispatch(fetchError(err)));
   };
 };
+export const registerNewUser = (newUser) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axios
+      .post(`${BACKEND_URL}/auth/register`, newUser)
+      .then(() => dispatch(setFirstTimeUser()))
+      .then(() => {
+        const { username, password } = newUser;
+        dispatch(loginUser({ username, password }));
+      })
+      .catch((err) => dispatch(fetchError(err)));
+  };
+};
+export const setFirstTimeUser = () => {
+  return { type: SET_FIRST_TIME_USER };
+};
+export const unsetFirstTimeUser = () => {
+  return { type: UNSET_FIRST_TIME_USER };
+};
 export const loginUser = (credentials) => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -151,10 +172,21 @@ export const getProfile = (data) => {
 export const setProfile = (profile) => {
   return { type: SET_PROFILE, payload: profile };
 };
+export const updateUserProfile = (profileEdits, firstTime) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axiosAuthorization()
+      .post("/profile", profileEdits)
+      .then((profile) => dispatch(setProfile(profile.data)))
+      .then(() => {
+        if (firstTime) dispatch(unsetFirstTimeUser())
+      })
+      .catch((err) => dispatch(fetchError(err)));
+  };
+};
 export const loginComplete = () => {
   return { type: LOGIN_COMPLETE };
 };
-
 // USER MOVIES //
 export const addUserMovie = (movie_id, user_id) => {
   return (dispatch) => {

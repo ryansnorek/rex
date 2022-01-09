@@ -25,6 +25,7 @@ const initialState = {
     trending: [],
   },
   isFetching: false,
+  firstTimeUser: false,
   loginComplete: false,
   errors: "",
 };
@@ -140,6 +141,10 @@ export default function reducer(state = initialState, action) {
         auth: { ...action.payload },
         isFetching: false,
       };
+    case a.SET_FIRST_TIME_USER:
+      return { ...state, firstTimeUser: true };
+    case a.UNSET_FIRST_TIME_USER:
+      return { ...state, firstTimeUser: false };
     case a.LOGIN_COMPLETE:
       return { ...state, loginComplete: true };
     case a.SET_USER:
