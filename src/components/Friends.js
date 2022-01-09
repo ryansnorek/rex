@@ -1,21 +1,46 @@
 import { connect } from "react-redux";
-import { useState } from "react";
-import { getFriends } from "../actions";
 import Friend from "./Friend";
+import useSearch from "../hooks/useSearch";
 
-function Friends(props) {
-    const { dispatch, friends } = props;
+function Friends({ dispatch, queryResults, isFetching }) {
+    const [
+        queryType, 
+        query, 
+        handleSelectQueryType, 
+        handleQueryChange
+      ] = useSearch(dispatch, "users");
 
-    useState(() => {
-        dispatch(getFriends())
-        // console.log(friends)
-    },[])
-    return (
-        <div className="friends page">
-            {/* <h1>Friends page under construction</h1> */}
-            {friends && friends.map(friend => <Friend friend={friend}/>)}
-        </div>
-    )
+  console.log(queryResults)
+  return (
+    <div className="search page">
+      <div className="nav-bar">
+        <form>
+          <input
+            type="text"
+            name="search"
+            placeholder="Search users"
+            value={query}
+            onChange={handleQueryChange}
+          />
+        </form>
+      </div>
+      <div className="results">
+        {isFetching && query ? (
+          <div className="loading-container">
+            <div className="loading"></div>
+          </div>
+        ) : (
+          query &&
+          queryResults.map((result) => {
+            return <Friend user={result} />
+          })
+        )}
+      </div>
+    </div>
+  );
 }
-const mapStateToProps = (state) => ({ friends: state.friends });
+const mapStateToProps = (state) => ({ 
+    queryResults: state.queryResults,
+    isFetching: state.isFetching 
+});
 export default connect(mapStateToProps)(Friends);

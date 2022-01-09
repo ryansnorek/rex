@@ -25,16 +25,23 @@ export const ADD_USER_TV_CONTENT = "ADD_USER_TV_CONTENT";
 export const CLEAR_USER_MOVIE_LIST = "CLEAR_USER_MOVIE_LIST";
 export const CLEAR_USER_TV_LIST = "CLEAR_USER_TV_LIST";
 
-export const getQueryResults = (category, query) => {
+export const getQueryResults = (type, query) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    axios
-      .get(`${BASE_URL}/3/search/${category}?api_key=${API_KEY}&query=${query}`)
-      .then((res) => dispatch(fetchQuery(res.data.results)))
-      .catch((err) => dispatch(fetchError(err)));
+    if (type === "users") {
+      axiosAuthorization()
+        .get(`users/username/${query}`)
+        .then((users) => dispatch(setQueryResults(users.data)))
+        .catch((err) => dispatch(fetchError(err)));
+    } else {
+      axios
+        .get(`${BASE_URL}/3/search/${type}?api_key=${API_KEY}&query=${query}`)
+        .then((content) => dispatch(setQueryResults(content.data.results)))
+        .catch((err) => dispatch(fetchError(err)));
+    }
   };
 };
-export const fetchQuery = (queryResults) => {
+export const setQueryResults = (queryResults) => {
   return { type: FETCH_QUERY, payload: queryResults };
 };
 export const findContentById = (id, type) => {
@@ -42,10 +49,10 @@ export const findContentById = (id, type) => {
     dispatch(fetchStart());
     axios
       .get(`${BASE_URL}/3/${type}/${id}?api_key=${API_KEY}`)
-      .then((res) => {
+      .then((content) => {
         type === "movie"
-          ? dispatch(setItemMovie(res.data))
-          : dispatch(setItemTvShow(res.data));
+          ? dispatch(setItemMovie(content.data))
+          : dispatch(setItemTvShow(content.data));
       })
       .catch((err) => dispatch(fetchError(err)));
   };
@@ -65,18 +72,18 @@ export const discoverContent = (type) => {
     if (type === "trending") {
       axios
         .get(`${BASE_URL}/3/trending/all/day?api_key=${API_KEY}`)
-        .then((res) => dispatch(trendingList(res.data.results)))
+        .then((content) => dispatch(trendingList(content.data.results)))
         .catch((err) => dispatch(fetchError(err)));
     }
     axios
       .get(
         `${BASE_URL}/3/discover/${type}?api_key=${API_KEY}&sort_by=popularity.desc`
       )
-      .then((res) => {
+      .then((content) => {
         dispatch(
           type === "movie"
-            ? discoverMovieList(res.data.results)
-            : discoverTvList(res.data.results)
+            ? discoverMovieList(content.data.results)
+            : discoverTvList(content.data.results)
         );
       })
       .catch((err) => dispatch(fetchError(err)));
@@ -121,8 +128,8 @@ export const getUser = (data) => {
     dispatch(fetchStart());
     axiosAuthorization()
       .get(`/users/${data.user_id}`)
-      .then((res) => {
-        dispatch(setUser(res.data));
+      .then((user) => {
+        dispatch(setUser(user.data));
       })
       .catch((err) => console.log(err));
   };
@@ -135,8 +142,8 @@ export const getProfile = (data) => {
     dispatch(fetchStart());
     axiosAuthorization()
       .get(`/profile/${data.user_id}`)
-      .then((res) => {
-        dispatch(setProfile(res.data));
+      .then((profile) => {
+        dispatch(setProfile(profile.data));
       })
       .catch((err) => console.log(err));
   };
@@ -169,8 +176,8 @@ export const getUserMovies = (user_id) => {
     dispatch(clearUserMovieList());
     axiosAuthorization()
       .get(`/profile/${user_id}/movies`)
-      .then((res) => {
-        res.data.forEach((movie) => {
+      .then((movies) => {
+        movies.data.forEach((movie) => {
           dispatch(findUserContentById(movie.movie_id, "movie"));
         });
       })
@@ -193,7 +200,7 @@ export const deleteUserMovie = (content_id, user_id) => {
           user_id: user_id,
         },
       })
-      .then((res) => {
+      .then(() => {
         dispatch(getUserMovies(user_id));
       })
       .catch((err) => dispatch(fetchError(err)));
@@ -218,8 +225,8 @@ export const getUserTvShows = (user_id) => {
     dispatch(clearUserTvShowList());
     axiosAuthorization()
       .get(`/profile/${user_id}/tv-shows`)
-      .then((res) => {
-        res.data.forEach((tvShow) => {
+      .then((tvShows) => {
+        tvShows.data.forEach((tvShow) => {
           dispatch(findUserContentById(tvShow.tv_show_id, "tv"));
         });
       })
@@ -253,10 +260,10 @@ export const findUserContentById = (id, type) => {
     dispatch(fetchStart());
     axios
       .get(`${BASE_URL}/3/${type}/${id}?api_key=${API_KEY}`)
-      .then((res) => {
+      .then((userContent) => {
         type === "movie"
-          ? dispatch(addUserMovieContent(res.data))
-          : dispatch(addUserTvContent(res.data));
+          ? dispatch(addUserMovieContent(userContent.data))
+          : dispatch(addUserTvContent(userContent.data));
       })
       .catch((err) => dispatch(fetchError(err)));
   };

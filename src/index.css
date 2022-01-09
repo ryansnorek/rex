@@ -214,7 +214,7 @@ select:focus {
   justify-content: center;
 }
 .results {
-  margin-top: 3vh;
+  margin-top: 5vh;
   width: 60%;
 }
 .item {
@@ -363,7 +363,7 @@ p {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  box-shadow: 0 0 3px lavender;
+  box-shadow: 0 0 1px lavender;
   border-radius: 9px;
 }
 .login .top {
@@ -474,12 +474,13 @@ p {
   justify-content: center;
 }
 .friend {
-  height: 20vh;
+  height: 90px;
   width: 66vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 0 3px lavender;
+  box-shadow: 0 0 1px lavender;
+  background-color: #1d1d1d;
   color: snow;
 }
 
@@ -611,6 +612,9 @@ p {
   .account-item .poster {
     height: 60px;
     border-radius: 6px;
+  }
+  .friend {
+    width: 100vw;
   }
 }
 /* iPhone 6/7/8/X */
