@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { getUserMovies, getUserTvShows } from "../actions";
+import { addUserMovie, addUserTvShow } from "../actions";
 import ItemDetailsMovie from "./ItemDetailsMovie";
 import ItemDetailsTvShow from "./ItemDetailsTvShow";
 
@@ -7,15 +7,14 @@ function ItemDetails({ dispatch, item, user }) {
   const movie = item.movie ? item.movie : [];
   const tvShow = item.tvShow ? item.tvShow : [];
 
-  const handleAddContent = (contentId, addContent, type) => {
+  const handleAddContent = (contentId, type) => {
     if (!user.user_id) {
       return alert("login to add content");
     }
-    addContent(contentId, user.user_id);
     dispatch(
       type === "movie"
-        ? getUserMovies(user.user_id)
-        : getUserTvShows(user.user_id)
+        ? addUserMovie(contentId, user.user_id)
+        : addUserTvShow(contentId, user.user_id)
     );
   };
 

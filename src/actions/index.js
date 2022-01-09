@@ -1,7 +1,7 @@
 import axios from "axios";
 import axiosAuthorization from "../utils";
 import { API_KEY } from "../config";
-import { BASE_URL, BACKEND_URL } from "../constants";
+import { BASE_URL, BACKEND_URL, TOKEN } from "../constants";
 
 export const FETCH_START = "FETCH_START";
 export const FETCH_QUERY = "FETCH_QUERY";
@@ -85,7 +85,7 @@ export const loginUser = (credentials) => {
       .then((res) => {
         res.data.authorized = true;
         dispatch(authorizeUser(res.data));
-        localStorage.setItem("token", res.data.token)
+        localStorage.setItem("token", res.data.token);
         return res.data;
       })
       .then((data) => {
@@ -111,7 +111,7 @@ export const loginUser = (credentials) => {
 export const getUser = (data) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    axiosAuthorization(data.token)
+    axiosAuthorization()
       .get(`/users/${data.user_id}`)
       .then((res) => {
         dispatch(setUser(res.data));
@@ -122,18 +122,18 @@ export const getUser = (data) => {
 export const getProfile = (data) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    axiosAuthorization(data.token)
+    axiosAuthorization()
       .get(`/profile/${data.user_id}`)
       .then((res) => {
         dispatch(setProfile(res.data));
       })
-      .catch((err) => console.log(err));      
+      .catch((err) => console.log(err));
   };
 };
 export const getUserMovies = (data) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    axiosAuthorization(data.token)
+    axiosAuthorization()
       .get(`/profile/${data.user_id}/movies`)
       .then((res) => {
         dispatch(setUserMovies(res.data));
@@ -144,7 +144,7 @@ export const getUserMovies = (data) => {
 export const getUserTvShows = (data) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    axiosAuthorization(data.token)
+    axiosAuthorization()
       .get(`/profile/${data.user_id}/tv-shows`)
       .then((res) => {
         dispatch(setUserTvShows(res.data));
@@ -155,14 +155,65 @@ export const getUserTvShows = (data) => {
 export const findUserContentById = (id, type) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    console.log("id", id)
-    console.log("type", type)
     axios
       .get(`${BASE_URL}/3/${type}/${id}?api_key=${API_KEY}`)
       .then((res) => {
         type === "movie"
           ? dispatch(addUserMovieContent(res.data))
           : dispatch(addUserTvContent(res.data));
+      })
+      .catch((err) => dispatch(fetchError(err)));
+  };
+};
+export const addUserMovie = (movie_id, user_id) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axiosAuthorization()
+      .post(`/profile/movies`, {
+        movie_id,
+        user_id,
+      })
+      .then(() => dispatch(getUserMovies({ token: TOKEN, user_id })))
+      .catch((err) => console.log(err));
+  };
+};
+export const addUserTvShow = (tv_show_id, user_id) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axiosAuthorization()
+    .post(`/profile/tv-shows`, {
+      tv_show_id,
+      user_id,
+    })
+    .then(() => dispatch(getUserTvShows({ token: TOKEN, user_id })))
+    .catch((err) => console.log(err));
+  }
+};
+export const deleteUserMovie = (content_id, user_id) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axiosAuthorization()
+      .delete("/profile/movies", {
+        movie_id: content_id,
+        user_id: user_id,
+      })
+      .then((res) => {
+        console.log(res);
+        dispatch(getUserMovies({ token: TOKEN, user_id: user_id }));
+      })
+      .catch((err) => dispatch(fetchError(err)));
+  };
+};
+export const deleteUserTvShow = (content_id, user_id) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axiosAuthorization()
+      .delete("/profile/tv-shows", {
+        tv_show_id: content_id,
+        user_id: user_id,
+      })
+      .then(() => {
+        dispatch(getUserMovies({ token: TOKEN, user_id: user_id }));
       })
       .catch((err) => dispatch(fetchError(err)));
   };
@@ -181,9 +232,6 @@ export const setUserMovies = (movies) => {
 };
 export const setUserTvShows = (tvShows) => {
   return { type: SET_USER_TV_SHOWS, payload: tvShows };
-};
-export const deleteRexy = (id) => {
-  return { type: DELETE_REXY, payload: id };
 };
 export const setItemMovie = (movie) => {
   return { type: SET_ITEM_MOVIE, payload: movie };

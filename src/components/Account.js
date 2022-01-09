@@ -5,19 +5,19 @@ import useLoadContent from "../hooks/useLoadContent";
 
 function Account({ userContent, dispatch, userContentList }) {
   const [movies, tvShows] = useLoadContent(
-    userContent, 
-    dispatch, 
+    userContent,
+    dispatch,
     userContentList
-    );
+  );
 
   return (
     <div className="account page">
       <AccountProfile />
       <div className="rexys">
         <h2>Movies</h2>
-        {movies && movies.map((item) => <AccountRexy item={item} />)}
+        {movies && movies.map((item) => <AccountRexy item={item} type={"movie"}/>)}
         <h2>Tv Shows</h2>
-        {tvShows && tvShows.map((item) => <AccountRexy item={item} />)}
+        {tvShows && tvShows.map((item) => <AccountRexy item={item} type={"tvShow"}/>)}
       </div>
     </div>
   );

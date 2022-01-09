@@ -1,17 +1,21 @@
 import { connect } from "react-redux";
 import { POSTER_URL } from "../constants";
 import { findContentById } from "../actions";
-import { addUserMovie, addUserTvShow } from "../helper";
+import { addUserMovie, addUserTvShow } from "../actions";
 import { useNavigate } from "react-router-dom";
 
 function SearchItem({ dispatch, item, category, user }) {
   const navigate = useNavigate();
 
-  const handleAddContent = (content_id, addContent) => {
+  const handleAddContent = (contentId, type) => {
     if (!user.user_id) {
       return alert("login to add content");
     }
-    addContent(content_id, user.user_id);
+    dispatch(
+      type === "movie"
+        ? addUserMovie(contentId, user.user_id)
+        : addUserTvShow(contentId, user.user_id)
+    );
   };
   const handleClickDetails = (id, type) => {
     dispatch(findContentById(id, type));
@@ -53,7 +57,7 @@ function SearchItem({ dispatch, item, category, user }) {
             onClick={() =>
               handleAddContent(
                 item.id,
-                category === "tv" ? addUserTvShow : addUserMovie
+                category === "tv" ? "Show" : "movie"
               )
             }
           >
@@ -64,5 +68,5 @@ function SearchItem({ dispatch, item, category, user }) {
     </div>
   );
 }
-const mapStateToProps = (state) => ({ user: state.user_id });
+const mapStateToProps = (state) => ({ user: state.user });
 export default connect(mapStateToProps)(SearchItem);

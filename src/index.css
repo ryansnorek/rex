@@ -136,13 +136,13 @@ button {
   border-radius: 3px;
 }
 .round-button {
-    width: 69px;
-    height: 69px;
-    border-radius: 50%;
-    border: 1px solid lavender;
-    margin-top: 3%;
-    font-size: 1.3rem;
-  }
+  width: 69px;
+  height: 69px;
+  border-radius: 50%;
+  border: 1px solid lavender;
+  margin-top: 3%;
+  font-size: 1.3rem;
+}
 .round-button:hover {
   box-shadow: 0 0 9px inset rgb(131, 131, 143);
 }
@@ -418,7 +418,7 @@ p {
   color: rgb(194, 194, 219);
 }
 .profile {
-  margin: 0;  
+  margin: 0;
   padding: 0;
   display: flex;
   width: 100vw;
@@ -426,18 +426,39 @@ p {
   background-color: #1f1e1e;
   align-items: center;
 }
-.rexys img {
-  height: 100px;
+.profile .text,
+.friend .text {
+  font-size: 2rem;
+  padding: 3%;
+  background-color: transparent;
 }
-.rexys {
-  width: 100vw;
+.pic img {
+  height: 50px;
+  border-radius: 100%;
+  box-shadow: 1px 1px 3px #4f4f4f;
 }
 .account-item {
-  width: 100%;
-  height: 100px;
+  height: 90px;
   display: flex;
   color: snow;
   font-size: 4rem;
+  align-items: center;
+  border: 1px solid black;
+}
+.account-item .poster img,
+.account-item .poster {
+  height: 90px;
+  margin: 0;
+}
+.account-item .text {
+  width: 30%;
+}
+.account-item .actions {
+  width: 25%;
+  text-align: center;
+}
+.account-item .actions button {
+  margin: 2%;
 }
 .friends {
   background-color: black;
@@ -455,18 +476,6 @@ p {
   justify-content: space-between;
   box-shadow: 0 0 3px lavender;
   color: snow;
-}
-.profile .text,
-.friend .text {
-  font-size: 2rem;
-  padding: 3%;
-  background-color: transparent;
-}
-.pic img {
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
-  box-shadow: 1px 1px 3px #4f4f4f;
 }
 
 /* ---------LOADING / ANIMATIONS----------- */

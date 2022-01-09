@@ -5,7 +5,6 @@ export default function useLoadContent(content, dispatch, contentList) {
   const { movies, tvShows } = contentList;
 
   const loadUserContent = (contentIds, dispatch) => {
-
     if (contentIds.movies !== []) {
       contentIds.movies.forEach((movie) => {
         dispatch(findUserContentById(movie.movie_id, "movie"));

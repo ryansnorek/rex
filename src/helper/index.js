@@ -1,7 +1,8 @@
 import { BACKEND_URL } from "../constants";
-import { findUserContentById } from "../actions";
 import axios from "axios";
 import axiosAuthorization from "../utils";
+
+const token = localStorage.getItem("token");
 
 export const registerNewUser = (newUser) => {
   axios
@@ -10,7 +11,6 @@ export const registerNewUser = (newUser) => {
     .catch((err) => console.log(err));
 };
 export const addUserMovie = (movie_id, user_id) => {
-  const token = localStorage.getItem("token");
   axiosAuthorization(token)
     .post(`/profile/movies`, {
       movie_id,
@@ -20,7 +20,6 @@ export const addUserMovie = (movie_id, user_id) => {
     .catch((err) => console.log(err));
 };
 export const addUserTvShow = (tv_show_id, user_id) => {
-  const token = localStorage.getItem("token");
   axiosAuthorization(token)
     .post(`/profile/tv-shows`, {
       tv_show_id,

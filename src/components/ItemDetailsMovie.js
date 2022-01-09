@@ -1,5 +1,4 @@
 import { POSTER_URL } from "../constants";
-import { addUserMovie } from "../helper";
 
 function ItemDetailsMovie({ movie, handleAddContent }) {
   const {
@@ -46,7 +45,7 @@ function ItemDetailsMovie({ movie, handleAddContent }) {
       </div>
       <div className="button-container">
         <button className="round-button" 
-          onClick={() => handleAddContent(id, addUserMovie, "movie")}
+          onClick={() => handleAddContent(id, "movie")}
         >
           Add to collection
         </button>

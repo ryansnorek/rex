@@ -47,6 +47,7 @@ export default function reducer(state = initialState, action) {
     case a.SET_USER_MOVIES:
       return {
         ...state,
+        isFetching: false,
         userContent: {
           movies: [...action.payload],
           tvShows: [...state.userContent.tvShows],
@@ -55,20 +56,11 @@ export default function reducer(state = initialState, action) {
     case a.SET_USER_TV_SHOWS:
       return {
         ...state,
+        isFetching: false,
         userContent: {
           movies: [...state.userContent.movies],
           tvShows: [...action.payload],
         },
-      };
-    case a.DELETE_REXY:
-      const filteredIDs = state.rexyIDs.filter((id) => id !== action.payload);
-      const filteredRexys = state.rexys.movies.filter(
-        (rexy) => rexy.id !== action.payload
-      );
-      return {
-        ...state,
-        rexyIds: [...filteredIDs],
-        rexys: { movies: [...filteredRexys] },
       };
     case a.SET_ITEM_MOVIE:
       return {

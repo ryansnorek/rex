@@ -1,5 +1,4 @@
 import { POSTER_URL } from "../constants";
-import { addUserTvShow } from "../helper";
 
 function ItemDetailsTvShow({ tvShow, handleAddContent }) {
   const {
@@ -39,7 +38,7 @@ function ItemDetailsTvShow({ tvShow, handleAddContent }) {
       <div className="button-container">
         <button
           className="round-button"
-          onClick={() => handleAddContent(id, addUserTvShow, "tv")}
+          onClick={() => handleAddContent(id, "tv")}
         >
           Add to collection
         </button>
