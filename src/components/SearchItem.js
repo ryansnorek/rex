@@ -3,8 +3,9 @@ import { POSTER_URL } from "../constants";
 import { findContentById } from "../actions";
 import { addUserMovie, addUserTvShow } from "../actions";
 import { useNavigate } from "react-router-dom";
+import { loadUserContent } from "../helper";
 
-function SearchItem({ dispatch, item, category, user }) {
+function SearchItem({ userContent, userContentList, dispatch, item, category, user }) {
   const navigate = useNavigate();
 
   const handleAddContent = (contentId, type) => {
@@ -16,6 +17,7 @@ function SearchItem({ dispatch, item, category, user }) {
         ? addUserMovie(contentId, user.user_id)
         : addUserTvShow(contentId, user.user_id)
     );
+    // loadUserContent(userContent, dispatch, userContentList);
   };
   const handleClickDetails = (id, type) => {
     dispatch(findContentById(id, type));
@@ -68,5 +70,9 @@ function SearchItem({ dispatch, item, category, user }) {
     </div>
   );
 }
-const mapStateToProps = (state) => ({ user: state.user });
+const mapStateToProps = (state) => ({ 
+  user: state.user,
+  userContent: state.userContent,
+  userContentList: state.userContentList, 
+});
 export default connect(mapStateToProps)(SearchItem);

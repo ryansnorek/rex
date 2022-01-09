@@ -22,6 +22,8 @@ export const SET_USER = "SET_USER";
 export const SET_PROFILE = "SET_PROFILE";
 export const ADD_USER_MOVIE_CONTENT = "ADD_USER_MOVIE_CONTENT";
 export const ADD_USER_TV_CONTENT = "ADD_USER_TV_CONTENT";
+export const CLEAR_USER_MOVIE_LIST = "CLEAR_USER_MOVIE_LIST";
+export const CLEAR_USER_TV_LIST = "CLEAR_USER_TV_LIST";
 
 export const getQueryResults = (category, query) => {
   return (dispatch) => {
@@ -31,6 +33,9 @@ export const getQueryResults = (category, query) => {
       .then((res) => dispatch(fetchQuery(res.data.results)))
       .catch((err) => dispatch(fetchError(err)));
   };
+};
+export const fetchQuery = (queryResults) => {
+  return { type: FETCH_QUERY, payload: queryResults };
 };
 export const findContentById = (id, type) => {
   return (dispatch) => {
@@ -97,16 +102,19 @@ export const loginUser = (credentials) => {
         return data;
       })
       .then((data) => {
-        dispatch(getUserMovies(data));
+        dispatch(getUserMovies(data.user_id));
         return data;
       })
       .then((data) => {
-        dispatch(getUserTvShows(data));
+        dispatch(getUserTvShows(data.user_id));
         return data;
       })
       .catch((err) => dispatch(fetchError(err)))
       .finally(() => dispatch(loginComplete()));
   };
+};
+export const authorizeUser = (auth) => {
+  return { type: AUTHORIZE_USER, payload: auth };
 };
 export const getUser = (data) => {
   return (dispatch) => {
@@ -119,6 +127,9 @@ export const getUser = (data) => {
       .catch((err) => console.log(err));
   };
 };
+export const setUser = (user) => {
+  return { type: SET_USER, payload: user };
+};
 export const getProfile = (data) => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -130,26 +141,107 @@ export const getProfile = (data) => {
       .catch((err) => console.log(err));
   };
 };
-export const getUserMovies = (data) => {
+export const setProfile = (profile) => {
+  return { type: SET_PROFILE, payload: profile };
+};
+export const loginComplete = () => {
+  return { type: LOGIN_COMPLETE };
+};
+
+
+// USER MOVIES //
+export const addUserMovie = (movie_id, user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());
     axiosAuthorization()
-      .get(`/profile/${data.user_id}/movies`)
-      .then((res) => {
-        dispatch(setUserMovies(res.data));
+      .post(`/profile/movies`, {
+        movie_id,
+        user_id,
+      })
+      .then(() => {
+        dispatch(getUserMovies(user_id))
       })
       .catch((err) => console.log(err));
   };
 };
-export const getUserTvShows = (data) => {
+export const getUserMovies = (user_id) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    dispatch(clearUserMovieList());
+    axiosAuthorization()
+      .get(`/profile/${user_id}/movies`)
+      .then((res) => {
+        res.data.forEach((movie) => {
+          dispatch(findUserContentById(movie.movie_id, "movie"));
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+};
+export const clearUserMovieList = () => {
+  return { type: CLEAR_USER_MOVIE_LIST };
+};
+export const setUserMovies = (movies) => {
+  return { type: SET_USER_MOVIES, payload: movies };
+};
+export const deleteUserMovie = (content_id, user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());
     axiosAuthorization()
-      .get(`/profile/${data.user_id}/tv-shows`)
+      .delete("/profile/movies", {
+        movie_id: content_id,
+        user_id: user_id,
+      })
+      .then((res) => {
+        console.log(res);
+        dispatch(getUserMovies(user_id));
+      })
+      .catch((err) => dispatch(fetchError(err)));
+  };
+};
+// USER TV SHOWS //
+export const addUserTvShow = (tv_show_id, user_id) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axiosAuthorization()
+    .post(`/profile/tv-shows`, {
+      tv_show_id,
+      user_id,
+    })
+    .then(() => dispatch(getUserTvShows(user_id)))
+    .catch((err) => console.log(err));
+  }
+};
+export const getUserTvShows = (user_id) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axiosAuthorization()
+      .get(`/profile/${user_id}/tv-shows`)
       .then((res) => {
         dispatch(setUserTvShows(res.data));
       })
       .catch((err) => console.log(err));
+  };
+};
+export const clearUserTvShowList = () => {
+  return { type: CLEAR_USER_TV_LIST };
+};
+export const setUserTvShows = (tvShows) => {
+  return { type: SET_USER_TV_SHOWS, payload: tvShows };
+};
+export const deleteUserTvShow = (content_id, user_id) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    const token = localStorage.getItem("token");
+    axiosAuthorization()
+      .delete("/profile/tv-shows", {
+        tv_show_id: content_id,
+        user_id: user_id,
+      })
+      .then(() => {
+        dispatch(getUserMovies({ token, user_id }));
+      })
+      .catch((err) => dispatch(fetchError(err)));
   };
 };
 export const findUserContentById = (id, type) => {
@@ -165,73 +257,11 @@ export const findUserContentById = (id, type) => {
       .catch((err) => dispatch(fetchError(err)));
   };
 };
-export const addUserMovie = (movie_id, user_id) => {
-  return (dispatch) => {
-    dispatch(fetchStart());
-    axiosAuthorization()
-      .post(`/profile/movies`, {
-        movie_id,
-        user_id,
-      })
-      .then(() => dispatch(getUserMovies({ token: TOKEN, user_id })))
-      .catch((err) => console.log(err));
-  };
-};
-export const addUserTvShow = (tv_show_id, user_id) => {
-  return (dispatch) => {
-    dispatch(fetchStart());
-    axiosAuthorization()
-    .post(`/profile/tv-shows`, {
-      tv_show_id,
-      user_id,
-    })
-    .then(() => dispatch(getUserTvShows({ token: TOKEN, user_id })))
-    .catch((err) => console.log(err));
-  }
-};
-export const deleteUserMovie = (content_id, user_id) => {
-  return (dispatch) => {
-    dispatch(fetchStart());
-    axiosAuthorization()
-      .delete("/profile/movies", {
-        movie_id: content_id,
-        user_id: user_id,
-      })
-      .then((res) => {
-        console.log(res);
-        dispatch(getUserMovies({ token: TOKEN, user_id: user_id }));
-      })
-      .catch((err) => dispatch(fetchError(err)));
-  };
-};
-export const deleteUserTvShow = (content_id, user_id) => {
-  return (dispatch) => {
-    dispatch(fetchStart());
-    axiosAuthorization()
-      .delete("/profile/tv-shows", {
-        tv_show_id: content_id,
-        user_id: user_id,
-      })
-      .then(() => {
-        dispatch(getUserMovies({ token: TOKEN, user_id: user_id }));
-      })
-      .catch((err) => dispatch(fetchError(err)));
-  };
-};
 export const fetchStart = () => {
   return { type: FETCH_START };
 };
-export const fetchQuery = (queryResults) => {
-  return { type: FETCH_QUERY, payload: queryResults };
-};
 export const fetchError = (error) => {
   return { type: FETCH_ERROR, payload: error };
-};
-export const setUserMovies = (movies) => {
-  return { type: SET_USER_MOVIES, payload: movies };
-};
-export const setUserTvShows = (tvShows) => {
-  return { type: SET_USER_TV_SHOWS, payload: tvShows };
 };
 export const setItemMovie = (movie) => {
   return { type: SET_ITEM_MOVIE, payload: movie };
@@ -250,18 +280,6 @@ export const discoverTvList = (tvShows) => {
 };
 export const trendingList = (trending) => {
   return { type: TRENDING, payload: trending };
-};
-export const authorizeUser = (auth) => {
-  return { type: AUTHORIZE_USER, payload: auth };
-};
-export const loginComplete = () => {
-  return { type: LOGIN_COMPLETE };
-};
-export const setUser = (user) => {
-  return { type: SET_USER, payload: user };
-};
-export const setProfile = (profile) => {
-  return { type: SET_PROFILE, payload: profile };
 };
 export const addUserMovieContent = (movie) => {
   return { type: ADD_USER_MOVIE_CONTENT, payload: movie };

@@ -88,6 +88,14 @@ export default function reducer(state = initialState, action) {
           tvShows: [...state.userContentList.tvShows],
         },
       };
+    case a.CLEAR_USER_MOVIE_LIST:
+      return {
+        ...state,
+        userContentList: {
+          movies: [],
+          tvShows: [...state.userContentList.tvShows],
+        },
+      }
     case a.ADD_USER_TV_CONTENT:
       return {
         ...state,
@@ -96,6 +104,14 @@ export default function reducer(state = initialState, action) {
           tvShows: [...state.userContentList.tvShows, action.payload],
         },
       };
+      case a.CLEAR_USER_TV_LIST:
+        return {
+          ...state,
+          userContentList: {
+            movies: [...state.userContentList.movies],
+            tvShows: [],
+          },
+        }
     case a.DISCOVER_MOVIE:
       return {
         ...state,

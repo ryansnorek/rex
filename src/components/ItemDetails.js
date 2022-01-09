@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
 import { addUserMovie, addUserTvShow } from "../actions";
+import { loadUserContent } from "../helper";
 import ItemDetailsMovie from "./ItemDetailsMovie";
 import ItemDetailsTvShow from "./ItemDetailsTvShow";
 
-function ItemDetails({ dispatch, item, user }) {
+function ItemDetails({ userContent, userContentList, dispatch, item, user }) {
   const movie = item.movie ? item.movie : [];
   const tvShow = item.tvShow ? item.tvShow : [];
 
@@ -16,6 +17,7 @@ function ItemDetails({ dispatch, item, user }) {
         ? addUserMovie(contentId, user.user_id)
         : addUserTvShow(contentId, user.user_id)
     );
+    // loadUserContent(userContent, dispatch, userContentList);
   };
 
   if (!item.movie && !item.tvShow) {
@@ -25,12 +27,14 @@ function ItemDetails({ dispatch, item, user }) {
     <div className="page">
       {item.movie && (
         <ItemDetailsMovie 
+          key={movie.id}
           movie={movie} 
           handleAddContent={handleAddContent} 
         />
       )}
       {item.tvShow && (
         <ItemDetailsTvShow
+          key={tvShow.id}
           tvShow={tvShow}
           handleAddContent={handleAddContent}
         />
@@ -39,6 +43,8 @@ function ItemDetails({ dispatch, item, user }) {
   );
 }
 const mapStateToProps = (state) => ({
+  userContent: state.userContent,
+  userContentList: state.userContentList,
   item: state.item,
   user: state.user,
 });

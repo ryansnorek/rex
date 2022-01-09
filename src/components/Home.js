@@ -53,6 +53,7 @@ function Home({ dispatch, discover }) {
                 handleClickPoster={handleClickPoster}
                 type={displayType}
                 item={item}
+                key={item.id}
               />
             );
           })}

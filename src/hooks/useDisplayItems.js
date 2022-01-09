@@ -4,8 +4,11 @@ import { discoverContent } from "../actions";
 export default function useDisplayItems(dispatch, itemObject) {
   const [displayItems, setDisplayItems] = useState([]);
   const [displayType, setDisplayType] = useState("trending");
-
+  
+  console.log("KEYSSSSS", Object.keys(itemObject))
+  
   useEffect(() => {
+    
     dispatch(discoverContent(displayType));
   }, [displayType]);
 
