@@ -416,6 +416,8 @@ p {
 .account h2 {
   font-size: 2rem;
   color: rgb(194, 194, 219);
+  padding: 1% 0;
+  background-color: rgb(19, 18, 18);
 }
 .profile {
   margin: 0;
@@ -425,6 +427,9 @@ p {
   color: snow;
   background-color: #1f1e1e;
   align-items: center;
+}
+.profile .pic {
+  background-color: transparent;
 }
 .profile .text,
 .friend .text {
@@ -449,6 +454,7 @@ p {
 .account-item .poster {
   height: 90px;
   margin: 0;
+  border-radius: 6px;
 }
 .account-item .text {
   width: 30%;
