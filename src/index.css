@@ -40,7 +40,7 @@ button:hover,
 html {
   /* background-image: linear-gradient(black, #272727, black);  */
   /* background-image: linear-gradient(#272727, black, #272727);  */
-  background-color: rgb(19, 18, 18);
+  background-color: #272727;
   background-repeat: no-repeat;
   width: 100vw;
   height: 100%;
@@ -601,6 +601,15 @@ p {
   }
   .discover img {
     width: 50vw;
+  }
+  .account-item {
+    height: 60px;
+    font-size: 2rem;
+  }
+  .account-item .poster img,
+  .account-item .poster {
+    height: 60px;
+    border-radius: 6px;
   }
 }
 /* iPhone 6/7/8/X */
