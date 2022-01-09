@@ -37,7 +37,7 @@ function WelcomeNewUser({ user, dispatch }) {
             type="text"
             name="personality_type"
             value={values.personality_type}
-            placeholder="Personality type"
+            placeholder="Personality type (eg ENTJ)"
             onChange={handleChange}
           />
           <button className="round-button">Submit</button>
