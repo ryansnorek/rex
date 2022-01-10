@@ -466,7 +466,8 @@ p {
   background-color: transparent;
 }
 .edit-profile input {
-  background-color: #2b3135;
+  text-align: center;
+  border: 1px rgb(112, 109, 109) solid;
 }
 .account-item {
   height: 80px;

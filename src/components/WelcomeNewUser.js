@@ -33,13 +33,13 @@ function WelcomeNewUser({ user, dispatch }) {
             placeholder="Display name"
             onChange={handleChange}
           />
-          <input
+          {/* <input
             type="text"
             name="personality_type"
             value={values.personality_type}
-            placeholder="Personality type (eg ENTJ)"
+            placeholder="Personality type"
             onChange={handleChange}
-          />
+          /> */}
           <button className="round-button">Submit</button>
         </form>
       </div>

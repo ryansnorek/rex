@@ -92,6 +92,7 @@ export const discoverContent = (type) => {
   };
 };
 export const registerNewUser = (newUser) => {
+  console.log("-=-==-=-=-=--=",newUser)
   return (dispatch) => {
     dispatch(fetchStart());
     axios
