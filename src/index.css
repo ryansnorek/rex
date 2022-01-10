@@ -489,8 +489,8 @@ p {
   width: 35%;
   text-align: center;
 }
-.account-item .actions button {
-  margin: 2%;
+.account-item .actions img {
+  margin: 8%;
 }
 .friends {
   background-color: black;

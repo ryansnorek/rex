@@ -29,9 +29,24 @@ function AccountRexy({ dispatch, item, type, user }) {
         <h3>{item.title || item.name}</h3>
       </div>
       <div className="actions">
-        <button onClick={() => handleRating(item.id)}>Rate</button>
-        <button onClick={() => handleSend(item.id)}>Send</button>
-        <button onClick={() => handleRemove(item.id)}>Remove</button>
+        <img
+          className="icon"
+          src="../../images/heart.png"
+          alt="rate"
+          onClick={() => handleRating(item.id)}
+        />
+        <img
+          className="icon"
+          src="../../images/paper-plane.png"
+          alt="send"
+          onClick={() => handleSend(item.id)}
+        />
+        <img
+          className="icon"
+          src="../../images/x.png"
+          alt="delete"
+          onClick={() => handleRemove(item.id)}
+        />
       </div>
     </div>
   );

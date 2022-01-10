@@ -15,6 +15,7 @@ function Login({ dispatch, isFetching, loginComplete }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    values.username = values.username.toLowerCase()
     dispatch(loginUser(values));
     clearForm(e);
   };

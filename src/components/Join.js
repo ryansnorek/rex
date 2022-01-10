@@ -18,6 +18,8 @@ function Join({ isFetching, loginComplete, dispatch }) {
 
   const handleSubmit = (e) => {
     values.phone = phone;
+    values.username = values.username.toLowerCase()
+    values.email = values.email.toLowerCase()
     dispatch(registerNewUser(values));
     clearForm(e);
   };
