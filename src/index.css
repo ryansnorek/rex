@@ -490,7 +490,7 @@ p {
   text-align: center;
 }
 .account-item .actions img {
-  margin: 8%;
+  margin: 5%;
 }
 .friends {
   background-color: black;
@@ -642,6 +642,9 @@ p {
   .account-item .poster {
     height: 60px;
     border-radius: 6px;
+  }
+  .account-item .actions img {
+    margin: 8%;
   }
   .friend {
     width: 100vw;

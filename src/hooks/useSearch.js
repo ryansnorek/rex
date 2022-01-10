@@ -6,7 +6,7 @@ export default function useSearch(dispatch, initialValue) {
   const [query, setQuery] = useState(null);
 
   const handleSelectQueryType = (e) => setQueryType(e.target.value);
-  const handleQueryChange = (e) => setQuery(e.target.value);
+  const handleQueryChange = (e) => setQuery(e.target.value.toLowerCase());
 
   useEffect(() => {
     dispatch(
