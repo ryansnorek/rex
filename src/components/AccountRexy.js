@@ -13,8 +13,12 @@ function AccountRexy({ dispatch, item, type, user }) {
     );
   };
 
-  const handleSend = () => {};
-  const handleRating = () => {};
+  const handleSend = () => {
+    alert("cant send yet")
+  };
+  const handleRating = () => {
+    alert("cant rate yet")
+  };
 
   return (
     <div className="account-item">
@@ -42,7 +46,7 @@ function AccountRexy({ dispatch, item, type, user }) {
           onClick={() => handleSend(item.id)}
         />
         <img
-          className="icon"
+          className="icon delete"
           src="../../images/x.png"
           alt="delete"
           onClick={() => handleRemove(item.id)}
