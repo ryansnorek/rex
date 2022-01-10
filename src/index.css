@@ -469,7 +469,7 @@ p {
   background-color: #2b3135;
 }
 .account-item {
-  height: 90px;
+  height: 80px;
   display: flex;
   color: snow;
   font-size: 4rem;
@@ -478,7 +478,7 @@ p {
 }
 .account-item .poster img,
 .account-item .poster {
-  height: 90px;
+  height: 80px;
   margin: 0;
   border-radius: 6px;
 }
@@ -486,7 +486,7 @@ p {
   width: 30%;
 }
 .account-item .actions {
-  width: 25%;
+  width: 35%;
   text-align: center;
 }
 .account-item .actions button {
