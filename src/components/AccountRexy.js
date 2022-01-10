@@ -14,6 +14,7 @@ function AccountRexy({ dispatch, item, type, user }) {
   };
 
   const handleSend = () => {};
+  const handleRating = () => {};
 
   return (
     <div className="account-item">
@@ -28,6 +29,7 @@ function AccountRexy({ dispatch, item, type, user }) {
         <h3>{item.title || item.name}</h3>
       </div>
       <div className="actions">
+        <button onClick={() => handleRating(item.id)}>Rate</button>
         <button onClick={() => handleSend(item.id)}>Send</button>
         <button onClick={() => handleRemove(item.id)}>Remove</button>
       </div>
