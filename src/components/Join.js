@@ -18,8 +18,8 @@ function Join({ isFetching, loginComplete, dispatch }) {
 
   const handleSubmit = (e) => {
     values.phone = phone;
-    values.username = values.username.toLowerCase()
-    values.email = values.email.toLowerCase()
+    values.username = values.username.toLowerCase();
+    values.email = values.email.toLowerCase();
     dispatch(registerNewUser(values));
     clearForm(e);
   };
@@ -76,9 +76,9 @@ function Join({ isFetching, loginComplete, dispatch }) {
   );
 }
 const mapStateToProps = (state) => {
-  return ({
+  return {
     isFetching: state.isFetching,
     loginComplete: state.loginComplete,
-  })
-}
+  };
+};
 export default connect(mapStateToProps)(Join);

@@ -194,6 +194,9 @@ button {
   flex-direction: row;
   flex-wrap: wrap;
 }
+.discover-item img {
+  border-radius: 6px;
+}
 /* ---------SEARCH----------- */
 .search {
   display: flex;
