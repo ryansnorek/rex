@@ -475,6 +475,9 @@ p {
   text-align: center;
   border: 1px rgb(112, 109, 109) solid;
 }
+.rexys {
+  width: 42vw;
+}
 .account-item {
   height: 80px;
   display: flex;
@@ -605,6 +608,9 @@ p {
   .nav-bar {
     height: 36px;
   }
+  .rexys {
+    width: 64vw;
+  }
 }
 /* iPad */
 @media (max-width: 768px) {
@@ -612,6 +618,9 @@ p {
   .backdrop,
   .item-details {
     width: 100vw;
+  }
+  .rexys {
+    width: 82vw;
   }
 }
 @media (max-width: 600px) {
@@ -652,6 +661,9 @@ p {
   }
   .account-item .actions img {
     margin: 8%;
+  }
+  .rexys {
+    width: 100vw;
   }
   .friend {
     width: 100vw;
