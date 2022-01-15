@@ -137,8 +137,8 @@ export const loginUser = (credentials) => {
         dispatch(getUserTvShows(data.user_id));
         return data;
       })
+      .then(() => dispatch(loginComplete()))
       .catch((err) => dispatch(fetchError(err)))
-      .finally(() => dispatch(loginComplete()));
   };
 };
 export const authorizeUser = (auth) => {
