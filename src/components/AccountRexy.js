@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { POSTER_URL } from "../constants";
 import { deleteUserMovie, deleteUserTvShow } from "../actions";
 import { useEffect } from "react";
+import UserContentActionBar from "./UserContentActionBar";
 
 function AccountRexy({ dispatch, item, type, user }) {
   useEffect(() => {}, []);
@@ -32,7 +33,13 @@ function AccountRexy({ dispatch, item, type, user }) {
       <div className="text">
         <h3>{item.title || item.name}</h3>
       </div>
-      <div className="actions">
+      <UserContentActionBar
+        handleRating={handleRating}
+        handleSend={handleSend}
+        handleRemove={handleRemove}
+        item={item}
+      />
+      {/* <div className="actions">
         <img
           className="icon"
           src="../../images/heart.png"
@@ -51,7 +58,7 @@ function AccountRexy({ dispatch, item, type, user }) {
           alt="delete"
           onClick={() => handleRemove(item.id)}
         />
-      </div>
+      </div> */}
     </div>
   );
 }

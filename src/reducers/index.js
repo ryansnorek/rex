@@ -19,6 +19,10 @@ const initialState = {
     movies: [],
     tvShows: [],
   },
+  friendContentList: {
+    movies: [],
+    tvShows: [],
+  },
   discover: {
     movie: [],
     tv: [],
@@ -123,6 +127,46 @@ export default function reducer(state = initialState, action) {
         isFetching: false,
         userContentList: {
           movies: [...state.userContentList.movies],
+          tvShows: [],
+        },
+        errors: "",
+      };
+      case a.ADD_FRIEND_MOVIE_CONTENT:
+      return {
+        ...state,
+        isFetching: false,
+        friendContentList: {
+          movies: [...state.friendContentList.movies, action.payload],
+          tvShows: [...state.friendContentList.tvShows],
+        },
+        errors: "",
+      };
+    case a.CLEAR_FRIEND_MOVIE_LIST:
+      return {
+        ...state,
+        isFetching: false,
+        friendContentList: {
+          movies: [],
+          tvShows: [...state.friendContentList.tvShows],
+        },
+        errors: "",
+      };
+    case a.ADD_FRIEND_TV_CONTENT:
+      return {
+        ...state,
+        isFetching: false,
+        friendContentList: {
+          movies: [...state.friendContentList.movies],
+          tvShows: [...state.friendContentList.tvShows, action.payload],
+        },
+        errors: "",
+      };
+    case a.CLEAR_FRIEND_TV_LIST:
+      return {
+        ...state,
+        isFetching: false,
+        friendContentList: {
+          movies: [...state.friendContentList.movies],
           tvShows: [],
         },
         errors: "",

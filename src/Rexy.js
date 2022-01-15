@@ -8,6 +8,7 @@ import Join from "./components/Join";
 import ItemDetails from "./components/ItemDetails";
 import Account from "./components/Account";
 import Friends from "./components/Friends";
+import FriendView from "./components/FriendView";
 import PrivateRoute from "./components/PrivateRoute";
 
 function Rexy() {
@@ -22,6 +23,7 @@ function Rexy() {
             <Route path="/item/:id" element={<ItemDetails/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/join" element={<Join/>}/>
+            <Route path="/friendview" element={<FriendView/>}/>
             <Route
               path="/account"
               element={

@@ -13,6 +13,10 @@ export const FIND_REXY_MOVIE = "FIND_REXY_MOVIE";
 export const SET_ITEM_MOVIE = "SET_ITEM_MOVIE";
 export const SET_ITEM_TV_SHOW = "SET_ITEM_TV_SHOW";
 export const GET_FRIENDS = "GET_FRIENDS";
+export const ADD_FRIEND_MOVIE_CONTENT = "ADD_FRIEND_MOVIE_CONTENT";
+export const ADD_FRIEND_TV_CONTENT = "ADD_FRIEND_TV_CONTENT";
+export const CLEAR_FRIEND_MOVIE_LIST = "CLEAR_FRIEND_MOVIE_LIST";
+export const CLEAR_FRIEND_TV_LIST = "CLEAR_FRIEND_TV_LIST"
 export const DISCOVER_MOVIE = "DISCOVER_MOVIE";
 export const DISCOVER_TV = "DISCOVER_TV";
 export const TRENDING = "TRENDING";
@@ -68,6 +72,64 @@ export const getFriends = () => {
       .catch((err) => dispatch(fetchError(err)));
   };
 };
+export const getFriendContent = (user_id) => {
+  return async (dispatch) => {
+    await dispatch(getFriendMovies(user_id));
+    await dispatch(getFriendTvShows(user_id));
+  }
+}
+export const getFriendMovies = (user_id) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    dispatch(clearFriendMovieList());
+    axiosAuthorization()
+      .get(`/profile/${user_id}/movies`)
+      .then((movies) => {
+        movies.data.forEach((movie) => {
+          dispatch(findFriendContentById(movie.movie_id, "movie"));
+        });
+      })
+  }
+}
+export const getFriendTvShows = (user_id) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    dispatch(clearFriendTvList());
+    axiosAuthorization()
+      .get(`/profile/${user_id}/tv-shows`)
+      .then((tvShows) => {
+        tvShows.data.forEach((tvShow) => {
+          dispatch(findFriendContentById(tvShow.tv_show_id, "tv"));
+        });
+      })
+  }
+}
+export const findFriendContentById = (id, type) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axios
+      .get(`${BASE_URL}/3/${type}/${id}?api_key=${API_KEY}`)
+      .then((userContent) => {
+        type === "movie"
+          ? dispatch(addFriendMovieContent(userContent.data))
+          : dispatch(addFriendTvContent(userContent.data));
+      })
+      .catch((err) => dispatch(fetchError(err)));
+  };
+};
+export const addFriendMovieContent = (movie) => {
+  return { type: ADD_FRIEND_MOVIE_CONTENT, payload: movie };
+};
+export const clearFriendMovieList = () => {
+  return { type: CLEAR_FRIEND_MOVIE_LIST };
+};
+export const addFriendTvContent = (tvShow) => {
+  return { type: ADD_FRIEND_TV_CONTENT, payload: tvShow };
+};
+export const clearFriendTvList = () => {
+  return { type: CLEAR_FRIEND_TV_LIST };
+};
+
 export const discoverContent = (type) => {
   return (dispatch) => {
     dispatch(fetchStart());

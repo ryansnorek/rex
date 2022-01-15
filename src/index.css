@@ -478,6 +478,10 @@ p {
 .rexys {
   width: 42vw;
 }
+.rexys h2 {
+  color: rgb(168, 168, 192);
+  font-size: 2rem;
+}
 .account-item {
   height: 80px;
   display: flex;
@@ -523,6 +527,11 @@ p {
 }
 .friend-search .nav-bar input {
   width: 66vw;
+}
+.account-item .round-button {
+  width: 42px;
+  height: 42px;
+  font-size: 1rem;
 }
 /* ---------LOADING / ANIMATIONS----------- */
 .loading-container {
