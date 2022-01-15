@@ -164,6 +164,9 @@ button {
   height: 5vh;
   z-index: 2;
 }
+.error {
+  color: lavender;
+}
 /* ---------HOME----------- */
 .home {
   background-color: black;

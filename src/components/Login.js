@@ -9,13 +9,14 @@ const initialValues = {
   password: "",
 };
 
-function Login({ dispatch, isFetching, loginComplete }) {
+function Login({ dispatch, isFetching, loginComplete, errors }) {
   const navigate = useNavigate();
   const [values, handleChange, clearForm] = useForm("login", initialValues);
+  const { message } = errors.response.data;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    values.username = values.username.toLowerCase()
+    values.username = values.username.toLowerCase();
     dispatch(loginUser(values));
     clearForm(e);
   };
@@ -48,6 +49,7 @@ function Login({ dispatch, isFetching, loginComplete }) {
             onChange={handleChange}
           />
         </div>
+        {errors && <p className="error">{message}</p>}
         <button className="round-button">Login</button>
         <div className="join-btn">
           <Link to="/join">
@@ -63,5 +65,6 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
   isFetching: state.isFetching,
   loginComplete: state.loginComplete,
+  errors: state.errors,
 });
 export default connect(mapStateToProps)(Login);
