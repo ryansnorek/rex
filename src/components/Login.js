@@ -12,7 +12,6 @@ const initialValues = {
 function Login({ dispatch, isFetching, loginComplete, errors }) {
   const navigate = useNavigate();
   const [values, handleChange, clearForm] = useForm("login", initialValues);
-  const { message } = errors.response.data;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,7 +48,7 @@ function Login({ dispatch, isFetching, loginComplete, errors }) {
             onChange={handleChange}
           />
         </div>
-        {errors && <p className="error">{message}</p>}
+        {errors && <p className="error">{errors.response.data.message}</p>}
         <button className="round-button">Login</button>
         <div className="join-btn">
           <Link to="/join">

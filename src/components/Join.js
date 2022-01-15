@@ -15,7 +15,6 @@ function Join({ isFetching, loginComplete, dispatch, errors }) {
   const navigate = useNavigate();
   const [values, handleChange, clearForm] = useForm("join", initialValues);
   const [phone, inputPhone, handlePhoneChange] = useInputMask();
-  const { message } = errors.response.data;
 
   const handleSubmit = (e) => {
     values.phone = phone;
@@ -71,7 +70,7 @@ function Join({ isFetching, loginComplete, dispatch, errors }) {
             ref={inputPhone}
           />
         </div>
-        {errors && <p className="error">{message}</p>}
+        {errors && <p className="error">{errors.response.data.message}</p>}
         <button className="round-button">Join</button>
       </form>
     </div>
