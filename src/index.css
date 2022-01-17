@@ -422,9 +422,6 @@ p {
   margin-bottom: 3%;
 }
 /* ---------ACCOUNT----------- */
-* {
-  /* border: 1px solid grey; */
-}
 .account {
   background-color: black;
   width: 100vw;
@@ -536,9 +533,9 @@ p {
   border-radius: 3px;
   color: snow;
 }
-.friend-search .nav-bar input {
+/* .friend-search .nav-bar input {
   width: 66vw;
-}
+} */
 .account-item .round-button {
   width: 42px;
   height: 42px;
@@ -631,9 +628,15 @@ p {
   .rexys {
     width: 64vw;
   }
+  .search form input {
+    width: 100%;
+  }
 }
 /* iPad */
 @media (max-width: 768px) {
+  .search form input {
+    width: 100%;
+  }
   .results,
   .backdrop,
   .item-details {
@@ -692,7 +695,7 @@ p {
   .friend {
     width: 100vw;
   }
-  .friend-search .nav-bar input {
+  .friend-search form input {
     width: 96vw;
   }
   .tagline {
