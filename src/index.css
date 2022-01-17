@@ -207,10 +207,18 @@ button {
   width: 100vw;
 }
 .search form {
-  width: 100vw;
+  width: 96vw;
   display: flex;
+  justify-content: center;
   position: fixed;
   background-color: transparent;
+}
+.search form input {
+  margin: 0;
+  width: 60%;
+}
+.search form select {
+  margin: 0;
 }
 input:focus,
 select:focus {
