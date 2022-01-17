@@ -17,7 +17,7 @@ function Search({ dispatch, queryResults, isFetching }) {
           <input
             type="text"
             name="search"
-            placeholder="Search"
+            placeholder="Search content"
             value={query}
             onChange={handleQueryChange}
           />

@@ -219,13 +219,11 @@ button {
 }
 .search form select {
   margin: 0;
+  border-left: 1px solid rgb(176, 176, 194);
 }
 input:focus,
 select:focus {
   background-color: transparent;
-}
-.search .nav-bar {
-  justify-content: center;
 }
 .results {
   margin-top: 5vh;
