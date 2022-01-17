@@ -6,7 +6,9 @@ export default function useDisplayItems(dispatch, itemObject) {
   const [displayType, setDisplayType] = useState("trending");
 
   useEffect(() => {
-    dispatch(discoverContent());
+    if (itemObject.trending.length === 0) {
+      dispatch(discoverContent());
+    }
   }, []);
 
   useEffect(() => {
