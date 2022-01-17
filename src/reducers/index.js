@@ -24,8 +24,8 @@ const initialState = {
     tvShows: [],
   },
   discover: {
-    movie: [],
-    tv: [],
+    movies: [],
+    tvShows: [],
     trending: [],
   },
   isFetching: false,
@@ -50,6 +50,8 @@ export default function reducer(state = initialState, action) {
         errors: action.payload,
         isFetching: false,
       };
+    case a.FETCHING_COMPLETE:
+      return { ...state, isFetching: false };
     case a.SET_USER_MOVIES:
       return {
         ...state,
@@ -131,7 +133,7 @@ export default function reducer(state = initialState, action) {
         },
         errors: "",
       };
-      case a.ADD_FRIEND_MOVIE_CONTENT:
+    case a.ADD_FRIEND_MOVIE_CONTENT:
       return {
         ...state,
         isFetching: false,
@@ -171,27 +173,31 @@ export default function reducer(state = initialState, action) {
         },
         errors: "",
       };
-    case a.DISCOVER_MOVIE:
+    case a.SET_DISCOVER_TRENDING:
       return {
         ...state,
-        discover: { movie: [...action.payload] },
-        isFetching: false,
-        errors: "",
+        discover: {
+          ...state.discover,
+          trending: [...action.payload],
+        },
       };
-    case a.DISCOVER_TV:
+    case a.SET_DISCOVER_MOVIES:
       return {
         ...state,
-        discover: { tv: [...action.payload] },
-        isFetching: false,
-        errors: "",
+        discover: {
+          ...state.discover,
+          movies: [...action.payload],
+        },
       };
-    case a.TRENDING:
+    case a.SET_DISCOVER_TV_SHOWS:
       return {
         ...state,
-        discover: { trending: [...action.payload] },
-        isFetching: false,
-        errors: "",
+        discover: {
+          ...state.discover,
+          tvShows: [...action.payload],
+        },
       };
+   
     case a.AUTHORIZE_USER:
       return {
         ...state,
@@ -204,7 +210,7 @@ export default function reducer(state = initialState, action) {
     case a.UNSET_FIRST_TIME_USER:
       return { ...state, firstTimeUser: false };
     case a.LOGIN_COMPLETE:
-      return { ...state, loginComplete: true, errors: "", };
+      return { ...state, loginComplete: true, errors: "" };
     case a.SET_USER:
       return {
         ...state,

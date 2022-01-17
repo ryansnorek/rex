@@ -4,14 +4,11 @@ import { findContentById } from "../actions";
 import HomeItem from "./HomeItem";
 import useDisplayItems from "../hooks/useDisplayItems";
 
-function Home({ dispatch, discover }) {
+function Home({ dispatch, discover, isFetching }) {
   const [displayItems, displayType, handleToggleItem] = useDisplayItems(
     dispatch,
     discover
   );
-
-  // Load each category type on mount and store in state
-  // Does not make api call twice
 
   const navigate = useNavigate();
   const handleClickPoster = (id, type) => {
@@ -19,31 +16,34 @@ function Home({ dispatch, discover }) {
     setTimeout(() => navigate(`/item/${id}`), 100);
   };
 
+  if (isFetching) {
+    return (
+      <div className="loading-container">
+        <div className="loading"></div>
+      </div>
+    );
+  }
   return (
     <div className="home page">
         <nav className="nav-bar">
           <button
-            className={
-              "navlink" + (displayType === "trending" ? " activated" : "")
-            }
+            className={"navlink" + (displayType === "trending" ? " activated" : "")}
             onClick={handleToggleItem}
             name="trending"
           >
             Trending
           </button>
           <button
-            className={
-              "navlink" + (displayType === "movie" ? " activated" : "")
-            }
+            className={"navlink" + (displayType === "movies" ? " activated" : "")}
             onClick={handleToggleItem}
-            name="movie"
+            name="movies"
           >
             Movies
           </button>
           <button
-            className={"navlink" + (displayType === "tv" ? " activated" : "")}
+            className={"navlink" + (displayType === "tvShows" ? " activated" : "")}
             onClick={handleToggleItem}
-            name="tv"
+            name="tvShows"
           >
             TV Shows
           </button>
@@ -64,5 +64,8 @@ function Home({ dispatch, discover }) {
     </div>
   );
 }
-const mapStateToProps = (state) => ({ discover: state.discover });
+const mapStateToProps = (state) => ({ 
+  discover: state.discover,
+  isFetching: state.isFetching,
+});
 export default connect(mapStateToProps)(Home);

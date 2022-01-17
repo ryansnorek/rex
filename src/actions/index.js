@@ -16,7 +16,13 @@ export const GET_FRIENDS = "GET_FRIENDS";
 export const ADD_FRIEND_MOVIE_CONTENT = "ADD_FRIEND_MOVIE_CONTENT";
 export const ADD_FRIEND_TV_CONTENT = "ADD_FRIEND_TV_CONTENT";
 export const CLEAR_FRIEND_MOVIE_LIST = "CLEAR_FRIEND_MOVIE_LIST";
-export const CLEAR_FRIEND_TV_LIST = "CLEAR_FRIEND_TV_LIST"
+export const CLEAR_FRIEND_TV_LIST = "CLEAR_FRIEND_TV_LIST";
+
+export const SET_DISCOVER_TRENDING = "SET_DISCOVER_TRENDING";
+export const SET_DISCOVER_MOVIES = "SET_DISCOVER_MOVIES";
+export const SET_DISCOVER_TV_SHOWS = "SET_DISCOVER_TV_SHOWS";
+export const FETCHING_COMPLETE = "FETCHING_COMPLETE";
+
 export const DISCOVER_MOVIE = "DISCOVER_MOVIE";
 export const DISCOVER_TV = "DISCOVER_TV";
 export const TRENDING = "TRENDING";
@@ -129,30 +135,35 @@ export const addFriendTvContent = (tvShow) => {
 export const clearFriendTvList = () => {
   return { type: CLEAR_FRIEND_TV_LIST };
 };
-
-export const discoverContent = (type) => {
+export const discoverContent = () => {
   return (dispatch) => {
     dispatch(fetchStart());
-    if (type === "trending") {
+    try {
       axios
         .get(`${BASE_URL}/3/trending/all/day?api_key=${API_KEY}`)
-        .then((content) => dispatch(trendingList(content.data.results)))
-        .catch((err) => dispatch(fetchError(err)));
+        .then((content) => dispatch(setDiscoverTrending(content.data.results)))
+      axios
+        .get(`${BASE_URL}/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`)
+        .then((content) => dispatch(setDiscoverMovies(content.data.results)))
+      axios
+        .get(`${BASE_URL}/3/discover/tv?api_key=${API_KEY}&sort_by=popularity.desc`)
+        .then((content) => dispatch(setDiscoverTvShows(content.data.results)))
+    } catch (err) {
+        dispatch(fetchError(err));
     }
-    axios
-      .get(
-        `${BASE_URL}/3/discover/${type}?api_key=${API_KEY}&sort_by=popularity.desc`
-      )
-      .then((content) => {
-        dispatch(
-          type === "movie"
-            ? discoverMovieList(content.data.results)
-            : discoverTvList(content.data.results)
-        );
-      })
-      .catch((err) => dispatch(fetchError(err)));
+    dispatch(fetchingComplete());
   };
 };
+export const setDiscoverTrending = (trending) => {
+  return ({ type: SET_DISCOVER_TRENDING, payload: trending });
+};
+export const setDiscoverMovies = (movies) => {
+  return ({ type: SET_DISCOVER_MOVIES, payload: movies });
+};
+export const setDiscoverTvShows = (tvShows) => {
+  return ({ type: SET_DISCOVER_TV_SHOWS, payload: tvShows });
+};
+// USER //
 export const registerNewUser = (newUser) => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -374,6 +385,9 @@ export const fetchStart = () => {
 export const fetchError = (error) => {
   return { type: FETCH_ERROR, payload: error };
 };
+export const fetchingComplete = () => {
+  return ({ type: FETCHING_COMPLETE })
+}
 export const setItemMovie = (movie) => {
   return { type: SET_ITEM_MOVIE, payload: movie };
 };
