@@ -632,9 +632,8 @@ p {
   .nav-bar {
     height: 36px;
   }
-  .rexys {
-    width: 64vw;
-  }
+  .rexys,
+  .account-item, 
   .search form, 
   .results,
   .friend {
@@ -644,25 +643,22 @@ p {
     width: 100%;
   }
 }
+@media (max-width: 912px) {
+  .backdrop,
+  .item-details {
+    width: 82vw;
+  }
+
+}
 /* iPad */
-@media (max-width: 768px) {
-  .search form input {
-    width: 100%;
-  }
-  .results {
-    width: 100vw;
-  }
+@media (max-width: 820px) {
   .backdrop,
   .item-details {
     width: 66vw;
   }
-  .rexys {
-    width: 82vw;
-  }
 }
 @media (max-width: 600px) {
-  .item,
-  .results {
+  .item {
     width: 100vw;
   }
   .tagline {
