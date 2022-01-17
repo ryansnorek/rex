@@ -455,7 +455,7 @@ p {
   background-color: transparent;
 }
 .pic img {
-  height: 50px;
+  height: 66px;
   border-radius: 100%;
   box-shadow: 1px 1px 3px #4f4f4f;
 }
@@ -628,6 +628,11 @@ p {
   }
   .rexys {
     width: 64vw;
+  }
+  .search form, 
+  .results,
+  .friend {
+    width: 100vw;
   }
   .search form input {
     width: 100%;

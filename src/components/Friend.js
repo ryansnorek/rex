@@ -20,7 +20,7 @@ function Friend({ user, friendContentList, dispatch }) {
         <h3>{user.username}</h3>
       </div>
       <div className="buttons-container">
-        <button>Add friend</button>
+        <button className="round-button">Add friend</button>
       </div>
     </div>
   );
