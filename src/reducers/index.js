@@ -197,7 +197,6 @@ export default function reducer(state = initialState, action) {
           tvShows: [...action.payload],
         },
       };
-   
     case a.AUTHORIZE_USER:
       return {
         ...state,
