@@ -142,6 +142,7 @@ button {
   border: 1px solid lavender;
   margin-top: 3%;
   font-size: 1.3rem;
+  background-color: transparent;
 }
 .round-button:hover {
   box-shadow: 0 0 9px inset rgb(131, 131, 143);
@@ -236,8 +237,9 @@ select:focus {
 .item {
   color: snow;
   display: flex;
-  border-bottom: 1.68px solid black;
-  width: 100%;
+  /* border-bottom: 1.68px solid lavender; */
+  box-shadow: 0 0 1px lavender;
+  border-radius: 3px;
 }
 .item .text {
   width: 100%;
@@ -488,7 +490,7 @@ p {
   border: 1px rgb(112, 109, 109) solid;
 }
 .rexys {
-  width: 42vw;
+  width: 66vw;
 }
 .rexys h2 {
   color: rgb(168, 168, 192);
@@ -496,11 +498,14 @@ p {
 }
 .account-item {
   height: 80px;
+  width: 66vw;
   display: flex;
   color: snow;
   font-size: 4rem;
   align-items: center;
-  border: 1px solid black;
+  background-color: #1d1d1d;
+  box-shadow: 0 0 1px lavender;
+  border-radius: 3px;
 }
 .account-item .poster img,
 .account-item .poster {
@@ -510,6 +515,7 @@ p {
 }
 .account-item .text {
   width: 30%;
+  background-color: transparent;
 }
 .account-item .actions {
   width: 35%;
@@ -643,7 +649,9 @@ p {
   .search form input {
     width: 100%;
   }
-  .results,
+  .results {
+    width: 100vw;
+  }
   .backdrop,
   .item-details {
     width: 66vw;

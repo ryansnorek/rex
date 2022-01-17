@@ -8,18 +8,21 @@ function Friend({ user, friendContentList, dispatch }) {
   const handleClickUser = () => {
     dispatch(getFriendContent(user.user_id));
   };
+  const handleAddFriend = () => {
+    alert("feature unavailable");
+  }
   if (friendContentList.movies && friendContentList.tvShows) {
     navigate("/friendview");
   }
   return (
-    <div className="friend">
-      <div className="pic" onClick={handleClickUser}>
+    <div className="friend" onClick={handleClickUser}>
+      <div className="pic">
         <img src="../../images/blank_user.png" alt="profile-pic" />
       </div>
-      <div className="text" onClick={handleClickUser}>
+      <div className="text">
         <h3>{user.username}</h3>
       </div>
-      <div className="buttons-container">
+      <div className="buttons-container" onClick={handleAddFriend}>
         <button className="round-button">Add friend</button>
       </div>
     </div>
