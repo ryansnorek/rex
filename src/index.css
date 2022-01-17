@@ -401,7 +401,12 @@ p {
   border-radius: 0;
   width: 60px;
   height: 30px;
-  cursor: default;
+  background-color: lavender;
+  color: black;
+  font-weight: bold;
+}
+.join-btn button:hover {
+  box-shadow: 0 0 5px snow;
 }
 /* ---------JOIN-------------- */
 .join .top {
