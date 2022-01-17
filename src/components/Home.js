@@ -54,7 +54,6 @@ function Home({ dispatch, discover, isFetching }) {
             return (
               <HomeItem
                 handleClickPoster={handleClickPoster}
-                type={displayType}
                 item={item}
                 key={item.id}
               />

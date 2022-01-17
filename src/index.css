@@ -268,7 +268,7 @@ select:focus {
   display: flex;
   flex-direction: column;
   padding-bottom: 3%;
-  width: 68vw;
+  width: 42vw;
   height: 100vh;
   align-items: center;
   background-color: #161616;
@@ -289,7 +289,7 @@ p {
   padding: 1.68px;
 }
 .backdrop {
-  width: 68vw;
+  width: 42vw;
   margin: 0;
 }
 .item-details .text {
@@ -626,7 +626,7 @@ p {
   .results,
   .backdrop,
   .item-details {
-    width: 100vw;
+    width: 66vw;
   }
   .rexys {
     width: 82vw;
@@ -651,6 +651,10 @@ p {
   }
   .item-details .left-center,
   .item-details .right {
+    width: 100vw;
+  }
+  .backdrop,
+  .item-details {
     width: 100vw;
   }
   .backdrop {

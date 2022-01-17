@@ -1,15 +1,12 @@
 import { POSTER_URL } from "../constants";
 
-function HomeItem({ handleClickPoster, type, item }) {
-  let trendingType = "";
-  if (type === "trending") {
-    trendingType = item.media_type;
-  }
+function HomeItem({ handleClickPoster, item }) {
+  let type = item.media_type || "tv";
   return (
     <div
       className="discover-item"
       onClick={() =>
-        handleClickPoster(item.id, trendingType ? trendingType : type)
+        handleClickPoster(item.id, type)
       }
     >
       {item.poster_path ? (
