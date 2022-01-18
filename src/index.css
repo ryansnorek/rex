@@ -142,7 +142,7 @@ button {
   border: 2px solid lavender;
   margin-top: 3%;
   font-size: 1.3rem;
-  background-color: black;
+  background-color: #1f1e1e;
   font-weight: bold;
 }
 .round-button:hover {
@@ -563,10 +563,6 @@ p {
 .friend .button-container {
   margin: 0;
   background-color: transparent;
-}
-.account-item .round-button {
-  width: 42px;
-  height: 42px;
 }
 .friend-view {
   display: flex;

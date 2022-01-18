@@ -23,7 +23,9 @@ export default function FriendContent({ item, dispatch }) {
         <div className="text">
           <h3>{item.title || item.name}</h3>
         </div>
-        <button className="round-button" onClick={() => handleAddRexy(item.id)}>Add rexy</button>
+        <div className="button-container">
+          <button className="round-button" onClick={() => handleAddRexy(item.id)}>Add rexy</button>
+        </div>
       </div>
     )
 }
