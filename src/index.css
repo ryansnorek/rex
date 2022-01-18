@@ -576,11 +576,13 @@ p {
   width: 100vw;
   margin: 0;
   padding: 2%;
-  background-color: black;
+  background-color: #0f0f0f;
   color: snow;
   border-radius: 6px;
   font-size: 2rem;
-
+}
+.friend-view h2 {
+  background-color: black;
 }
 /* ---------LOADING / ANIMATIONS----------- */
 .loading-container {
