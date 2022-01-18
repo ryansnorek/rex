@@ -6,9 +6,11 @@ function FriendView({ friend, friendContentList }) {
 
   return (
     <div className="page friend-view">
-      <div className="pic card">
-        <img src="../../images/blank_user.png" alt="profile-pic" />
-        <h3>{friend.display_name}</h3>
+      <div className="card">
+        <div className="pic">
+          <img src="../../images/blank_user.png" alt="profile-pic" />
+          <h3>{friend.display_name}</h3>
+        </div>
       </div>
       <div className="rexys">
         <h2>Movies</h2>

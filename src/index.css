@@ -579,13 +579,18 @@ p {
   justify-content: center;
 }
 .friend-view .card {
-  width: 100vw;
+  width: 33%;
   margin: 0;
-  padding: 2%;
-  background-color: #0f0f0f;
+  background-image: linear-gradient(to bottom right,#272727, black);
   color: snow;
-  border-radius: 6px;
-  font-size: 2rem;
+}
+.friend-view .pic h3 {
+  height: 50px;
+  font-size: 3rem;
+}
+.friend-view .pic {
+  display: flex;
+  padding: 5%;
 }
 .friend-view h2 {
   background-color: black;
@@ -683,7 +688,6 @@ p {
   .friend-view .account-item {
     width: 75vw;
   }
-  /* .friend  */
   .search form input {
     width: 100%;
   }
@@ -712,13 +716,19 @@ p {
   .friend-view .account-item {
     width: 100vw;
   }
-
+  .friend-view .card {
+    width: 100vw;
+  }
 }
 /* iPad */
 @media (max-width: 820px) {
   .backdrop,
   .item-details {
     width: 66vw;
+  }
+  .account-item button {
+    height: 60px;
+    width: 60px;
   }
 }
 @media (max-width: 600px) {
@@ -749,6 +759,10 @@ p {
   .account-item {
     height: 60px;
     font-size: 2rem;
+  }
+  .account-item button {
+    height: 50px;
+    width: 50px;
   }
   .account-item .poster img,
   .account-item .poster {
