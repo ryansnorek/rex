@@ -1,11 +1,15 @@
 import { connect } from "react-redux";
 import FriendContent from "./FriendContent";
 
-function FriendView({ friendContentList }) {
+function FriendView({ friend, friendContentList }) {
   const { movies, tvShows } = friendContentList;
 
   return (
-    <div className="page">
+    <div className="page friend-view">
+      <div className="pic card">
+        <img src="../../images/blank_user.png" alt="profile-pic" />
+        <h3>{friend.display_name}</h3>
+      </div>
       <div className="rexys">
         <h2>Movies</h2>
         {movies &&
@@ -23,6 +27,7 @@ function FriendView({ friendContentList }) {
 }
 const mapStateToProps = (state) => {
   return {
+    friend: state.friend,
     friendContentList: state.friendContentList,
   };
 };

@@ -568,6 +568,20 @@ p {
   width: 42px;
   height: 42px;
 }
+.friend-view {
+  display: flex;
+  justify-content: center;
+}
+.friend-view .card {
+  width: 100vw;
+  margin: 0;
+  padding: 2%;
+  background-color: black;
+  color: snow;
+  border-radius: 6px;
+  font-size: 2rem;
+
+}
 /* ---------LOADING / ANIMATIONS----------- */
 .loading-container {
   width: 100%;
@@ -655,10 +669,13 @@ p {
   .rexys,
   .account-item, 
   .search form, 
-  .results,
-  .friend {
+  .results {
     width: 100vw;
   }
+  .friend-view .account-item {
+    width: 75vw;
+  }
+  /* .friend  */
   .search form input {
     width: 100%;
   }
@@ -667,6 +684,9 @@ p {
   .backdrop,
   .item-details {
     width: 66vw;
+  }
+  .friend {
+    width: 100%;
   }
   .item-details .text {
     flex-direction: column;
@@ -677,6 +697,12 @@ p {
   .item-details .left-center,
   .item-details .right {
     width: 100%;
+  }
+  .friend-view {
+    flex-direction: column;
+  }
+  .friend-view .account-item {
+    width: 100vw;
   }
 
 }

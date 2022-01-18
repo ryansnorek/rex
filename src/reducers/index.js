@@ -19,6 +19,7 @@ const initialState = {
     movies: [],
     tvShows: [],
   },
+  friend: {},
   friendContentList: {
     movies: [],
     tvShows: [],
@@ -133,6 +134,13 @@ export default function reducer(state = initialState, action) {
         },
         errors: "",
       };
+    case a.SET_FRIEND:
+      return {
+        ...state,
+        isFetching: false,
+        friend: { ...action.payload },
+        errors: "",
+      }
     case a.ADD_FRIEND_MOVIE_CONTENT:
       return {
         ...state,

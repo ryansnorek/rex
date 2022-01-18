@@ -13,6 +13,7 @@ export const FIND_REXY_MOVIE = "FIND_REXY_MOVIE";
 export const SET_ITEM_MOVIE = "SET_ITEM_MOVIE";
 export const SET_ITEM_TV_SHOW = "SET_ITEM_TV_SHOW";
 export const GET_FRIENDS = "GET_FRIENDS";
+export const SET_FRIEND = "SET_FRIEND";
 export const ADD_FRIEND_MOVIE_CONTENT = "ADD_FRIEND_MOVIE_CONTENT";
 export const ADD_FRIEND_TV_CONTENT = "ADD_FRIEND_TV_CONTENT";
 export const CLEAR_FRIEND_MOVIE_LIST = "CLEAR_FRIEND_MOVIE_LIST";
@@ -67,6 +68,12 @@ export const findContentById = (id, type) => {
       .catch((err) => dispatch(fetchError(err)));
   };
 };
+export const setItemMovie = (movie) => {
+  return { type: SET_ITEM_MOVIE, payload: movie };
+};
+export const setItemTvShow = (show) => {
+  return { type: SET_ITEM_TV_SHOW, payload: show };
+};
 export const getFriends = () => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -80,6 +87,7 @@ export const getFriendContent = (user_id) => {
   return async (dispatch) => {
     await dispatch(getFriendMovies(user_id));
     await dispatch(getFriendTvShows(user_id));
+    await dispatch(getProfile({ user_id }, "friend"));
   }
 }
 export const getFriendMovies = (user_id) => {
@@ -107,6 +115,9 @@ export const getFriendTvShows = (user_id) => {
         });
       })
   }
+}
+export const setFriend = (friend) => {
+  return ({ type: SET_FRIEND, payload: friend })
 }
 export const findFriendContentById = (id, type) => {
   return (dispatch) => {
@@ -215,29 +226,47 @@ export const loginUser = (credentials) => {
 export const authorizeUser = (auth) => {
   return { type: AUTHORIZE_USER, payload: auth };
 };
-export const getUser = (data) => {
+export const getUser = (data, type) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    axiosAuthorization()
-      .get(`/users/${data.user_id}`)
-      .then((user) => {
-        dispatch(setUser(user.data));
-      })
-      .catch((err) => console.log(err));
+    if (type === "friend") {
+      axiosAuthorization()
+        .get(`/users/${data.user_id}`)
+        .then((friend) => {
+          dispatch(setFriend(friend.data));
+        })
+        .catch((err) => fetchError(err));
+    } else {
+      axiosAuthorization()
+        .get(`/users/${data.user_id}`)
+        .then((user) => {
+          dispatch(setUser(user.data));
+        })
+        .catch((err) => console.log(err));
+    }
   };
 };
 export const setUser = (user) => {
   return { type: SET_USER, payload: user };
 };
-export const getProfile = (data) => {
+export const getProfile = (data, type) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    axiosAuthorization()
-      .get(`/profile/${data.user_id}`)
-      .then((profile) => {
-        dispatch(setProfile(profile.data));
-      })
-      .catch((err) => console.log(err));
+    if (type === "friend") {
+      axiosAuthorization()
+        .get(`/profile/${data.user_id}`)
+        .then((friendProfile) => {
+          dispatch(setFriend(friendProfile.data));
+        })
+        .catch((err) => console.log(err));
+    } else {
+      axiosAuthorization()
+        .get(`/profile/${data.user_id}`)
+        .then((profile) => {
+          dispatch(setProfile(profile.data));
+        })
+        .catch((err) => console.log(err));
+    }
   };
 };
 export const setProfile = (profile) => {
@@ -386,12 +415,6 @@ export const fetchError = (error) => {
 export const fetchingComplete = () => {
   return ({ type: FETCHING_COMPLETE })
 }
-export const setItemMovie = (movie) => {
-  return { type: SET_ITEM_MOVIE, payload: movie };
-};
-export const setItemTvShow = (show) => {
-  return { type: SET_ITEM_TV_SHOW, payload: show };
-};
 export const friendsList = (friends) => {
   return { type: GET_FRIENDS, payload: friends };
 };
