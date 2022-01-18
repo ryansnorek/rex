@@ -190,6 +190,7 @@ button {
 }
 .activated {
   background-color: lavender;
+  box-shadow: 0 0 6px lavender;
   color: black;
   font-weight: bold;
 }
