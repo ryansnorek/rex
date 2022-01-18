@@ -298,7 +298,6 @@ select:focus {
 p {
   font-size: 1.5rem;
   text-align: center;
-  padding: 1.68px;
 }
 .backdrop {
   width: 60vw;
@@ -313,7 +312,6 @@ p {
 /* heart container */
 .item-details .left {
   width: 30%;
-  padding: 1%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -323,7 +321,6 @@ p {
 }
 .item-details .center {
   width: 100%;
-  padding: 1%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -338,7 +335,6 @@ p {
 }
 .item-details .right {
   width: 60%;
-  padding: 1%;
   background-color: transparent;
 }
 /* ----------------------------------- */
