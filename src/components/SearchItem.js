@@ -33,16 +33,18 @@ function SearchItem({ dispatch, item, queryType, user }) {
         )}
       </div>
       <div className="text">
-        {queryType === "tv" ? (
-          <h2>{item.original_name}</h2>
-        ) : (
-          <h2>{item.title}</h2>
-        )}
-        {queryType === "tv" ? (
-          <p>First aired: {item.first_air_date}</p>
-        ) : (
-          <p>Released: {item.release_date}</p>
-        )}
+        <div className="title">
+          {queryType === "tv" ? (
+            <h2>{item.original_name}</h2>
+          ) : (
+            <h2>{item.title}</h2>
+          )}
+          {queryType === "tv" ? (
+            <p>First aired: {item.first_air_date}</p>
+          ) : (
+            <p>Released: {item.release_date}</p>
+          )}
+        </div>
         <div className="button-container">
           <button
             className="round-button"
