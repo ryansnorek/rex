@@ -725,8 +725,8 @@ p {
   .item-details p {
     padding: 2%;
   }
-  .genres {
-    display: none;
+  .genres p {
+    padding: 0 5px;
   }
   .login form {
     width: 96vw;
