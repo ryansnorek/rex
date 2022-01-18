@@ -280,8 +280,8 @@ select:focus {
   display: flex;
   flex-direction: column;
   padding-bottom: 3%;
-  width: 42vw;
-  height: 100vh;
+  width: 66vw;
+  height: 100%;
   align-items: center;
   background-color: #161616;
   -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
@@ -301,10 +301,11 @@ p {
   padding: 1.68px;
 }
 .backdrop {
-  width: 42vw;
+  width: 60vw;
   margin: 0;
 }
 .item-details .text {
+  width: 60vw;
   display: flex;
   background-color: #1f1e1e;
 }
@@ -355,7 +356,7 @@ p {
   font-size: 2.6rem;
 }
 .genres {
-  width: auto;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -646,7 +647,17 @@ p {
 @media (max-width: 912px) {
   .backdrop,
   .item-details {
-    width: 82vw;
+    width: 66vw;
+  }
+  .item-details .text {
+    flex-direction: column;
+    font-size: 1rem;
+    padding: 0;
+    width: 100%;
+  }
+  .item-details .left-center,
+  .item-details .right {
+    width: 100%;
   }
 
 }
@@ -668,11 +679,6 @@ p {
 
 /* iPhone 6/7/8 Plus */
 @media (max-width: 414px) {
-  .item-details .text {
-    flex-direction: column;
-    font-size: 1rem;
-    padding: 0;
-  }
   .item-details .left-center,
   .item-details .right {
     width: 100vw;
