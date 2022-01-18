@@ -139,10 +139,11 @@ button {
   width: 69px;
   height: 69px;
   border-radius: 50%;
-  border: 1px solid lavender;
+  border: 2px solid lavender;
   margin-top: 3%;
   font-size: 1.3rem;
   background-color: black;
+  font-weight: bold;
 }
 .round-button:hover {
   box-shadow: 0 0 9px inset rgb(131, 131, 143);
@@ -350,13 +351,13 @@ p {
   width: 42px;
   height: 42px;
   text-align: center;
-  background-image: url("./assets/images/favicon_io/android-chrome-192x192.png");
+  background-image: url("./assets/images/favicon_io/whiteheart.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-color: transparent;
   padding: 12%;
   margin: 0;
-  color: rgb(78, 38, 116);
+  color: black;
   font-weight: bold;
   font-size: 2.6rem;
 }
@@ -369,8 +370,8 @@ p {
 .genres p {
   margin: 3%;
   font-size: 1.2rem;
-  background-color: rgb(176, 176, 209);
-  color: black;
+  box-shadow: 0 0 3px lavender;
+  color: lavender;
   font-weight: bold;
   border-radius: 6px;
   padding: 0 1%;
@@ -414,18 +415,13 @@ p {
   padding: 0 3%;
   font-size: 2rem;
 }
-.join-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1%;
-}
 .join-btn button {
-  border-radius: 0;
+  border-radius: 6px;
   width: 60px;
   height: 30px;
   background-color: lavender;
   color: black;
+  font-size: 1.3rem;
   font-weight: bold;
 }
 .join-btn button:hover {
