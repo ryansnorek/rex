@@ -18,10 +18,11 @@ function Friend({ user, friendContentList, dispatch }) {
     <div className="friend" onClick={handleClickUser}>
       <div className="pic">
         <img src="../../images/blank_user.png" alt="profile-pic" />
-      </div>
-      <div className="text">
         <h3>{user.username}</h3>
       </div>
+      {/* <div className="text">
+        
+      </div> */}
       <div className="buttons-container" onClick={handleAddFriend}>
         <button className="round-button">Add friend</button>
       </div>

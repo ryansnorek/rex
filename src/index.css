@@ -535,29 +535,38 @@ p {
 .account-item .actions img {
   margin: 5%;
 }
-.friends {
-  background-color: black;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 .friend {
   height: 90px;
   width: 66vw;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   box-shadow: 0 0 1px lavender;
   background-color: #1d1d1d;
   border-radius: 3px;
   color: snow;
 }
+.friend .pic {
+  display: flex;
+  align-items: center;
+  width: 82%;
+  background-color: transparent;
+  margin: 0;
+}
+.friend .pic img {
+  margin: 3%;
+}
+.friend .pic h3 {
+  margin: 3%;  
+  font-size: 2rem;
+  color: lavender
+}
+.friend .button-container {
+  margin: 0;
+  background-color: transparent;
+}
 .account-item .round-button {
   width: 42px;
   height: 42px;
-  font-size: 1rem;
 }
 /* ---------LOADING / ANIMATIONS----------- */
 .loading-container {
@@ -741,6 +750,9 @@ p {
   }
   .heart {
     font-size: 2rem;
+  }
+  .friend .pic h3 {
+    font-size: 1.2rem;
   }
 }
 /* Moto G4, Galaxy s5 */
