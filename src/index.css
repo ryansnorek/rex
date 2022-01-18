@@ -270,12 +270,13 @@ select:focus {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 33%;
 }
 .item .button-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 50%;
+  width: 33%;
 }
 .item .button-container button {
   padding: 2%;
