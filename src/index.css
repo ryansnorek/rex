@@ -303,6 +303,7 @@ p {
 .backdrop {
   width: 60vw;
   margin: 0;
+  border-radius: 3px;
 }
 .item-details .text {
   width: 60vw;
@@ -364,6 +365,11 @@ p {
 .genres p {
   margin: 3%;
   font-size: 1.2rem;
+  background-color: rgb(176, 176, 209);
+  color: black;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 0 1%;
 }
 .item-details .button-container {
   margin-top: 3%;
