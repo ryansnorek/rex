@@ -45,6 +45,7 @@ function SearchItem({ dispatch, item, queryType, user }) {
         )}
         <div className="button-container">
           <button
+            className="round-button"
             onClick={() =>
               queryType === "tv"
                 ? handleClickDetails(item.id, "tv")
@@ -54,6 +55,7 @@ function SearchItem({ dispatch, item, queryType, user }) {
             Details
           </button>
           <button
+            className="round-button"
             onClick={() =>
               handleAddContent(
                 item.id,

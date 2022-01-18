@@ -142,7 +142,7 @@ button {
   border: 1px solid lavender;
   margin-top: 3%;
   font-size: 1.3rem;
-  background-color: transparent;
+  background-color: black;
 }
 .round-button:hover {
   box-shadow: 0 0 9px inset rgb(131, 131, 143);
@@ -241,7 +241,6 @@ select:focus {
 .item {
   color: snow;
   display: flex;
-  /* border-bottom: 1.68px solid lavender; */
   box-shadow: 0 0 1px lavender;
   border-radius: 3px;
 }
@@ -255,13 +254,11 @@ select:focus {
   text-align: center;
   background-color: #1d1d1d;
 }
-.item .poster {
-  width: 150px;
-  height: 225px;
-}
+.item .poster,
 .item img {
   width: 150px;
   height: 225px;
+  border-radius: 3px;
 }
 .item p {
   margin: 1% 0;
