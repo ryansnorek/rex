@@ -275,13 +275,14 @@ export const setProfile = (profile) => {
 export const updateUserProfile = (profileEdits, firstTime) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    axiosAuthorization()
-      .post("/profile", profileEdits)
-      .then((profile) => dispatch(setProfile(profile.data)))
-      .then(() => {
-        if (firstTime) dispatch(unsetFirstTimeUser())
-      })
-      .catch((err) => dispatch(fetchError(err)));
+    console.log("-=-=-==-=--=",profileEdits)
+    // axiosAuthorization()
+    //   .put("/profile", profileEdits)
+    //   .then((profile) => dispatch(setProfile(profile.data)))
+    //   .then(() => {
+    //     if (firstTime) dispatch(unsetFirstTimeUser())
+    //   })
+    //   .catch((err) => dispatch(fetchError(err)));
   };
 };
 export const loginComplete = () => {

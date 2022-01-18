@@ -1,15 +1,21 @@
 import { connect } from "react-redux";
 import { useState } from "react";
+import { updateUserProfile } from "../actions";
 
-function AccountProfile({ user, profile }) {
+function AccountProfile({ user, profile, dispatch }) {
     const [editMode, setEditMode] = useState(false);
     const [input, setInput] = useState("");
 
-    const handleEdit = () => setEditMode(!editMode);
+    const handleEdit = () => {
+        setEditMode(!editMode)
+
+    };
     const handleChange = (e) => setInput(e.target.value);
     const handleChangePic = (e) => {
         e.preventDefault();
         setEditMode(false);
+        console.log("-==-=-=--=", typeof input)
+        // dispatch(updateUserProfile({ user_id: user.user_id, uploaded_image: e.target.value }))
     };
 
 
@@ -17,10 +23,10 @@ function AccountProfile({ user, profile }) {
         <div className="profile">
             <div className="pic">
                 <img src="../../images/blank_user.png" alt="profile-pic"/>
-                {/* {editMode && 
+                {editMode && 
                     <span>
                         <form onSubmit={handleChangePic}>
-                            <label for="profile-pic">Select profile pic:</label>
+                            <label htmlFor="profile-pic">Select profile pic:</label>
                             <input 
                                 onChange={handleChange} 
                                 type="file" 
@@ -29,7 +35,7 @@ function AccountProfile({ user, profile }) {
                                 value={input}/>
                             <button>select pic</button>
                         </form>
-                    </span>} */}
+                    </span>}
             </div>
             <div className="text">
                 <h3>{profile.display_name}</h3>
