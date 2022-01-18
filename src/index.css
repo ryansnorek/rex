@@ -181,6 +181,7 @@ button {
   margin: 1%;
   font-size: 1.3rem;
   height: 4vh;
+  border-radius: 6px;
   -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 1.618s; /* Firefox < 16 */
   -ms-animation: fadein 1.618s; /* Internet Explorer */
@@ -188,7 +189,9 @@ button {
   animation: fadein 1.618s;
 }
 .activated {
-  background-color: rgba(226, 25, 25, 0.618);
+  background-color: lavender;
+  color: black;
+  font-weight: bold;
 }
 .discover {
   position: absolute;
