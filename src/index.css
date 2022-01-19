@@ -33,7 +33,8 @@ nav:hover,
 .logo:hover,
 button:hover,
 .discover-item:hover,
-.friend {
+.friend,
+.account-item {
   cursor: pointer;
 }
 html {
