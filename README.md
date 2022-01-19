@@ -1,5 +1,5 @@
 # Rexy
-**A place to share recommendations with friends**
+**A place to share movie recommendations with friends**
 
 -
 **website URL: https://rexy.netlify.app/**
