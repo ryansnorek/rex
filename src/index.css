@@ -32,7 +32,8 @@ nav:hover,
 .icon:hover,
 .logo:hover,
 button:hover,
-.discover-item:hover {
+.discover-item:hover,
+.friend {
   cursor: pointer;
 }
 html {
