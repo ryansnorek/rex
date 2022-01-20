@@ -2,6 +2,7 @@
 **A place to share recommendations with friends**
 
 **website URL: https://rexy.netlify.app/**
+
 **backend repo: https://github.com/ryansnorek/rexy-backend**
 
 React | Redux | Thunk | Node | Express | Postgres | Knex
