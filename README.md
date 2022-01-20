@@ -1,6 +1,5 @@
 # Rexy
 **A place to share recommendations with friends**
-<img src="../public/logo/android-chrome-512x512.png" alt="logo" />
 
 **website URL: https://rexy.netlify.app/**
 
