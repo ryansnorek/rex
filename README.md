@@ -2,15 +2,17 @@
 **A place to share recommendations with friends**
 
 **website URL: https://rexy.netlify.app/**
+**backend repo: https://github.com/ryansnorek/rexy-backend**
+
+React | Redux | Thunk | Node | Express | Postgres | Knex
 
 ## Project Set Up
 
 - [ ] Run `npm install` to install dependencies.
 
-
 ### Introduction
 
-This is a full-stack application for collecting and sharing movie and show recommendations with friends. Users can create an account, browse trending shows, and search for content or friends to connect with. The frontend for this application was built using **React**. The backend was built with **Node, Express, and Postgres**. The backend repo can be found here https://github.com/ryansnorek/rexy-backend
+This is a full-stack application for collecting and sharing movie and show recommendations with friends. Users can create an account, browse trending shows, and search for content or friends to connect with. 
 
 ### Engineering Notes
 #### Frontend
