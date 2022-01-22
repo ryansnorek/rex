@@ -8,6 +8,7 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
   const movie = item.movie ? item.movie : [];
   const tvShow = item.tvShow ? item.tvShow : [];
   const type = item.movie ? "movie" : "tv";
+  const contentId = item.movie ? item.movie.id : item.tvShow.id;
 
   const scrollPosition = useScrollSet();
 
@@ -15,6 +16,9 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
     if (!user.user_id) {
       return alert("login to add content");
     }
+    console.log(type)
+    console.log(contentId)
+    console.log("-==--==-=-=-=-=-=-")
     dispatch(
       type === "movie"
         ? addUserMovie(contentId, user.user_id)
@@ -34,7 +38,7 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
       <nav>
         <button
           className="round-button"
-          onClick={() => handleAddContent(item.id, type)}
+          onClick={() => handleAddContent(contentId, type)}
         >
           +
         </button>
