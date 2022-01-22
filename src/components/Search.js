@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { useState } from "react";
+import { findContentById } from "../actions";
 import SearchItem from "./SearchItem";
 import useSearch from "../hooks/useSearch";
 import ItemDetails from "./ItemDetails";
@@ -11,6 +12,10 @@ function Search({ dispatch, queryResults, isFetching }) {
   const [itemClicked, setItemClicked] = useState(false);
   const handleItemClose = () => setItemClicked(false);
 
+  const handleClickDetails = (id, type) => {
+    dispatch(findContentById(id, type));
+    setTimeout(() => setItemClicked(true), 3.618)
+  };
   return (
     <div className="search page">
       <div className="nav-bar">
@@ -30,8 +35,7 @@ function Search({ dispatch, queryResults, isFetching }) {
       </div>
         {itemClicked && <ItemDetails handleItemClose={handleItemClose} />}
       <div className={`results  ${itemClicked ? "blur" : ""}`}>
-        {
-        isFetching && query ? (
+        {isFetching && query ? (
           <div className="loading-container">
             <div className="loading"></div>
           </div>
@@ -42,6 +46,7 @@ function Search({ dispatch, queryResults, isFetching }) {
               <SearchItem
                 item={result}
                 queryType={queryType}
+                handleClickDetails={handleClickDetails}
                 setItemClicked={setItemClicked}
               />
             );

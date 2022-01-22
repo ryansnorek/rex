@@ -1,9 +1,8 @@
 import { connect } from "react-redux";
 import { POSTER_URL } from "../constants";
-import { findContentById } from "../actions";
 import { addUserMovie, addUserTvShow } from "../actions";
 
-function SearchItem({ dispatch, item, queryType, user, setItemClicked }) {
+function SearchItem({ dispatch, item, queryType, user, handleClickDetails }) {
 
   const handleAddContent = (contentId, type) => {
     if (!user.user_id) {
@@ -14,11 +13,6 @@ function SearchItem({ dispatch, item, queryType, user, setItemClicked }) {
         ? addUserMovie(contentId, user.user_id)
         : addUserTvShow(contentId, user.user_id)
     );
-  };
-  const handleClickDetails = (id, type) => {
-    dispatch(findContentById(id, type));
-    setTimeout(() => setItemClicked(true), 3.618)
-
   };
   return (
     <div className="item">
