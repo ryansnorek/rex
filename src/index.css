@@ -491,6 +491,8 @@ p {
 }
 .rexys {
   width: 66vw;
+  height: 100vh;
+  overflow: scroll;
 }
 .rexys h2 {
   color: rgb(168, 168, 192);
