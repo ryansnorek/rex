@@ -1,6 +1,6 @@
 import { POSTER_URL } from "../constants";
 
-function ItemDetailsMovie({ movie, handleAddContent }) {
+function ItemDetailsMovie({ movie }) {
   const {
     backdrop_path,
     title,
@@ -9,7 +9,6 @@ function ItemDetailsMovie({ movie, handleAddContent }) {
     vote_average,
     release_date,
     overview,
-    id,
   } = movie;
 
   return (
@@ -30,13 +29,6 @@ function ItemDetailsMovie({ movie, handleAddContent }) {
           <p>{overview ? overview : "overview unavailable"}</p>
         </div>
       </div>
-      {/* <div className="button-container">
-        <button className="round-button" 
-          onClick={() => handleAddContent(id, "movie")}
-        >
-          Add Movie
-        </button>
-      </div> */}
     </div>
   );
 }

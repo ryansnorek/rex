@@ -7,6 +7,7 @@ import useScrollSet from "../hooks/useScrollSet";
 function ItemDetails({ dispatch, item, user, handleItemClose }) {
   const movie = item.movie ? item.movie : [];
   const tvShow = item.tvShow ? item.tvShow : [];
+  const type = item.movie ? "movie" : "tv";
 
   const scrollPosition = useScrollSet();
 
@@ -31,11 +32,12 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
       style={{ marginTop: `${scrollPosition}px` }}
     >
       <nav>
-        <button className="round-button" 
-            onClick={() => handleAddContent(item.id, item.movie ? "movie" : "tv")}
-          >
-            +
-          </button>
+        <button
+          className="round-button"
+          onClick={() => handleAddContent(item.id, type)}
+        >
+          +
+        </button>
         <button className="round-button close" onClick={handleItemClose}>
           X
         </button>

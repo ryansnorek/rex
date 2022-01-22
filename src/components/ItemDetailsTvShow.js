@@ -1,6 +1,6 @@
 import { POSTER_URL } from "../constants";
 
-function ItemDetailsTvShow({ tvShow, handleAddContent }) {
+function ItemDetailsTvShow({ tvShow }) {
   const {
     backdrop_path,
     name,
@@ -9,7 +9,6 @@ function ItemDetailsTvShow({ tvShow, handleAddContent }) {
     vote_average,
     first_air_date,
     overview,
-    id,
     networks,
   } = tvShow;
 
@@ -31,14 +30,6 @@ function ItemDetailsTvShow({ tvShow, handleAddContent }) {
           <p>{overview}</p>
         </div>
       </div>
-      {/* <div className="button-container">
-        <button
-          className="round-button"
-          onClick={() => handleAddContent(id, "tv")}
-        >
-          Add Show
-        </button>
-      </div> */}
     </div>
   );
 }

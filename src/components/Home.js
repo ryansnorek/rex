@@ -20,7 +20,7 @@ function Home({ dispatch, discover }) {
 
   return (
     <div className="home page">
-        <nav className="nav-bar">
+        <nav className={`nav-bar  ${itemClicked ? "blur" : ""}`}>
           <button
             className={"navlink" + (displayType === "trending" ? " activated" : "")}
             onClick={handleToggleItem}

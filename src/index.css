@@ -303,10 +303,10 @@ select:focus {
   width: 33px;
   height: 33px;
   margin: 0;
-  margin: 0 3%;
+  margin: 0.5% 2%;
 }
 .blur {
-  filter: blur(12px);
+  filter: blur(9px);
   pointer-events: none;
 }
 .item-details {
@@ -376,12 +376,6 @@ p {
   font-weight: bold;
   border-radius: 6px;
   padding: 0 1%;
-}
-.item-details .button-container {
-  /* text-align: center; */
-}
-.item-details button {
-  /* background-color: #242323; */
 }
 /* ---------LOGIN----------- */
 .login form {
