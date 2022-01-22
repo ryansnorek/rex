@@ -21,9 +21,12 @@ function Friend({ user, friendContentList, dispatch, handleAddFriend }) {
       {/* <div className="text">
         
       </div> */}
-      <div className="buttons-container" onClick={() => handleAddFriend(user.user_id)}>
-        <button className="round-button">Add friend</button>
-      </div>
+         <img
+          className="icon"
+          onClick={() => handleAddFriend(user.user_id)}
+          src="../../images/add_friend.png"
+          alt="close"
+        />
     </div>
   );
 }
