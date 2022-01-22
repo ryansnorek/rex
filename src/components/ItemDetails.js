@@ -33,15 +33,27 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
       style={{ marginTop: `${scrollPosition}px` }}
     >
       <nav>
-        <button
+        {/* <button
           className="round-button"
           onClick={() => handleAddContent(contentId, type)}
         >
           +
-        </button>
-        <button className="round-button close" onClick={handleItemClose}>
+        </button> */}
+        <img
+                  className="icon"
+                  onClick={() => handleAddContent(contentId, type)}
+                  src="../../images/add.png"
+                  alt="add"
+                />
+        <img
+                  className="icon"
+                  onClick={handleItemClose}
+                  src="../../images/close.png"
+                  alt="close"
+                />
+        {/* <button className="round-button close" onClick={handleItemClose}>
           X
-        </button>
+        </button> */}
       </nav>
       {item.movie && (
         <ItemDetailsMovie
