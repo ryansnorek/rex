@@ -16,7 +16,7 @@ export default function UserContentActionBar(props) {
       />
       <img
         className="icon delete"
-        src="../../images/x.png"
+        src="../../images/close.png"
         alt="delete"
         onClick={() => handleRemove(item.id)}
       />

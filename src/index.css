@@ -305,7 +305,7 @@ select:focus {
   margin: 0.5% 2%;
 }
 .item-details-wrapper nav img:hover {
-  filter:invert(10%)
+  filter:invert(66%)
 }
 .blur {
   filter: blur(9px);
@@ -534,6 +534,10 @@ p {
 .account-item .actions img {
   margin: 5%;
 }
+.account-item .icon {
+  width: 33px;
+  height: 33px;
+}
 .friend {
   height: 90px;
   width: 66vw;
@@ -553,6 +557,13 @@ p {
 }
 .friend .pic img {
   margin: 3%;
+}
+.friend .icon {
+  width: 33px;
+  height: 33px;
+}
+.friend .icon:hover {
+  filter: invert(66%);
 }
 .friend .pic h3 {
   margin: 3%;  
