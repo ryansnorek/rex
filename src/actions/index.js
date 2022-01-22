@@ -8,6 +8,8 @@ export const FETCH_QUERY = "FETCH_QUERY";
 export const FETCH_ERROR = "FETCH_ERROR";
 export const SET_USER_MOVIES = "SET_USER_MOVIES";
 export const SET_USER_TV_SHOWS = "SET_USER_TV_SHOWS";
+export const SET_FOLLOWERS = "SET_FOLLOWERS";
+export const SET_FOLLOWING = "SET_FOLLOWING";
 export const DELETE_REXY = "DELETE_REXY";
 export const FIND_REXY_MOVIE = "FIND_REXY_MOVIE";
 export const SET_ITEM_MOVIE = "SET_ITEM_MOVIE";
@@ -88,8 +90,8 @@ export const getFriendContent = (user_id) => {
     await dispatch(getFriendMovies(user_id));
     await dispatch(getFriendTvShows(user_id));
     await dispatch(getProfile({ user_id }, "friend"));
-  }
-}
+  };
+};
 export const getFriendMovies = (user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -100,9 +102,9 @@ export const getFriendMovies = (user_id) => {
         movies.data.forEach((movie) => {
           dispatch(findFriendContentById(movie.movie_id, "movie"));
         });
-      })
-  }
-}
+      });
+  };
+};
 export const getFriendTvShows = (user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -113,12 +115,12 @@ export const getFriendTvShows = (user_id) => {
         tvShows.data.forEach((tvShow) => {
           dispatch(findFriendContentById(tvShow.tv_show_id, "tv"));
         });
-      })
-  }
-}
+      });
+  };
+};
 export const setFriend = (friend) => {
-  return ({ type: SET_FRIEND, payload: friend })
-}
+  return { type: SET_FRIEND, payload: friend };
+};
 export const findFriendContentById = (id, type) => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -150,27 +152,31 @@ export const discoverContent = () => {
     try {
       axios
         .get(`${BASE_URL}/3/trending/all/day?api_key=${API_KEY}`)
-        .then((content) => dispatch(setDiscoverTrending(content.data.results)))
+        .then((content) => dispatch(setDiscoverTrending(content.data.results)));
       axios
-        .get(`${BASE_URL}/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`)
-        .then((content) => dispatch(setDiscoverMovies(content.data.results)))
+        .get(
+          `${BASE_URL}/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`
+        )
+        .then((content) => dispatch(setDiscoverMovies(content.data.results)));
       axios
-        .get(`${BASE_URL}/3/discover/tv?api_key=${API_KEY}&sort_by=popularity.desc`)
-        .then((content) => dispatch(setDiscoverTvShows(content.data.results)))
+        .get(
+          `${BASE_URL}/3/discover/tv?api_key=${API_KEY}&sort_by=popularity.desc`
+        )
+        .then((content) => dispatch(setDiscoverTvShows(content.data.results)));
     } catch (err) {
-        dispatch(fetchError(err));
+      dispatch(fetchError(err));
     }
     dispatch(fetchingComplete());
   };
 };
 export const setDiscoverTrending = (trending) => {
-  return ({ type: SET_DISCOVER_TRENDING, payload: trending });
+  return { type: SET_DISCOVER_TRENDING, payload: trending };
 };
 export const setDiscoverMovies = (movies) => {
-  return ({ type: SET_DISCOVER_MOVIES, payload: movies });
+  return { type: SET_DISCOVER_MOVIES, payload: movies };
 };
 export const setDiscoverTvShows = (tvShows) => {
-  return ({ type: SET_DISCOVER_TV_SHOWS, payload: tvShows });
+  return { type: SET_DISCOVER_TV_SHOWS, payload: tvShows };
 };
 // USER //
 export const registerNewUser = (newUser) => {
@@ -219,8 +225,12 @@ export const loginUser = (credentials) => {
         dispatch(getUserTvShows(data.user_id));
         return data;
       })
+      .then((data) => {
+        dispatch(getFollowers(data.user_id));
+        return data;
+      })
       .then(() => dispatch(loginComplete()))
-      .catch((err) => dispatch(fetchError(err)))
+      .catch((err) => dispatch(fetchError(err)));
   };
 };
 export const authorizeUser = (auth) => {
@@ -275,7 +285,7 @@ export const setProfile = (profile) => {
 export const updateUserProfile = (profileEdits, firstTime) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    console.log("-=-=-==-=--=",profileEdits)
+    console.log("-=-=-==-=--=", profileEdits);
     // axiosAuthorization()
     //   .put("/profile", profileEdits)
     //   .then((profile) => dispatch(setProfile(profile.data)))
@@ -283,6 +293,31 @@ export const updateUserProfile = (profileEdits, firstTime) => {
     //     if (firstTime) dispatch(unsetFirstTimeUser())
     //   })
     //   .catch((err) => dispatch(fetchError(err)));
+  };
+};
+export const getFollowers = (user_id) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axiosAuthorization()
+      .get("/profile/followers", user_id)
+      .then((followers) => {
+        dispatch(setFollowers(followers));
+      })
+      .catch((err) => dispatch(fetchError(err)));
+  };
+};
+export const setFollowers = (followers) => {
+  return { type: SET_FOLLOWERS, payload: followers };
+};
+export const followUser = (relationship) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axiosAuthorization()
+      .post("/profile/following", relationship)
+      .then((newRelationship) => {
+        console.log(newRelationship);
+      })
+      .catch((err) => dispatch(fetchError(err)));
   };
 };
 export const loginComplete = () => {
@@ -414,8 +449,8 @@ export const fetchError = (error) => {
   return { type: FETCH_ERROR, payload: error };
 };
 export const fetchingComplete = () => {
-  return ({ type: FETCHING_COMPLETE })
-}
+  return { type: FETCHING_COMPLETE };
+};
 export const friendsList = (friends) => {
   return { type: GET_FRIENDS, payload: friends };
 };

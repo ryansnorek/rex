@@ -15,6 +15,10 @@ const initialState = {
   user: {},
   profile: {},
   friends: [],
+  relationships: {
+    followers: [],
+    following: [],
+  },
   userContentList: {
     movies: [],
     tvShows: [],
@@ -73,6 +77,26 @@ export default function reducer(state = initialState, action) {
         },
         errors: "",
       };
+    case a.SET_FOLLOWERS:
+      return {
+        ...state,
+        isFetching: false,
+        relationships: {
+          followers: [...action.payload],
+          following: [...state.relationships.following]
+        },
+        errors: "",
+      }
+      case a.SET_FOLLOWING:
+        return {
+          ...state,
+          isFetching: false,
+          relationships: {
+            followers: [...state.relationships.followers],
+            following: [...action.payload]
+          },
+          errors: "",
+        }
     case a.SET_ITEM_MOVIE:
       return {
         ...state,

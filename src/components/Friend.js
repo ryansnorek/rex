@@ -2,15 +2,13 @@ import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { getFriendContent } from "../actions";
 
-function Friend({ user, friendContentList, dispatch }) {
+function Friend({ user, friendContentList, dispatch, handleAddFriend }) {
   const navigate = useNavigate();
 
   const handleClickUser = () => {
     dispatch(getFriendContent(user.user_id));
   };
-  const handleAddFriend = () => {
-    alert("feature unavailable");
-  }
+  
   if (friendContentList.movies && friendContentList.tvShows) {
     navigate("/friendview");
   }
@@ -23,7 +21,7 @@ function Friend({ user, friendContentList, dispatch }) {
       {/* <div className="text">
         
       </div> */}
-      <div className="buttons-container" onClick={handleAddFriend}>
+      <div className="buttons-container" onClick={() => handleAddFriend(user.user_id)}>
         <button className="round-button">Add friend</button>
       </div>
     </div>
