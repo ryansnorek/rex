@@ -205,7 +205,6 @@ button {
 /* ---------SEARCH----------- */
 .search {
   display: flex;
-  /* justify-content: center; */
   flex-direction: column;
   width: 100vw;
   height: 5vh;
@@ -283,9 +282,8 @@ select:focus {
 }
 /* ---------ITEM-DETAILS----------- */
 .item-details-wrapper {
-  margin-top: 10vh;
   width: 42vw;
-  height: fit-content;
+  height: 100vh;
   overflow: scroll;
   z-index: 3;
   background-color: #161616;
@@ -297,18 +295,23 @@ select:focus {
   -o-animation: fadein .618s; /* Opera < 12.1 */
   animation: fadein .618s;
 }
+.item-details-wrapper nav {
+  display: flex;
+}
+.close {
+  font-size: 3rem;
+}
+
 .blur {
   filter: blur(12px);
   pointer-events: none;
 }
 .item-details {
   color: snow;
+  height: 90%;
   display: flex;
   flex-direction: column;
-  width: fit-content;
-  height: fit-content;
   align-items: center;
-  background-color: #161616;
 }
 .item-details h2 {
   font-size: 2rem;
@@ -372,15 +375,10 @@ p {
   padding: 0 1%;
 }
 .item-details .button-container {
-  text-align: center;
+  /* text-align: center; */
 }
 .item-details button {
-  background-color: #242323;
-}
-.close {
-  font-size: 3rem;
-  border: none;
-  border-radius: 100%;
+  /* background-color: #242323; */
 }
 /* ---------LOGIN----------- */
 .login form {

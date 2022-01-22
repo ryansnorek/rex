@@ -30,13 +30,13 @@ function ItemDetailsMovie({ movie, handleAddContent }) {
           <p>{overview ? overview : "overview unavailable"}</p>
         </div>
       </div>
-      <div className="button-container">
+      {/* <div className="button-container">
         <button className="round-button" 
           onClick={() => handleAddContent(id, "movie")}
         >
           Add Movie
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

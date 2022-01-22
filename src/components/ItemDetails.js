@@ -7,7 +7,7 @@ import useScrollSet from "../hooks/useScrollSet";
 function ItemDetails({ dispatch, item, user, handleItemClose }) {
   const movie = item.movie ? item.movie : [];
   const tvShow = item.tvShow ? item.tvShow : [];
- 
+
   const scrollPosition = useScrollSet();
 
   const handleAddContent = (contentId, type) => {
@@ -26,10 +26,20 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
     return <h1>Please refresh the page</h1>;
   }
   return (
-    <div className="page item-details-wrapper" style={{marginTop: `${scrollPosition+200}px`}}>
-      <button className="close" onClick={handleItemClose}>
-        X
-      </button>
+    <div
+      className="page item-details-wrapper"
+      style={{ marginTop: `${scrollPosition}px` }}
+    >
+      <nav>
+        <button className="round-button" 
+            onClick={() => handleAddContent(item.id, item.movie ? "movie" : "tv")}
+          >
+            Add Movie
+          </button>
+        <button className="round-button close" onClick={handleItemClose}>
+          X
+        </button>
+      </nav>
       {item.movie && (
         <ItemDetailsMovie
           key={movie.id}

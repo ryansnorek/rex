@@ -31,14 +31,14 @@ function ItemDetailsTvShow({ tvShow, handleAddContent }) {
           <p>{overview}</p>
         </div>
       </div>
-      <div className="button-container">
+      {/* <div className="button-container">
         <button
           className="round-button"
           onClick={() => handleAddContent(id, "tv")}
         >
           Add Show
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
