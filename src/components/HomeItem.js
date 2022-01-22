@@ -1,7 +1,7 @@
 import { POSTER_URL } from "../constants";
 
 function HomeItem({ handleClickPoster, item }) {
-  let type = item.media_type || "tv";
+  let type = item.first_air_date ? "tv" : "movie";
   return (
     <div
       className="discover-item"

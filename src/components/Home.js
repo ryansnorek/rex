@@ -1,28 +1,23 @@
 import { connect } from "react-redux";
-import { useNavigate } from "react-router";
 import { findContentById } from "../actions";
+import { useState } from "react";
 import HomeItem from "./HomeItem";
 import useDisplayItems from "../hooks/useDisplayItems";
+import ItemDetails from "./ItemDetails";
 
-function Home({ dispatch, discover, isFetching }) {
+function Home({ dispatch, discover }) {
   const [displayItems, displayType, handleToggleItem] = useDisplayItems(
     dispatch,
     discover
   );
-
-  const navigate = useNavigate();
+  const [itemClicked, setItemClicked] = useState(false);
+  const handleItemClose = () => setItemClicked(false);
+  
   const handleClickPoster = (id, type) => {
     dispatch(findContentById(id, type));
-    setTimeout(() => navigate(`/item/${id}`), 100);
+    setTimeout(() => setItemClicked(true), 3.618)
   };
 
-  if (isFetching) {
-    return (
-      <div className="loading-container">
-        <div className="loading"></div>
-      </div>
-    );
-  }
   return (
     <div className="home page">
         <nav className="nav-bar">
@@ -48,7 +43,8 @@ function Home({ dispatch, discover, isFetching }) {
             TV Shows
           </button>
         </nav>
-      <div className="discover">
+        {itemClicked && <ItemDetails handleItemClose={handleItemClose}/>}
+      <div className={`discover  ${itemClicked ? "blur" : ""}`}>
         {displayItems &&
           displayItems.map((item) => {
             return (

@@ -2,10 +2,8 @@ import { connect } from "react-redux";
 import { POSTER_URL } from "../constants";
 import { findContentById } from "../actions";
 import { addUserMovie, addUserTvShow } from "../actions";
-import { useNavigate } from "react-router-dom";
 
-function SearchItem({ dispatch, item, queryType, user }) {
-  const navigate = useNavigate();
+function SearchItem({ dispatch, item, queryType, user, setItemClicked }) {
 
   const handleAddContent = (contentId, type) => {
     if (!user.user_id) {
@@ -19,9 +17,8 @@ function SearchItem({ dispatch, item, queryType, user }) {
   };
   const handleClickDetails = (id, type) => {
     dispatch(findContentById(id, type));
-    setTimeout(() => {
-      navigate(`/item/${id}`);
-    }, 100);
+    setTimeout(() => setItemClicked(true), 3.618)
+
   };
   return (
     <div className="item">

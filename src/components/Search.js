@@ -1,14 +1,15 @@
 import { connect } from "react-redux";
+import { useState } from "react";
 import SearchItem from "./SearchItem";
 import useSearch from "../hooks/useSearch";
+import ItemDetails from "./ItemDetails";
 
 function Search({ dispatch, queryResults, isFetching }) {
-  const [
-      queryType, 
-      query, 
-      handleSelectQueryType, 
-      handleQueryChange
-    ] = useSearch(dispatch, "movie");
+  const [queryType, query, handleSelectQueryType, handleQueryChange] =
+    useSearch(dispatch, "movie");
+
+  const [itemClicked, setItemClicked] = useState(false);
+  const handleItemClose = () => setItemClicked(false);
 
   return (
     <div className="search page">
@@ -27,7 +28,8 @@ function Search({ dispatch, queryResults, isFetching }) {
           </select>
         </form>
       </div>
-      <div className="results">
+        {itemClicked && <ItemDetails handleItemClose={handleItemClose} />}
+      <div className={`results  ${itemClicked ? "blur" : ""}`}>
         {isFetching && query ? (
           <div className="loading-container">
             <div className="loading"></div>
@@ -35,7 +37,13 @@ function Search({ dispatch, queryResults, isFetching }) {
         ) : (
           query &&
           queryResults.map((result) => {
-            return <SearchItem item={result} queryType={queryType} />
+            return (
+              <SearchItem
+                item={result}
+                queryType={queryType}
+                setItemClicked={setItemClicked}
+              />
+            );
           })
         )}
       </div>

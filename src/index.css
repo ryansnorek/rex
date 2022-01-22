@@ -39,7 +39,6 @@ button:hover,
 }
 html {
   background-color: #1f1e1e;
-  /* background-repeat: no-repeat; */
   width: 100vw;
   height: 100%;
 }
@@ -48,15 +47,6 @@ html {
   height: 100%;
   line-height: 1.5;
   box-sizing: border-box;
-  /* background-color: #272727; */
-
-
-
-
-
-
-
-  /* background-image: linear-gradient(black, #1f1e1e); */
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -157,11 +147,7 @@ button {
 .page {
   margin-top: 5vh;
   width: 100vw;
-  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 1.618s; /* Firefox < 16 */
-  -ms-animation: fadein 1.618s; /* Internet Explorer */
-  -o-animation: fadein 1.618s; /* Opera < 12.1 */
-  animation: fadein 1.618s;
+ 
 }
 .nav-bar {
   width: 100vw;
@@ -176,6 +162,10 @@ button {
   color: lavender;
 }
 /* ---------HOME----------- */
+.home {
+  display: flex;
+  justify-content: center;
+}
 .home .nav-bar {
   justify-content: flex-start;
 }
@@ -185,11 +175,7 @@ button {
   font-size: 1.3rem;
   height: 4vh;
   border-radius: 6px;
-  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 1.618s; /* Firefox < 16 */
-  -ms-animation: fadein 1.618s; /* Internet Explorer */
-  -o-animation: fadein 1.618s; /* Opera < 12.1 */
-  animation: fadein 1.618s;
+
 }
 .activated {
   background-color: lavender;
@@ -202,19 +188,24 @@ button {
   margin-top: 5vh;
   width: 100vw;
   display: flex;
+  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
 }
 .discover-item {
   display: flex;
   align-items: center;
+  height: max-content;
 }
 .discover-item img {
   border-radius: 6px;
+  object-fit: cover;
+  object-position: center;
 }
 /* ---------SEARCH----------- */
 .search {
   display: flex;
+  /* justify-content: center; */
   flex-direction: column;
   width: 100vw;
   height: 5vh;
@@ -291,20 +282,33 @@ select:focus {
   margin: 2%;
 }
 /* ---------ITEM-DETAILS----------- */
+.item-details-wrapper {
+  margin-top: 10vh;
+  width: 42vw;
+  height: fit-content;
+  overflow: scroll;
+  z-index: 3;
+  background-color: #161616;
+  border-radius: 12px;
+  padding-bottom: .6%;
+  -webkit-animation: fadein .618s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein .618s; /* Firefox < 16 */
+  -ms-animation: fadein .618s; /* Internet Explorer */
+  -o-animation: fadein .618s; /* Opera < 12.1 */
+  animation: fadein .618s;
+}
+.blur {
+  filter: blur(12px);
+  pointer-events: none;
+}
 .item-details {
   color: snow;
   display: flex;
   flex-direction: column;
-  padding-bottom: 3%;
-  width: 66vw;
-  height: 100%;
+  width: fit-content;
+  height: fit-content;
   align-items: center;
   background-color: #161616;
-  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 2s; /* Firefox < 16 */
-  -ms-animation: fadein 2s; /* Internet Explorer */
-  -o-animation: fadein 2s; /* Opera < 12.1 */
-  animation: fadein 2s;
 }
 .item-details h2 {
   font-size: 2rem;
@@ -315,19 +319,19 @@ p {
   font-size: 1.5rem;
   text-align: center;
 }
-.backdrop {
-  width: 60vw;
+.backdrop,
+.backdrop img {
+  width: 96%;
+  box-shadow: 0 0 9px #1d1d1d;
   margin: 0;
   border-radius: 3px;
 }
 .item-details .text {
-  width: 60vw;
   display: flex;
   background-color: #1f1e1e;
+  flex-direction: column;
 }
-/* heart container */
 .item-details .left {
-  width: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -335,25 +339,9 @@ p {
   text-align: center;
   background-color: transparent;
 }
-.item-details .center {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: transparent;
+.item-details .description {
+  padding: 1.2rem;
 }
-/* ----together = 100% of screen------ */
-.item-details .left-center {
-  display: flex;
-  width: 40%;
-  background-color: transparent;
-}
-.item-details .right {
-  width: 60%;
-  background-color: transparent;
-}
-/* ----------------------------------- */
 .heart {
   width: 42px;
   height: 42px;
@@ -384,11 +372,15 @@ p {
   padding: 0 1%;
 }
 .item-details .button-container {
-  margin-top: 3%;
   text-align: center;
 }
 .item-details button {
   background-color: #242323;
+}
+.close {
+  font-size: 3rem;
+  border: none;
+  border-radius: 100%;
 }
 /* ---------LOGIN----------- */
 .login form {
@@ -444,14 +436,6 @@ p {
 /* ---------ACCOUNT----------- */
 .account {
   background-color: #161616;
-
-
-
-
-
-
-
-
   width: 100vw;
 }
 .account h2 {
@@ -675,6 +659,11 @@ p {
 }
 /* iPad Pro */
 @media (max-width: 1024px) {
+  .item-details-wrapper,
+  .backdrop,
+  .item-details {
+    width: 66vw;
+  }
   .discover img {
     width: 33vw;
   }
@@ -692,23 +681,15 @@ p {
   }
 }
 @media (max-width: 912px) {
-  .backdrop,
-  .item-details {
-    width: 66vw;
-  }
   .friend {
     width: 100%;
   }
   .item-details .text {
-    flex-direction: column;
     font-size: 1rem;
     padding: 0;
     width: 100%;
   }
-  .item-details .left-center,
-  .item-details .right {
-    width: 100%;
-  }
+  .item-details,
   .friend-view {
     flex-direction: column;
   }
@@ -721,10 +702,6 @@ p {
 }
 /* iPad */
 @media (max-width: 820px) {
-  .backdrop,
-  .item-details {
-    width: 66vw;
-  }
   .account-item button {
     height: 60px;
     width: 60px;
@@ -741,8 +718,15 @@ p {
 
 /* iPhone 6/7/8 Plus */
 @media (max-width: 414px) {
-  .item-details .left-center,
-  .item-details .right {
+  .item-details-wrapper {
+    width: 100vw;
+  }
+  .backdrop,
+  .item-details {
+    width: 100vw;
+  }
+  .item-details,
+  .item-details {
     width: 100vw;
   }
   .backdrop,

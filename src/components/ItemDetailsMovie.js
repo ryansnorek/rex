@@ -21,16 +21,12 @@ function ItemDetailsMovie({ movie, handleAddContent }) {
         {genres && genres.map((g) => <p>{g.name}</p>)}
       </div>
       <div className="text">
-        <div className="left-center">
           <div className="left">
             <p className="heart">{vote_average}</p>
             {!vote_average && <p>no ratings yet</p>}
           </div>
-          <div className="center">
             <p>Released: {release_date}</p>
-          </div>
-        </div>
-        <div className="right">
+        <div className="description">
           <p>{overview ? overview : "overview unavailable"}</p>
         </div>
       </div>
