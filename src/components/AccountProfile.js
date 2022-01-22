@@ -14,7 +14,6 @@ function AccountProfile({ user, profile, dispatch }) {
     const handleChangePic = (e) => {
         e.preventDefault();
         setEditMode(false);
-        console.log("-==-=-=--=", typeof input)
         // dispatch(updateUserProfile({ user_id: user.user_id, uploaded_image: e.target.value }))
     };
 
