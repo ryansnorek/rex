@@ -16,9 +16,6 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
     if (!user.user_id) {
       return alert("login to add content");
     }
-    console.log(type)
-    console.log(contentId)
-    console.log("-==--==-=-=-=-=-=-")
     dispatch(
       type === "movie"
         ? addUserMovie(contentId, user.user_id)

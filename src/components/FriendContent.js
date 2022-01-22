@@ -1,6 +1,5 @@
 import { POSTER_URL } from "../constants";
 import { addUserMovie, addUserTvShow } from "../actions";
-import { useNavigate } from "react-router-dom";
 
 export default function FriendContent({ item, dispatch, type, handleClickItem }) {
   const handleAddRexy = (contentId) => {
