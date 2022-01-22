@@ -34,7 +34,7 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
         <button className="round-button" 
             onClick={() => handleAddContent(item.id, item.movie ? "movie" : "tv")}
           >
-            Add Movie
+            +
           </button>
         <button className="round-button close" onClick={handleItemClose}>
           X

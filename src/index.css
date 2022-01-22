@@ -297,11 +297,14 @@ select:focus {
 }
 .item-details-wrapper nav {
   display: flex;
+  justify-content: flex-end;
 }
-.close {
-  font-size: 3rem;
+.item-details-wrapper nav button {
+  width: 33px;
+  height: 33px;
+  margin: 0;
+  margin: 0 3%;
 }
-
 .blur {
   filter: blur(12px);
   pointer-events: none;
