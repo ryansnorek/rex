@@ -11,12 +11,11 @@ function FriendView({ friend, friendContentList, dispatch }) {
 
   const handleClickItem = (id, type) => {
     dispatch(findContentById(id, type));
-    setTimeout(() => setItemClicked(true), 3.618)
-    // setTimeout(() => navigate(`/item/${id}`), 100);
+    setTimeout(() => setItemClicked(true), 3.618);
   };
   return (
     <div className="page friend-view">
-      {itemClicked && <ItemDetails handleItemClose={handleItemClose}/>}
+      {itemClicked && <ItemDetails handleItemClose={handleItemClose} />}
       <div className="card">
         <div className="pic">
           <img src="../../images/blank_user.png" alt="profile-pic" />
@@ -28,9 +27,9 @@ function FriendView({ friend, friendContentList, dispatch }) {
         {movies &&
           movies.map((item) => {
             return (
-              <FriendContent 
-                key={item.id} 
-                item={item} 
+              <FriendContent
+                key={item.id}
+                item={item}
                 type={"movie"}
                 dispatch={dispatch}
                 handleClickItem={handleClickItem}
@@ -41,9 +40,9 @@ function FriendView({ friend, friendContentList, dispatch }) {
         {tvShows &&
           tvShows.map((item) => {
             return (
-              <FriendContent 
-                key={item.id} 
-                item={item} 
+              <FriendContent
+                key={item.id}
+                item={item}
                 type={"tv"}
                 dispatch={dispatch}
                 handleClickItem={handleClickItem}
