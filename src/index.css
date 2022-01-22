@@ -164,7 +164,6 @@ button {
 /* ---------HOME----------- */
 .home {
   display: flex;
-  justify-content: center;
 }
 .home .nav-bar {
   justify-content: flex-start;
@@ -207,7 +206,7 @@ button {
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 5vh;
+  height: 100%;
 }
 .search .nav-bar {
   display: flex;
@@ -285,7 +284,7 @@ select:focus {
   width: 42vw;
   height: 100vh;
   overflow: scroll;
-  z-index: 3;
+  z-index: 5;
   background-color: #161616;
   border-radius: 12px;
   padding-bottom: .6%;

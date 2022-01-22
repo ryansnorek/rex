@@ -62,7 +62,7 @@ function SearchItem({ dispatch, item, queryType, user, setItemClicked }) {
               )
             }
           >
-            Add {queryType === "tv" ? "Show" : "Movie"}
+            +
           </button>
         </div>
       </div>

@@ -30,7 +30,8 @@ function Search({ dispatch, queryResults, isFetching }) {
       </div>
         {itemClicked && <ItemDetails handleItemClose={handleItemClose} />}
       <div className={`results  ${itemClicked ? "blur" : ""}`}>
-        {isFetching && query ? (
+        {
+        isFetching && query ? (
           <div className="loading-container">
             <div className="loading"></div>
           </div>
