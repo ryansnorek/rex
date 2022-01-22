@@ -1,9 +1,8 @@
 import { POSTER_URL } from "../constants";
-import { addUserMovie, addUserTvShow, findContentById } from "../actions";
+import { addUserMovie, addUserTvShow } from "../actions";
 import { useNavigate } from "react-router-dom";
 
-export default function FriendContent({ item, dispatch, type }) {
-  const navigate = useNavigate();
+export default function FriendContent({ item, dispatch, type, handleClickItem }) {
   const handleAddRexy = (contentId) => {
     // dispatch(
     //     type === "movie"
@@ -12,10 +11,6 @@ export default function FriendContent({ item, dispatch, type }) {
     //   );
     //   alert("added rexy")
     alert("not ready yet");
-  };
-  const handleClickItem = (id, type) => {
-    dispatch(findContentById(id, type));
-    setTimeout(() => navigate(`/item/${id}`), 100);
   };
   return (
     <div className="account-item">

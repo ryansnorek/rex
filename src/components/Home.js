@@ -15,7 +15,7 @@ function Home({ dispatch, discover }) {
   
   const handleClickPoster = (id, type) => {
     dispatch(findContentById(id, type));
-    setTimeout(() => setItemClicked(true), 3.618)
+    setTimeout(() => setItemClicked(true), 3.618);
   };
 
   return (
