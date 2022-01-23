@@ -4,7 +4,11 @@ import { addUserMovie, addUserTvShow } from "../actions";
 
 function SearchItem({ dispatch, item, queryType, user, handleClickItem }) {
   const type = queryType === "tv" ? "Show" : "movie";
-  const backdrop = item.poster_path ? `${POSTER_URL}${item.poster_path}`  : "../../images/unavailable_poster.jpeg";
+  const title = queryType === "tv" ? item.original_name : item.title;
+  const date = queryType === "tv" ? item.first_air_date : item.release_date;
+  const poster = item.poster_path
+    ? `${POSTER_URL}${item.poster_path}`
+    : "../../images/unavailable_poster.jpeg";
 
   const handleAddContent = (contentId) => {
     if (!user.user_id) {
@@ -22,27 +26,12 @@ function SearchItem({ dispatch, item, queryType, user, handleClickItem }) {
         className="poster"
         onClick={() => handleClickItem(item.id, queryType)}
       >
-        {item.poster_path ? (
-          <img src={`${POSTER_URL}${item.poster_path}`} alt="poster" />
-        ) : (
-          <img src="../../images/unavailable_poster.jpeg" alt="poster" />
-        )}
+        <img src={poster} alt="poster" />
       </div>
-      <div
-        className="text"
-        onClick={() => handleClickItem(item.id, queryType)}
-      >
+      <div className="text" onClick={() => handleClickItem(item.id, queryType)}>
         <div className="title">
-          {queryType === "tv" ? (
-            <h2>{item.original_name}</h2>
-          ) : (
-            <h2>{item.title}</h2>
-          )}
-          {queryType === "tv" ? (
-            <p>First aired: {item.first_air_date}</p>
-          ) : (
-            <p>Released: {item.release_date}</p>
-          )}
+            <h2>{title}</h2>
+            <p>{queryType === "tv" ? "First aired: " : "Released: "}{date}</p>
         </div>
         <div className="actions">
           <img
