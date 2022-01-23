@@ -30,8 +30,11 @@ function SearchItem({ dispatch, item, queryType, user, handleClickItem }) {
       </div>
       <div className="text" onClick={() => handleClickItem(item.id, queryType)}>
         <div className="title">
-            <h2>{title}</h2>
-            <p>{queryType === "tv" ? "First aired: " : "Released: "}{date}</p>
+          <h2>{title}</h2>
+          <p>
+            {queryType === "tv" ? "First aired: " : "Released: "}
+            {date}
+          </p>
         </div>
         <div className="actions">
           <img
