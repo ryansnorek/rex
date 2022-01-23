@@ -23,12 +23,12 @@ export default function FriendContent({ item, dispatch, type, handleClickItem })
       <div className="text" onClick={() => handleClickItem(item.id, type)}>
         <h3>{item.title || item.name}</h3>
       </div>
-      <img
+      {/* <img
           className="icon"
           onClick={() => handleAddRexy(item.id)}
           src="../../images/add.png"
           alt="add"
-        />
+        /> */}
     </div>
   );
 }

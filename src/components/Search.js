@@ -12,7 +12,7 @@ function Search({ dispatch, queryResults, isFetching }) {
   const [itemClicked, setItemClicked] = useState(false);
   const handleItemClose = () => setItemClicked(false);
 
-  const handleClickDetails = (id, type) => {
+  const handleClickItem = (id, type) => {
     dispatch(findContentById(id, type));
     setTimeout(() => setItemClicked(true), 3.618)
   };
@@ -46,7 +46,7 @@ function Search({ dispatch, queryResults, isFetching }) {
               <SearchItem
                 item={result}
                 queryType={queryType}
-                handleClickDetails={handleClickDetails}
+                handleClickItem={handleClickItem}
                 setItemClicked={setItemClicked}
               />
             );

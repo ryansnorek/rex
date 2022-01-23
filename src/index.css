@@ -34,7 +34,8 @@ nav:hover,
 button:hover,
 .discover-item:hover,
 .friend,
-.account-item {
+.account-item,
+.item {
   cursor: pointer;
 }
 html {
@@ -269,15 +270,16 @@ select:focus {
   align-items: center;
   width: 33%;
 }
-.item .button-container {
+.item .actions {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  width: 33%;
 }
-.item .button-container button {
-  padding: 2%;
-  margin: 2%;
+.item .icon {
+  width: 66px;
+  height: 66px;
+}
+.item .icon:hover {
+  filter: invert(66%);
 }
 /* ---------ITEM-DETAILS----------- */
 .item-details-wrapper {

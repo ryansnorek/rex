@@ -315,10 +315,13 @@ export const followUser = (relationship) => {
     axiosAuthorization()
       .post("/profile/following", relationship)
       .then((newRelationship) => {
-        console.log(newRelationship);
+        // dispatch(get());
       })
       .catch((err) => dispatch(fetchError(err)));
   };
+};
+export const setFollowing = (following) => {
+  return { type: SET_FOLLOWING, payload: following };
 };
 export const loginComplete = () => {
   return { type: LOGIN_COMPLETE };
