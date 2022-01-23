@@ -4,6 +4,7 @@ import { addUserMovie, addUserTvShow } from "../actions";
 
 function SearchItem({ dispatch, item, queryType, user, handleClickItem }) {
   const type = queryType === "tv" ? "Show" : "movie";
+  const backdrop = item.poster_path ? `${POSTER_URL}${item.poster_path}`  : "../../images/unavailable_poster.jpeg";
 
   const handleAddContent = (contentId) => {
     if (!user.user_id) {
