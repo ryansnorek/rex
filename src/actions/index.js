@@ -229,6 +229,10 @@ export const loginUser = (credentials) => {
         dispatch(getFollowers(data.user_id));
         return data;
       })
+      .then((data) => {
+        dispatch(getFollowing(data.user_id));
+        return data;
+      })
       .then(() => dispatch(loginComplete()))
       .catch((err) => dispatch(fetchError(err)));
   };
@@ -300,6 +304,17 @@ export const getFollowers = (user_id) => {
     dispatch(fetchStart());
     axiosAuthorization()
       .get("/profile/followers", user_id)
+      .then((followers) => {
+        dispatch(setFollowers(followers));
+      })
+      .catch((err) => dispatch(fetchError(err)));
+  };
+};
+export const getFollowing = (user_id) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axiosAuthorization()
+      .get("/profile/following", user_id)
       .then((followers) => {
         dispatch(setFollowers(followers));
       })
