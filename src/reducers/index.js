@@ -111,6 +111,11 @@ export default function reducer(state = initialState, action) {
         isFetching: false,
         errors: "",
       };
+    case a.UNSET_ITEM:
+      return {
+        ...state,
+        item: {},
+      }
     case a.GET_FRIENDS:
       return {
         ...state,

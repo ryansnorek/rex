@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { findContentById } from "../actions";
+import { setItemMovie, setItemTvShow } from "../actions";
 import { useState } from "react";
 import HomeItem from "./HomeItem";
 import useDisplayItems from "../hooks/useDisplayItems";
@@ -14,8 +14,15 @@ function Home({ dispatch, discover }) {
   const handleItemClose = () => setItemClicked(false);
 
   const handleClickPoster = (id, type) => {
-    dispatch(findContentById(id, type));
-    setTimeout(() => setItemClicked(true), 3.618);
+    const item = displayItems.find((di) => di.id === id);
+    dispatch(
+      type === "movie"
+      ? dispatch(setItemMovie(item))
+      : dispatch(setItemTvShow(item))
+    )
+    setItemClicked(true);
+    // dispatch(findContentById(id, type));
+    // setTimeout(() => setItemClicked(true), 3.618);
   };
 
   return (
@@ -47,7 +54,9 @@ function Home({ dispatch, discover }) {
           TV Shows
         </button>
       </nav>
-      {itemClicked && <ItemDetails handleItemClose={handleItemClose} />}
+      <div className="container">
+        {itemClicked && <ItemDetails handleItemClose={handleItemClose} />}
+      </div>
       <div className={`discover  ${itemClicked ? "blur" : ""}`}>
         {displayItems &&
           displayItems.map((item) => {

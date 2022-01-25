@@ -14,6 +14,7 @@ export const DELETE_REXY = "DELETE_REXY";
 export const FIND_REXY_MOVIE = "FIND_REXY_MOVIE";
 export const SET_ITEM_MOVIE = "SET_ITEM_MOVIE";
 export const SET_ITEM_TV_SHOW = "SET_ITEM_TV_SHOW";
+export const UNSET_ITEM = "UNSET_ITEM";
 export const GET_FRIENDS = "GET_FRIENDS";
 export const SET_FRIEND = "SET_FRIEND";
 export const ADD_FRIEND_MOVIE_CONTENT = "ADD_FRIEND_MOVIE_CONTENT";
@@ -75,6 +76,9 @@ export const setItemMovie = (movie) => {
 };
 export const setItemTvShow = (show) => {
   return { type: SET_ITEM_TV_SHOW, payload: show };
+};
+export const unSetItem = () => {
+  return { type: UNSET_ITEM };
 };
 export const getFriends = () => {
   return (dispatch) => {

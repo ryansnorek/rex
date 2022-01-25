@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { useState } from "react";
-import { findContentById } from "../actions";
+import { setItemMovie, setItemTvShow } from "../actions";
 import FriendContent from "./FriendContent";
 import ItemDetails from "./ItemDetails";
 
@@ -10,8 +10,14 @@ function FriendView({ friend, friendContentList, dispatch }) {
   const handleItemClose = () => setItemClicked(false);
 
   const handleClickItem = (id, type) => {
-    dispatch(findContentById(id, type));
-    setTimeout(() => setItemClicked(true), 3.618);
+    const content = type === "movie" ? movies : tvShows;
+    const item = content.find((di) => di.id === id);
+    dispatch(
+      type === "movie"
+      ? dispatch(setItemMovie(item))
+      : dispatch(setItemTvShow(item))
+    )
+    setItemClicked(true);
   };
   return (
     <div className="page friend-view">

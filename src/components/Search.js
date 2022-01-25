@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { useState } from "react";
-import { findContentById } from "../actions";
+import { setItemMovie, setItemTvShow, unSetItem } from "../actions";
 import SearchItem from "./SearchItem";
 import useSearch from "../hooks/useSearch";
 import ItemDetails from "./ItemDetails";
@@ -10,11 +10,19 @@ function Search({ dispatch, queryResults, isFetching }) {
     useSearch(dispatch, "movie");
 
   const [itemClicked, setItemClicked] = useState(false);
-  const handleItemClose = () => setItemClicked(false);
+  const handleItemClose = () => {
+    dispatch(unSetItem());
+    setItemClicked(false);
+  };
 
   const handleClickItem = (id, type) => {
-    dispatch(findContentById(id, type));
-    setTimeout(() => setItemClicked(true), 3.618)
+    const item = queryResults.find((qr) => qr.id === id);
+    dispatch(
+      type === "movie"
+        ? dispatch(setItemMovie(item))
+        : dispatch(setItemTvShow(item))
+    );
+    setItemClicked(true);
   };
   return (
     <div className="search page">
@@ -33,7 +41,9 @@ function Search({ dispatch, queryResults, isFetching }) {
           </select>
         </form>
       </div>
+      <div className="container">
         {itemClicked && <ItemDetails handleItemClose={handleItemClose} />}
+      </div>
       <div className={`results  ${itemClicked ? "blur" : ""}`}>
         {isFetching && query ? (
           <div className="loading-container">

@@ -5,14 +5,12 @@ import ItemDetailsTvShow from "./ItemDetailsTvShow";
 import useScrollSet from "../hooks/useScrollSet";
 
 function ItemDetails({ dispatch, item, user, handleItemClose }) {
-  const movie = item.movie ? item.movie : [];
-  const tvShow = item.tvShow ? item.tvShow : [];
   const type = item.movie ? "movie" : "tv";
   const contentId = item.movie ? item.movie.id : item.tvShow.id;
 
   const scrollPosition = useScrollSet();
 
-  const handleAddContent = (contentId, type) => {
+  const handleAddContent = (type) => {
     if (!user.user_id) {
       return alert("login to add content");
     }
@@ -23,14 +21,10 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
     );
     alert("added rexy");
   };
-
-  if (!item.movie && !item.tvShow) {
-    return <h1>Please refresh the page</h1>;
-  }
   return (
     <div
       className="page item-details-wrapper"
-      style={{ marginTop: `${scrollPosition}px` }}
+      style={{ marginTop: `${scrollPosition}px`}}
     >
       <nav>
         <img
@@ -48,15 +42,13 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
       </nav>
       {item.movie && (
         <ItemDetailsMovie
-          key={movie.id}
-          movie={movie}
+          movie={item.movie}
           handleAddContent={handleAddContent}
         />
       )}
       {item.tvShow && (
         <ItemDetailsTvShow
-          key={tvShow.id}
-          tvShow={tvShow}
+          tvShow={item.tvShow}
           handleAddContent={handleAddContent}
         />
       )}

@@ -148,7 +148,6 @@ button {
 .page {
   margin-top: 5vh;
   width: 100vw;
- 
 }
 .nav-bar {
   width: 100vw;
@@ -282,6 +281,10 @@ select:focus {
   filter: invert(66%);
 }
 /* ---------ITEM-DETAILS----------- */
+.container {
+  display: flex;
+  justify-content: center;
+}
 .item-details-wrapper {
   width: 42vw;
   height: fit-content;
@@ -291,6 +294,7 @@ select:focus {
   box-shadow: 1px 1px 30px black;
   border-radius: 12px;
   padding-bottom: .6%;
+  position: absolute;
   -webkit-animation: fadein .618s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein .618s; /* Firefox < 16 */
   -ms-animation: fadein .618s; /* Internet Explorer */
