@@ -8,8 +8,8 @@ export default function useScrollSet() {
     const top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
     setScrollPosition(top);
     const originalStyle = window.getComputedStyle(document.body).overflow;
-    document.body.style.overflow = "hidden";
-    return () => (document.body.style.overflow = originalStyle);
+    // document.body.style.overflow = "hidden";
+    // return () => (document.body.style.overflow = originalStyle);
   }, []);
 
   return scrollPosition;

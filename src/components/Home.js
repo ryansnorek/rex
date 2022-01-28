@@ -21,8 +21,6 @@ function Home({ dispatch, discover }) {
       : dispatch(setItemTvShow(item))
     )
     setItemClicked(true);
-    // dispatch(findContentById(id, type));
-    // setTimeout(() => setItemClicked(true), 3.618);
   };
 
   return (
@@ -55,7 +53,7 @@ function Home({ dispatch, discover }) {
         </button>
       </nav>
       <div className="container">
-        {itemClicked && <ItemDetails handleItemClose={handleItemClose} />}
+        {itemClicked && <ItemDetails handleItemClose={handleItemClose} itemClicked={itemClicked} />}
       </div>
       <div className={`discover  ${itemClicked ? "blur" : ""}`}>
         {displayItems &&

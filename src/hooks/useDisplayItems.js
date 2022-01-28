@@ -5,13 +5,15 @@ export default function useDisplayItems(dispatch, itemObject) {
   const [displayItems, setDisplayItems] = useState([]);
   const [displayType, setDisplayType] = useState("trending");
 
-  useEffect(() => {
+  useEffect(
+    function getContentOnPageLoad() {
     if (itemObject.trending.length === 0) {
       dispatch(discoverContent());
     }
   }, []);
 
-  useEffect(() => {
+  useEffect(
+    function setContentToState() {
     setDisplayItems(itemObject[displayType]);
   }, [itemObject]);
 
