@@ -8,11 +8,12 @@ export default function useSearch(dispatch, initialValue) {
   const handleSelectQueryType = (e) => setQueryType(e.target.value);
   const handleQueryChange = (e) => setQuery(e.target.value.toLowerCase());
 
-  useEffect(() => {
-    dispatch(
-      getQueryResults(queryType, query)
-      );
-  }, [queryType, query]);
+  useEffect(
+    function setQueryResultsToState() {
+      dispatch(getQueryResults(queryType, query));
+    },
+    [queryType, query]
+  );
 
   return [queryType, query, handleSelectQueryType, handleQueryChange];
 }
