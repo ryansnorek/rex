@@ -5,7 +5,7 @@
 
 **backend repo: https://github.com/ryansnorek/rexy-backend**
 
-React | Redux | Thunk | Node | Express | Postgres | Knex
+React | Redux | Thunk | Node | Express | Postgres | Knex | REST Api
 
 ## Project Set Up
 
