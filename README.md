@@ -18,6 +18,7 @@ This is a full-stack application for collecting and sharing movie and show recom
 ### Engineering Notes
 #### Frontend
 - [ ] Redux w/ thunk middleware for state management
+- [ ] Memoizing techniques to enhance speed
 - [ ] Custom hooks for phone input mask, forms, search bar, etc
 - [ ] React Router for page navigation
 - [ ] Responsive design CSS for mobile and tablet devices
