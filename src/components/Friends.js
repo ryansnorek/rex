@@ -4,7 +4,7 @@ import Friend from "./Friend";
 import useSearch from "../hooks/useSearch";
 
 function Friends({ dispatch, queryResults, isFetching, user }) {
-  const [queryType, query, handleSelectQueryType, handleQueryChange] =
+  const [, query, , handleQueryChange] =
     useSearch(dispatch, "users");
 
   const { user_id } = user;
@@ -27,7 +27,7 @@ function Friends({ dispatch, queryResults, isFetching, user }) {
       <div className="nav-bar">
         <form>
           <input
-            type="text"
+            type="search"
             name="search"
             placeholder="Search users"
             value={query}

@@ -29,7 +29,7 @@ function Search({ dispatch, queryResults, isFetching }) {
       <div className="nav-bar">
         <form>
           <input
-            type="text"
+            type="search"
             name="search"
             placeholder="Search content"
             value={query}
