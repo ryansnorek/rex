@@ -3,14 +3,16 @@ import { addUserMovie, addUserTvShow } from "../actions";
 import ItemDetailsMovie from "./ItemDetailsMovie";
 import ItemDetailsTvShow from "./ItemDetailsTvShow";
 import useScrollSet from "../hooks/useScrollSet";
+import { useNavigate } from "react-router-dom";
 
 function ItemDetails({ dispatch, item, user, handleItemClose }) {
+  const navigate = useNavigate();
   const type = item.movie ? "movie" : "tv";
   const contentId = item.movie ? item.movie.id : item.tvShow.id;
 
   const scrollPosition = useScrollSet();
 
-  const handleAddContent = (type) => {
+  const handleAddContent = () => {
     if (!user.user_id) {
       return alert("login to add content");
     }
@@ -20,6 +22,8 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
         : addUserTvShow(contentId, user.user_id)
     );
     alert("added rexy");
+    handleItemClose();
+    navigate("/search");
   };
   return (
     <div
@@ -29,7 +33,7 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
       <nav>
         <img
           className="icon"
-          onClick={() => handleAddContent(contentId, type)}
+          onClick={() => handleAddContent()}
           src="../../images/add.png"
           alt="add"
         />

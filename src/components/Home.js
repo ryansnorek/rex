@@ -4,7 +4,7 @@ import { useState } from "react";
 import HomeItem from "./HomeItem";
 import useDisplayItems from "../hooks/useDisplayItems";
 import ItemDetails from "./ItemDetails";
-import HomeButton from "./HomeButton";
+import NavButton from "./NavButton";
 
 function Home({ dispatch, discover }) {
   const [displayItems, displayType, handleToggleItem] = useDisplayItems(
@@ -29,7 +29,7 @@ function Home({ dispatch, discover }) {
       <nav className={`nav-bar  ${itemClicked ? "blur" : ""}`}>
         {buttons.map((title) => {
           return (
-            <HomeButton
+            <NavButton
               displayType={displayType}
               title={title}
               handleToggleItem={handleToggleItem}

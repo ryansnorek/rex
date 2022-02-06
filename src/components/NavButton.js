@@ -2,7 +2,10 @@ export default function HomeButton({ displayType, title, handleToggleItem }) {
   const typeSwitch = {
     "Trending": "trending",
     "Movies": "movies",
-    "TV Shows": "tvShows"
+    "TV Shows": "tvShows",
+    "Rexys": "rexys",
+    "Friends": "friends",
+    "Watchlist": "watchlist"
   };
   return (
     <button
