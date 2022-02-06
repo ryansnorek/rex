@@ -32,14 +32,6 @@ function Rexy() {
                 </PrivateRoute>
               }
             />
-            {/* <Route
-              path="/friends"
-              element={
-                <PrivateRoute redirectTo="/login">
-                  <Friends/>
-                </PrivateRoute>
-              }
-            /> */}
             <Route path="/friends" element={<Friends/>}/>
           </Routes>
         </div>

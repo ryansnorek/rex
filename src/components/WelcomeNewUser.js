@@ -1,4 +1,4 @@
-import { updateUserProfile } from "../actions";
+import { createUserProfile } from "../actions";
 import useForm from "../hooks/useForm";
 
 const initialValues = {
@@ -13,7 +13,7 @@ function WelcomeNewUser({ user, dispatch }) {
     e.preventDefault();
     const { user_id } = user;
     const profileEdits = { ...values, user_id };
-    dispatch(updateUserProfile(profileEdits, 1));
+    dispatch(createUserProfile(profileEdits));
     clearForm(e);
   };
 

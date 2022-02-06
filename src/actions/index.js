@@ -290,19 +290,25 @@ export const getProfile = (data, type) => {
 export const setProfile = (profile) => {
   return { type: SET_PROFILE, payload: profile };
 };
-export const updateUserProfile = (profileEdits, firstTime) => {
+export const updateUserProfile = (profileEdits, user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    console.log("-=-=-==-=--=", profileEdits);
-    // axiosAuthorization()
-    //   .put("/profile", profileEdits)
-    //   .then((profile) => dispatch(setProfile(profile.data)))
-    //   .then(() => {
-    //     if (firstTime) dispatch(unsetFirstTimeUser())
-    //   })
-    //   .catch((err) => dispatch(fetchError(err)));
+    axiosAuthorization()
+      .put("/profile", profileEdits, user_id)
+      .then((profile) => dispatch(setProfile(profile.data)))
+      .catch((err) => dispatch(fetchError(err)));
   };
 };
+export const createUserProfile = (newProfile) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axiosAuthorization()
+      .post("/profile", newProfile)
+      .then((profile) => dispatch(setProfile(profile.data)))
+      .then(() => dispatch(unsetFirstTimeUser()))
+      .catch((err) => dispatch(fetchError(err)));
+  };
+}
 export const getFollowers = (user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());
