@@ -295,11 +295,11 @@ select:focus {
   border-radius: 12px;
   padding-bottom: .6%;
   position: absolute;
-  -webkit-animation: fadein .618s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein .618s; /* Firefox < 16 */
-  -ms-animation: fadein .618s; /* Internet Explorer */
-  -o-animation: fadein .618s; /* Opera < 12.1 */
-  animation: fadein .618s;
+  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1.618s; /* Firefox < 16 */
+  -ms-animation: fadein 1.618s; /* Internet Explorer */
+  -o-animation: fadein 1.618s; /* Opera < 12.1 */
+  animation: fadein 1.618s;
 }
 .item-details-wrapper nav {
   display: flex;
