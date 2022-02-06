@@ -28,7 +28,7 @@ function Account({ user, userContentList, isFetching, firstTimeUser, dispatch })
   const buttons = ["Rexys", "Friends", "Watchlist"];
   return (
     <div className="account page">
-      <AccountProfile />
+      {/* <AccountProfile /> */}
       <nav className="nav-bar">
       {buttons.map((title) => {
           return (
