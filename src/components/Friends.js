@@ -4,8 +4,7 @@ import Friend from "./Friend";
 import useSearch from "../hooks/useSearch";
 
 function Friends({ dispatch, queryResults, isFetching, user }) {
-  const [, query, , handleQueryChange] =
-    useSearch(dispatch, "users");
+  const [, query, , handleQueryChange] = useSearch(dispatch, "users");
 
   const { user_id } = user;
 

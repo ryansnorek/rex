@@ -12,7 +12,7 @@ export default function useSearch(dispatch, initialValue) {
     function setQueryResultsToState() {
       dispatch(getQueryResults(queryType, query));
     },
-    [queryType, query]
+    [dispatch, queryType, query]
   );
 
   return [queryType, query, handleSelectQueryType, handleQueryChange];
