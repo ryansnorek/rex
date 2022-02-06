@@ -4,6 +4,7 @@ import { useState } from "react";
 import HomeItem from "./HomeItem";
 import useDisplayItems from "../hooks/useDisplayItems";
 import ItemDetails from "./ItemDetails";
+import HomeButton from "./HomeButton";
 
 function Home({ dispatch, discover }) {
   const [displayItems, displayType, handleToggleItem] = useDisplayItems(
@@ -17,43 +18,32 @@ function Home({ dispatch, discover }) {
     const item = displayItems.find((di) => di.id === id);
     dispatch(
       type === "movie"
-      ? dispatch(setItemMovie(item))
-      : dispatch(setItemTvShow(item))
-    )
+        ? dispatch(setItemMovie(item))
+        : dispatch(setItemTvShow(item))
+    );
     setItemClicked(true);
   };
-
+  const buttons = ["Trending", "Movies", "TV Shows"];
   return (
     <div className="home page">
       <nav className={`nav-bar  ${itemClicked ? "blur" : ""}`}>
-        <button
-          className={
-            "navlink" + (displayType === "trending" ? " activated" : "")
-          }
-          onClick={handleToggleItem}
-          name="trending"
-        >
-          Trending
-        </button>
-        <button
-          className={"navlink" + (displayType === "movies" ? " activated" : "")}
-          onClick={handleToggleItem}
-          name="movies"
-        >
-          Movies
-        </button>
-        <button
-          className={
-            "navlink" + (displayType === "tvShows" ? " activated" : "")
-          }
-          onClick={handleToggleItem}
-          name="tvShows"
-        >
-          TV Shows
-        </button>
+        {buttons.map((title) => {
+          return (
+            <HomeButton
+              displayType={displayType}
+              title={title}
+              handleToggleItem={handleToggleItem}
+            />
+          );
+        })}
       </nav>
       <div className="container">
-        {itemClicked && <ItemDetails handleItemClose={handleItemClose} itemClicked={itemClicked} />}
+        {itemClicked && (
+          <ItemDetails
+            handleItemClose={handleItemClose}
+            itemClicked={itemClicked}
+          />
+        )}
       </div>
       <div className={`discover  ${itemClicked ? "blur" : ""}`}>
         {displayItems &&

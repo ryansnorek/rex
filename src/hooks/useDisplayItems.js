@@ -15,7 +15,7 @@ export default function useDisplayItems(dispatch, itemObject) {
   useEffect(
     function setContentToState() {
     setDisplayItems(itemObject[displayType]);
-  }, [itemObject]);
+  }, [displayType, itemObject]);
 
   const handleToggleItem = (e) => {
     setDisplayType(e.target.name);
