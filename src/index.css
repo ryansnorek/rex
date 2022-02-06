@@ -190,6 +190,11 @@ button {
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
+  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1.618s; /* Firefox < 16 */
+  -ms-animation: fadein 1.618s; /* Internet Explorer */
+  -o-animation: fadein 1.618s; /* Opera < 12.1 */
+  animation: fadein 1.618s;
 }
 .discover-item {
   display: flex;
@@ -503,6 +508,11 @@ p {
   width: 66vw;
   height: 100vh;
   overflow: scroll;
+  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1.618s; /* Firefox < 16 */
+  -ms-animation: fadein 1.618s; /* Internet Explorer */
+  -o-animation: fadein 1.618s; /* Opera < 12.1 */
+  animation: fadein 1.618s;
 }
 .rexys h2 {
   color: rgb(168, 168, 192);
@@ -519,6 +529,11 @@ p {
   background-color: #1d1d1d;
   box-shadow: 0 0 1px lavender;
   border-radius: 3px;
+  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1.618s; /* Firefox < 16 */
+  -ms-animation: fadein 1.618s; /* Internet Explorer */
+  -o-animation: fadein 1.618s; /* Opera < 12.1 */
+  animation: fadein 1.618s;
 }
 .account-item .poster img,
 .account-item .poster {
