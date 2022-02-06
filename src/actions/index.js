@@ -8,8 +8,7 @@ export const FETCH_QUERY = "FETCH_QUERY";
 export const FETCH_ERROR = "FETCH_ERROR";
 export const SET_USER_MOVIES = "SET_USER_MOVIES";
 export const SET_USER_TV_SHOWS = "SET_USER_TV_SHOWS";
-export const SET_FOLLOWERS = "SET_FOLLOWERS";
-export const SET_FOLLOWING = "SET_FOLLOWING";
+export const SET_RELATIONSHIPS = "SET_RELATIONSHIPS";
 export const DELETE_REXY = "DELETE_REXY";
 export const FIND_REXY_MOVIE = "FIND_REXY_MOVIE";
 export const SET_ITEM_MOVIE = "SET_ITEM_MOVIE";
@@ -230,11 +229,7 @@ export const loginUser = (credentials) => {
         return data;
       })
       .then((data) => {
-        dispatch(getFollowers(data.user_id));
-        return data;
-      })
-      .then((data) => {
-        dispatch(getFollowing(data.user_id));
+        dispatch(getRelationships(data.user_id));
         return data;
       })
       .then(() => dispatch(loginComplete()))
@@ -287,6 +282,8 @@ export const getProfile = (data, type) => {
     }
   };
 };
+
+// USER PROFILE -==-=-=--=-==--=-=-==--=-=-
 export const setProfile = (profile) => {
   return { type: SET_PROFILE, payload: profile };
 };
@@ -308,45 +305,45 @@ export const createUserProfile = (newProfile) => {
       .then(() => dispatch(unsetFirstTimeUser()))
       .catch((err) => dispatch(fetchError(err)));
   };
-}
-export const getFollowers = (user_id) => {
+};
+// RELATIONSHIPS -==-=-=--=-==--=-=-==--=-=-
+export const getRelationships = (user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());
     axiosAuthorization()
-      .get("/profile/followers", user_id)
-      .then((followers) => {
-        dispatch(setFollowers(followers));
+      .get(`/profile/${user_id}/relationships`)
+      .then((relationships) => {
+        dispatch(setRelationships(relationships));
       })
       .catch((err) => dispatch(fetchError(err)));
   };
 };
-export const getFollowing = (user_id) => {
+export const addRelationship = (relationship) => {
   return (dispatch) => {
     dispatch(fetchStart());
     axiosAuthorization()
-      .get("/profile/following", user_id)
-      .then((followers) => {
-        dispatch(setFollowers(followers));
-      })
-      .catch((err) => dispatch(fetchError(err)));
-  };
-};
-export const setFollowers = (followers) => {
-  return { type: SET_FOLLOWERS, payload: followers };
-};
-export const followUser = (relationship) => {
-  return (dispatch) => {
-    dispatch(fetchStart());
-    axiosAuthorization()
-      .post("/profile/following", relationship)
+      .post("/profile/relationships", relationship)
       .then((newRelationship) => {
-        // dispatch(get());
+        console.log(newRelationship);
+        dispatch(getRelationships());
       })
       .catch((err) => dispatch(fetchError(err)));
   };
 };
-export const setFollowing = (following) => {
-  return { type: SET_FOLLOWING, payload: following };
+export const updateRelationship = (relationship) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axiosAuthorization()
+      .post("/profile/relationships", relationship)
+      .then((updatedRelationship) => {
+        console.log(updatedRelationship);
+        dispatch(getRelationships());
+      })
+      .catch((err) => dispatch(fetchError(err)));
+  };
+};
+export const setRelationships = (relationships) => {
+  return { type: SET_RELATIONSHIPS, payload: relationships };
 };
 export const loginComplete = () => {
   return { type: LOGIN_COMPLETE };

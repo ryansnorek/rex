@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { followUser } from "../actions";
+import { updateRelationship } from "../actions";
 import Friend from "./Friend";
 import useSearch from "../hooks/useSearch";
 
@@ -11,15 +11,15 @@ function Friends({ dispatch, queryResults, isFetching, user }) {
   const handleAddFriend = (relative_user_id) => {
     if (!user_id) {
       return alert("login to add friend");
-    }
-    else if (user_id === relative_user_id) {
+    } else if (user_id === relative_user_id) {
       return alert("that's you");
+    } else {
+      dispatch(updateRelationship({
+        user_id, 
+        relative_user_id,
+        following: 1
+      }));
     }
-    dispatch(followUser({
-      user_id, 
-      relative_user_id,
-      following: 1
-    }));
   };
   return (
     <div className="friend-search search page">
