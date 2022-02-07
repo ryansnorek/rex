@@ -23,7 +23,6 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
     );
     alert("added rexy");
     handleItemClose();
-    navigate("/search");
   };
   return (
     <div
