@@ -313,7 +313,7 @@ export const getRelationships = (user_id) => {
     axiosAuthorization()
       .get(`/profile/${user_id}/relationships`)
       .then((relationships) => {
-        dispatch(setRelationships(relationships));
+        dispatch(setRelationships(relationships.data));
       })
       .catch((err) => dispatch(fetchError(err)));
   };

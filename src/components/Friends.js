@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { updateRelationship } from "../actions";
+import { addRelationship } from "../actions";
 import Friend from "./Friend";
 import useSearch from "../hooks/useSearch";
 
@@ -14,7 +14,7 @@ function Friends({ dispatch, queryResults, isFetching, user }) {
     } else if (user_id === relative_user_id) {
       return alert("that's you");
     } else {
-      dispatch(updateRelationship({
+      dispatch(addRelationship({
         user_id, 
         relative_user_id,
         following: 1

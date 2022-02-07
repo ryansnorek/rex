@@ -516,7 +516,7 @@ p {
 }
 .rexys {
   width: 66vw;
-  height: 100vh;
+  height: 100%;
   overflow: scroll;
   -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 1.618s; /* Firefox < 16 */
