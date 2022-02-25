@@ -1,7 +1,7 @@
 import { POSTER_URL } from "../constants";
 import { addUserMovie, addUserTvShow } from "../actions";
 
-export default function FriendContent({ item, dispatch, type, handleClickItem }) {
+export default function UserContent({ item, dispatch, type, handleClickItem }) {
   const handleAddRexy = (contentId) => {
     // dispatch(
     //     type === "movie"

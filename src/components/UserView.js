@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import { useState } from "react";
 import { setItemMovie, setItemTvShow } from "../actions";
-import FriendContent from "./FriendContent";
+import UserContent from "./UserContent";
 import ItemDetails from "./ItemDetails";
 
-function FriendView({ friend, friendContentList, dispatch }) {
+function UserView({ friend, friendContentList, dispatch }) {
   const { movies, tvShows } = friendContentList;
   const [itemClicked, setItemClicked] = useState(false);
   const handleItemClose = () => setItemClicked(false);
@@ -33,7 +33,7 @@ function FriendView({ friend, friendContentList, dispatch }) {
         {movies &&
           movies.map((item) => {
             return (
-              <FriendContent
+              <UserContent
                 key={item.id}
                 item={item}
                 type={"movie"}
@@ -46,7 +46,7 @@ function FriendView({ friend, friendContentList, dispatch }) {
         {tvShows &&
           tvShows.map((item) => {
             return (
-              <FriendContent
+              <UserContent
                 key={item.id}
                 item={item}
                 type={"tv"}
@@ -65,4 +65,4 @@ const mapStateToProps = (state) => {
     friendContentList: state.friendContentList,
   };
 };
-export default connect(mapStateToProps)(FriendView);
+export default connect(mapStateToProps)(UserView);

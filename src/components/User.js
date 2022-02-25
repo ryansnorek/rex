@@ -10,7 +10,7 @@ function User({ user, friendContentList, dispatch, handleAddFriend }) {
   };
   
   if (friendContentList.movies && friendContentList.tvShows) {
-    navigate("/friendview");
+    navigate("/userview");
   }
   return (
     <div className="friend" onClick={handleClickUser}>
