@@ -285,7 +285,7 @@ select:focus {
   width: 66px;
   height: 66px;
 }
-.item .icon:hover {
+.icon:hover {
   filter: invert(66%);
 }
 /* ---------ITEM-DETAILS----------- */

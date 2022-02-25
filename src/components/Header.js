@@ -8,7 +8,7 @@ export default function Header() {
       <h1 className="logo" onClick={() => navigate("/")}>
         Rexy
       </h1>
-      <p className="tagline">A place to share your recommendations</p>
+      {/* <p className="tagline">A place to share your recommendations</p> */}
       <nav>
         <ul>
           <li>
