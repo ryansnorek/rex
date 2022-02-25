@@ -559,6 +559,9 @@ p {
   width: 30%;
   background-color: transparent;
 }
+.account-item:hover {
+  text-shadow: 0 0 3px lavender;
+}
 .account-item .actions {
   display: flex;
   justify-content: space-evenly;
