@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import AccountProfile from "./AccountProfile";
-import AccountRexy from "./AccountRexy";
 import WelcomeNewUser from "./WelcomeNewUser";
 import NavButton from "./NavButton";
+import AccountWatchlist from "./AccountWatchlist";
 
 function Account({ user, userContentList, isFetching, firstTimeUser, dispatch }) {
-  const { movies, tvShows } = userContentList;
 
   const [displayType, setDisplayType] = useState("rexys");
   const handleToggleItem = (e) => {
@@ -40,18 +39,7 @@ function Account({ user, userContentList, isFetching, firstTimeUser, dispatch })
           );
         })}
       </nav>
-      <div className="rexys">
-        <h2>Movies</h2>
-        {movies &&
-          movies.map((item) => {
-            return <AccountRexy key={item.id} item={item} type={"movie"} />;
-          })}
-        <h2>Tv Shows</h2>
-        {tvShows &&
-          tvShows.map((item) => {
-            return <AccountRexy key={item.id} item={item} type={"tvShow"} />;
-          })}
-      </div>
+      {displayType === "watchlist" && <AccountWatchlist userContentList={userContentList}/>}
     </div>
   );
 }
