@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import { addRelationship } from "../actions";
-import Friend from "./Friend";
+import User from "./User";
 import useSearch from "../hooks/useSearch";
 
-function Friends({ dispatch, queryResults, isFetching, user }) {
+function SearchUsers({ dispatch, queryResults, isFetching, user }) {
   const [, query, , handleQueryChange] = useSearch(dispatch, "users");
 
   const { user_id } = user;
@@ -42,7 +42,7 @@ function Friends({ dispatch, queryResults, isFetching, user }) {
         ) : (
           query &&
           queryResults.map((result) => {
-            return <Friend user={result} handleAddFriend={handleAddFriend} />;
+            return <User user={result} handleAddFriend={handleAddFriend} />;
           })
         )}
       </div>
@@ -54,4 +54,4 @@ const mapStateToProps = (state) => ({
   queryResults: state.queryResults,
   isFetching: state.isFetching,
 });
-export default connect(mapStateToProps)(Friends);
+export default connect(mapStateToProps)(SearchUsers);

@@ -34,12 +34,12 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link to="/friends">
+            <Link to="/users">
               {
                 <img
                   className="icon"
                   src="../../images/friends.png"
-                  alt="friends"
+                  alt="users"
                 />
               }
             </Link>

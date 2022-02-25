@@ -7,7 +7,7 @@ import Login from "./components/Login";
 import Join from "./components/Join";
 import ItemDetails from "./components/ItemDetails";
 import Account from "./components/Account";
-import Friends from "./components/Friends";
+import SearchUsers from "./components/SearchUsers";
 import FriendView from "./components/FriendView";
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -32,7 +32,7 @@ function Rexy() {
                 </PrivateRoute>
               }
             />
-            <Route path="/friends" element={<Friends/>}/>
+            <Route path="/users" element={<SearchUsers/>}/>
           </Routes>
         </div>
       </div>

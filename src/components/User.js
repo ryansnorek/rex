@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { getFriendContent } from "../actions";
 
-function Friend({ user, friendContentList, dispatch, handleAddFriend }) {
+function User({ user, friendContentList, dispatch, handleAddFriend }) {
   const navigate = useNavigate();
 
   const handleClickUser = () => {
@@ -35,4 +35,4 @@ const mapStateToProps = (state) => {
         friendContentList: state.friendContentList
     })
 }
-export default connect(mapStateToProps)(Friend);
+export default connect(mapStateToProps)(User);
