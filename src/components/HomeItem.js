@@ -4,7 +4,7 @@ function HomeItem({ handleClickPoster, item }) {
   const type = item.first_air_date ? "tv" : "movie";
   return (
     <div
-      className="discover-item"
+      className="discover-item grow"
       onClick={() =>
         handleClickPoster(item.id, type)
       }

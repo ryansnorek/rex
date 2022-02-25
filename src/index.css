@@ -201,6 +201,9 @@ button {
   align-items: center;
   height: max-content;
 }
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.06); }
+
 .discover-item img {
   border-radius: 6px;
   object-fit: cover;
