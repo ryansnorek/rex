@@ -7,7 +7,7 @@ const initialValues = {
   personality_type: "",
 };
 
-export default function WelcomeNewUser() {
+function WelcomeNewUser() {
   const [values, handleChange, clearForm] = useForm("profile", initialValues);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -42,3 +42,4 @@ export default function WelcomeNewUser() {
     </div>
   );
 }
+export default WelcomeNewUser;

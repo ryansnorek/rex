@@ -76,7 +76,7 @@ header {
   text-align: left;
 }
 header nav {
-  width: 200px;
+  width: 250px;
   margin-right: 1%;
 }
 ul {
@@ -396,6 +396,12 @@ p {
   padding: 0 1%;
 }
 /* ---------LOGIN----------- */
+.logout {
+  color: lavender;
+}
+.logout:hover {
+  color: rgb(211, 197, 197);
+}
 .login form {
   margin-top: 9vh;
   height: 66vh;

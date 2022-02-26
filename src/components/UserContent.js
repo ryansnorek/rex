@@ -1,16 +1,16 @@
 import { POSTER_URL } from "../constants";
-import { addUserMovie, addUserTvShow } from "../actions";
+// import { addUserMovie, addUserTvShow } from "../actions";
 
-export default function UserContent({ item, dispatch, type, handleClickItem }) {
-  const handleAddRexy = (contentId) => {
+function UserContent({ item, type, handleClickItem }) {
+  // const handleAddRexy = (contentId) => {
     // dispatch(
     //     type === "movie"
     //       ? addUserMovie(contentId, user.user_id)
     //       : addUserTvShow(contentId, user.user_id)
     //   );
     //   alert("added rexy")
-    alert("not ready yet");
-  };
+    // alert("not ready yet");
+  // };
   return (
     <div className="account-item">
       <div className="poster" onClick={() => handleClickItem(item.id, type)}>
@@ -32,3 +32,4 @@ export default function UserContent({ item, dispatch, type, handleClickItem }) {
     </div>
   );
 }
+export default UserContent;

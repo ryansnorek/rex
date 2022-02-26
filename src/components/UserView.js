@@ -4,8 +4,8 @@ import { setItemMovie, setItemTvShow } from "../actions";
 import UserContent from "./UserContent";
 import ItemDetails from "./ItemDetails";
 
-function UserView({ friend, friendContentList, dispatch }) {
-  const { movies, tvShows } = friendContentList;
+function UserView({ friend, content, dispatch }) {
+  const { movies, tvShows } = content;
   const [itemClicked, setItemClicked] = useState(false);
   const handleItemClose = () => setItemClicked(false);
 
@@ -38,7 +38,6 @@ function UserView({ friend, friendContentList, dispatch }) {
                 key={item.id}
                 item={item}
                 type={"movie"}
-                dispatch={dispatch}
                 handleClickItem={handleClickItem}
               />
             );
@@ -51,7 +50,6 @@ function UserView({ friend, friendContentList, dispatch }) {
                 key={item.id}
                 item={item}
                 type={"tv"}
-                dispatch={dispatch}
                 handleClickItem={handleClickItem}
               />
             );
@@ -64,7 +62,7 @@ function UserView({ friend, friendContentList, dispatch }) {
 const mapStateToProps = (state) => {
   return {
     friend: state.friend,
-    friendContentList: state.friendContentList,
+    content: state.friendContentList,
   };
 };
 export default connect(mapStateToProps)(UserView);

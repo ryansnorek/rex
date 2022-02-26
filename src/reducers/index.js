@@ -254,6 +254,11 @@ export default function reducer(state = initialState, action) {
         isFetching: false,
         errors: "",
       };
+    case a.LOGOUT_USER:
+      return {
+        ...initialState,
+        discover: { ...state.discover }
+      }
     case a.SET_FIRST_TIME_USER:
       return { ...state, firstTimeUser: true };
     case a.UNSET_FIRST_TIME_USER:

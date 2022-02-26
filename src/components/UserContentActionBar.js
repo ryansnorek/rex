@@ -1,5 +1,4 @@
-export default function UserContentActionBar(props) {
-  const { handleRating, handleRemove, handleSend, item } = props;
+function UserContentActionBar({ handleRating, handleRemove, handleSend, item }) {
   return (
     <div className="actions">
       <img
@@ -23,3 +22,4 @@ export default function UserContentActionBar(props) {
     </div>
   );
 }
+export default UserContentActionBar;

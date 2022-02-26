@@ -37,6 +37,7 @@ function Account({ isFetching, firstTimeUser, relationships }) {
             />
           );
         })}
+        <p>Logout</p>
       </nav>
       {displayType === "watchlist" && <AccountWatchlist />}
       {displayType === "following" && <AccountFriends friends={following} />}

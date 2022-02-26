@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
+import { connect } from "react-redux";
+import { logoutUser } from "../actions";
 
-export default function Header() {
+function Header({ auth, dispatch }) {
   const navigate = useNavigate();
   return (
     <header>
@@ -12,13 +14,7 @@ export default function Header() {
         <ul>
           <li>
             <Link to="/">
-              {
-                <img
-                  className="icon"
-                  src="../../images/home.png"
-                  alt="home"
-                />
-              }
+              {<img className="icon" src="../../images/home.png" alt="home" />}
             </Link>
           </li>
           <li>
@@ -54,8 +50,19 @@ export default function Header() {
               }
             </Link>
           </li>
+          {auth.authorized && (
+            <li>
+              <Link to="/">
+                <p className="logout" onClick={() => dispatch(logoutUser())}>
+                  Logout
+                </p>
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
     </header>
   );
 }
+const mapStateToProps = (state) => ({ auth: state.auth });
+export default connect(mapStateToProps)(Header);

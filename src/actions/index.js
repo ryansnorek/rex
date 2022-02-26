@@ -32,6 +32,7 @@ export const TRENDING = "TRENDING";
 export const SET_FIRST_TIME_USER = "SET_FIRST_TIME_USER";
 export const UNSET_FIRST_TIME_USER = "UNSET_FIRST_TIME_USER";
 export const AUTHORIZE_USER = "AUTHORIZE_USER";
+export const LOGOUT_USER = "LOGOUT_USER";
 export const LOGIN_COMPLETE = "LOGIN_COMPLETE";
 export const SET_USER = "SET_USER";
 export const SET_PROFILE = "SET_PROFILE";
@@ -186,6 +187,9 @@ export const setDiscoverTvShows = (tvShows) => {
   return { type: SET_DISCOVER_TV_SHOWS, payload: tvShows };
 };
 // USER -==--=-==--==-=-=-=--==--==-//
+export const logoutUser = () => {
+  return { type: LOGOUT_USER };
+}
 export const registerNewUser = (newUser) => {
   return (dispatch) => {
     dispatch(fetchStart());
