@@ -1,8 +1,8 @@
 import WatchlistItem from "./WatchlistItem";
-import { useSelector } from "react-redux";
+import { connect } from "react-redux";
 
-export default function AccountWatchlist() {
-  const { movies, tvShows } = useSelector((state) => state.userContentList);
+function AccountWatchlist({ content }) {
+  const { movies, tvShows } = content;
   return (
     <div className="watchlist">
       <h2>Movies</h2>
@@ -17,4 +17,5 @@ export default function AccountWatchlist() {
         })}
     </div>
   );
-}
+}const mapStateToProps = (state) => ({ content: state.userContentList });
+export default connect(mapStateToProps)(AccountWatchlist);

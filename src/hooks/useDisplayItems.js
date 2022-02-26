@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { discoverContent } from "../actions";
 
-export default function useDisplayItems(dispatch, itemObject) {
+export default function useDisplayItems(itemObject) {
   const [displayItems, setDisplayItems] = useState([]);
   const [displayType, setDisplayType] = useState("trending");
+  const dispatch = useDispatch();
 
   useEffect(
     function getContentOnPageLoad() {
     if (itemObject.trending.length === 0) {
       dispatch(discoverContent());
     }
-  }, []);
+  }, [itemObject.trending.length, dispatch]);
 
   useEffect(
     function setContentToState() {

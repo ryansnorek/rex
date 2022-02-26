@@ -6,11 +6,10 @@ import useDisplayItems from "../hooks/useDisplayItems";
 import ItemDetails from "./ItemDetails";
 import NavButton from "./NavButton";
 
+const buttons = ["Trending", "Movies", "TV Shows"];
+
 function Home({ dispatch, discover }) {
-  const [displayItems, displayType, handleToggleItem] = useDisplayItems(
-    dispatch,
-    discover
-  );
+  const [displayItems, displayType, handleToggleItem] = useDisplayItems(discover);
   const [itemClicked, setItemClicked] = useState(false);
   const handleItemClose = () => setItemClicked(false);
 
@@ -23,7 +22,7 @@ function Home({ dispatch, discover }) {
     );
     setItemClicked(true);
   };
-  const buttons = ["Trending", "Movies", "TV Shows"];
+  
   return (
     <div className="home page">
       <nav className={`nav-bar  ${itemClicked ? "blur" : ""}`}>

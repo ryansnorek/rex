@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { useState } from "react";
-import { updateUserProfile } from "../actions";
+// import { updateUserProfile } from "../actions";
 
 function AccountProfile({ user, profile, dispatch }) {
     const [editMode, setEditMode] = useState(false);
@@ -8,7 +8,6 @@ function AccountProfile({ user, profile, dispatch }) {
 
     const handleEdit = () => {
         setEditMode(!editMode)
-
     };
     const handleChange = (e) => setInput(e.target.value);
     const handleChangePic = (e) => {
@@ -16,8 +15,6 @@ function AccountProfile({ user, profile, dispatch }) {
         setEditMode(false);
         // dispatch(updateUserProfile({ user_id: user.user_id, uploaded_image: e.target.value }))
     };
-
-
     return (
         <div className="profile">
             <div className="pic">

@@ -6,18 +6,13 @@ import NavButton from "./NavButton";
 import AccountWatchlist from "./AccountWatchlist";
 import AccountFriends from "./AccountFriends";
 
-function Account({
-  user,
-  isFetching,
-  firstTimeUser,
-  relationships,
-  dispatch,
-}) {
-  const [displayType, setDisplayType] = useState("rexys");
+const buttons = ["Rexys", "Watchlist", "Following", "Followers"];
+
+
+function Account({ isFetching, firstTimeUser, relationships }) {
   const { following, followers } = relationships;
-  const handleToggleItem = (e) => {
-    setDisplayType(e.target.name);
-  };
+  const [displayType, setDisplayType] = useState("rexys");
+  const handleToggleItem = (e) => setDisplayType(e.target.name);
 
   if (isFetching) {
     return (
@@ -27,9 +22,8 @@ function Account({
     );
   }
   if (firstTimeUser) {
-    return <WelcomeNewUser user={user} dispatch={dispatch} />;
+    return <WelcomeNewUser />;
   }
-  const buttons = ["Rexys", "Watchlist", "Following", "Followers"];
   return (
     <div className="account page">
       {/* <AccountProfile /> */}
@@ -45,14 +39,13 @@ function Account({
         })}
       </nav>
       {displayType === "watchlist" && <AccountWatchlist />}
-      {displayType === "following" && <AccountFriends friends={following}/>}
-      {displayType === "followers" && <AccountFriends friends={followers}/>}
+      {displayType === "following" && <AccountFriends friends={following} />}
+      {displayType === "followers" && <AccountFriends friends={followers} />}
     </div>
   );
 }
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
     userContent: state.userContent,
     isFetching: state.isFetching,
     firstTimeUser: state.firstTimeUser,
