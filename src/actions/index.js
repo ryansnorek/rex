@@ -309,23 +309,6 @@ export const createUserProfile = (newProfile) => {
   };
 };
 // RELATIONSHIPS -==-=-=--=-==--=-=-==--=-=-
-const sortRelationships = (relationships) => {
-  const followers = [];
-  const following = [];
-  const blocked = [];
-  relationships.forEach((relationship) => {
-    if (relationship.follower) {
-      followers.push(relationship.relative_user_id);
-    }
-    if (relationship.following) {
-      following.push(relationship.relative_user_id);
-    }
-    if (relationship.blocked) {
-      blocked.push(relationship.relative_user_id);
-    }
-  });
-  return [followers, following, blocked];
-};
 const setFollower = (profile) => {
   return { type: SET_FOLLOWER, payload: profile };
 }
@@ -345,7 +328,7 @@ const setRelationshipProfiles = (relationship) => {
         following && dispatch(setFollowing(profile.data));
         blocked && dispatch(setBlockedUsers(relative_user_id))
       })
-      .catch((err) => console.log(err));
+      .catch((err) => dispatch(fetchError(err)));
   };
 };
 export const getRelationships = (user_id) => {
