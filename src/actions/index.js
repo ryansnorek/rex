@@ -8,7 +8,9 @@ export const FETCH_QUERY = "FETCH_QUERY";
 export const FETCH_ERROR = "FETCH_ERROR";
 export const SET_USER_MOVIES = "SET_USER_MOVIES";
 export const SET_USER_TV_SHOWS = "SET_USER_TV_SHOWS";
-export const SET_RELATIONSHIPS = "SET_RELATIONSHIPS";
+export const SET_FOLLOWER = "SET_FOLLOWER";
+export const SET_FOLLOWING = "SET_FOLLOWING";
+export const SET_BLOCKED_USERS = "SET_BLOCKED_USERS";
 export const DELETE_REXY = "DELETE_REXY";
 export const FIND_REXY_MOVIE = "FIND_REXY_MOVIE";
 export const SET_ITEM_MOVIE = "SET_ITEM_MOVIE";
@@ -181,7 +183,7 @@ export const setDiscoverMovies = (movies) => {
 export const setDiscoverTvShows = (tvShows) => {
   return { type: SET_DISCOVER_TV_SHOWS, payload: tvShows };
 };
-// USER //
+// USER -==--=-==--==-=-=-=--==--==-//
 export const registerNewUser = (newUser) => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -307,17 +309,60 @@ export const createUserProfile = (newProfile) => {
   };
 };
 // RELATIONSHIPS -==-=-=--=-==--=-=-==--=-=-
+const sortRelationships = (relationships) => {
+  const followers = [];
+  const following = [];
+  const blocked = [];
+  relationships.forEach((relationship) => {
+    if (relationship.follower) {
+      followers.push(relationship.relative_user_id);
+    }
+    if (relationship.following) {
+      following.push(relationship.relative_user_id);
+    }
+    if (relationship.blocked) {
+      blocked.push(relationship.relative_user_id);
+    }
+  });
+  return [followers, following, blocked];
+};
+const setFollower = (profile) => {
+  return { type: SET_FOLLOWER, payload: profile };
+}
+const setFollowing = (profile) => {
+  return { type: SET_FOLLOWING, payload: profile };
+};
+export const setBlockedUsers = (blocked_users) => {
+  return { type: SET_BLOCKED_USERS, payload: blocked_users };
+};
+const setRelationshipProfiles = (relationship) => {
+  const { relative_user_id, follower, following, blocked } = relationship;
+  return (dispatch) => {
+    axiosAuthorization()
+      .get(`/profile/${relative_user_id}`)
+      .then((profile) => {
+        follower && dispatch(setFollower(profile.data));
+        following && dispatch(setFollowing(profile.data));
+        blocked && dispatch(setBlockedUsers(relative_user_id))
+      })
+      .catch((err) => console.log(err));
+  };
+};
 export const getRelationships = (user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());
     axiosAuthorization()
       .get(`/profile/${user_id}/relationships`)
       .then((relationships) => {
-        dispatch(setRelationships(relationships.data));
+        relationships.data.forEach((relationship) => {
+          dispatch(setRelationshipProfiles(relationship));
+        });
       })
       .catch((err) => dispatch(fetchError(err)));
   };
 };
+export const getFollowers = (follower_ids) => {};
+
 export const addRelationship = (relationship) => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -341,9 +386,6 @@ export const updateRelationship = (relationship) => {
       })
       .catch((err) => dispatch(fetchError(err)));
   };
-};
-export const setRelationships = (relationships) => {
-  return { type: SET_RELATIONSHIPS, payload: relationships };
 };
 export const loginComplete = () => {
   return { type: LOGIN_COMPLETE };

@@ -78,28 +78,36 @@ export default function reducer(state = initialState, action) {
         },
         errors: "",
       };
-      case a.SET_RELATIONSHIPS:
-        const followers = [];
-        const following = [];
-        const blocked = [];
-        action.payload.forEach((relationship) => {
-          if (relationship.follower) {
-            followers.push(relationship.relative_user_id);
-          }
-          if (relationship.following) {
-            following.push(relationship.relative_user_id)
-          }
-          if (relationship.blocked) {
-            blocked.push(relationship.relative_user_id)
-          }
-        })
+      case a.SET_FOLLOWER:
         return {
           ...state,
           isFetching: false,
           relationships: { 
-            followers: [...followers],
-            following: [...following],
-            blocked: [...blocked]
+            followers: [...state.relationships.followers, action.payload],
+            following: [...state.relationships.following],
+            blocked: [...state.relationships.blocked]
+           },
+          errors: "",
+        }
+        case a.SET_FOLLOWING:
+          return {
+            ...state,
+            isFetching: false,
+            relationships: { 
+              followers: [...state.relationships.followers],
+              following: [...state.relationships.following, action.payload],
+              blocked: [...state.relationships.blocked]
+             },
+            errors: "",
+          }
+      case a.SET_BLOCKED_USERS:
+        return {
+          ...state,
+          isFetching: false,
+          relationships: { 
+            followers: [...state.relationships.followers],
+            following: [...state.relationships.following],
+            blocked: [...state.relationships.blocked, action.payload]
            },
           errors: "",
         }

@@ -23,6 +23,7 @@ function Rexy() {
             <Route path="/item/:id" element={<ItemDetails/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/join" element={<Join/>}/>
+            <Route path="/users" element={<SearchUsers/>}/>
             <Route path="/userview" element={<UserView/>}/>
             <Route
               path="/account"
@@ -32,7 +33,6 @@ function Rexy() {
                 </PrivateRoute>
               }
             />
-            <Route path="/users" element={<SearchUsers/>}/>
           </Routes>
         </div>
       </div>
