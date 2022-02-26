@@ -294,6 +294,7 @@ select:focus {
   justify-content: center;
 }
 .item-details-wrapper {
+  /* margin-top: 200px; */
   width: 42vw;
   height: fit-content;
   overflow: scroll;
