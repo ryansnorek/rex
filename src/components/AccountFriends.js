@@ -1,6 +1,6 @@
 import User from "./User";
 
-function AccountFriends({ friends }) {
+export default function AccountFriends({ friends }) {
   return (
     <div className="friends">
       {friends &&
@@ -10,4 +10,3 @@ function AccountFriends({ friends }) {
     </div>
   );
 }
-export default AccountFriends;

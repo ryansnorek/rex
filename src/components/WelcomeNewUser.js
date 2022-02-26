@@ -1,14 +1,17 @@
 import { createUserProfile } from "../actions";
 import useForm from "../hooks/useForm";
+import { useDispatch, useSelector } from "react-redux";
 
 const initialValues = {
   display_name: "",
   personality_type: "",
 };
 
-function WelcomeNewUser({ user, dispatch }) {
+export default function WelcomeNewUser() {
   const [values, handleChange, clearForm] = useForm("profile", initialValues);
-
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const { user_id } = user;
@@ -39,4 +42,3 @@ function WelcomeNewUser({ user, dispatch }) {
     </div>
   );
 }
-export default WelcomeNewUser;

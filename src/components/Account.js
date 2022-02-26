@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { connect } from "react-redux";
-import AccountProfile from "./AccountProfile";
+// import AccountProfile from "./AccountProfile";
 import WelcomeNewUser from "./WelcomeNewUser";
 import NavButton from "./NavButton";
 import AccountWatchlist from "./AccountWatchlist";
@@ -8,7 +8,6 @@ import AccountFriends from "./AccountFriends";
 
 function Account({
   user,
-  userContentList,
   isFetching,
   firstTimeUser,
   relationships,
@@ -45,7 +44,7 @@ function Account({
           );
         })}
       </nav>
-      {displayType === "watchlist" && <AccountWatchlist content={userContentList} />}
+      {displayType === "watchlist" && <AccountWatchlist />}
       {displayType === "following" && <AccountFriends friends={following}/>}
       {displayType === "followers" && <AccountFriends friends={followers}/>}
     </div>
@@ -55,7 +54,6 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
     userContent: state.userContent,
-    userContentList: state.userContentList,
     isFetching: state.isFetching,
     firstTimeUser: state.firstTimeUser,
     relationships: state.relationships,
