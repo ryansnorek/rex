@@ -46,8 +46,8 @@ function Account({
         })}
       </nav>
       {displayType === "watchlist" && <AccountWatchlist content={userContentList} />}
-      {displayType === "following" && <AccountFriends friends={following} type={"Following"}/>}
-      {displayType === "followers" && <AccountFriends friends={followers} type={"Followers"}/>}
+      {displayType === "following" && <AccountFriends friends={following}/>}
+      {displayType === "followers" && <AccountFriends friends={followers}/>}
     </div>
   );
 }

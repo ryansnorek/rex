@@ -20,7 +20,8 @@ function UserView({ friend, friendContentList, dispatch }) {
     setItemClicked(true);
   };
   return (
-    <div className="page friend-view">
+    <div className="page">
+      <div className="friend-view">
       {itemClicked && <ItemDetails handleItemClose={handleItemClose} />}
       <div className="card">
         <div className="pic">
@@ -55,6 +56,7 @@ function UserView({ friend, friendContentList, dispatch }) {
               />
             );
           })}
+      </div>
       </div>
     </div>
   );
