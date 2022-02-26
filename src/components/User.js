@@ -16,10 +16,9 @@ function User({ user, friendContentList, dispatch, handleAddFriend }) {
     <div className="friend" onClick={handleClickUser}>
       <div className="pic">
         <img src="../../images/blank_user.png" alt="profile-pic" />
-        <h3>{user.username || user.display_name}</h3>
+        <h3>{user.display_name || user.username}</h3>
       </div>
       {/* <div className="text">
-        
       </div> */}
          <img
           className="icon"

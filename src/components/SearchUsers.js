@@ -4,8 +4,7 @@ import User from "./User";
 import useSearch from "../hooks/useSearch";
 
 function SearchUsers({ dispatch, queryResults, isFetching, user }) {
-  const [, query, , handleQueryChange] = useSearch(dispatch, "users");
-
+  const [, query, , handleQueryChange] = useSearch("users");
   const { user_id } = user;
 
   const handleAddFriend = (relative_user_id) => {
@@ -14,11 +13,13 @@ function SearchUsers({ dispatch, queryResults, isFetching, user }) {
     } else if (user_id === relative_user_id) {
       return alert("that's you");
     } else {
-      dispatch(addRelationship({
-        user_id, 
-        relative_user_id,
-        following: 1
-      }));
+      dispatch(
+        addRelationship({
+          user_id,
+          relative_user_id,
+          following: 1,
+        })
+      );
     }
   };
   return (

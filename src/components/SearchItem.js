@@ -4,8 +4,8 @@ import { addUserMovie, addUserTvShow } from "../actions";
 
 function SearchItem({ dispatch, item, queryType, user, handleClickItem }) {
   const type = queryType === "tv" ? "Show" : "movie";
-  const title = queryType === "tv" ? item.original_name : item.title;
-  const date = queryType === "tv" ? item.first_air_date : item.release_date;
+  const title = item.original_name || item.title;
+  const date = item.first_air_date || item.release_date;
   const poster = item.poster_path
     ? `${POSTER_URL}${item.poster_path}`
     : "../../images/unavailable_poster.jpeg";
