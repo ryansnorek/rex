@@ -3,24 +3,27 @@ import { addRelationship } from "../actions";
 import User from "./User";
 import useSearch from "../hooks/useSearch";
 
-function SearchUsers({ dispatch, queryResults, isFetching, user }) {
+function SearchUsers({ dispatch, queryResults, isFetching, user, relationships }) {
   const [, query, , handleQueryChange] = useSearch("users");
+  const { following } = relationships;
   const { user_id } = user;
 
   const handleAddFriend = (relative_user_id) => {
     if (!user_id) {
       return alert("login to add friend");
     } else if (user_id === relative_user_id) {
-      return alert("that's you");
+      return alert("that's you!");
+    } else if (following.find((r) => r.user_id === relative_user_id)){
+      return alert("already following user");
     } else {
-      dispatch(
-        addRelationship({
-          user_id,
-          relative_user_id,
-          following: 1,
-        })
-      );
-    }
+        dispatch(
+          addRelationship({
+            user_id,
+            relative_user_id,
+            following: 1,
+          })
+        );
+      }
   };
   return (
     <div className="friend-search search page">
@@ -54,5 +57,6 @@ const mapStateToProps = (state) => ({
   user: state.user,
   queryResults: state.queryResults,
   isFetching: state.isFetching,
+  relationships: state.relationships,
 });
 export default connect(mapStateToProps)(SearchUsers);

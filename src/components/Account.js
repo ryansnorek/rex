@@ -8,7 +8,6 @@ import AccountFriends from "./AccountFriends";
 
 const buttons = ["Rexys", "Watchlist", "Following", "Followers"];
 
-
 function Account({ isFetching, firstTimeUser, relationships }) {
   const { following, followers } = relationships;
   const [displayType, setDisplayType] = useState("rexys");
@@ -37,7 +36,6 @@ function Account({ isFetching, firstTimeUser, relationships }) {
             />
           );
         })}
-        <p>Logout</p>
       </nav>
       {displayType === "watchlist" && <AccountWatchlist />}
       {displayType === "following" && <AccountFriends friends={following} />}

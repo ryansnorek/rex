@@ -48,12 +48,12 @@ export const getQueryResults = (type, query) => {
       axiosAuthorization()
         .get(`users/username/${query}`)
         .then((users) => dispatch(setQueryResults(users.data)))
-        .catch((err) => dispatch(fetchError(err)))
+        .catch((err) => dispatch(fetchError(err)));
     } else {
       axios
         .get(`${BASE_URL}/3/search/${type}?api_key=${API_KEY}&query=${query}`)
         .then((content) => dispatch(setQueryResults(content.data.results)))
-        .catch((err) => dispatch(fetchError(err)))
+        .catch((err) => dispatch(fetchError(err)));
     }
   };
 };
@@ -88,7 +88,7 @@ export const getFriends = () => {
     axios
       .get("https://randomuser.me/api/?results=10")
       .then((res) => dispatch(friendsList(res.data.results)))
-      .catch((err) => dispatch(fetchError(err)))
+      .catch((err) => dispatch(fetchError(err)));
   };
 };
 export const getFriendContent = (user_id) => {
@@ -109,7 +109,7 @@ export const getFriendMovies = (user_id) => {
           dispatch(findFriendContentById(movie.movie_id, "movie"));
         });
       })
-      .catch((err) => dispatch(fetchError(err)))
+      .catch((err) => dispatch(fetchError(err)));
   };
 };
 export const getFriendTvShows = (user_id) => {
@@ -123,7 +123,7 @@ export const getFriendTvShows = (user_id) => {
           dispatch(findFriendContentById(tvShow.tv_show_id, "tv"));
         });
       })
-      .catch((err) => dispatch(fetchError(err)))
+      .catch((err) => dispatch(fetchError(err)));
   };
 };
 export const setFriend = (friend) => {
@@ -189,7 +189,7 @@ export const setDiscoverTvShows = (tvShows) => {
 // USER -==--=-==--==-=-=-=--==--==-//
 export const logoutUser = () => {
   return { type: LOGOUT_USER };
-}
+};
 export const registerNewUser = (newUser) => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -291,7 +291,9 @@ export const getProfile = (data, type) => {
     }
   };
 };
-
+export const loginComplete = () => {
+  return { type: LOGIN_COMPLETE };
+};
 // USER PROFILE -==-=-=--=-==--=-=-==--=-=-
 export const setProfile = (profile) => {
   return { type: SET_PROFILE, payload: profile };
@@ -318,7 +320,7 @@ export const createUserProfile = (newProfile) => {
 // RELATIONSHIPS -==-=-=--=-==--=-=-==--=-=-
 const setFollower = (profile) => {
   return { type: SET_FOLLOWER, payload: profile };
-}
+};
 const setFollowing = (profile) => {
   return { type: SET_FOLLOWING, payload: profile };
 };
@@ -333,7 +335,7 @@ const setRelationshipProfiles = (relationship) => {
       .then((profile) => {
         follower && dispatch(setFollower(profile.data));
         following && dispatch(setFollowing(profile.data));
-        blocked && dispatch(setBlockedUsers(relative_user_id))
+        blocked && dispatch(setBlockedUsers(relative_user_id));
       })
       .catch((err) => dispatch(fetchError(err)));
   };
@@ -351,14 +353,42 @@ export const getRelationships = (user_id) => {
       .catch((err) => dispatch(fetchError(err)));
   };
 };
+const handleRelativeRelationship = (relationship) => {
+  const { relative_user_id, user_id } = relationship;
+  const relativeRelationship = {
+    user_id: relative_user_id,
+    relative_user_id: user_id,
+    follower: 1,
+  };
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axiosAuthorization()
+      .get(`/profile/${relative_user_id}/relationships`)
+      .then((relationships) => {
+        const relationshipExists = relationships.data.find(
+          (rel) => rel.relative_user_id === user_id
+        );
+        if (relationshipExists) {
+          dispatch(updateRelativeRelationship(relativeRelationship));
+          console.log("UPDATED-=-==-=-=--=")
+        } else {
+          dispatch(addRelativeRelationship(relativeRelationship));
+          console.log("ADDED--==-=-=--=-=")
+        }
+      })
+      .catch((err) => dispatch(fetchError(err)));
+  };
+};
 export const addRelationship = (relationship) => {
   return (dispatch) => {
     dispatch(fetchStart());
     axiosAuthorization()
       .post("/profile/relationships", relationship)
-      .then((newRelationship) => {
-        console.log(newRelationship);
-        dispatch(getRelationships());
+      .then(() => {
+        dispatch(getRelationships(relationship.user_id));
+      })
+      .then(() => {
+        handleRelativeRelationship(relationship);
       })
       .catch((err) => dispatch(fetchError(err)));
   };
@@ -367,17 +397,25 @@ export const updateRelationship = (relationship) => {
   return (dispatch) => {
     dispatch(fetchStart());
     axiosAuthorization()
-      .post("/profile/relationships", relationship)
-      .then((updatedRelationship) => {
-        console.log(updatedRelationship);
-        dispatch(getRelationships());
+      .put("/profile/relationships", relationship)
+      .then(() => {
+        dispatch(getRelationships(relationship.user_id));
       })
       .catch((err) => dispatch(fetchError(err)));
   };
 };
-export const loginComplete = () => {
-  return { type: LOGIN_COMPLETE };
+export const addRelativeRelationship = (relationship) => {
+  axiosAuthorization()
+    .post("/profile/relationships", relationship)
+    .then(() => console.log("success"))
+    .catch((err) => console.log(err));
 };
+export const updateRelativeRelationship = (relationship) => {
+  axiosAuthorization()
+  .put("/profile/relationships", relationship)
+  .then(() => console.log("success"))
+  .catch((err) => console.log(err));
+}
 // USER MOVIES //
 export const addUserMovie = (movie_id, user_id) => {
   return (dispatch) => {

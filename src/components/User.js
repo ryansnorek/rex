@@ -13,8 +13,8 @@ function User({ user, friendContentList, dispatch, handleAddFriend }) {
     navigate("/userview");
   }
   return (
-    <div className="friend" onClick={handleClickUser}>
-      <div className="pic">
+    <div className="friend" >
+      <div className="pic" onClick={handleClickUser}>
         <img src="../../images/blank_user.png" alt="profile-pic" />
         <h3>{user.display_name || user.username}</h3>
       </div>

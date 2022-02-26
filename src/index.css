@@ -475,12 +475,6 @@ p {
   position: fixed;
   height: 20vh;
   z-index: 2;
-
-
-
-
-
-
 }
 .profile .pic {
   background-color: transparent;
@@ -490,6 +484,9 @@ p {
   font-size: 2rem;
   padding: 3%;
   background-color: transparent;
+}
+.friend .icon {
+  z-index: 3;
 }
 .pic img {
   height: 66px;
@@ -639,6 +636,9 @@ p {
 }
 .friend-view h2 {
   background-color: black;
+}
+.friend-view .rexys {
+  padding-top: 0;
 }
 /* ---------LOADING / ANIMATIONS----------- */
 .loading-container {

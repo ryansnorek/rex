@@ -77,39 +77,55 @@ export default function reducer(state = initialState, action) {
         },
         errors: "",
       };
-      case a.SET_FOLLOWER:
+    case a.SET_FOLLOWER:
+      const { followers } = state.relationships;
+      const followerExists = followers.find(
+        (f) => action.payload.user_id === f.user_id
+      );
+      if (!followerExists) {
         return {
           ...state,
           isFetching: false,
-          relationships: { 
+          relationships: {
             followers: [...state.relationships.followers, action.payload],
             following: [...state.relationships.following],
-            blocked: [...state.relationships.blocked]
-           },
+            blocked: [...state.relationships.blocked],
+          },
           errors: "",
-        }
-        case a.SET_FOLLOWING:
-          return {
-            ...state,
-            isFetching: false,
-            relationships: { 
-              followers: [...state.relationships.followers],
-              following: [...state.relationships.following, action.payload],
-              blocked: [...state.relationships.blocked]
-             },
-            errors: "",
-          }
-      case a.SET_BLOCKED_USERS:
+        };
+      } else {
+        return { ...state };
+      }
+    case a.SET_FOLLOWING:
+      const { following } = state.relationships;
+      const followingExists = following.find(
+        (f) => action.payload.user_id === f.user_id
+      );
+      if (!followingExists) {
         return {
           ...state,
           isFetching: false,
-          relationships: { 
+          relationships: {
             followers: [...state.relationships.followers],
-            following: [...state.relationships.following],
-            blocked: [...state.relationships.blocked, action.payload]
-           },
+            following: [...state.relationships.following, action.payload],
+            blocked: [...state.relationships.blocked],
+          },
           errors: "",
-        }
+        };
+      } else {
+        return { ...state };
+      }
+    case a.SET_BLOCKED_USERS:
+      return {
+        ...state,
+        isFetching: false,
+        relationships: {
+          followers: [...state.relationships.followers],
+          following: [...state.relationships.following],
+          blocked: [...state.relationships.blocked, action.payload],
+        },
+        errors: "",
+      };
     case a.SET_ITEM_MOVIE:
       return {
         ...state,
@@ -128,7 +144,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         item: {},
-      }
+      };
     case a.GET_FRIENDS:
       return {
         ...state,
@@ -182,7 +198,7 @@ export default function reducer(state = initialState, action) {
         isFetching: false,
         friend: { ...action.payload },
         errors: "",
-      }
+      };
     case a.ADD_FRIEND_MOVIE_CONTENT:
       return {
         ...state,
@@ -257,8 +273,8 @@ export default function reducer(state = initialState, action) {
     case a.LOGOUT_USER:
       return {
         ...initialState,
-        discover: { ...state.discover }
-      }
+        discover: { ...state.discover },
+      };
     case a.SET_FIRST_TIME_USER:
       return { ...state, firstTimeUser: true };
     case a.UNSET_FIRST_TIME_USER:
