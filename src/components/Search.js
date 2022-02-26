@@ -1,11 +1,12 @@
 import { connect } from "react-redux";
-import { useState } from "react";
+import { useState, Suspense, lazy } from "react";
 import { setItemMovie, setItemTvShow, unSetItem } from "../actions";
-import SearchItem from "./SearchItem";
+
 import useSearch from "../hooks/useSearch";
 import ItemDetails from "./ItemDetails";
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+const SearchItem = lazy(() => import('./SearchItem'));
 
 function Search({ dispatch, queryResults, isFetching }) {
   const [queryType, query, handleSelectQueryType, handleQueryChange] = useSearch("movie");
@@ -54,12 +55,14 @@ function Search({ dispatch, queryResults, isFetching }) {
           query &&
           queryResults.map((result) => {
             return (
-              <SearchItem
-                item={result}
-                queryType={queryType}
-                handleClickItem={handleClickItem}
-                setItemClicked={setItemClicked}
-              />
+              <Suspense fallback={<Skeleton height={220}/>}>
+                <SearchItem
+                  item={result}
+                  queryType={queryType}
+                  handleClickItem={handleClickItem}
+                  setItemClicked={setItemClicked}
+                />
+              </Suspense>
             );
           })
         )}
