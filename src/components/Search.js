@@ -4,10 +4,11 @@ import { setItemMovie, setItemTvShow, unSetItem } from "../actions";
 import SearchItem from "./SearchItem";
 import useSearch from "../hooks/useSearch";
 import ItemDetails from "./ItemDetails";
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 function Search({ dispatch, queryResults, isFetching }) {
-  const [queryType, query, handleSelectQueryType, handleQueryChange] =
-    useSearch(dispatch, "movie");
+  const [queryType, query, handleSelectQueryType, handleQueryChange] = useSearch("movie");
 
   const [itemClicked, setItemClicked] = useState(false);
   const handleItemClose = () => {
@@ -46,9 +47,9 @@ function Search({ dispatch, queryResults, isFetching }) {
       </div>
       <div className={`results  ${itemClicked ? "blur" : ""}`}>
         {isFetching && query ? (
-          <div className="loading-container">
-            <div className="loading"></div>
-          </div>
+           <SkeletonTheme baseColor="#1d1d1d" highlightColor="rgb(176, 176, 194)">
+             <Skeleton count={8} height={220}/>
+           </SkeletonTheme>
         ) : (
           query &&
           queryResults.map((result) => {

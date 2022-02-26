@@ -3,10 +3,10 @@ import { addUserMovie, addUserTvShow } from "../actions";
 import ItemDetailsMovie from "./ItemDetailsMovie";
 import ItemDetailsTvShow from "./ItemDetailsTvShow";
 import useScrollSet from "../hooks/useScrollSet";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function ItemDetails({ dispatch, item, user, handleItemClose }) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const type = item.movie ? "movie" : "tv";
   const contentId = item.movie ? item.movie.id : item.tvShow.id;
 
