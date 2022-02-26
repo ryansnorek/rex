@@ -27,7 +27,7 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
   return (
     <div
       className="page item-details-wrapper"
-      style={{ marginTop: `${scrollPosition + 100}px`}}
+      style={{ marginTop: `${scrollPosition + 60}px`}}
     >
       <nav>
         <img
