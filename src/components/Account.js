@@ -4,10 +4,18 @@ import AccountProfile from "./AccountProfile";
 import WelcomeNewUser from "./WelcomeNewUser";
 import NavButton from "./NavButton";
 import AccountWatchlist from "./AccountWatchlist";
+import AccountFriends from "./AccountFriends";
 
-function Account({ user, userContentList, isFetching, firstTimeUser, dispatch }) {
-
+function Account({
+  user,
+  userContentList,
+  isFetching,
+  firstTimeUser,
+  relationships,
+  dispatch,
+}) {
   const [displayType, setDisplayType] = useState("rexys");
+  const { following, followers } = relationships;
   const handleToggleItem = (e) => {
     setDisplayType(e.target.name);
   };
@@ -20,16 +28,14 @@ function Account({ user, userContentList, isFetching, firstTimeUser, dispatch })
     );
   }
   if (firstTimeUser) {
-    return (
-      <WelcomeNewUser user={user} dispatch={dispatch}/>
-    )
+    return <WelcomeNewUser user={user} dispatch={dispatch} />;
   }
-  const buttons = ["Rexys", "Friends", "Watchlist"];
+  const buttons = ["Rexys", "Watchlist", "Following", "Followers"];
   return (
     <div className="account page">
       {/* <AccountProfile /> */}
       <nav className="nav-bar">
-      {buttons.map((title) => {
+        {buttons.map((title) => {
           return (
             <NavButton
               displayType={displayType}
@@ -39,7 +45,9 @@ function Account({ user, userContentList, isFetching, firstTimeUser, dispatch })
           );
         })}
       </nav>
-      {displayType === "watchlist" && <AccountWatchlist userContentList={userContentList}/>}
+      {displayType === "watchlist" && <AccountWatchlist content={userContentList} />}
+      {displayType === "following" && <AccountFriends friends={following} type={"Following"}/>}
+      {displayType === "followers" && <AccountFriends friends={followers} type={"Followers"}/>}
     </div>
   );
 }
@@ -50,6 +58,7 @@ const mapStateToProps = (state) => {
     userContentList: state.userContentList,
     isFetching: state.isFetching,
     firstTimeUser: state.firstTimeUser,
+    relationships: state.relationships,
   };
 };
 export default connect(mapStateToProps)(Account);

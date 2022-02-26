@@ -1,7 +1,7 @@
 import WatchlistItem from "./WatchlistItem";
 
-function AccountWatchlist({ userContentList }) {
-  const { movies, tvShows } = userContentList;
+function AccountWatchlist({ content }) {
+  const { movies, tvShows } = content;
   return (
     <div className="watchlist">
       <h2>Movies</h2>

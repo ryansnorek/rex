@@ -4,6 +4,8 @@ export default function HomeButton({ displayType, title, handleToggleItem }) {
     "Movies": "movies",
     "TV Shows": "tvShows",
     "Rexys": "rexys",
+    "Following": "following",
+    "Followers": "followers",
     "Friends": "friends",
     "Watchlist": "watchlist"
   };

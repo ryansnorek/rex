@@ -2,7 +2,6 @@ import * as a from "../actions";
 
 const initialState = {
   queryResults: [],
-  rexyIDs: [],
   userContent: {
     movies: [],
     tvShows: [],

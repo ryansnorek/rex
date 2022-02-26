@@ -47,12 +47,12 @@ export const getQueryResults = (type, query) => {
       axiosAuthorization()
         .get(`users/username/${query}`)
         .then((users) => dispatch(setQueryResults(users.data)))
-        .catch((err) => dispatch(fetchError(err)));
+        .catch((err) => dispatch(fetchError(err)))
     } else {
       axios
         .get(`${BASE_URL}/3/search/${type}?api_key=${API_KEY}&query=${query}`)
         .then((content) => dispatch(setQueryResults(content.data.results)))
-        .catch((err) => dispatch(fetchError(err)));
+        .catch((err) => dispatch(fetchError(err)))
     }
   };
 };
@@ -87,7 +87,7 @@ export const getFriends = () => {
     axios
       .get("https://randomuser.me/api/?results=10")
       .then((res) => dispatch(friendsList(res.data.results)))
-      .catch((err) => dispatch(fetchError(err)));
+      .catch((err) => dispatch(fetchError(err)))
   };
 };
 export const getFriendContent = (user_id) => {
@@ -107,7 +107,8 @@ export const getFriendMovies = (user_id) => {
         movies.data.forEach((movie) => {
           dispatch(findFriendContentById(movie.movie_id, "movie"));
         });
-      });
+      })
+      .catch((err) => dispatch(fetchError(err)))
   };
 };
 export const getFriendTvShows = (user_id) => {
@@ -120,7 +121,8 @@ export const getFriendTvShows = (user_id) => {
         tvShows.data.forEach((tvShow) => {
           dispatch(findFriendContentById(tvShow.tv_show_id, "tv"));
         });
-      });
+      })
+      .catch((err) => dispatch(fetchError(err)))
   };
 };
 export const setFriend = (friend) => {
@@ -235,7 +237,8 @@ export const loginUser = (credentials) => {
         return data;
       })
       .then(() => dispatch(loginComplete()))
-      .catch((err) => dispatch(fetchError(err)));
+      .catch((err) => dispatch(fetchError(err)))
+      .finally(() => dispatch(fetchingComplete()));
   };
 };
 export const authorizeUser = (auth) => {
