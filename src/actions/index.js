@@ -344,8 +344,6 @@ export const getRelationships = (user_id) => {
       .catch((err) => dispatch(fetchError(err)));
   };
 };
-export const getFollowers = (follower_ids) => {};
-
 export const addRelationship = (relationship) => {
   return (dispatch) => {
     dispatch(fetchStart());
