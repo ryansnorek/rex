@@ -17,5 +17,6 @@ function AccountWatchlist({ content }) {
         })}
     </div>
   );
-}const mapStateToProps = (state) => ({ content: state.userContentList });
+}
+const mapStateToProps = (state) => ({ content: state.userContentList });
 export default connect(mapStateToProps)(AccountWatchlist);
