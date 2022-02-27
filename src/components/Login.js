@@ -32,10 +32,11 @@ function Login({ dispatch, isFetching, loginComplete, errors }) {
       </div>
     );
   }
-  if (errors) {
+  if (errors.response.status === 500) {
+    setTimeout(() => navigate("/"), 6000);
     return (
       <div className="page">
-        <p style={{ color: "lavender" }}>Server error. Please try again later</p>
+        <p style={{ color: "lavender" }}>{errors.message}</p>
       </div>
     )
   }
