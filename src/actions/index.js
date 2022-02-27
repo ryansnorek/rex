@@ -10,6 +10,7 @@ export const SET_USER_MOVIES = "SET_USER_MOVIES";
 export const SET_USER_TV_SHOWS = "SET_USER_TV_SHOWS";
 export const SET_FOLLOWER = "SET_FOLLOWER";
 export const SET_FOLLOWING = "SET_FOLLOWING";
+export const CLEAR_RELATIONSHIPS = "CLEAR_RELATIONSHIPS";
 export const SET_BLOCKED_USERS = "SET_BLOCKED_USERS";
 export const DELETE_REXY = "DELETE_REXY";
 export const FIND_REXY_MOVIE = "FIND_REXY_MOVIE";
@@ -318,16 +319,16 @@ export const createUserProfile = (newProfile) => {
   };
 };
 // RELATIONSHIPS -==-=-=--=-==--=-=-==--=-=-
-const setFollower = (profile) => {
+export const setFollower = (profile) => {
   return { type: SET_FOLLOWER, payload: profile };
 };
-const setFollowing = (profile) => {
+export const setFollowing = (profile) => {
   return { type: SET_FOLLOWING, payload: profile };
 };
 export const setBlockedUsers = (blocked_users) => {
   return { type: SET_BLOCKED_USERS, payload: blocked_users };
 };
-const setRelationshipProfiles = (relationship) => {
+export const setRelationshipProfiles = (relationship) => {
   const { relative_user_id, follower, following, blocked } = relationship;
   return (dispatch) => {
     axiosAuthorization()
@@ -353,7 +354,7 @@ export const getRelationships = (user_id) => {
       .catch((err) => dispatch(fetchError(err)));
   };
 };
-const handleRelativeRelationship = (relationship) => {
+export const handleRelativeRelationship = (relationship) => {
   const { relative_user_id, user_id } = relationship;
   const relativeRelationship = {
     user_id: relative_user_id,
@@ -370,20 +371,22 @@ const handleRelativeRelationship = (relationship) => {
         );
         if (relationshipExists) {
           dispatch(updateRelativeRelationship(relativeRelationship));
-          console.log("UPDATED-=-==-=-=--=")
         } else {
           dispatch(addRelativeRelationship(relativeRelationship));
-          console.log("ADDED--==-=-=--=-=")
         }
       })
       .catch((err) => dispatch(fetchError(err)));
   };
+};
+export const clearRelationships = () => {
+  return { type: CLEAR_RELATIONSHIPS };
 };
 export const addRelationship = (relationship) => {
   return (dispatch) => {
     dispatch(fetchStart());
     axiosAuthorization()
       .post("/profile/relationships", relationship)
+      .then(() => dispatch(clearRelationships()))
       .then(() => {
         dispatch(getRelationships(relationship.user_id));
       })
@@ -412,10 +415,10 @@ export const addRelativeRelationship = (relationship) => {
 };
 export const updateRelativeRelationship = (relationship) => {
   axiosAuthorization()
-  .put("/profile/relationships", relationship)
-  .then(() => console.log("success"))
-  .catch((err) => console.log(err));
-}
+    .put("/profile/relationships", relationship)
+    .then(() => console.log("success"))
+    .catch((err) => console.log(err));
+};
 // USER MOVIES //
 export const addUserMovie = (movie_id, user_id) => {
   return (dispatch) => {

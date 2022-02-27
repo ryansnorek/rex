@@ -10,11 +10,11 @@ function SearchUsers({ dispatch, queryResults, isFetching, user, relationships }
 
   const handleAddFriend = (relative_user_id) => {
     if (!user_id) {
-      return alert("login to add friend");
+      return alert("Login to add friend");
     } else if (user_id === relative_user_id) {
-      return alert("that's you!");
+      return alert("That's you!");
     } else if (following.find((r) => r.user_id === relative_user_id)){
-      return alert("already following user");
+      return alert("Already following user");
     } else {
         dispatch(
           addRelationship({

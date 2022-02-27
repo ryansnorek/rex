@@ -78,11 +78,6 @@ export default function reducer(state = initialState, action) {
         errors: "",
       };
     case a.SET_FOLLOWER:
-      const { followers } = state.relationships;
-      const followerExists = followers.find(
-        (f) => action.payload.user_id === f.user_id
-      );
-      if (!followerExists) {
         return {
           ...state,
           isFetching: false,
@@ -93,15 +88,7 @@ export default function reducer(state = initialState, action) {
           },
           errors: "",
         };
-      } else {
-        return { ...state };
-      }
     case a.SET_FOLLOWING:
-      const { following } = state.relationships;
-      const followingExists = following.find(
-        (f) => action.payload.user_id === f.user_id
-      );
-      if (!followingExists) {
         return {
           ...state,
           isFetching: false,
@@ -112,9 +99,6 @@ export default function reducer(state = initialState, action) {
           },
           errors: "",
         };
-      } else {
-        return { ...state };
-      }
     case a.SET_BLOCKED_USERS:
       return {
         ...state,
@@ -126,6 +110,15 @@ export default function reducer(state = initialState, action) {
         },
         errors: "",
       };
+    case a.CLEAR_RELATIONSHIPS: 
+      return {
+        ...state,
+        relationships: {
+          followers: [],
+          following: [],
+          blocked: [],
+        },
+      }
     case a.SET_ITEM_MOVIE:
       return {
         ...state,

@@ -8,30 +8,33 @@ function User({ user, friendContentList, dispatch, handleAddFriend }) {
   const handleClickUser = () => {
     dispatch(getFriendContent(user.user_id));
   };
-  
+
   if (friendContentList.movies && friendContentList.tvShows) {
     navigate("/userview");
   }
   return (
-    <div className="friend" >
+    <div className="friend">
       <div className="pic" onClick={handleClickUser}>
         <img src="../../images/blank_user.png" alt="profile-pic" />
         <h3>{user.display_name || user.username}</h3>
       </div>
       {/* <div className="text">
       </div> */}
-         <img
+      <button onClick={() => handleAddFriend(user.user_id)}>
+        Follow
+      </button>
+      {/* <img
           className="icon"
           onClick={() => handleAddFriend(user.user_id)}
           src="../../images/add_friend.png"
           alt="close"
-        />
+        /> */}
     </div>
   );
 }
 const mapStateToProps = (state) => {
-    return ({
-        friendContentList: state.friendContentList
-    })
-}
+  return {
+    friendContentList: state.friendContentList,
+  };
+};
 export default connect(mapStateToProps)(User);
