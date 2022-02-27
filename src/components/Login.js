@@ -32,6 +32,13 @@ function Login({ dispatch, isFetching, loginComplete, errors }) {
       </div>
     );
   }
+  if (errors) {
+    return (
+      <div className="page">
+        <p style={{ color: "lavender" }}>Server error. Please try again later</p>
+      </div>
+    )
+  }
   return (
     <div className="login page">
       <form onSubmit={handleSubmit}>
