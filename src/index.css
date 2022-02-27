@@ -632,7 +632,7 @@ p {
 .friend-view .pic {
   display: flex;
   align-items: center;
-  width: 160px;
+  width: 100%;
   padding: 1%;
 }
 .friend-view h2 {
