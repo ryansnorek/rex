@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { connect } from "react-redux";
-// import AccountProfile from "./AccountProfile";
+import AccountProfile from "./AccountProfile";
 import WelcomeNewUser from "./WelcomeNewUser";
 import NavButton from "./NavButton";
 import AccountWatchlist from "./AccountWatchlist";
@@ -25,7 +25,7 @@ function Account({ isFetching, firstTimeUser, relationships }) {
   }
   return (
     <div className="account page">
-      {/* <AccountProfile /> */}
+      <AccountProfile />
       <nav className="nav-bar">
         {buttons.map((title) => {
           return (

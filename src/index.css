@@ -156,7 +156,9 @@ button {
   align-items: center;
   position: fixed;
   height: 5vh;
-  z-index: 2;
+  z-index: 3;
+  top: 0;
+  margin-top: 5vh;
 }
 .error {
   color: lavender;
@@ -464,17 +466,12 @@ p {
   background-color: rgb(19, 18, 18);
 }
 .profile {
-  margin: 0;
-  padding: 0;
   display: flex;
-  width: 100vw;
-  height: 100%;
   color: snow;
   background-color: #1f1e1e;
   align-items: center;
-  position: fixed;
-  height: 20vh;
   z-index: 2;
+  margin-top: 10vh;
 }
 .profile .pic {
   background-color: transparent;
@@ -522,9 +519,8 @@ p {
   border: 1px rgb(112, 109, 109) solid;
 }
 .rexys, .watchlist, .friends {
-  padding-top: 5vh;
-  width: 66vw;
   height: 100%;
+  width: 100vw;
   overflow: scroll;
   -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 1.618s; /* Firefox < 16 */
@@ -542,7 +538,6 @@ p {
 }
 .account-item {
   height: 80px;
-  width: 66vw;
   display: flex;
   color: snow;
   font-size: 4rem;
@@ -586,7 +581,6 @@ p {
 }
 .friend {
   height: 90px;
-  width: 66vw;
   display: flex;
   align-items: center;
   box-shadow: 0 0 1px lavender;
@@ -636,9 +630,6 @@ p {
 }
 .friend-view h2 {
   background-color: black;
-}
-.friend-view .rexys {
-  padding-top: 0;
 }
 /* ---------LOADING / ANIMATIONS----------- */
 .loading-container {
@@ -726,8 +717,6 @@ p {
   .discover img {
     width: 33vw;
   }
-  .rexys,
-  .watchlist,
   .account-item, 
   .search form, 
   .results {
@@ -741,9 +730,6 @@ p {
   }
 }
 @media (max-width: 912px) {
-  .friend {
-    width: 100%;
-  }
   .item-details-wrapper {
     margin-top: 25vh;
   }
@@ -789,14 +775,6 @@ p {
   .item-details {
     width: 100vw;
   }
-  .item-details,
-  .item-details {
-    width: 100vw;
-  }
-  .backdrop,
-  .item-details {
-    width: 100vw;
-  }
   .backdrop {
     margin-top: 0;
   }
@@ -819,17 +797,8 @@ p {
   .account-item .actions img {
     margin: 8%;
   }
-  .rexys, .watchlist {
-    width: 100vw;
-  }
-  .friend {
-    width: 100vw;
-  }
   .friend-search form input {
     width: 96vw;
-  }
-  .tagline {
-    display: none;
   }
 }
 /* iPhone 6/7/8/X */
