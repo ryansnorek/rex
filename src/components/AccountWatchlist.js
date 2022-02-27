@@ -1,4 +1,4 @@
-import WatchlistItem from "./WatchlistItem";
+import AccountWatchlistItem from "./AccountWatchlistItem";
 import { connect } from "react-redux";
 
 function AccountWatchlist({ content }) {
@@ -8,12 +8,16 @@ function AccountWatchlist({ content }) {
       <h2>Movies</h2>
       {movies &&
         movies.map((item) => {
-          return <WatchlistItem key={item.id} item={item} type={"movie"} />;
+          return (
+            <AccountWatchlistItem key={item.id} item={item} type={"movie"} />
+          );
         })}
-      <h2>Tv Shows</h2>
+      <h2>Shows</h2>
       {tvShows &&
         tvShows.map((item) => {
-          return <WatchlistItem key={item.id} item={item} type={"tvShow"} />;
+          return (
+            <AccountWatchlistItem key={item.id} item={item} type={"tvShow"} />
+          );
         })}
     </div>
   );
