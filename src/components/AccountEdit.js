@@ -93,7 +93,7 @@ function AccountEdit({ handleEdit, user, profile }) {
               onChange={handleChange}
             />
           </label>
-          <button>Submit</button>
+          <button className="round-button">Update</button>
         </form>
       </div>
     </div>
