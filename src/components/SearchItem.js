@@ -1,8 +1,10 @@
 import { connect } from "react-redux";
 import { POSTER_URL } from "../constants";
+import { useNavigate } from "react-router-dom";
 import { addUserMovie, addUserTvShow } from "../actions";
 
 function SearchItem({ dispatch, item, queryType, user, handleClickItem }) {
+  const navigate = useNavigate();
   const type = queryType === "tv" ? "Show" : "movie";
   const title = item.original_name || item.title;
   const date = item.first_air_date || item.release_date;
@@ -12,7 +14,8 @@ function SearchItem({ dispatch, item, queryType, user, handleClickItem }) {
 
   const handleAddContent = (contentId) => {
     if (!user.user_id) {
-      return alert("login to add content");
+      alert("login to add content");
+      navigate("/login");
     }
     dispatch(
       type === "movie"

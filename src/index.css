@@ -94,10 +94,9 @@ a {
   -webkit-filter: invert(100%);
   filter: invert(100%);
 }
-/* .activated-icon {
-  -webkit-filter: invert(33%);
-        filter: invert(33%);
-} */
+.icon:hover {
+  transform: scale(1.1);
+}
 a:hover {
   color: grey;
 }
@@ -284,11 +283,11 @@ select:focus {
   align-items: center;
 }
 .item .icon {
-  width: 66px;
-  height: 66px;
+  width: 42px;
+  height: 42px;
 }
-.icon:hover {
-  filter: invert(66%);
+.item .icon:hover {
+  filter: contrast(100%);
 }
 /* ---------ITEM-DETAILS----------- */
 .container {
@@ -323,7 +322,7 @@ select:focus {
   margin: 0.5% 2%;
 }
 .item-details-wrapper nav img:hover {
-  filter:invert(66%)
+  filter: contrast(100%);
 }
 .blur {
   filter: blur(9px);
