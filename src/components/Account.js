@@ -15,9 +15,12 @@ function Account({ isFetching, firstTimeUser, relationships }) {
 
   if (isFetching) {
     return (
-      <div className="loading-container">
-        <div className="loading"></div>
-      </div>
+      <div class="lds-ellipsis">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     );
   }
   if (firstTimeUser) {

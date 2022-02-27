@@ -24,8 +24,11 @@ function Login({ dispatch, isFetching, loginComplete, errors }) {
   }
   if (isFetching) {
     return (
-      <div className="loading-container">
-        <div className="loading"></div>
+      <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     );
   }

@@ -4,8 +4,8 @@ import { setItemMovie, setItemTvShow, unSetItem } from "../actions";
 
 import useSearch from "../hooks/useSearch";
 import ItemDetails from "./ItemDetails";
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 const SearchItem = lazy(() => import('./SearchItem'));
 
 function Search({ dispatch, queryResults, isFetching }) {

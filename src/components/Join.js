@@ -28,9 +28,12 @@ function Join({ isFetching, loginComplete, dispatch, errors }) {
   }
   if (isFetching) {
     return (
-      <div className="loading-container">
-        <div className="loading"></div>
-      </div>
+      <div class="lds-ellipsis">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     );
   }
   return (

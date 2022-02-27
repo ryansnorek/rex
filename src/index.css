@@ -472,6 +472,7 @@ p {
   align-items: center;
   z-index: 2;
   margin-top: 10vh;
+  /* transform:scale(2) */
 }
 .profile .pic {
   background-color: transparent;
@@ -632,49 +633,65 @@ p {
   background-color: black;
 }
 /* ---------LOADING / ANIMATIONS----------- */
-.loading-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
   margin-top: 20vh;
-}
-.loading {
-  border: 16px solid #f3f3f3;
-  border-top: 16px solid #2b3135;
+  top: 33px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
-  width: 90px;
-  height: 90px;
-  -webkit-animation: spin 2s linear infinite; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: spin 2s linear infinite; /* Firefox < 16 */
-  -ms-animation: spin 2s linear infinite; /* Internet Explorer */
-  -o-animation: spin 2s linear infinite; /* Opera < 12.1 */
-  animation: spin 2s linear infinite;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
-@keyframes spin {
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
   0% {
-    transform: rotate(0deg);
+    transform: scale(0);
   }
   100% {
-    transform: rotate(360deg);
+    transform: scale(1);
   }
 }
-@-moz-keyframes spin {
+@keyframes lds-ellipsis3 {
   0% {
-    transform: rotate(0deg);
+    transform: scale(1);
   }
   100% {
-    transform: rotate(360deg);
+    transform: scale(0);
   }
 }
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes spin {
+@keyframes lds-ellipsis2 {
   0% {
-    transform: rotate(0deg);
+    transform: translate(0, 0);
   }
   100% {
-    transform: rotate(360deg);
+    transform: translate(24px, 0);
   }
 }
+
+
+/* Fade */
 @keyframes fadein {
   from {
     opacity: 0;

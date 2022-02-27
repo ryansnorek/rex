@@ -2,8 +2,16 @@ import { connect } from "react-redux";
 import { addRelationship } from "../actions";
 import User from "./User";
 import useSearch from "../hooks/useSearch";
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
-function SearchUsers({ dispatch, queryResults, isFetching, user, relationships }) {
+function SearchUsers({
+  dispatch,
+  queryResults,
+  isFetching,
+  user,
+  relationships,
+}) {
   const [, query, , handleQueryChange] = useSearch("users");
   const { following } = relationships;
   const { user_id } = user;
@@ -13,17 +21,17 @@ function SearchUsers({ dispatch, queryResults, isFetching, user, relationships }
       return alert("Login to add friend");
     } else if (user_id === relative_user_id) {
       return alert("That's you!");
-    } else if (following.find((r) => r.user_id === relative_user_id)){
+    } else if (following.find((r) => r.user_id === relative_user_id)) {
       return alert("Already following user");
     } else {
-        dispatch(
-          addRelationship({
-            user_id,
-            relative_user_id,
-            following: 1,
-          })
-        );
-      }
+      dispatch(
+        addRelationship({
+          user_id,
+          relative_user_id,
+          following: 1,
+        })
+      );
+    }
   };
   return (
     <div className="friend-search search page">
@@ -40,9 +48,12 @@ function SearchUsers({ dispatch, queryResults, isFetching, user, relationships }
       </div>
       <div className="results">
         {isFetching && query ? (
-          <div className="loading-container">
-            <div className="loading"></div>
-          </div>
+          <SkeletonTheme
+            baseColor="#1d1d1d"
+            highlightColor="rgb(176, 176, 194)"
+          >
+            <Skeleton count={8} height={220} />
+          </SkeletonTheme>
         ) : (
           query &&
           queryResults.map((result) => {
