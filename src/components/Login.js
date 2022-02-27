@@ -32,14 +32,14 @@ function Login({ dispatch, isFetching, loginComplete, errors }) {
       </div>
     );
   }
-  if (errors.response.status === 500) {
-    setTimeout(() => navigate("/"), 6000);
-    return (
-      <div className="page">
-        <p style={{ color: "lavender" }}>{errors.message}</p>
-      </div>
-    )
-  }
+  // if (errors.response.status === 500) {
+  //   setTimeout(() => navigate("/"), 6000);
+  //   return (
+  //     <div className="page">
+  //       <p style={{ color: "lavender" }}>{errors.message}</p>
+  //     </div>
+  //   )
+  // }
   return (
     <div className="login page">
       <form onSubmit={handleSubmit}>

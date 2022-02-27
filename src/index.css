@@ -112,11 +112,6 @@ select {
   color: lavender;
   border: none;
   background-color: transparent;
-  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 1.618s; /* Firefox < 16 */
-  -ms-animation: fadein 1.618s; /* Internet Explorer */
-  -o-animation: fadein 1.618s; /* Opera < 12.1 */
-  animation: fadein 1.618s;
 }
 input:focus,
 select:focus {
@@ -175,7 +170,6 @@ button {
   font-size: 1.3rem;
   height: 4vh;
   border-radius: 6px;
-
 }
 .activated {
   background-color: lavender;
@@ -191,19 +185,18 @@ button {
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
-  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 1.618s; /* Firefox < 16 */
-  -ms-animation: fadein 1.618s; /* Internet Explorer */
-  -o-animation: fadein 1.618s; /* Opera < 12.1 */
-  animation: fadein 1.618s;
 }
 .discover-item {
   display: flex;
   align-items: center;
   height: max-content;
 }
-.grow { transition: all .2s ease-in-out; }
-.grow:hover { transform: scale(1.06); }
+.grow {
+  transition: all 0.2s ease-in-out;
+}
+.grow:hover {
+  transform: scale(1.06);
+}
 
 .discover-item img {
   border-radius: 6px;
@@ -295,7 +288,6 @@ select:focus {
   justify-content: center;
 }
 .item-details-wrapper {
-  /* margin-top: 200px; */
   width: 42vw;
   height: fit-content;
   overflow: scroll;
@@ -303,13 +295,8 @@ select:focus {
   background-color: #161616;
   box-shadow: 1px 1px 30px black;
   border-radius: 12px;
-  padding-bottom: .6%;
+  padding-bottom: 0.6%;
   position: absolute;
-  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 1.618s; /* Firefox < 16 */
-  -ms-animation: fadein 1.618s; /* Internet Explorer */
-  -o-animation: fadein 1.618s; /* Opera < 12.1 */
-  animation: fadein 1.618s;
 }
 .item-details-wrapper nav {
   display: flex;
@@ -471,7 +458,6 @@ p {
   align-items: center;
   z-index: 2;
   margin-top: 10vh;
-  /* transform:scale(2) */
 }
 .profile .pic {
   background-color: transparent;
@@ -518,20 +504,61 @@ p {
   text-align: center;
   border: 1px rgb(112, 109, 109) solid;
 }
-.rexys, .watchlist, .friends {
+.modal-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.modal-wrapper nav {
+  display: flex;
+  justify-content: flex-end;
+}
+.modal-wrapper nav .icon {
+  margin: 0;
+  padding: 1%;
+}
+.edit-modal {
+  margin-top: 6vh;
+  width: 500px;
+  height: 60vh;
+  z-index: 5;
+  background-color: #161616;
+  box-shadow: 1px 1px 30px black;
+  border-radius: 12px;
+  padding-bottom: 0.6%;
+  position: absolute;
+}
+.edit-modal form {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+.edit-modal form label {
+  margin: 0;
+  font-size: 2rem;
+  color: lavender;
+}
+.edit-modal form div {
+  display: flex;
+}
+.edit-modal input {
+  padding: 2%;
+  border-bottom: 1px solid grey;
+  width: 100%;
+  background-color: #272727;
+}
+.rexys,
+.watchlist,
+.friends {
   height: 100%;
   width: 100vw;
   overflow: scroll;
-  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 1.618s; /* Firefox < 16 */
-  -ms-animation: fadein 1.618s; /* Internet Explorer */
-  -o-animation: fadein 1.618s; /* Opera < 12.1 */
-  animation: fadein 1.618s;
 }
 .friends {
   width: 100vw;
 }
-.rexys h2, .watchlist h2 {
+.rexys h2,
+.watchlist h2 {
   color: rgb(168, 168, 192);
   font-size: 2.5rem;
   padding: 0;
@@ -545,11 +572,6 @@ p {
   background-color: #1d1d1d;
   box-shadow: 0 0 1px lavender;
   border-radius: 3px;
-  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 1.618s; /* Firefox < 16 */
-  -ms-animation: fadein 1.618s; /* Internet Explorer */
-  -o-animation: fadein 1.618s; /* Opera < 12.1 */
-  animation: fadein 1.618s;
 }
 .account-item .poster img,
 .account-item .poster {
@@ -568,7 +590,7 @@ p {
   display: flex;
   justify-content: space-evenly;
   width: 150px;
-  background-color:#272727;
+  background-color: #272727;
   box-shadow: 0 0 5px inset rgb(0, 0, 0);
   border-radius: 6px;
 }
@@ -606,9 +628,9 @@ p {
   filter: invert(66%);
 }
 .friend .pic h3 {
-  margin: 3%;  
+  margin: 3%;
   font-size: 2rem;
-  color: lavender
+  color: lavender;
 }
 .friend-view {
   display: flex;
@@ -617,7 +639,7 @@ p {
 .friend-view .card {
   width: 33%;
   margin: 0;
-  background-image: linear-gradient(to bottom right,#272727, black);
+  background-image: linear-gradient(to bottom right, #272727, black);
   color: snow;
 }
 .card .icon {
@@ -638,6 +660,21 @@ p {
   background-color: black;
 }
 /* ---------LOADING / ANIMATIONS----------- */
+input,
+select,
+.discover,
+.item-details-wrapper,
+.rexys,
+.watchlist,
+.friends,
+.account-item,
+.edit-modal {
+  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1.618s; /* Firefox < 16 */
+  -ms-animation: fadein 1.618s; /* Internet Explorer */
+  -o-animation: fadein 1.618s; /* Opera < 12.1 */
+  animation: fadein 1.618s;
+}
 .lds-ellipsis {
   display: inline-block;
   position: relative;
@@ -695,7 +732,6 @@ p {
   }
 }
 
-
 /* Fade */
 @keyframes fadein {
   from {
@@ -739,8 +775,8 @@ p {
   .discover img {
     width: 33vw;
   }
-  .account-item, 
-  .search form, 
+  .account-item,
+  .search form,
   .results {
     width: 100vw;
   }
@@ -782,6 +818,9 @@ p {
   }
 }
 @media (max-width: 600px) {
+  .edit-modal {
+    width: 100%;
+  }
   .item {
     width: 100vw;
   }
