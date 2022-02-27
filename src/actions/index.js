@@ -334,9 +334,11 @@ export const setRelationshipProfiles = (relationship) => {
     axiosAuthorization()
       .get(`/profile/${relative_user_id}`)
       .then((profile) => {
-        follower && dispatch(setFollower(profile.data));
-        following && dispatch(setFollowing(profile.data));
-        blocked && dispatch(setBlockedUsers(relative_user_id));
+        if (profile.data !== "") {
+          follower && dispatch(setFollower(profile.data));
+          following && dispatch(setFollowing(profile.data));
+          blocked && dispatch(setBlockedUsers(relative_user_id));
+        }
       })
       .catch((err) => dispatch(fetchError(err)));
   };
