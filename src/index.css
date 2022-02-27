@@ -620,8 +620,6 @@ p {
   margin: 0;
   background-image: linear-gradient(to bottom right,#272727, black);
   color: snow;
-  display: flex;
-  align-items: center;
 }
 .card .icon {
   width: 50px;
@@ -634,7 +632,7 @@ p {
 .friend-view .pic {
   display: flex;
   align-items: center;
-  width: 200px;
+  width: 160px;
   padding: 1%;
 }
 .friend-view h2 {
@@ -773,6 +771,8 @@ p {
   }
   .friend-view .card {
     width: 100vw;
+    display: flex;
+    align-items: center;
   }
 }
 /* iPad */
