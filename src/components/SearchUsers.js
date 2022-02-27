@@ -2,8 +2,8 @@ import { connect } from "react-redux";
 import { addRelationship } from "../actions";
 import User from "./User";
 import useSearch from "../hooks/useSearch";
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 function SearchUsers({
   dispatch,

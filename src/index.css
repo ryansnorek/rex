@@ -563,7 +563,7 @@ p {
   background-color: transparent;
 }
 .account-item:hover {
-  text-shadow: 0 0 3px lavender;
+  color: rgb(168, 168, 192);
 }
 .account-item .actions {
   display: flex;
@@ -620,6 +620,12 @@ p {
   margin: 0;
   background-image: linear-gradient(to bottom right,#272727, black);
   color: snow;
+  display: flex;
+  align-items: center;
+}
+.card .icon {
+  width: 50px;
+  height: 50px;
 }
 .friend-view .pic h3 {
   height: 50px;
@@ -627,7 +633,9 @@ p {
 }
 .friend-view .pic {
   display: flex;
-  padding: 5%;
+  align-items: center;
+  width: 200px;
+  padding: 1%;
 }
 .friend-view h2 {
   background-color: black;
