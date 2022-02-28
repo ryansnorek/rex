@@ -62,6 +62,90 @@ export const setItemTvShow = (show) => {
 export const unSetItem = () => {
   return { type: UNSET_ITEM };
 };
+export const setFriend = (friend) => {
+  return { type: SET_FRIEND, payload: friend };
+};
+export const addFriendMovieContent = (movie) => {
+  return { type: ADD_FRIEND_MOVIE_CONTENT, payload: movie };
+};
+export const clearFriendMovieList = () => {
+  return { type: CLEAR_FRIEND_MOVIE_LIST };
+};
+export const addFriendTvContent = (tvShow) => {
+  return { type: ADD_FRIEND_TV_CONTENT, payload: tvShow };
+};
+export const clearFriendTvList = () => {
+  return { type: CLEAR_FRIEND_TV_LIST };
+};
+export const setDiscoverTrending = (trending) => {
+  return { type: SET_DISCOVER_TRENDING, payload: trending };
+};
+export const setDiscoverMovies = (movies) => {
+  return { type: SET_DISCOVER_MOVIES, payload: movies };
+};
+export const setDiscoverTvShows = (tvShows) => {
+  return { type: SET_DISCOVER_TV_SHOWS, payload: tvShows };
+};
+export const logoutUser = () => {
+  return { type: LOGOUT_USER };
+};
+export const setFirstTimeUser = () => {
+  return { type: SET_FIRST_TIME_USER };
+};
+export const unsetFirstTimeUser = () => {
+  return { type: UNSET_FIRST_TIME_USER };
+};
+export const authorizeUser = (auth) => {
+  return { type: AUTHORIZE_USER, payload: auth };
+};
+export const setUser = (user) => {
+  return { type: SET_USER, payload: user };
+};
+export const loginComplete = () => {
+  return { type: LOGIN_COMPLETE };
+};
+export const setFollower = (profile) => {
+  return { type: SET_FOLLOWER, payload: profile };
+};
+export const setFollowing = (profile) => {
+  return { type: SET_FOLLOWING, payload: profile };
+};
+export const setBlockedUsers = (blocked_users) => {
+  return { type: SET_BLOCKED_USERS, payload: blocked_users };
+};
+export const clearRelationships = () => {
+  return { type: CLEAR_RELATIONSHIPS };
+};
+export const clearUserMovieList = () => {
+  return { type: CLEAR_USER_MOVIE_LIST };
+};
+export const setUserMovies = (movies) => {
+  return { type: SET_USER_MOVIES, payload: movies };
+};
+export const clearUserTvShowList = () => {
+  return { type: CLEAR_USER_TV_LIST };
+};
+export const setUserTvShows = (tvShows) => {
+  return { type: SET_USER_TV_SHOWS, payload: tvShows };
+};
+export const addUserMovieContent = (movie) => {
+  return { type: ADD_USER_MOVIE_CONTENT, payload: movie };
+};
+export const addUserTvContent = (tvShow) => {
+  return { type: ADD_USER_TV_CONTENT, payload: tvShow };
+};
+export const friendsList = (friends) => {
+  return { type: GET_FRIENDS, payload: friends };
+};
+export const discoverMovieList = (movies) => {
+  return { type: DISCOVER_MOVIE, payload: movies };
+};
+export const discoverTvList = (tvShows) => {
+  return { type: DISCOVER_TV, payload: tvShows };
+};
+export const trendingList = (trending) => {
+  return { type: TRENDING, payload: trending };
+};
 
 // SEARCH -=-==-=--=-=-==-=-=-=-=--==-=--
 export const getQueryResults = (type, query) => {
@@ -71,15 +155,18 @@ export const getQueryResults = (type, query) => {
       axiosAuthorization()
         .get(`users/username/${query}`)
         .then((users) => dispatch(setQueryResults(users.data)))
-        .catch((err) => dispatch(fetchError(err)));
+        .catch((err) => dispatch(fetchError(err)))
+        .finally(() => dispatch(fetchingComplete()));
     } else {
       axios
         .get(`${BASE_URL}/3/search/${type}?api_key=${API_KEY}&query=${query}`)
         .then((content) => dispatch(setQueryResults(content.data.results)))
-        .catch((err) => dispatch(fetchError(err)));
+        .catch((err) => dispatch(fetchError(err)))
+        .finally(() => dispatch(fetchingComplete()));
     }
   };
 };
+// CONTENT -=-=-=-==--=-==--=-=-=-=
 export const findContentById = (id, type) => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -90,7 +177,8 @@ export const findContentById = (id, type) => {
           ? dispatch(setItemMovie(content.data))
           : dispatch(setItemTvShow(content.data));
       })
-      .catch((err) => dispatch(fetchError(err)));
+      .catch((err) => dispatch(fetchError(err)))
+      .finally(() => dispatch(fetchingComplete()));
   };
 };
 export const getFriendContent = (user_id) => {
@@ -113,11 +201,9 @@ export const getFriendContent = (user_id) => {
           dispatch(findFriendContentById(tvShow.tv_show_id, "tv"));
         });
       })
-      .catch((err) => dispatch(fetchError(err)));
+      .catch((err) => dispatch(fetchError(err)))
+      .finally(() => dispatch(fetchingComplete()));
   };
-};
-export const setFriend = (friend) => {
-  return { type: SET_FRIEND, payload: friend };
 };
 export const findFriendContentById = (id, type) => {
   return (dispatch) => {
@@ -129,57 +215,33 @@ export const findFriendContentById = (id, type) => {
           ? dispatch(addFriendMovieContent(userContent.data))
           : dispatch(addFriendTvContent(userContent.data));
       })
-      .catch((err) => dispatch(fetchError(err)));
+      .catch((err) => dispatch(fetchError(err)))
+      .finally(() => dispatch(fetchingComplete()));
   };
-};
-export const addFriendMovieContent = (movie) => {
-  return { type: ADD_FRIEND_MOVIE_CONTENT, payload: movie };
-};
-export const clearFriendMovieList = () => {
-  return { type: CLEAR_FRIEND_MOVIE_LIST };
-};
-export const addFriendTvContent = (tvShow) => {
-  return { type: ADD_FRIEND_TV_CONTENT, payload: tvShow };
-};
-export const clearFriendTvList = () => {
-  return { type: CLEAR_FRIEND_TV_LIST };
 };
 export const discoverContent = () => {
   return (dispatch) => {
     dispatch(fetchStart());
-    try {
-      axios
-        .get(`${BASE_URL}/3/trending/all/day?api_key=${API_KEY}`)
-        .then((content) => dispatch(setDiscoverTrending(content.data.results)));
-      axios
-        .get(
-          `${BASE_URL}/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`
-        )
-        .then((content) => dispatch(setDiscoverMovies(content.data.results)));
-      axios
-        .get(
-          `${BASE_URL}/3/discover/tv?api_key=${API_KEY}&sort_by=popularity.desc`
-        )
-        .then((content) => dispatch(setDiscoverTvShows(content.data.results)));
-    } catch (err) {
-      dispatch(fetchError(err));
-    }
-    dispatch(fetchingComplete());
+    axios
+      .get(`${BASE_URL}/3/trending/all/day?api_key=${API_KEY}`)
+      .then((content) => dispatch(setDiscoverTrending(content.data.results)))
+      .catch((err) => dispatch(fetchError(err)));
+    axios
+      .get(
+        `${BASE_URL}/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`
+      )
+      .then((content) => dispatch(setDiscoverMovies(content.data.results)))
+      .catch((err) => dispatch(fetchError(err)));
+    axios
+      .get(
+        `${BASE_URL}/3/discover/tv?api_key=${API_KEY}&sort_by=popularity.desc`
+      )
+      .then((content) => dispatch(setDiscoverTvShows(content.data.results)))
+      .catch((err) => dispatch(fetchError(err)))
+      .finally(() => dispatch(fetchingComplete()));
   };
 };
-export const setDiscoverTrending = (trending) => {
-  return { type: SET_DISCOVER_TRENDING, payload: trending };
-};
-export const setDiscoverMovies = (movies) => {
-  return { type: SET_DISCOVER_MOVIES, payload: movies };
-};
-export const setDiscoverTvShows = (tvShows) => {
-  return { type: SET_DISCOVER_TV_SHOWS, payload: tvShows };
-};
 // USER -==--=-==--==-=-=-=--==--==-//
-export const logoutUser = () => {
-  return { type: LOGOUT_USER };
-};
 export const registerNewUser = (newUser) => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -190,14 +252,9 @@ export const registerNewUser = (newUser) => {
         const { username, password } = newUser;
         dispatch(loginUser({ username, password }));
       })
-      .catch((err) => dispatch(fetchError(err)));
+      .catch((err) => dispatch(fetchError(err)))
+      .finally(() => dispatch(fetchingComplete()));
   };
-};
-export const setFirstTimeUser = () => {
-  return { type: SET_FIRST_TIME_USER };
-};
-export const unsetFirstTimeUser = () => {
-  return { type: UNSET_FIRST_TIME_USER };
 };
 export const loginUser = (credentials) => {
   return (dispatch) => {
@@ -231,31 +288,17 @@ export const loginUser = (credentials) => {
       .finally(() => dispatch(fetchingComplete()));
   };
 };
-export const authorizeUser = (auth) => {
-  return { type: AUTHORIZE_USER, payload: auth };
-};
 export const getUser = (data, type) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    if (type === "friend") {
-      axiosAuthorization()
-        .get(`/users/${data.user_id}`)
-        .then((friend) => {
-          dispatch(setFriend(friend.data));
-        })
-        .catch((err) => fetchError(err));
-    } else {
-      axiosAuthorization()
-        .get(`/users/${data.user_id}`)
-        .then((user) => {
-          dispatch(setUser(user.data));
-        })
-        .catch((err) => console.log(err));
-    }
+    axiosAuthorization()
+      .get(`/users/${data.user_id}`)
+      .then((user) => {
+        dispatch(type === "friend" ? setFriend(user.data) : setUser(user.data));
+      })
+      .catch((err) => fetchError(err))
+      .finally(() => dispatch(fetchingComplete()));
   };
-};
-export const setUser = (user) => {
-  return { type: SET_USER, payload: user };
 };
 export const updateUser = (updatedUser, user_id) => {
   return (dispatch) => {
@@ -263,25 +306,15 @@ export const updateUser = (updatedUser, user_id) => {
     axiosAuthorization()
       .put(`/users/${user_id}`, updatedUser)
       .then((user) => dispatch(setUser(user.data)))
-      .catch((err) => dispatch(fetchError(err)));
+      .catch((err) => dispatch(fetchError(err)))
+      .finally(() => dispatch(fetchingComplete()));
   };
 };
-export const loginComplete = () => {
-  return { type: LOGIN_COMPLETE };
-};
 // RELATIONSHIPS -==-=-=--=-==--=-=-==--=-=-
-export const setFollower = (profile) => {
-  return { type: SET_FOLLOWER, payload: profile };
-};
-export const setFollowing = (profile) => {
-  return { type: SET_FOLLOWING, payload: profile };
-};
-export const setBlockedUsers = (blocked_users) => {
-  return { type: SET_BLOCKED_USERS, payload: blocked_users };
-};
 export const setRelationshipProfiles = (relationship) => {
   const { relative_user_id, follower, following, blocked } = relationship;
   return (dispatch) => {
+    dispatch(fetchStart());
     axiosAuthorization()
       .get(`/profile/${relative_user_id}`)
       .then((profile) => {
@@ -291,7 +324,8 @@ export const setRelationshipProfiles = (relationship) => {
           blocked && dispatch(setBlockedUsers(relative_user_id));
         }
       })
-      .catch((err) => dispatch(fetchError(err)));
+      .catch((err) => dispatch(fetchError(err)))
+      .finally(() => dispatch(fetchingComplete()));
   };
 };
 export const getRelationships = (user_id) => {
@@ -304,7 +338,8 @@ export const getRelationships = (user_id) => {
           dispatch(setRelationshipProfiles(relationship));
         });
       })
-      .catch((err) => dispatch(fetchError(err)));
+      .catch((err) => dispatch(fetchError(err)))
+      .finally(() => dispatch(fetchingComplete()));
   };
 };
 export const handleRelativeRelationship = (relationship) => {
@@ -315,7 +350,6 @@ export const handleRelativeRelationship = (relationship) => {
     follower: 1,
   };
   return (dispatch) => {
-    dispatch(fetchStart());
     axiosAuthorization()
       .get(`/profile/${relative_user_id}/relationships`)
       .then((relationships) => {
@@ -331,9 +365,7 @@ export const handleRelativeRelationship = (relationship) => {
       .catch((err) => dispatch(fetchError(err)));
   };
 };
-export const clearRelationships = () => {
-  return { type: CLEAR_RELATIONSHIPS };
-};
+
 export const addRelationship = (relationship) => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -346,7 +378,8 @@ export const addRelationship = (relationship) => {
       .then(() => {
         handleRelativeRelationship(relationship);
       })
-      .catch((err) => dispatch(fetchError(err)));
+      .catch((err) => dispatch(fetchError(err)))
+      .finally(() => dispatch(fetchingComplete()));
   };
 };
 export const updateRelationship = (relationship) => {
@@ -357,7 +390,8 @@ export const updateRelationship = (relationship) => {
       .then(() => {
         dispatch(getRelationships(relationship.user_id));
       })
-      .catch((err) => dispatch(fetchError(err)));
+      .catch((err) => dispatch(fetchError(err)))
+      .finally(() => dispatch(fetchingComplete()));
   };
 };
 export const addRelativeRelationship = (relationship) => {
@@ -375,7 +409,6 @@ export const updateRelativeRelationship = (relationship) => {
 // USER MOVIES //
 export const addUserMovie = (movie_id, user_id) => {
   return (dispatch) => {
-    dispatch(fetchStart());
     axiosAuthorization()
       .post(`/profile/movies`, {
         movie_id,
@@ -384,7 +417,7 @@ export const addUserMovie = (movie_id, user_id) => {
       .then(() => {
         dispatch(getUserMovies(user_id));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => dispatch(fetchError(err)));
   };
 };
 export const getUserMovies = (user_id) => {
@@ -398,18 +431,13 @@ export const getUserMovies = (user_id) => {
           dispatch(findUserContentById(movie.movie_id, "movie"));
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => dispatch(fetchError(err)))
+      .finally(() => dispatch(fetchingComplete()));
   };
 };
-export const clearUserMovieList = () => {
-  return { type: CLEAR_USER_MOVIE_LIST };
-};
-export const setUserMovies = (movies) => {
-  return { type: SET_USER_MOVIES, payload: movies };
-};
+
 export const deleteUserMovie = (content_id, user_id) => {
   return (dispatch) => {
-    dispatch(fetchStart());
     axiosAuthorization()
       .delete("/profile/movies", {
         data: {
@@ -426,7 +454,6 @@ export const deleteUserMovie = (content_id, user_id) => {
 // USER TV SHOWS //
 export const addUserTvShow = (tv_show_id, user_id) => {
   return (dispatch) => {
-    dispatch(fetchStart());
     axiosAuthorization()
       .post(`/profile/tv-shows`, {
         tv_show_id,
@@ -447,18 +474,13 @@ export const getUserTvShows = (user_id) => {
           dispatch(findUserContentById(tvShow.tv_show_id, "tv"));
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => dispatch(fetchingComplete()));
   };
 };
-export const clearUserTvShowList = () => {
-  return { type: CLEAR_USER_TV_LIST };
-};
-export const setUserTvShows = (tvShows) => {
-  return { type: SET_USER_TV_SHOWS, payload: tvShows };
-};
+
 export const deleteUserTvShow = (content_id, user_id) => {
   return (dispatch) => {
-    dispatch(fetchStart());
     axiosAuthorization()
       .delete("/profile/tv-shows", {
         data: {
@@ -482,25 +504,7 @@ export const findUserContentById = (id, type) => {
           ? dispatch(addUserMovieContent(userContent.data))
           : dispatch(addUserTvContent(userContent.data));
       })
-      .catch((err) => dispatch(fetchError(err)));
+      .catch((err) => dispatch(fetchError(err)))
+      .finally(() => dispatch(fetchingComplete()));
   };
-};
-export const addUserMovieContent = (movie) => {
-  return { type: ADD_USER_MOVIE_CONTENT, payload: movie };
-};
-export const addUserTvContent = (tvShow) => {
-  return { type: ADD_USER_TV_CONTENT, payload: tvShow };
-};
-
-export const friendsList = (friends) => {
-  return { type: GET_FRIENDS, payload: friends };
-};
-export const discoverMovieList = (movies) => {
-  return { type: DISCOVER_MOVIE, payload: movies };
-};
-export const discoverTvList = (tvShows) => {
-  return { type: DISCOVER_TV, payload: tvShows };
-};
-export const trendingList = (trending) => {
-  return { type: TRENDING, payload: trending };
 };
