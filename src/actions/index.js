@@ -134,9 +134,6 @@ export const addUserMovieContent = (movie) => {
 export const addUserTvContent = (tvShow) => {
   return { type: ADD_USER_TV_CONTENT, payload: tvShow };
 };
-export const friendsList = (friends) => {
-  return { type: GET_FRIENDS, payload: friends };
-};
 export const discoverMovieList = (movies) => {
   return { type: DISCOVER_MOVIE, payload: movies };
 };

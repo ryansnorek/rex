@@ -12,7 +12,6 @@ const initialState = {
   },
   auth: {},
   user: {},
-  friends: [],
   relationships: {
     followers: [],
     following: [],
@@ -122,12 +121,6 @@ export default function reducer(state = initialState, action) {
       };
     case a.UNSET_ITEM:
       return { ...state, item: {} };
-    case a.GET_FRIENDS:
-      return {
-        ...state,
-        friends: action.payload,
-        errors: "",
-      };
     case a.ADD_USER_MOVIE_CONTENT:
       return {
         ...state,
