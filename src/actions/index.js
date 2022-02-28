@@ -4,8 +4,9 @@ import { API_KEY } from "../config";
 import { BASE_URL, BACKEND_URL } from "../constants";
 
 export const FETCH_START = "FETCH_START";
-export const FETCH_QUERY = "FETCH_QUERY";
 export const FETCH_ERROR = "FETCH_ERROR";
+export const FETCHING_COMPLETE = "FETCHING_COMPLETE";
+export const SET_QUERY_RESULTS = "SET_QUERY_RESULTS";
 export const SET_USER_MOVIES = "SET_USER_MOVIES";
 export const SET_USER_TV_SHOWS = "SET_USER_TV_SHOWS";
 export const SET_FOLLOWER = "SET_FOLLOWER";
@@ -26,7 +27,6 @@ export const CLEAR_FRIEND_TV_LIST = "CLEAR_FRIEND_TV_LIST";
 export const SET_DISCOVER_TRENDING = "SET_DISCOVER_TRENDING";
 export const SET_DISCOVER_MOVIES = "SET_DISCOVER_MOVIES";
 export const SET_DISCOVER_TV_SHOWS = "SET_DISCOVER_TV_SHOWS";
-export const FETCHING_COMPLETE = "FETCHING_COMPLETE";
 export const DISCOVER_MOVIE = "DISCOVER_MOVIE";
 export const DISCOVER_TV = "DISCOVER_TV";
 export const TRENDING = "TRENDING";
@@ -36,12 +36,34 @@ export const AUTHORIZE_USER = "AUTHORIZE_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
 export const LOGIN_COMPLETE = "LOGIN_COMPLETE";
 export const SET_USER = "SET_USER";
-export const SET_PROFILE = "SET_PROFILE";
 export const ADD_USER_MOVIE_CONTENT = "ADD_USER_MOVIE_CONTENT";
 export const ADD_USER_TV_CONTENT = "ADD_USER_TV_CONTENT";
 export const CLEAR_USER_MOVIE_LIST = "CLEAR_USER_MOVIE_LIST";
 export const CLEAR_USER_TV_LIST = "CLEAR_USER_TV_LIST";
 
+export const fetchStart = () => {
+  return { type: FETCH_START };
+};
+export const fetchError = (error) => {
+  return { type: FETCH_ERROR, payload: error };
+};
+export const fetchingComplete = () => {
+  return { type: FETCHING_COMPLETE };
+};
+export const setQueryResults = (queryResults) => {
+  return { type: SET_QUERY_RESULTS, payload: queryResults };
+};
+export const setItemMovie = (movie) => {
+  return { type: SET_ITEM_MOVIE, payload: movie };
+};
+export const setItemTvShow = (show) => {
+  return { type: SET_ITEM_TV_SHOW, payload: show };
+};
+export const unSetItem = () => {
+  return { type: UNSET_ITEM };
+};
+
+// SEARCH -=-==-=--=-=-==-=-=-=-=--==-=--
 export const getQueryResults = (type, query) => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -58,9 +80,6 @@ export const getQueryResults = (type, query) => {
     }
   };
 };
-export const setQueryResults = (queryResults) => {
-  return { type: FETCH_QUERY, payload: queryResults };
-};
 export const findContentById = (id, type) => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -74,32 +93,7 @@ export const findContentById = (id, type) => {
       .catch((err) => dispatch(fetchError(err)));
   };
 };
-export const setItemMovie = (movie) => {
-  return { type: SET_ITEM_MOVIE, payload: movie };
-};
-export const setItemTvShow = (show) => {
-  return { type: SET_ITEM_TV_SHOW, payload: show };
-};
-export const unSetItem = () => {
-  return { type: UNSET_ITEM };
-};
-export const getFriends = () => {
-  return (dispatch) => {
-    dispatch(fetchStart());
-    axios
-      .get("https://randomuser.me/api/?results=10")
-      .then((res) => dispatch(friendsList(res.data.results)))
-      .catch((err) => dispatch(fetchError(err)));
-  };
-};
 export const getFriendContent = (user_id) => {
-  return async (dispatch) => {
-    await dispatch(getFriendMovies(user_id));
-    await dispatch(getFriendTvShows(user_id));
-    await dispatch(getProfile({ user_id }, "friend"));
-  };
-};
-export const getFriendMovies = (user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());
     dispatch(clearFriendMovieList());
@@ -111,11 +105,6 @@ export const getFriendMovies = (user_id) => {
         });
       })
       .catch((err) => dispatch(fetchError(err)));
-  };
-};
-export const getFriendTvShows = (user_id) => {
-  return (dispatch) => {
-    dispatch(fetchStart());
     dispatch(clearFriendTvList());
     axiosAuthorization()
       .get(`/profile/${user_id}/tv-shows`)
@@ -257,7 +246,7 @@ export const getUser = (data, type) => {
         .catch((err) => fetchError(err));
     } else {
       axiosAuthorization()
-        .get(`/users/${data.user_id}`) 
+        .get(`/users/${data.user_id}`)
         .then((user) => {
           dispatch(setUser(user.data));
         })
@@ -277,42 +266,8 @@ export const updateUser = (updatedUser, user_id) => {
       .catch((err) => dispatch(fetchError(err)));
   };
 };
-export const getProfile = (data) => {
-  return (dispatch) => {
-    dispatch(fetchStart());
-      axiosAuthorization()
-        .get(`/users/${data.user_id}`)
-        .then((friendProfile) => {
-          dispatch(setFriend(friendProfile.data));
-        })
-        .catch((err) => console.log(err));
-  };
-};
 export const loginComplete = () => {
   return { type: LOGIN_COMPLETE };
-};
-// USER PROFILE -==-=-=--=-==--=-=-==--=-=-
-export const setProfile = (profile) => {
-  return { type: SET_PROFILE, payload: profile };
-};
-export const updateUserProfile = (profileEdits, user_id) => {
-  return (dispatch) => {
-    dispatch(fetchStart());
-    axiosAuthorization()
-      .put("/profile", profileEdits, user_id)
-      .then((profile) => dispatch(setProfile(profile.data)))
-      .catch((err) => dispatch(fetchError(err)));
-  };
-};
-export const createUserProfile = (newProfile) => {
-  return (dispatch) => {
-    dispatch(fetchStart());
-    axiosAuthorization()
-      .post("/profile", newProfile)
-      .then((profile) => dispatch(setProfile(profile.data)))
-      .then(() => dispatch(unsetFirstTimeUser()))
-      .catch((err) => dispatch(fetchError(err)));
-  };
 };
 // RELATIONSHIPS -==-=-=--=-==--=-=-==--=-=-
 export const setFollower = (profile) => {
@@ -536,15 +491,7 @@ export const addUserMovieContent = (movie) => {
 export const addUserTvContent = (tvShow) => {
   return { type: ADD_USER_TV_CONTENT, payload: tvShow };
 };
-export const fetchStart = () => {
-  return { type: FETCH_START };
-};
-export const fetchError = (error) => {
-  return { type: FETCH_ERROR, payload: error };
-};
-export const fetchingComplete = () => {
-  return { type: FETCHING_COMPLETE };
-};
+
 export const friendsList = (friends) => {
   return { type: GET_FRIENDS, payload: friends };
 };

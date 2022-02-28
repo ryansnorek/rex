@@ -12,7 +12,6 @@ const initialState = {
   },
   auth: {},
   user: {},
-  profile: {},
   friends: [],
   relationships: {
     followers: [],
@@ -42,7 +41,7 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case a.FETCH_START:
       return { ...state, isFetching: true };
-    case a.FETCH_QUERY:
+    case a.SET_QUERY_RESULTS:
       return {
         ...state,
         queryResults: action.payload,
@@ -278,13 +277,6 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         user: { ...action.payload },
-        isFetching: false,
-        errors: "",
-      };
-    case a.SET_PROFILE:
-      return {
-        ...state,
-        profile: { ...action.payload },
         isFetching: false,
         errors: "",
       };

@@ -16,6 +16,7 @@ function SearchItem({ dispatch, item, queryType, user, handleClickItem }) {
     if (!user.user_id) {
       alert("login to add content");
       navigate("/login");
+      return;
     }
     dispatch(
       type === "movie"
