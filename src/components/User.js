@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { getFriendContent } from "../actions";
+import { getFriendContent, setFriend } from "../actions";
 
 function User({ user, friendContentList, dispatch, handleAddFriend }) {
   const navigate = useNavigate();
 
   const handleClickUser = () => {
+    dispatch(setFriend(user));
     dispatch(getFriendContent(user.user_id));
   };
 
@@ -15,7 +16,7 @@ function User({ user, friendContentList, dispatch, handleAddFriend }) {
   return (
     <div className="friend">
       <div className="pic" onClick={handleClickUser}>
-        <img src="../../images/blank_user.png" alt="profile-pic" />
+        <img src={`${user.uploaded_image}`} alt="profile-pic" />
         <h3>{user.display_name || user.username}</h3>
       </div>
       {/* <div className="text">
@@ -23,12 +24,6 @@ function User({ user, friendContentList, dispatch, handleAddFriend }) {
       <button onClick={() => handleAddFriend(user.user_id)}>
         Follow
       </button>
-      {/* <img
-          className="icon"
-          onClick={() => handleAddFriend(user.user_id)}
-          src="../../images/add_friend.png"
-          alt="close"
-        /> */}
     </div>
   );
 }

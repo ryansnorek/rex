@@ -288,13 +288,13 @@ export const loginUser = (credentials) => {
       .finally(() => dispatch(fetchingComplete()));
   };
 };
-export const getUser = (data, type) => {
+export const getUser = (data) => {
   return (dispatch) => {
     dispatch(fetchStart());
     axiosAuthorization()
       .get(`/users/${data.user_id}`)
       .then((user) => {
-        dispatch(type === "friend" ? setFriend(user.data) : setUser(user.data));
+        dispatch(setUser(user.data));
       })
       .catch((err) => fetchError(err))
       .finally(() => dispatch(fetchingComplete()));
@@ -365,7 +365,6 @@ export const handleRelativeRelationship = (relationship) => {
       .catch((err) => dispatch(fetchError(err)));
   };
 };
-
 export const addRelationship = (relationship) => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -435,7 +434,6 @@ export const getUserMovies = (user_id) => {
       .finally(() => dispatch(fetchingComplete()));
   };
 };
-
 export const deleteUserMovie = (content_id, user_id) => {
   return (dispatch) => {
     axiosAuthorization()
@@ -478,7 +476,6 @@ export const getUserTvShows = (user_id) => {
       .finally(() => dispatch(fetchingComplete()));
   };
 };
-
 export const deleteUserTvShow = (content_id, user_id) => {
   return (dispatch) => {
     axiosAuthorization()

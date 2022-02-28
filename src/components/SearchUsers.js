@@ -57,7 +57,7 @@ function SearchUsers({
         ) : (
           query &&
           queryResults.map((result) => {
-            return <User user={result} handleAddFriend={handleAddFriend} />;
+            return <User key={result.user_id} user={result} handleAddFriend={handleAddFriend} />;
           })
         )}
       </div>

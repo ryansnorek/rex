@@ -21,7 +21,7 @@ function AccountProfile({ user, dispatch }) {
       {editMode && <AccountEdit handleEdit={handleEdit} />}
       <div className="profile">
         <div className="pic">
-          <img src="../../images/blank_user.png" alt="profile-pic" />
+          <img src={`${user.uploaded_image}`} alt="profile-pic" />
         </div>
         <div className="text">
           <h3>{user.display_name}</h3>

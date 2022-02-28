@@ -45,21 +45,15 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         queryResults: action.payload,
-        isFetching: false,
         errors: "",
       };
     case a.FETCH_ERROR:
-      return {
-        ...state,
-        errors: action.payload,
-        isFetching: false,
-      };
+      return { ...state, errors: action.payload };
     case a.FETCHING_COMPLETE:
       return { ...state, isFetching: false };
     case a.SET_USER_MOVIES:
       return {
         ...state,
-        isFetching: false,
         userContent: {
           movies: [...action.payload],
           tvShows: [...state.userContent.tvShows],
@@ -69,7 +63,6 @@ export default function reducer(state = initialState, action) {
     case a.SET_USER_TV_SHOWS:
       return {
         ...state,
-        isFetching: false,
         userContent: {
           movies: [...state.userContent.movies],
           tvShows: [...action.payload],
@@ -77,31 +70,28 @@ export default function reducer(state = initialState, action) {
         errors: "",
       };
     case a.SET_FOLLOWER:
-        return {
-          ...state,
-          isFetching: false,
-          relationships: {
-            followers: [...state.relationships.followers, action.payload],
-            following: [...state.relationships.following],
-            blocked: [...state.relationships.blocked],
-          },
-          errors: "",
-        };
+      return {
+        ...state,
+        relationships: {
+          followers: [...state.relationships.followers, action.payload],
+          following: [...state.relationships.following],
+          blocked: [...state.relationships.blocked],
+        },
+        errors: "",
+      };
     case a.SET_FOLLOWING:
-        return {
-          ...state,
-          isFetching: false,
-          relationships: {
-            followers: [...state.relationships.followers],
-            following: [...state.relationships.following, action.payload],
-            blocked: [...state.relationships.blocked],
-          },
-          errors: "",
-        };
+      return {
+        ...state,
+        relationships: {
+          followers: [...state.relationships.followers],
+          following: [...state.relationships.following, action.payload],
+          blocked: [...state.relationships.blocked],
+        },
+        errors: "",
+      };
     case a.SET_BLOCKED_USERS:
       return {
         ...state,
-        isFetching: false,
         relationships: {
           followers: [...state.relationships.followers],
           following: [...state.relationships.following],
@@ -109,7 +99,7 @@ export default function reducer(state = initialState, action) {
         },
         errors: "",
       };
-    case a.CLEAR_RELATIONSHIPS: 
+    case a.CLEAR_RELATIONSHIPS:
       return {
         ...state,
         relationships: {
@@ -117,37 +107,30 @@ export default function reducer(state = initialState, action) {
           following: [],
           blocked: [],
         },
-      }
+      };
     case a.SET_ITEM_MOVIE:
       return {
         ...state,
         item: { movie: action.payload },
-        isFetching: false,
         errors: "",
       };
     case a.SET_ITEM_TV_SHOW:
       return {
         ...state,
         item: { tvShow: action.payload },
-        isFetching: false,
         errors: "",
       };
     case a.UNSET_ITEM:
-      return {
-        ...state,
-        item: {},
-      };
+      return { ...state, item: {} };
     case a.GET_FRIENDS:
       return {
         ...state,
         friends: action.payload,
-        isFetching: false,
         errors: "",
       };
     case a.ADD_USER_MOVIE_CONTENT:
       return {
         ...state,
-        isFetching: false,
         userContentList: {
           movies: [...state.userContentList.movies, action.payload],
           tvShows: [...state.userContentList.tvShows],
@@ -157,7 +140,6 @@ export default function reducer(state = initialState, action) {
     case a.CLEAR_USER_MOVIE_LIST:
       return {
         ...state,
-        isFetching: false,
         userContentList: {
           movies: [],
           tvShows: [...state.userContentList.tvShows],
@@ -167,7 +149,6 @@ export default function reducer(state = initialState, action) {
     case a.ADD_USER_TV_CONTENT:
       return {
         ...state,
-        isFetching: false,
         userContentList: {
           movies: [...state.userContentList.movies],
           tvShows: [...state.userContentList.tvShows, action.payload],
@@ -177,7 +158,6 @@ export default function reducer(state = initialState, action) {
     case a.CLEAR_USER_TV_LIST:
       return {
         ...state,
-        isFetching: false,
         userContentList: {
           movies: [...state.userContentList.movies],
           tvShows: [],
@@ -187,14 +167,12 @@ export default function reducer(state = initialState, action) {
     case a.SET_FRIEND:
       return {
         ...state,
-        isFetching: false,
         friend: { ...action.payload },
         errors: "",
       };
     case a.ADD_FRIEND_MOVIE_CONTENT:
       return {
         ...state,
-        isFetching: false,
         friendContentList: {
           movies: [...state.friendContentList.movies, action.payload],
           tvShows: [...state.friendContentList.tvShows],
@@ -204,7 +182,6 @@ export default function reducer(state = initialState, action) {
     case a.CLEAR_FRIEND_MOVIE_LIST:
       return {
         ...state,
-        isFetching: false,
         friendContentList: {
           movies: [],
           tvShows: [...state.friendContentList.tvShows],
@@ -214,7 +191,6 @@ export default function reducer(state = initialState, action) {
     case a.ADD_FRIEND_TV_CONTENT:
       return {
         ...state,
-        isFetching: false,
         friendContentList: {
           movies: [...state.friendContentList.movies],
           tvShows: [...state.friendContentList.tvShows, action.payload],
@@ -224,7 +200,6 @@ export default function reducer(state = initialState, action) {
     case a.CLEAR_FRIEND_TV_LIST:
       return {
         ...state,
-        isFetching: false,
         friendContentList: {
           movies: [...state.friendContentList.movies],
           tvShows: [],
@@ -259,13 +234,10 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         auth: { ...action.payload },
-        isFetching: false,
         errors: "",
       };
     case a.LOGOUT_USER:
-      return {
-        ...initialState,
-        discover: { ...state.discover },
+      return { ...initialState, discover: { ...state.discover },
       };
     case a.SET_FIRST_TIME_USER:
       return { ...state, firstTimeUser: true };
@@ -277,7 +249,6 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         user: { ...action.payload },
-        isFetching: false,
         errors: "",
       };
     default:
