@@ -17,8 +17,8 @@ function Home({ dispatch, discover }) {
     const item = displayItems.find((di) => di.id === id);
     dispatch(
       type === "movie"
-        ? dispatch(setItemMovie(item))
-        : dispatch(setItemTvShow(item))
+        ? setItemMovie(item)
+        : setItemTvShow(item)
     );
     setItemClicked(true);
   };

@@ -15,7 +15,7 @@ function Account({ isFetching, firstTimeUser, relationships }) {
 
   if (isFetching) {
     return (
-      <div class="lds-ellipsis">
+      <div className="lds-ellipsis">
       <div></div>
       <div></div>
       <div></div>
