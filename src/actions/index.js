@@ -226,10 +226,6 @@ export const loginUser = (credentials) => {
         return data;
       })
       .then((data) => {
-        dispatch(getProfile(data));
-        return data;
-      })
-      .then((data) => {
         dispatch(getUserMovies(data.user_id));
         return data;
       })
@@ -261,7 +257,7 @@ export const getUser = (data, type) => {
         .catch((err) => fetchError(err));
     } else {
       axiosAuthorization()
-        .get(`/users/${data.user_id}`)
+        .get(`/users/${data.user_id}`) 
         .then((user) => {
           dispatch(setUser(user.data));
         })
@@ -272,24 +268,24 @@ export const getUser = (data, type) => {
 export const setUser = (user) => {
   return { type: SET_USER, payload: user };
 };
-export const getProfile = (data, type) => {
+export const updateUser = (updatedUser, user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    if (type === "friend") {
+    axiosAuthorization()
+      .put(`/users/${user_id}`, updatedUser)
+      .then((user) => dispatch(setUser(user.data)))
+      .catch((err) => dispatch(fetchError(err)));
+  };
+};
+export const getProfile = (data) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
       axiosAuthorization()
-        .get(`/profile/${data.user_id}`)
+        .get(`/users/${data.user_id}`)
         .then((friendProfile) => {
           dispatch(setFriend(friendProfile.data));
         })
         .catch((err) => console.log(err));
-    } else {
-      axiosAuthorization()
-        .get(`/profile/${data.user_id}`)
-        .then((profile) => {
-          dispatch(setProfile(profile.data));
-        })
-        .catch((err) => console.log(err));
-    }
   };
 };
 export const loginComplete = () => {

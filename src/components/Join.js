@@ -20,6 +20,8 @@ function Join({ isFetching, loginComplete, dispatch, errors }) {
     values.phone = phone;
     values.username = values.username.toLowerCase();
     values.email = values.email.toLowerCase();
+    values.display_name = values.username;
+    values.uploaded_image = "../../images/blank_user.png";
     dispatch(registerNewUser(values));
     clearForm(e);
   };
@@ -28,7 +30,7 @@ function Join({ isFetching, loginComplete, dispatch, errors }) {
   }
   if (isFetching) {
     return (
-      <div class="lds-ellipsis">
+      <div className="lds-ellipsis">
       <div></div>
       <div></div>
       <div></div>

@@ -1,45 +1,24 @@
-import { createUserProfile } from "../actions";
-import useForm from "../hooks/useForm";
-import { useDispatch, useSelector } from "react-redux";
+import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { unsetFirstTimeUser } from "../actions";
 
-const initialValues = {
-  display_name: "",
-  personality_type: "",
-};
-
-function WelcomeNewUser() {
-  const [values, handleChange, clearForm] = useForm("profile", initialValues);
-  const user = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const { user_id } = user;
-    const profileEdits = { ...values, user_id };
-    dispatch(createUserProfile(profileEdits));
-    clearForm(e);
+function WelcomeNewUser({ user, dispatch }) {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    dispatch(unsetFirstTimeUser());
+    navigate("/");
   };
-
   return (
     <div className="page">
       <div className="edit-profile">
         <h2>Hey, {user.username}</h2>
-        <p>
-          Choose your display name and then start adding rexys and friends to
-          your account
-        </p>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="display_name"
-            value={values.display_name}
-            placeholder="Display name"
-            onChange={handleChange}
-          />
-          <button className="round-button">Submit</button>
-        </form>
+        <p>Start adding content and find freiends to share them with</p>
+        <button className="round-button" onClick={handleClick}>
+          Okay!
+        </button>
       </div>
     </div>
   );
 }
-export default WelcomeNewUser;
+const mapStateToProps = (state) => ({ user: state.user });
+export default connect(mapStateToProps)(WelcomeNewUser);
