@@ -13,10 +13,10 @@ function AccountRexy({ dispatch, item, type, user }) {
   };
 
   const handleSend = () => {
-    alert("cant send yet")
+    alert("cant send yet");
   };
   const handleRating = () => {
-    alert("cant rate yet")
+    alert("cant rate yet");
   };
 
   return (

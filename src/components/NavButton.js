@@ -1,4 +1,4 @@
-export default function HomeButton({ displayType, title, handleToggleItem }) {
+export default function NavButton({ displayType, title, handleToggleItem }) {
   const typeSwitch = {
     "Trending": "trending",
     "Movies": "movies",

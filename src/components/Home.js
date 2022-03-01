@@ -9,20 +9,17 @@ import NavButton from "./NavButton";
 const buttons = ["Trending", "Movies", "TV Shows"];
 
 function Home({ dispatch, discover }) {
-  const [displayItems, displayType, handleToggleItem] = useDisplayItems(discover);
+  const [displayItems, displayType, handleToggleItem] =
+    useDisplayItems(discover);
   const [itemClicked, setItemClicked] = useState(false);
   const handleItemClose = () => setItemClicked(false);
 
   const handleClickPoster = (id, type) => {
     const item = displayItems.find((di) => di.id === id);
-    dispatch(
-      type === "movie"
-        ? setItemMovie(item)
-        : setItemTvShow(item)
-    );
+    dispatch(type === "movie" ? setItemMovie(item) : setItemTvShow(item));
     setItemClicked(true);
   };
-  
+
   return (
     <div className="home page">
       <nav className={`nav-bar  ${itemClicked ? "blur" : ""}`}>

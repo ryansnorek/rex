@@ -14,7 +14,7 @@ export default function useSearch(initialValue) {
     function setQueryResultsToState() {
       dispatch(getQueryResults(queryType, query));
     },
-    [dispatch, queryType, query]
+    [queryType, query]
   );
 
   return [queryType, query, handleSelectQueryType, handleQueryChange];

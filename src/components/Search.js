@@ -4,12 +4,13 @@ import { setItemMovie, setItemTvShow, unSetItem } from "../actions";
 
 import useSearch from "../hooks/useSearch";
 import ItemDetails from "./ItemDetails";
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
-const SearchItem = lazy(() => import('./SearchItem'));
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+const SearchItem = lazy(() => import("./SearchItem"));
 
 function Search({ dispatch, queryResults, isFetching }) {
-  const [queryType, query, handleSelectQueryType, handleQueryChange] = useSearch("movie");
+  const [queryType, query, handleSelectQueryType, handleQueryChange] =
+    useSearch("movie");
 
   const [itemClicked, setItemClicked] = useState(false);
   const handleItemClose = () => {
@@ -19,11 +20,7 @@ function Search({ dispatch, queryResults, isFetching }) {
 
   const handleClickItem = (id, type) => {
     const item = queryResults.find((qr) => qr.id === id);
-    dispatch(
-      type === "movie"
-        ? dispatch(setItemMovie(item))
-        : dispatch(setItemTvShow(item))
-    );
+    dispatch(type === "movie" ? setItemMovie(item) : setItemTvShow(item));
     setItemClicked(true);
   };
   return (
@@ -48,14 +45,17 @@ function Search({ dispatch, queryResults, isFetching }) {
       </div>
       <div className={`results  ${itemClicked ? "blur" : ""}`}>
         {isFetching && query ? (
-           <SkeletonTheme baseColor="#1d1d1d" highlightColor="rgb(176, 176, 194)">
-             <Skeleton count={8} height={220}/>
-           </SkeletonTheme>
+          <SkeletonTheme
+            baseColor="#1d1d1d"
+            highlightColor="rgb(176, 176, 194)"
+          >
+            <Skeleton count={8} height={220} />
+          </SkeletonTheme>
         ) : (
           query &&
           queryResults.map((result) => {
             return (
-              <Suspense fallback={<Skeleton height={220}/>}>
+              <Suspense fallback={<Skeleton height={220} />}>
                 <SearchItem
                   item={result}
                   queryType={queryType}

@@ -12,7 +12,7 @@ export default function useDisplayItems(itemObject) {
     if (itemObject.trending.length === 0) {
       dispatch(discoverContent());
     }
-  }, [itemObject.trending.length, dispatch]);
+  }, [itemObject.trending.length]);
 
   useEffect(
     function setContentToState() {

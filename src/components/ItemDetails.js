@@ -16,7 +16,7 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
     if (!user.user_id) {
       alert("login to add content");
       navigate("/login");
-      return; 
+      return;
     }
     dispatch(
       type === "movie"
@@ -29,7 +29,7 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
   return (
     <div
       className="page item-details-wrapper"
-      style={{ marginTop: `${scrollPosition + 60}px`}}
+      style={{ marginTop: `${scrollPosition + 60}px` }}
     >
       <nav>
         <img
