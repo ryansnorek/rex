@@ -20,6 +20,7 @@ function AccountAvatar({ handleEdit, user, dispatch }) {
           />
         </nav>
         <p>Select your avatar</p>
+        <div className="avatars">
           {AVATARS.map((avatar) => {
             return (
               <img
@@ -31,6 +32,7 @@ function AccountAvatar({ handleEdit, user, dispatch }) {
               />
             );
           })}
+          </div>
         </div>
       </div>
   );
