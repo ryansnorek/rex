@@ -315,7 +315,7 @@ select:focus {
   filter: contrast(100%);
 }
 .blur {
-  filter: blur(9px);
+  filter: blur(2px);
   pointer-events: none;
 }
 .item-details {
