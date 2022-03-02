@@ -451,7 +451,11 @@ p {
 .avatar {
   width: 50px;
   height: 50px;
-  margin: 2%;
+  margin: 1%;
+  border: 1px solid transparent;
+}
+.avatar:hover {
+  border: 1px solid lavender;
 }
 /* ---------ACCOUNT----------- */
 .account {
@@ -488,7 +492,7 @@ p {
 }
 .edit-profile {
   background-color: #2b3135;
-  width: 90vw;
+  width: 400px;
   height: 300px;
   color: snow;
   display: flex;
@@ -880,6 +884,9 @@ select,
   }
   .friend-search form input {
     width: 96vw;
+  }
+  .edit-profile {
+    width: 100%;
   }
 }
 /* iPhone 6/7/8/X */
