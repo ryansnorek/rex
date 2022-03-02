@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { addUserMovie, addUserTvShow } from "../actions";
+import { addWatchlistMovie, addWatchlistShow } from "../actions";
 import ItemDetailsMovie from "./ItemDetailsMovie";
 import ItemDetailsTvShow from "./ItemDetailsTvShow";
 import useScrollSet from "../hooks/useScrollSet";
@@ -20,8 +20,8 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
     }
     dispatch(
       type === "movie"
-        ? addUserMovie(contentId, user.user_id)
-        : addUserTvShow(contentId, user.user_id)
+        ? addWatchlistMovie(contentId, user.user_id)
+        : addWatchlistShow(contentId, user.user_id)
     );
     alert("added rexy");
     handleItemClose();
@@ -62,7 +62,6 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
 }
 const mapStateToProps = (state) => ({
   userContent: state.userContent,
-  userContentList: state.userContentList,
   item: state.item,
   user: state.user,
 });

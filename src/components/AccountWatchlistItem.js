@@ -1,14 +1,14 @@
 import { connect } from "react-redux";
 import { POSTER_URL } from "../constants";
-import { deleteUserMovie, deleteUserTvShow } from "../actions";
+import { deleteWatchlistMovie, deleteWatchlistShow } from "../actions";
 import UserContentActionBar from "./UserContentActionBar";
 
 function AccountRexy({ dispatch, item, type, user }) {
   const handleRemove = (itemId) => {
     dispatch(
       type === "movie"
-        ? deleteUserMovie(itemId, user.user_id)
-        : deleteUserTvShow(itemId, user.user_id)
+        ? deleteWatchlistMovie(itemId, user.user_id)
+        : deleteWatchlistShow(itemId, user.user_id)
     );
   };
 

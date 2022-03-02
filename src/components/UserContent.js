@@ -1,12 +1,12 @@
 import { POSTER_URL } from "../constants";
-// import { addUserMovie, addUserTvShow } from "../actions";
+// import { addWatchlistMovie, addWatchlistShow } from "../actions";
 
 function UserContent({ item, type, handleClickItem }) {
   // const handleAddRexy = (contentId) => {
     // dispatch(
     //     type === "movie"
-    //       ? addUserMovie(contentId, user.user_id)
-    //       : addUserTvShow(contentId, user.user_id)
+    //       ? addWatchlistMovie(contentId, user.user_id)
+    //       : addWatchlistShow(contentId, user.user_id)
     //   );
     //   alert("added rexy")
     // alert("not ready yet");

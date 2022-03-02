@@ -18,8 +18,10 @@ const initialState = {
     blocked: [],
   },
   userContentList: {
-    movies: [],
-    tvShows: [],
+    watchlistMovies: [],
+    watchlistShows: [],
+    rexyMovies: [],
+    rexyShows: [],
   },
   friend: {},
   friendContentList: {
@@ -121,39 +123,47 @@ export default function reducer(state = initialState, action) {
       };
     case a.UNSET_ITEM:
       return { ...state, item: {} };
-    case a.ADD_USER_MOVIE_CONTENT:
+    case a.ADD_WATCHLIST_MOVIE_CONTENT:
       return {
         ...state,
         userContentList: {
-          movies: [...state.userContentList.movies, action.payload],
-          tvShows: [...state.userContentList.tvShows],
+          watchlistMovies: [...state.userContentList.watchlistMovies, action.payload],
+          watchlistShows: [...state.userContentList.watchlistShows],
+          rexyMovies: [...state.userContentList.rexyMovies],
+          rexyShows: [...state.userContentList.rexyShows],
         },
         errors: "",
       };
-    case a.CLEAR_USER_MOVIE_LIST:
+    case a.CLEAR_WATCHLIST_MOVIE_LIST:
       return {
         ...state,
         userContentList: {
-          movies: [],
-          tvShows: [...state.userContentList.tvShows],
+          watchlistMovies: [],
+          watchlistShows: [...state.userContentList.watchlistShows],
+          rexyMovies: [...state.userContentList.rexyMovies],
+          rexyShows: [...state.userContentList.rexyShows],
         },
         errors: "",
       };
-    case a.ADD_USER_TV_CONTENT:
+    case a.ADD_WATCHLIST_SHOW_CONTENT:
       return {
         ...state,
         userContentList: {
-          movies: [...state.userContentList.movies],
-          tvShows: [...state.userContentList.tvShows, action.payload],
+          watchlistShows: [...state.userContentList.watchlistShows, action.payload],
+          watchlistMovies: [...state.userContentList.watchlistMovies],
+          rexyMovies: [...state.userContentList.rexyMovies],
+          rexyShows: [...state.userContentList.rexyShows],
         },
         errors: "",
       };
-    case a.CLEAR_USER_TV_LIST:
+    case a.CLEAR_WATCHLIST_SHOW_LIST:
       return {
         ...state,
         userContentList: {
-          movies: [...state.userContentList.movies],
-          tvShows: [],
+          watchlistShows: [],
+          watchlistMovies: [...state.userContentList.watchlistMovies],
+          rexyMovies: [...state.userContentList.rexyMovies],
+          rexyShows: [...state.userContentList.rexyShows],
         },
         errors: "",
       };

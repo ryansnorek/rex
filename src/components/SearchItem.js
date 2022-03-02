@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { POSTER_URL } from "../constants";
 import { useNavigate } from "react-router-dom";
-import { addUserMovie, addUserTvShow } from "../actions";
+import { addWatchlistMovie, addWatchlistShow } from "../actions";
 
 function SearchItem({ dispatch, item, queryType, user, handleClickItem }) {
   const navigate = useNavigate();
@@ -20,8 +20,8 @@ function SearchItem({ dispatch, item, queryType, user, handleClickItem }) {
     }
     dispatch(
       type === "movie"
-        ? addUserMovie(contentId, user.user_id)
-        : addUserTvShow(contentId, user.user_id)
+        ? addWatchlistMovie(contentId, user.user_id)
+        : addWatchlistShow(contentId, user.user_id)
     );
   };
   return (
@@ -55,6 +55,5 @@ function SearchItem({ dispatch, item, queryType, user, handleClickItem }) {
 const mapStateToProps = (state) => ({
   user: state.user,
   userContent: state.userContent,
-  userContentList: state.userContentList,
 });
 export default connect(mapStateToProps)(SearchItem);
