@@ -367,16 +367,21 @@ export const handleRelativeRelationship = (relationship) => {
 export const addRelationship = (relationship) => {
   return (dispatch) => {
     dispatch(fetchStart());
+    dispatch(clearRelationshipsState());
     axiosAuthorization()
       .post("/relationships", relationship)
-      .then(() => dispatch(clearRelationshipsState()))
       .then(() => {
         dispatch(getRelationships(relationship.user_id));
       })
       .then(() => {
         dispatch(handleRelativeRelationship(relationship))
       })
-      .catch((err) => dispatch(fetchError(err)))
+      .catch((err) => {
+        if (err.response.status === 403) {
+          dispatch(updateRelationship(relationship));
+        }
+        dispatch(fetchError(err));
+      })
       .finally(() => dispatch(fetchingComplete()));
   };
 };
