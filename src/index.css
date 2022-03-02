@@ -458,8 +458,7 @@ p {
   color: snow;
   background-color: #1f1e1e;
   align-items: center;
-  z-index: 2;
-  margin-top: 10vh;
+  padding-top: 5vh; 
 }
 .profile .pic {
   background-color: transparent;
@@ -523,24 +522,23 @@ p {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
- }
- .avatar {
-   width: 50px;
-   height: 50px;
-   margin: 1%;
-   border: 1px solid transparent;
- }
- .avatar:hover {
-   border: 1px solid lavender;
- }
- 
+}
+.avatar {
+  width: 50px;
+  height: 50px;
+  margin: 1%;
+  border: 1px solid transparent;
+}
+.avatar:hover {
+  border: 1px solid lavender;
+}
 .edit-modal {
   margin-top: 6vh;
   width: 500px;
   height: 600px;
-  z-index: 5;
+  z-index: 6;
   box-shadow: 0 0 12px rgb(47, 46, 48);
-  background-color: rgb(12,12,12, 0.8);
+  background-color: rgb(12, 12, 12);
   border-radius: 12px;
   padding-bottom: 0.6%;
   position: absolute;
@@ -564,7 +562,7 @@ p {
   width: 100%;
   background-color: #272727;
 }
-.edit-modal .button-container { 
+.edit-modal .button-container {
   margin-top: 6%;
 }
 .rexys,
