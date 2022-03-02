@@ -95,6 +95,7 @@ a {
   height: 20px;
   -webkit-filter: invert(100%);
   filter: invert(100%);
+  transition: transform 0.3s;
 }
 .icon:hover {
   transform: scale(1.1);
@@ -114,11 +115,16 @@ select {
   color: lavender;
   border: none;
   background-color: transparent;
+  transition: box-shadow 0.3s;
 }
 input:focus,
 select:focus {
-  background-color: rgb(223, 226, 242, 0.3);
-  outline-color: rgb(168, 168, 192);
+  outline: none;
+  box-shadow: inset 0 0 1px 3px lavender;
+  background-color: transparent;
+}
+input:hover {
+  box-shadow: inset 0 0 1px 3px lavender;
 }
 input::placeholder {
   color: rgba(255, 255, 255, 0.618);
@@ -194,13 +200,6 @@ button {
   align-items: center;
   height: max-content;
 }
-.grow {
-  transition: all 0.2s ease-in-out;
-}
-.grow:hover {
-  transform: scale(1.06);
-}
-
 .discover-item img {
   border-radius: 6px;
   object-fit: cover;
@@ -231,10 +230,6 @@ button {
 .search form select {
   margin: 0;
   border-left: 1px solid rgb(176, 176, 194);
-}
-input:focus,
-select:focus {
-  background-color: transparent;
 }
 .results {
   margin-top: 5vh;
@@ -707,6 +702,12 @@ select,
   -webkit-transform: rotateZ(-30deg);
   -ms-transform: rotateZ(-30deg);
   transform: rotateZ(-30deg);
+}
+.grow {
+  transition: all 0.2s ease-in-out;
+}
+.grow:hover {
+  transform: scale(1.06);
 }
 .lds-ellipsis {
   display: inline-block;
