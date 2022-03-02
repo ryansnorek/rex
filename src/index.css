@@ -468,9 +468,6 @@ p {
   padding: 3%;
   background-color: transparent;
 }
-.friend .icon {
-  z-index: 3;
-}
 .pic img {
   height: 66px;
   border-radius: 100%;
@@ -520,7 +517,7 @@ p {
 .edit-modal {
   margin-top: 6vh;
   width: 500px;
-  height: 60vh;
+  height: 600px;
   z-index: 5;
   background-color: #161616;
   box-shadow: 1px 1px 30px black;
@@ -547,7 +544,9 @@ p {
   width: 100%;
   background-color: #272727;
 }
-
+.edit-modal .button-container { 
+  margin-top: 6%;
+}
 .rexys,
 .watchlist,
 .friends {
@@ -618,10 +617,16 @@ p {
   background-color: transparent;
   margin: 0;
 }
+.friend .round-button {
+  width: 42px;
+  height: 42px;
+  font-size: 0.8rem;
+}
 .friend .pic img {
   margin: 3%;
 }
 .friend .icon {
+  z-index: 3;
   width: 33px;
   height: 33px;
 }

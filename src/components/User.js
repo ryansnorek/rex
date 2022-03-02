@@ -21,9 +21,14 @@ function User({ user, friendContentList, dispatch, handleAddFriend }) {
       </div>
       {/* <div className="text">
       </div> */}
-      <button onClick={() => handleAddFriend(user.user_id)}>
-        Follow
-      </button>
+      <div className="button-container">
+        <button
+          className="round-button"
+          onClick={() => handleAddFriend(user.user_id)}
+        >
+          Follow
+        </button>
+      </div>
     </div>
   );
 }

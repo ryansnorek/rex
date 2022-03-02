@@ -358,9 +358,9 @@ export const handleRelativeRelationship = (relationship) => {
         console.log("success");
       })
       .catch((err) => {
-        if (err.response.status === 403) {
+        // if (err.response.status === 403) {
           dispatch(updateRelativeRelationship(relativeRelationship));
-        }
+        // }
         dispatch(fetchError(err));
       });
   };

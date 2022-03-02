@@ -27,9 +27,12 @@ function AccountProfile({ user, dispatch }) {
           <h3>{user.display_name}</h3>
           <h3>@{user.username}</h3>
         </div>
-        <span onClick={handleEdit}>
-          <button>Edit profile</button>
-        </span>
+        <img
+                  className="icon"
+                  onClick={handleEdit}
+                  src="../../images/settings.png"
+                  alt="search"
+                />
       </div>
     </>
   );

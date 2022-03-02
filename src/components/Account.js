@@ -52,6 +52,7 @@ const mapStateToProps = (state) => {
     isFetching: state.isFetching,
     firstTimeUser: state.firstTimeUser,
     relationships: state.relationships,
+
   };
 };
 export default connect(mapStateToProps)(Account);

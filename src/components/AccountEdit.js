@@ -101,7 +101,9 @@ function AccountEdit({ handleEdit, user, dispatch }) {
               onChange={handleChange}
             />
           </label>
-          <button className="round-button">Update</button>
+          <div className="button-container">
+            <button className="round-button">Update</button>
+          </div>
         </form>
       </div>
     </div>
