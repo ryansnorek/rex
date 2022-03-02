@@ -172,6 +172,7 @@ button {
   font-size: 1.3rem;
   height: 4vh;
   border-radius: 6px;
+  border: none;
 }
 .activated {
   background-color: lavender;
