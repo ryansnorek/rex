@@ -535,10 +535,10 @@ p {
 }
 .edit-modal {
   margin-top: 6vh;
-  width: 500px;
+  width: 400px;
   height: 600px;
   z-index: 6;
-  box-shadow: 0 0 12px rgb(47, 46, 48);
+  box-shadow: 0 0 20px rgb(47, 46, 48);
   background-color: rgb(12, 12, 12);
   border-radius: 12px;
   padding-bottom: 0.6%;
@@ -851,9 +851,6 @@ select,
   }
 }
 @media (max-width: 600px) {
-  .edit-modal {
-    width: 100%;
-  }
   .item {
     width: 100vw;
   }
@@ -863,6 +860,9 @@ select,
 }
 /* iPhone 6/7/8 Plus */
 @media (max-width: 414px) {
+  .edit-modal {
+    width: 90%;
+  }
   .item-details-wrapper {
     width: 100vw;
   }
