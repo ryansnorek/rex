@@ -91,16 +91,6 @@ function AccountEdit({ handleEdit, user, dispatch }) {
               ref={inputPhone}
             />
           </label>
-          <label>
-            Profile Pic URL:
-            <input
-              type="text"
-              name="uploaded_image"
-              placeholder={user.uploaded_image}
-              value={values.uploaded_image}
-              onChange={handleChange}
-            />
-          </label>
           <div className="button-container">
             <button className="round-button">Update</button>
           </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import AccountProfile from "./AccountProfile";
-import WelcomeNewUser from "./WelcomeNewUser";
+import AccountAvatar from "./AccountAvatar";
 import NavButton from "./NavButton";
 import AccountWatchlist from "./AccountWatchlist";
 import AccountFriends from "./AccountFriends";
@@ -24,7 +24,7 @@ function Account({ isFetching, firstTimeUser, relationships }) {
     );
   }
   if (firstTimeUser) {
-    return <WelcomeNewUser />;
+    return <AccountAvatar />;
   }
   return (
     <div className="account page">

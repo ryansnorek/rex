@@ -1,22 +1,25 @@
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { unsetFirstTimeUser, updateUser } from "../actions";
 import { AVATARS } from "../constants";
 
-function WelcomeNewUser({ user, dispatch }) {
-  const navigate = useNavigate();
+function AccountAvatar({ handleEdit, user, dispatch }) {
   const handleClick = (e) => {
     const { user_id } = user;
     dispatch(updateUser({ uploaded_image: e.target.name }, user_id))
     dispatch(unsetFirstTimeUser());
-    navigate("/");
   };
   return (
-    <div className="page">
-      <div className="edit-profile">
-        <h2>Hey, {user.username}!</h2>
+      <div className="modal-wrapper">
+        <div className="edit-modal">
+        <nav>
+          <img
+            className="icon"
+            onClick={handleEdit}
+            src="../../images/close.png"
+            alt="close"
+          />
+        </nav>
         <p>Select your avatar</p>
-        <div className="avatars">
           {AVATARS.map((avatar) => {
             return (
               <img
@@ -30,8 +33,7 @@ function WelcomeNewUser({ user, dispatch }) {
           })}
         </div>
       </div>
-    </div>
   );
 }
 const mapStateToProps = (state) => ({ user: state.user });
-export default connect(mapStateToProps)(WelcomeNewUser);
+export default connect(mapStateToProps)(AccountAvatar);

@@ -33,9 +33,11 @@ nav:hover,
 .logo:hover,
 button:hover,
 .discover-item:hover,
-.friend,
-.account-item,
-.item {
+.friend:hover,
+.account-item:hover,
+.profile .pic:hover,
+.item:hover,
+.avatar:hover {
   cursor: pointer;
 }
 html {
@@ -440,23 +442,6 @@ p {
 .join button {
   margin-bottom: 3%;
 }
-.avatars {
- padding: 3%;
- width: 320px;
- display: flex;
- justify-content: center;
- align-items: center;
- flex-wrap: wrap;
-}
-.avatar {
-  width: 50px;
-  height: 50px;
-  margin: 1%;
-  border: 1px solid transparent;
-}
-.avatar:hover {
-  border: 1px solid lavender;
-}
 /* ---------ACCOUNT----------- */
 .account {
   background-color: #161616;
@@ -531,13 +516,31 @@ p {
   margin: 0;
   padding: 1%;
 }
+.avatars {
+  padding: 3%;
+  width: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+ }
+ .avatar {
+   width: 50px;
+   height: 50px;
+   margin: 1%;
+   border: 1px solid transparent;
+ }
+ .avatar:hover {
+   border: 1px solid lavender;
+ }
+ 
 .edit-modal {
   margin-top: 6vh;
   width: 500px;
   height: 600px;
   z-index: 5;
-  background-color: #161616;
-  box-shadow: 1px 1px 30px black;
+  box-shadow: 0 0 12px rgb(47, 46, 48);
+  background-color: rgb(12,12,12, 0.8);
   border-radius: 12px;
   padding-bottom: 0.6%;
   position: absolute;
@@ -884,9 +887,6 @@ select,
   }
   .friend-search form input {
     width: 96vw;
-  }
-  .edit-profile {
-    width: 100%;
   }
 }
 /* iPhone 6/7/8/X */
