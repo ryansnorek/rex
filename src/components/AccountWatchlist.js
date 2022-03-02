@@ -5,20 +5,24 @@ function AccountWatchlist({ content }) {
   const { watchlistMovies, watchlistShows } = content;
   return (
     <div className="watchlist">
-      <h2>Movies</h2>
-      {watchlistMovies &&
-        watchlistMovies.map((item) => {
-          return (
-            <AccountWatchlistItem key={item.id} item={item} type={"movie"} />
-          );
-        })}
-      <h2>Shows</h2>
-      {watchlistShows &&
-        watchlistShows.map((item) => {
-          return (
-            <AccountWatchlistItem key={item.id} item={item} type={"tvShow"} />
-          );
-        })}
+      <div className="movies">
+        <h2>Movies</h2>
+        {watchlistMovies &&
+          watchlistMovies.map((item) => {
+            return (
+              <AccountWatchlistItem key={item.id} item={item} type={"movie"} />
+            );
+          })}
+      </div>
+      <div className="shows">
+        <h2>Shows</h2>
+        {watchlistShows &&
+          watchlistShows.map((item) => {
+            return (
+              <AccountWatchlistItem key={item.id} item={item} type={"tvShow"} />
+            );
+          })}
+      </div>
     </div>
   );
 }

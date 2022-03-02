@@ -585,7 +585,7 @@ p {
 .account-item {
   height: 80px;
   display: flex;
-  color: snow;
+  color: rgb(168, 168, 192);
   font-size: 4rem;
   align-items: center;
   background-color: #1d1d1d;
@@ -603,8 +603,16 @@ p {
   width: 30%;
   background-color: transparent;
 }
+.movies h2, 
+.shows h2 {
+  transition: 0.3s ease-in-out;
+}
+.movies:hover h2,
+.shows:hover h2 {
+  color: rgb(223, 220, 231);
+}
 .account-item:hover {
-  color: rgb(168, 168, 192);
+  color: rgb(223, 220, 231);
 }
 .account-item .actions {
   display: flex;
