@@ -189,7 +189,7 @@ export const getFriendContent = (user_id) => {
     dispatch(fetchStart());
     dispatch(clearFriendMovieList());
     axiosAuthorization()
-      .get(`/profile/${user_id}/movies`)
+      .get(`content/${user_id}/movies/watchlist`)
       .then((movies) => {
         movies.data.forEach((movie) => {
           dispatch(findFriendContentById(movie.movie_id, "movie"));
@@ -198,10 +198,10 @@ export const getFriendContent = (user_id) => {
       .catch((err) => dispatch(fetchError(err)));
     dispatch(clearFriendTvList());
     axiosAuthorization()
-      .get(`/profile/${user_id}/tv-shows`)
-      .then((tvShows) => {
-        tvShows.data.forEach((tvShow) => {
-          dispatch(findFriendContentById(tvShow.tv_show_id, "tv"));
+      .get(`content/${user_id}/shows/watchlist`)
+      .then((shows) => {
+        shows.data.forEach((show) => {
+          dispatch(findFriendContentById(show.show_id, "tv"));
         });
       })
       .catch((err) => dispatch(fetchError(err)))
