@@ -332,6 +332,7 @@ export const setRelationships = (relationship) => {
 export const getRelationships = (user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());
+    dispatch(clearRelationshipsState());
     axiosAuthorization()
       .get(`/relationships/${user_id}`)
       .then((relationships) => {
@@ -367,7 +368,6 @@ export const handleRelativeRelationship = (relationship) => {
 export const addRelationship = (relationship) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    dispatch(clearRelationshipsState());
     axiosAuthorization()
       .post("/relationships", relationship)
       .then(() => {
