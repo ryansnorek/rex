@@ -28,7 +28,7 @@ function AccountProfile({ user }) {
             <h3>@{user.username}</h3>
           </div>
           <img
-            className="icon"
+            className="icon rotate"
             onClick={handleEditAccount}
             src="../../images/settings.png"
             alt="search"

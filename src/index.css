@@ -458,7 +458,7 @@ p {
   color: snow;
   background-color: #1f1e1e;
   align-items: center;
-  padding-top: 5vh; 
+  padding-top: 5vh;
 }
 .profile .pic {
   background-color: transparent;
@@ -701,6 +701,11 @@ select,
   -ms-animation: fadein 1.618s; /* Internet Explorer */
   -o-animation: fadein 1.618s; /* Opera < 12.1 */
   animation: fadein 1.618s;
+}
+.rotate:hover {
+  -webkit-transform: rotateZ(-30deg);
+  -ms-transform: rotateZ(-30deg);
+  transform: rotateZ(-30deg);
 }
 .lds-ellipsis {
   display: inline-block;
