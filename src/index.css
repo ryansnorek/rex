@@ -562,6 +562,9 @@ p {
   width: 100%;
   background-color: #272727;
 }
+.edit-modal p {
+  color: lavender;
+}
 .edit-modal .button-container {
   margin-top: 6%;
 }

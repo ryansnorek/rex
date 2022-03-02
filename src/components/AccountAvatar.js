@@ -2,19 +2,19 @@ import { connect } from "react-redux";
 import { unsetFirstTimeUser, updateUser } from "../actions";
 import { AVATARS } from "../constants";
 
-function AccountAvatar({ handleEdit, user, dispatch }) {
+function AccountAvatar({ handleEdit, user, firstTimeUser, dispatch }) {
   const handleClick = (e) => {
     const { user_id } = user;
-    dispatch(updateUser({ uploaded_image: e.target.name }, user_id))
-    dispatch(unsetFirstTimeUser());
+    dispatch(updateUser({ uploaded_image: e.target.name }, user_id));
+    firstTimeUser && dispatch(unsetFirstTimeUser());
   };
   return (
-      <div className="modal-wrapper">
-        <div className="edit-modal">
+    <div className="modal-wrapper">
+      <div className="edit-modal">
         <nav>
           <img
             className="icon"
-            onClick={handleEdit}
+            onClick={!firstTimeUser && handleEdit}
             src="../../images/close.png"
             alt="close"
           />
@@ -32,10 +32,15 @@ function AccountAvatar({ handleEdit, user, dispatch }) {
               />
             );
           })}
-          </div>
         </div>
       </div>
+    </div>
   );
 }
-const mapStateToProps = (state) => ({ user: state.user });
+const mapStateToProps = (state) => {
+  return ({ 
+    user: state.user,
+    firstTimeUser: state.firstTimeUser 
+  });
+}
 export default connect(mapStateToProps)(AccountAvatar);
