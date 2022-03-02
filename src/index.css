@@ -531,7 +531,7 @@ p {
   border: 1px solid transparent;
 }
 .avatar:hover {
-  border: 1px solid lavender;
+  border-radius: 50%;
 }
 .edit-modal {
   margin-top: 6vh;

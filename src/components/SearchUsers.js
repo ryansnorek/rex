@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { addRelationship } from "../actions";
 import User from "./User";
 import useSearch from "../hooks/useSearch";
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function SearchUsers({
   dispatch,
@@ -15,6 +16,7 @@ function SearchUsers({
   const [, query, , handleQueryChange] = useSearch("users");
   const { following } = relationships;
   const { user_id } = user;
+  const navigate = useNavigate();
 
   const handleAddFriend = (relative_user_id) => {
     if (!user_id) {
@@ -57,7 +59,14 @@ function SearchUsers({
         ) : (
           query &&
           queryResults.map((result) => {
-            return <User key={result.user_id} user={result} handleAddFriend={handleAddFriend} />;
+            return (
+              <User
+                // onClick={() => navigate("/userview")}
+                key={result.user_id}
+                user={result}
+                handleAddFriend={handleAddFriend}
+              />
+            );
           })
         )}
       </div>

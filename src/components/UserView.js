@@ -5,7 +5,6 @@ import { setItemMovie, setItemTvShow } from "../actions";
 import UserContent from "./UserContent";
 import ItemDetails from "./ItemDetails";
 
-
 function UserView({ friend, content, dispatch }) {
   const { movies, tvShows } = content;
   const [itemClicked, setItemClicked] = useState(false);

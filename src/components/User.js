@@ -4,13 +4,14 @@ import { getFriendContent, setFriend } from "../actions";
 
 function User({ user, friendContentList, dispatch, handleAddFriend }) {
   const navigate = useNavigate();
+  navigate("/userview");
 
   const handleClickUser = () => {
     dispatch(setFriend(user));
     dispatch(getFriendContent(user.user_id));
   };
 
-  if (friendContentList.movies && friendContentList.tvShows) {
+  if (friendContentList.movies.length >= 0) {
     navigate("/userview");
   }
   return (
