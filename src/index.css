@@ -696,11 +696,11 @@ select,
 .friends,
 .account-item,
 .edit-modal {
-  -webkit-animation: fadein 1.618s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 1.618s; /* Firefox < 16 */
-  -ms-animation: fadein 1.618s; /* Internet Explorer */
-  -o-animation: fadein 1.618s; /* Opera < 12.1 */
-  animation: fadein 1.618s;
+  -webkit-animation: fadein 0.618s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 0.618s; /* Firefox < 16 */
+  -ms-animation: fadein 0.618s; /* Internet Explorer */
+  -o-animation: fadein 0.618s; /* Opera < 12.1 */
+  animation: fadein 0.618s;
 }
 .rotate:hover {
   -webkit-transform: rotateZ(-30deg);

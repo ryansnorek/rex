@@ -14,7 +14,6 @@ function AccountProfile({ user }) {
         {editAccount && <AccountEdit handleEdit={handleEditAccount} />}
         {editProfilePic && <AccountAvatar handleEdit={handleEditProfilePic} />}
       </div>
-      {/* {!editAccount && !editProfilePic && ( */}
         <div className="profile">
           <div className="pic">
             <img
@@ -34,7 +33,6 @@ function AccountProfile({ user }) {
             alt="search"
           />
         </div>
-      {/* )} */}
     </>
   );
 }
