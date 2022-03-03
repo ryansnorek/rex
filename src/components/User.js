@@ -1,19 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { getFriendContent, setFriend } from "../actions";
+import { useEffect } from "react";
 
 function User({ user, friendContentList, dispatch, handleAddFriend }) {
   const navigate = useNavigate();
-  navigate("/userview");
 
   const handleClickUser = () => {
     dispatch(setFriend(user));
     dispatch(getFriendContent(user.user_id));
   };
 
-  if (friendContentList.movies.length >= 0) {
-    navigate("/userview");
-  }
+  useEffect(() => {
+    if (friendContentList.movies.length > 0) {
+      navigate("/userview");
+    }
+  },[friendContentList, navigate])
+
   return (
     <div className="friend">
       <div className="pic" onClick={handleClickUser}>

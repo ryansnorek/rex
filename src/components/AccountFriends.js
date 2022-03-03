@@ -26,15 +26,21 @@ function AccountFriends({ friends, user, relationships, dispatch }) {
     <div className="friends">
       {friends &&
         friends.map((friend) => {
-          return <User key={friend.user_id} user={friend} handleAddFriend={handleAddFriend} />;
+          return (
+            <User
+              key={friend.user_id}
+              user={friend}
+              handleAddFriend={handleAddFriend}
+            />
+          );
         })}
     </div>
   );
 }
-const mapStateToProps = (state) => { 
-  return ({
+const mapStateToProps = (state) => {
+  return {
     user: state.user,
-    relationships: state.relationships
-  })
- };
+    relationships: state.relationships,
+  };
+};
 export default connect(mapStateToProps)(AccountFriends);

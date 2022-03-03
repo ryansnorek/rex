@@ -5,7 +5,7 @@ import { setItemMovie, setItemTvShow } from "../actions";
 import UserContent from "./UserContent";
 import ItemDetails from "./ItemDetails";
 
-function UserView({ friend, content, dispatch }) {
+function UserView({ authorized, friend, content, dispatch }) {
   const { movies, tvShows } = content;
   const [itemClicked, setItemClicked] = useState(false);
   const handleItemClose = () => setItemClicked(false);
@@ -21,13 +21,16 @@ function UserView({ friend, content, dispatch }) {
     );
     setItemClicked(true);
   };
+  const goBack = () => {
+    navigate(authorized ? "/account" : "/users");
+  };
   return (
     <div className="page">
       <div className="friend-view">
         {itemClicked && <ItemDetails handleItemClose={handleItemClose} />}
         <div className="card">
           <img
-            onClick={() => navigate('/users')}
+            onClick={goBack}
             className="icon"
             src="../../images/back.png"
             alt="back"
@@ -69,6 +72,7 @@ function UserView({ friend, content, dispatch }) {
 }
 const mapStateToProps = (state) => {
   return {
+    authorized: state.auth.authorized,
     friend: state.friend,
     content: state.friendContentList,
   };
