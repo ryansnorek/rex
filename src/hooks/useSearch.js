@@ -3,8 +3,8 @@ import { getQueryResults } from "../actions";
 import { useDispatch } from "react-redux";
 
 export default function useSearch(initialValue) {
-  const [queryType, setQueryType] = useState(initialValue || null);
-  const [query, setQuery] = useState(null);
+  const [queryType, setQueryType] = useState(initialValue || "");
+  const [query, setQuery] = useState("");
   const dispatch = useDispatch();
 
   const handleSelectQueryType = (e) => setQueryType(e.target.value);
@@ -12,9 +12,9 @@ export default function useSearch(initialValue) {
 
   useEffect(
     function setQueryResultsToState() {
-      dispatch(getQueryResults(queryType, query));
+      query && dispatch(getQueryResults(queryType, query));
     },
-    [queryType, query]
+    [queryType, query, dispatch]
   );
 
   return [queryType, query, handleSelectQueryType, handleQueryChange];

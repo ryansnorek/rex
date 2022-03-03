@@ -607,11 +607,10 @@ p {
 .shows h2 {
   transition: 0.3s ease-in-out;
 }
+
+.account-item:hover,
 .movies:hover h2,
 .shows:hover h2 {
-  color: rgb(223, 220, 231);
-}
-.account-item:hover {
   color: rgb(223, 220, 231);
 }
 .account-item .actions {
