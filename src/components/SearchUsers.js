@@ -55,7 +55,7 @@ function SearchUsers({
             <Skeleton count={8} height={220} />
           </SkeletonTheme>
         ) : (
-          query &&
+          queryResults.length > 0 &&
           queryResults.map((result) => {
             return (
               <User
