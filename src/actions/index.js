@@ -426,7 +426,7 @@ export const addWatchlistMovie = (movie_id, user_id) => {
         user_id,
       })
       .then(() => {
-        dispatch(getWatchlistMovies(user_id));
+        dispatch(findUserContentById(movie_id, "movie"));
       })
       .catch((err) => dispatch(fetchError(err)));
   };
@@ -468,7 +468,7 @@ export const addWatchlistShow = (show_id, user_id) => {
         show_id,
         user_id,
       })
-      .then(() => dispatch(getWatchlistShows(user_id)))
+      .then(() => dispatch(findUserContentById(show_id, "tv")))
       .catch((err) => console.log(err));
   };
 };
@@ -502,6 +502,18 @@ export const deleteWatchlistShow = (show_id, user_id) => {
       .catch((err) => dispatch(fetchError(err)));
   };
 };
+// export const sendUserRexyShow = (show_id, user_id) => {
+//   return (dispatch) => {
+//     axiosAuthorization()
+//       .post(`/content/shows/rexys`, {
+//         show_id,
+//         user_id,
+//       })
+//       .then(() => dispatch(getWatchlistShows(user_id)))
+//       .catch((err) => console.log(err));
+//   };
+// };
+
 export const findUserContentById = (id, type) => {
   return (dispatch) => {
     dispatch(fetchStart());
