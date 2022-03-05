@@ -1,4 +1,4 @@
-import { useState } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 import { connect } from "react-redux";
 import AccountProfile from "./AccountProfile";
 import AccountAvatar from "./AccountAvatar";
@@ -10,7 +10,7 @@ const buttons = ["Rexys", "Watchlist", "Following", "Followers"];
 
 function Account({ isFetching, firstTimeUser, relationships }) {
   const { following, followers } = relationships;
-  const [displayType, setDisplayType] = useState("rexys");
+  const [displayType, setDisplayType] = useLocalStorage("display-type", "rexys");
   const handleToggleItem = (e) => setDisplayType(e.target.name);
 
   if (isFetching) {
