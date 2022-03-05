@@ -6,7 +6,7 @@ import useDisplayItems from "../hooks/useDisplayItems";
 import ItemDetails from "./ItemDetails";
 import NavButton from "./NavButton";
 
-const buttons = ["Trending", "Movies", "TV Shows"];
+const buttons = ["Trending", "Movies", "Shows"];
 
 function Home({ dispatch, discover }) {
   const [displayItems, displayType, handleToggleItem] =

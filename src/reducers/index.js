@@ -127,7 +127,10 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         userContentList: {
-          watchlistMovies: [...state.userContentList.watchlistMovies, action.payload],
+          watchlistMovies: [
+            ...state.userContentList.watchlistMovies,
+            action.payload,
+          ],
           watchlistShows: [...state.userContentList.watchlistShows],
           rexyMovies: [...state.userContentList.rexyMovies],
           rexyShows: [...state.userContentList.rexyShows],
@@ -145,11 +148,28 @@ export default function reducer(state = initialState, action) {
         },
         errors: "",
       };
+    case a.REMOVE_WATCHLIST_MOVIE_CONTENT:
+      const { watchlistMovies } = state.userContentList;
+      const updatedMovieContent = watchlistMovies.filter((movie) => {
+        return movie.id !== action.payload;
+      });
+      return {
+        ...state,
+        userContentList: {
+          watchlistMovies: [...updatedMovieContent],
+          watchlistShows: [...state.userContentList.watchlistShows],
+          rexyMovies: [...state.userContentList.rexyMovies],
+          rexyShows: [...state.userContentList.rexyShows],
+        },
+      };
     case a.ADD_WATCHLIST_SHOW_CONTENT:
       return {
         ...state,
         userContentList: {
-          watchlistShows: [...state.userContentList.watchlistShows, action.payload],
+          watchlistShows: [
+            ...state.userContentList.watchlistShows,
+            action.payload,
+          ],
           watchlistMovies: [...state.userContentList.watchlistMovies],
           rexyMovies: [...state.userContentList.rexyMovies],
           rexyShows: [...state.userContentList.rexyShows],
@@ -166,6 +186,20 @@ export default function reducer(state = initialState, action) {
           rexyShows: [...state.userContentList.rexyShows],
         },
         errors: "",
+      };
+    case a.REMOVE_WATCHLIST_SHOW_CONTENT:
+      const { watchlistShows } = state.userContentList;
+      const updatedShowContent = watchlistShows.filter((show) => {
+        return show.id !== action.payload;
+      });
+      return {
+        ...state,
+        userContentList: {
+          watchlistShows: [...updatedShowContent],
+          watchlistMovies: [...state.userContentList.watchlistMovies],
+          rexyMovies: [...state.userContentList.rexyMovies],
+          rexyShows: [...state.userContentList.rexyShows],
+        },
       };
     case a.SET_FRIEND:
       return {
@@ -240,8 +274,7 @@ export default function reducer(state = initialState, action) {
         errors: "",
       };
     case a.LOGOUT_USER:
-      return { ...initialState, discover: { ...state.discover },
-      };
+      return { ...initialState, discover: { ...state.discover } };
     case a.SET_FIRST_TIME_USER:
       return { ...state, firstTimeUser: true };
     case a.UNSET_FIRST_TIME_USER:

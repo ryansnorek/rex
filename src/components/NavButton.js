@@ -2,7 +2,7 @@ export default function NavButton({ displayType, title, handleToggleItem }) {
   const typeSwitch = {
     "Trending": "trending",
     "Movies": "movies",
-    "TV Shows": "tvShows",
+    "Shows": "tvShows",
     "Rexys": "rexys",
     "Following": "following",
     "Followers": "followers",

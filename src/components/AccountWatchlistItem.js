@@ -4,11 +4,11 @@ import { deleteWatchlistMovie, deleteWatchlistShow } from "../actions";
 import UserContentActionBar from "./UserContentActionBar";
 
 function AccountRexy({ dispatch, item, type, user }) {
-  const handleRemove = (itemId) => {
+  const handleRemove = (item_id) => {
     dispatch(
       type === "movie"
-        ? deleteWatchlistMovie(itemId, user.user_id)
-        : deleteWatchlistShow(itemId, user.user_id)
+        ? deleteWatchlistMovie(item_id, user.user_id)
+        : deleteWatchlistShow(item_id, user.user_id)
     );
   };
 

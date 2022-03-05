@@ -46,6 +46,8 @@ export const ADD_WATCHLIST_MOVIE_CONTENT = "ADD_WATCHLIST_MOVIE_CONTENT";
 export const ADD_WATCHLIST_SHOW_CONTENT = "ADD_WATCHLIST_SHOW_CONTENT";
 export const CLEAR_WATCHLIST_MOVIE_LIST = "CLEAR_WATCHLIST_MOVIE_LIST";
 export const CLEAR_WATCHLIST_SHOW_LIST = "CLEAR_WATCHLIST_SHOW_LIST";
+export const REMOVE_WATCHLIST_MOVIE_CONTENT = "REMOVE_WATCHLIST_MOVIE_CONTENT";
+export const REMOVE_WATCHLIST_SHOW_CONTENT = "REMOVE_WATCHLIST_SHOW_CONTENT";
 
 export const fetchStart = () => {
   return { type: FETCH_START };
@@ -139,6 +141,12 @@ export const addWatchlistMovieContent = (movie) => {
 };
 export const addWatchlistShowContent = (show) => {
   return { type: ADD_WATCHLIST_SHOW_CONTENT, payload: show };
+};
+export const removeWatchlistMovieContent = (movie_id) => {
+  return { type: REMOVE_WATCHLIST_MOVIE_CONTENT, payload: movie_id };
+};
+export const removeWatchlistShowContent = (show_id) => {
+  return { type: REMOVE_WATCHLIST_SHOW_CONTENT, payload: show_id };
 };
 export const discoverMovieList = (movies) => {
   return { type: DISCOVER_MOVIE, payload: movies };
@@ -448,7 +456,7 @@ export const deleteWatchlistMovie = (movie_id, user_id) => {
         },
       })
       .then(() => {
-        dispatch(getWatchlistMovies(user_id));
+        dispatch(removeWatchlistMovieContent(movie_id));
       })
       .catch((err) => dispatch(fetchError(err)));
   };
@@ -482,14 +490,14 @@ export const getWatchlistShows = (user_id) => {
 export const deleteWatchlistShow = (show_id, user_id) => {
   return (dispatch) => {
     axiosAuthorization()
-      .delete("/content/shows", {
+      .delete("/content/shows/watchlist", {
         data: {
           show_id,
           user_id,
         },
       })
       .then(() => {
-        dispatch(getWatchlistShows(user_id));
+        dispatch(removeWatchlistShowContent(show_id));
       })
       .catch((err) => dispatch(fetchError(err)));
   };
