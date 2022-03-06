@@ -366,9 +366,7 @@ export const handleRelativeRelationship = (relationship) => {
         console.log("success");
       })
       .catch((err) => {
-        // if (err.response.status === 403) {
-          dispatch(updateRelativeRelationship(relativeRelationship));
-        // }
+        dispatch(updateRelativeRelationship(relativeRelationship));
         dispatch(fetchError(err));
       });
   };
@@ -385,9 +383,7 @@ export const addRelationship = (relationship) => {
         dispatch(handleRelativeRelationship(relationship))
       })
       .catch((err) => {
-        if (err.response.status === 403) {
-          dispatch(updateRelationship(relationship));
-        }
+        dispatch(updateRelationship(relationship));
         dispatch(fetchError(err));
       })
       .finally(() => dispatch(fetchingComplete()));

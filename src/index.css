@@ -499,6 +499,9 @@ p {
 .name h3 {
   font-size: 1.8rem;
 }
+.unfollow button {
+  padding: 3%;
+}
 /* --- */
 .edit-profile {
   background-color: #2b3135;

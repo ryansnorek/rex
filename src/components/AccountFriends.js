@@ -1,40 +1,45 @@
 import { connect } from "react-redux";
-import { addRelationship } from "../actions";
+import { addRelationship, updateRelationship } from "../actions";
 import User from "./common/User";
 
-function AccountFriends({ friends, user, relationships, dispatch }) {
+function AccountFriends({ friends, type, user, dispatch }) {
   const { user_id } = user;
-  const { following } = relationships;
-  const handleAddFriend = (relative_user_id) => {
-    if (!user_id) {
-      return alert("Login to add friend");
-    } else if (user_id === relative_user_id) {
-      return alert("That's you!");
-    } else if (following.find((r) => r.user_id === relative_user_id)) {
-      return alert("Already following user");
-    } else {
-      dispatch(
-        addRelationship({
-          user_id,
-          relative_user_id,
-          following: 1,
-        })
-      );
-    }
+  const followUser = (relative_user_id) => {
+    dispatch(
+      addRelationship({
+        user_id,
+        relative_user_id,
+        following: 1,
+      })
+    );
+  };
+  const unfollowUser = (relative_user_id) => {
+    dispatch(
+      updateRelationship({
+        user_id,
+        relative_user_id,
+        following: 0,
+      })
+    );
   };
   return (
     <div className="friends">
       {friends &&
         friends.map((friend) => {
-          return <User key={friend.user_id} user={friend} />;
+          return (
+            <User
+              key={friend.user_id}
+              user={friend}
+              type={type}
+              followUser={followUser}
+              unfollowUser={unfollowUser}
+            />
+          );
         })}
     </div>
   );
 }
 const mapStateToProps = (state) => {
-  return {
-    user: state.user,
-    relationships: state.relationships,
-  };
+  return { user: state.user };
 };
 export default connect(mapStateToProps)(AccountFriends);
