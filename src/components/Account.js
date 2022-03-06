@@ -40,6 +40,7 @@ function Account({ isFetching, firstTimeUser, relationships }) {
           );
         })}
       </nav>
+      
       {displayType === "watchlist" && <AccountWatchlist />}
       {displayType === "following" && <AccountFriends friends={following} />}
       {displayType === "followers" && <AccountFriends friends={followers} />}

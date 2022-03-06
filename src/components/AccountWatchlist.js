@@ -1,16 +1,26 @@
 import AccountWatchlistItem from "./AccountWatchlistItem";
+import SendUserRexy from "./SendUserRexy";
+import { useState } from "react";
 import { connect } from "react-redux";
 
 function AccountWatchlist({ content }) {
   const { watchlistMovies, watchlistShows } = content;
+  const [sendingRexy, setSendingRexy] = useState(false);
+
   return (
     <div className="watchlist">
+      {/* {sendingRexy && <SendUserRexy />} */}
       <div className="movies">
         <h2>Movies</h2>
         {watchlistMovies &&
           watchlistMovies.map((item) => {
             return (
-              <AccountWatchlistItem key={item.id} item={item} type={"movie"} />
+              <AccountWatchlistItem
+                key={item.id}
+                item={item}
+                type={"movie"}
+                setSendingRexy={setSendingRexy}
+              />
             );
           })}
       </div>
@@ -19,7 +29,12 @@ function AccountWatchlist({ content }) {
         {watchlistShows &&
           watchlistShows.map((item) => {
             return (
-              <AccountWatchlistItem key={item.id} item={item} type={"tvShow"} />
+              <AccountWatchlistItem
+                key={item.id}
+                item={item}
+                type={"tvShow"}
+                setSendingRexy={setSendingRexy}
+              />
             );
           })}
       </div>

@@ -1,8 +1,8 @@
 import { connect } from "react-redux"
 import User from "./User";
 
-function SendUserRexy({ relationshps }) {
-    const { following } = relationshps;
+function SendUserRexy({ relationships }) {
+    const { following } = relationships;
 
     return (
         <section className="modal-wrapper">
@@ -15,6 +15,6 @@ function SendUserRexy({ relationshps }) {
     )
 }
 const mapStateToProps = (state) => {
-    return ({ relationshps: state.relationshps });
+    return ({ relationships: state.relationships });
 };
 export default connect(mapStateToProps)(SendUserRexy);

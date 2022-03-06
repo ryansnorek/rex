@@ -471,6 +471,40 @@ p {
   border-radius: 100%;
   box-shadow: 1px 1px 3px #4f4f4f;
 }
+/* ---item */
+.item-wrapper {
+  display: flex;
+  align-items: center;
+  height: 100px;
+}
+.user-component {
+  color: lavender;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  height: 100px;
+}
+.left, .right {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0 10px
+}
+.left img {
+  height: 66px;
+  border-radius: 100%;
+  box-shadow: 1px 1px 3px #4f4f4f;
+}
+.name {
+  margin: 10px;
+}
+.name h3 {
+  font-size: 1.8rem;
+}
+/* --- */
 .edit-profile {
   background-color: #2b3135;
   width: 400px;
@@ -607,7 +641,6 @@ p {
 .shows h2 {
   transition: 0.3s ease-in-out;
 }
-
 .account-item:hover,
 .movies:hover h2,
 .shows:hover h2 {

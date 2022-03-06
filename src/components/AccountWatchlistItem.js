@@ -3,7 +3,7 @@ import { POSTER_URL } from "../constants";
 import { deleteWatchlistMovie, deleteWatchlistShow } from "../actions";
 import UserContentActionBar from "./UserContentActionBar";
 
-function AccountRexy({ dispatch, item, type, user }) {
+function AccountWatchlistItem({ dispatch, item, type, user, setSendingRexy }) {
   const handleRemove = (item_id) => {
     dispatch(
       type === "movie"
@@ -13,7 +13,8 @@ function AccountRexy({ dispatch, item, type, user }) {
   };
 
   const handleSend = () => {
-    alert("cant send yet");
+    setSendingRexy(true);
+    // alert("cant send yet");
   };
   const handleRating = () => {
     alert("cant rate yet");
@@ -42,5 +43,6 @@ function AccountRexy({ dispatch, item, type, user }) {
 }
 const mapStateToProps = (state) => ({
   user: state.user,
+  relationships: state.relationships
 });
-export default connect(mapStateToProps)(AccountRexy);
+export default connect(mapStateToProps)(AccountWatchlistItem);
