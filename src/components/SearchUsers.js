@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { addRelationship } from "../actions";
-import User from "./User";
+import User from "./common/User";
 import useSearch from "../hooks/useSearch";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -10,28 +10,17 @@ function SearchUsers({
   queryResults,
   isFetching,
   user,
-  relationships,
 }) {
   const [, query, , handleQueryChange] = useSearch("users");
-  const { following } = relationships;
   const { user_id } = user;
-
-  const handleAddFriend = (relative_user_id) => {
-    if (!user_id) {
-      return alert("Login to add friend");
-    } else if (user_id === relative_user_id) {
-      return alert("That's you!");
-    } else if (following.find((r) => r.user_id === relative_user_id)) {
-      return alert("Already following user");
-    } else {
-      dispatch(
-        addRelationship({
-          user_id,
-          relative_user_id,
-          following: 1,
-        })
-      );
-    }
+  const followUser = (relative_user_id) => {
+    dispatch(
+      addRelationship({
+        user_id,
+        relative_user_id,
+        following: 1,
+      })
+    );
   };
   return (
     <div className="friend-search search page">
@@ -61,7 +50,7 @@ function SearchUsers({
               <User
                 key={result.user_id}
                 user={result}
-                handleAddFriend={handleAddFriend}
+                followUser={followUser}
               />
             );
           })

@@ -337,6 +337,18 @@ export const setRelationships = (relationship) => {
       .finally(() => dispatch(fetchingComplete()));
   };
 };
+// function compare(a, b) {
+//   console.log(a, b)
+//   const userA = a.user_relationship_id.toUpperCase();
+//   const userB = b.user_relationship_id.toUpperCase();
+//   let comparison = 0;
+//   if (userA > userB) {
+//     comparison = 1;
+//   } else if (userA < userB) {
+//     comparison = -1;
+//   }
+//   return comparison;
+// }
 export const getRelationships = (user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());

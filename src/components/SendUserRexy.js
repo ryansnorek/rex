@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import User from "./User";
+import User from "./common/User";
 
 function SendUserRexy({ relationships }) {
     const { following } = relationships;
