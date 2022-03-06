@@ -201,6 +201,34 @@ export default function reducer(state = initialState, action) {
           rexyShows: [...state.userContentList.rexyShows],
         },
       };
+    case a.ADD_REXY_MOVIE_CONTENT:
+      return {
+        ...state,
+        userContentList: {
+          rexyMovies: [
+            ...state.userContentList.rexyMovies,
+            action.payload
+          ],
+          rexyShows: [...state.userContentList.rexyShows],
+          watchlistMovies: [...state.userContentList.watchlistMovies],
+          watchlistShows: [...state.userContentList.watchlistShows],
+        },
+        errors: "",
+      };
+    case a.ADD_REXY_SHOW_CONTENT:
+      return {
+        ...state,
+        userContentList: {
+          rexyShows: [
+            ...state.userContentList.rexyShows,
+            action.payload
+          ],
+          rexyMovies: [...state.userContentList.rexyMovies],
+          watchlistMovies: [...state.userContentList.watchlistMovies],
+          watchlistShows: [...state.userContentList.watchlistShows],
+        },
+        errors: "",
+      };
     case a.SET_FRIEND:
       return {
         ...state,

@@ -2,9 +2,20 @@ import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getFriendContent, setFriend } from "../../actions";
 
-function User({ Component, user, type, followUser, unfollowUser, relationships, dispatch }) {
+function User({
+  Component,
+  user,
+  type,
+  followUser,
+  unfollowUser,
+  sendRexy,
+  relationships,
+  dispatch,
+}) {
   const navigate = useNavigate();
-  const isFollowingUser = relationships.following.find((rel) => rel.user_id === user.user_id);
+  const isFollowingUser = relationships.following.find(
+    (rel) => rel.user_id === user.user_id
+  );
   const buttonLabel = type === "following" ? "Unfollow" : "Follow";
   const handleClick = type === "following" ? unfollowUser : followUser;
   const handleClickUser = async () => {
@@ -26,19 +37,41 @@ function User({ Component, user, type, followUser, unfollowUser, relationships, 
       </div>
       <div className="right">
         {/* Component */}
-       {!isFollowingUser && <div className="button-container">
-          <button className="round-button" onClick={() => handleClick(user.user_id)}>
-            {buttonLabel}
-          </button> 
-        </div>}
-        {type === "following" && <div className="button-container">
-          <button className="unfollow" onClick={() => handleClick(user.user_id)}>
-            {buttonLabel}
-          </button> 
-        </div>}
+        {!isFollowingUser && (
+          <div className="button-container">
+            <button
+              className="round-button"
+              onClick={() => handleClick(user.user_id)}
+            >
+              {buttonLabel}
+            </button>
+          </div>
+        )}
+        {type === "following" && (
+          <div className="button-container">
+            <button
+              className="unfollow"
+              onClick={() => handleClick(user.user_id)}
+            >
+              {buttonLabel}
+            </button>
+          </div>
+        )} 
+        {type === "sendRexy" && (
+          <div className="button-container">
+            <button
+              className="round-button"
+              // onClick={() => sendRexy(user.user_id)}
+            >
+              Send
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
 }
-const mapStateToProps = (state) => ({ relationships: state.relationships });
+const mapStateToProps = (state) => ({
+  relationships: state.relationships,
+});
 export default connect(mapStateToProps)(User);

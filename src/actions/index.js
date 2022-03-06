@@ -48,6 +48,8 @@ export const CLEAR_WATCHLIST_MOVIE_LIST = "CLEAR_WATCHLIST_MOVIE_LIST";
 export const CLEAR_WATCHLIST_SHOW_LIST = "CLEAR_WATCHLIST_SHOW_LIST";
 export const REMOVE_WATCHLIST_MOVIE_CONTENT = "REMOVE_WATCHLIST_MOVIE_CONTENT";
 export const REMOVE_WATCHLIST_SHOW_CONTENT = "REMOVE_WATCHLIST_SHOW_CONTENT";
+export const ADD_REXY_MOVIE_CONTENT = "ADD_REXY_MOVIE_CONTENT";
+export const ADD_REXY_SHOW_CONTENT = "ADD_REXY_SHOW_CONTENT"
 
 export const fetchStart = () => {
   return { type: FETCH_START };
@@ -124,13 +126,13 @@ export const setBlockedUsers = (blocked_users) => {
 export const clearRelationshipsState = () => {
   return { type: CLEAR_RELATIONSHIPS };
 };
-export const clearUserMovieList = () => {
+export const clearWatchlistMovieList = () => {
   return { type: CLEAR_WATCHLIST_MOVIE_LIST };
 };
 export const setUserMovies = (movies) => {
   return { type: SET_USER_MOVIES, payload: movies };
 };
-export const clearUserTvShowList = () => {
+export const clearWatchlistShowList = () => {
   return { type: CLEAR_WATCHLIST_SHOW_LIST };
 };
 export const setUserTvShows = (shows) => {
@@ -147,6 +149,12 @@ export const removeWatchlistMovieContent = (movie_id) => {
 };
 export const removeWatchlistShowContent = (show_id) => {
   return { type: REMOVE_WATCHLIST_SHOW_CONTENT, payload: show_id };
+};
+export const addRexyMovieContent = (movie) => {
+  return { type: ADD_REXY_MOVIE_CONTENT, payload: movie };
+};
+export const addRexyShowContent = (movie) => {
+  return { type: ADD_REXY_SHOW_CONTENT, payload: movie };
 };
 export const discoverMovieList = (movies) => {
   return { type: DISCOVER_MOVIE, payload: movies };
@@ -291,6 +299,14 @@ export const loginUser = (credentials) => {
         return data;
       })
       .then((data) => {
+        dispatch(getRexyMovies(data.user_id));
+        return data;
+      })
+      .then((data) => {
+        dispatch(getRexyShows(data.user_id));
+        return data;
+      })
+      .then((data) => {
         dispatch(getRelationships(data.user_id));
         return data;
       })
@@ -392,7 +408,7 @@ export const addRelationship = (relationship) => {
         dispatch(getRelationships(relationship.user_id));
       })
       .then(() => {
-        dispatch(handleRelativeRelationship(relationship))
+        dispatch(handleRelativeRelationship(relationship));
       })
       .catch((err) => {
         dispatch(updateRelationship(relationship));
@@ -434,7 +450,7 @@ export const addWatchlistMovie = (movie_id, user_id) => {
         user_id,
       })
       .then(() => {
-        dispatch(findUserContentById(movie_id, "movie"));
+        dispatch(findWatchlistContentById(movie_id, "movie"));
       })
       .catch((err) => dispatch(fetchError(err)));
   };
@@ -442,12 +458,12 @@ export const addWatchlistMovie = (movie_id, user_id) => {
 export const getWatchlistMovies = (user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    dispatch(clearUserMovieList());
+    dispatch(clearWatchlistMovieList());
     axiosAuthorization()
       .get(`/content/${user_id}/movies/watchlist`)
       .then((movies) => {
         movies.data.forEach((movie) => {
-          dispatch(findUserContentById(movie.movie_id, "movie"));
+          dispatch(findWatchlistContentById(movie.movie_id, "movie"));
         });
       })
       .catch((err) => dispatch(fetchError(err)))
@@ -476,19 +492,19 @@ export const addWatchlistShow = (show_id, user_id) => {
         show_id,
         user_id,
       })
-      .then(() => dispatch(findUserContentById(show_id, "tv")))
+      .then(() => dispatch(findWatchlistContentById(show_id, "tv")))
       .catch((err) => console.log(err));
   };
 };
 export const getWatchlistShows = (user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());
-    dispatch(clearUserTvShowList());
+    dispatch(clearWatchlistShowList());
     axiosAuthorization()
       .get(`/content/${user_id}/shows/watchlist`)
       .then((shows) => {
         shows.data.forEach((show) => {
-          dispatch(findUserContentById(show.show_id, "tv"));
+          dispatch(findWatchlistContentById(show.show_id, "tv"));
         });
       })
       .catch((err) => console.log(err))
@@ -510,19 +526,49 @@ export const deleteWatchlistShow = (show_id, user_id) => {
       .catch((err) => dispatch(fetchError(err)));
   };
 };
-export const sendUserRexyMovie = (movie_id, user_id) => {
+export const getRexyMovies = (user_id) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axiosAuthorization()
+      .get(`/content/${user_id}/movies/rexys`)
+      .then((movies) => {
+        movies.data.forEach((movie) => {
+          dispatch(findRexyContentById(movie.movie_id, "movie"));
+        });
+      })
+      .catch((err) => dispatch(fetchError(err)))
+      .finally(() => dispatch(fetchingComplete()));
+  };
+};
+export const getRexyShows = (user_id) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axiosAuthorization()
+      .get(`/content/${user_id}/shows/rexys`)
+      .then((shows) => {
+        shows.data.forEach((show) => {
+          dispatch(findRexyContentById(show.show_id, "tv"));
+        });
+      })
+      .catch((err) => dispatch(fetchError(err)))
+      .finally(() => dispatch(fetchingComplete()));
+  };
+};
+export const sendUserRexyMovie = (rexy) => {
+  const { user_id, movie_id, relative_user_id } = rexy;
   axiosAuthorization()
-    .post(`/content/movies/rexys`, { movie_id, user_id })
+    .post(`/content/movies/rexys`, { user_id, movie_id, relative_user_id })
     .then((res) => console.log("sent!", res.data))
     .catch((err) => console.log(err));
 };
-export const sendUserRexyShow = (show_id, user_id) => {
-    axiosAuthorization()
-      .post(`/content/shows/rexys`, { show_id, user_id })
-      .then((res) => console.log("sent!", res.data))
-      .catch((err) => console.log(err));
+export const sendUserRexyShow = (rexy) => {
+  const { user_id, show_id, relative_user_id } = rexy;
+  axiosAuthorization()
+    .post(`/content/shows/rexys`, { user_id, show_id, relative_user_id })
+    .then((res) => console.log("sent!", res.data))
+    .catch((err) => console.log(err));
 };
-export const findUserContentById = (id, type) => {
+export const findWatchlistContentById = (id, type) => {
   return (dispatch) => {
     dispatch(fetchStart());
     axios
@@ -536,3 +582,18 @@ export const findUserContentById = (id, type) => {
       .finally(() => dispatch(fetchingComplete()));
   };
 };
+export const findRexyContentById = (id, type) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axios
+      .get(`${BASE_URL}/3/${type}/${id}?api_key=${API_KEY}`)
+      .then((userContent) => {
+        type === "movie"
+          ? dispatch(addRexyMovieContent(userContent.data))
+          : dispatch(addRexyShowContent(userContent.data));
+      })
+      .catch((err) => dispatch(fetchError(err)))
+      .finally(() => dispatch(fetchingComplete()));
+  };
+};
+

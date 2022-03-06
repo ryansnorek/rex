@@ -6,10 +6,13 @@ import { connect } from "react-redux";
 function AccountWatchlist({ content }) {
   const { watchlistMovies, watchlistShows } = content;
   const [sendingRexy, setSendingRexy] = useState(false);
+  const [rexy, setRexy] = useState({});
 
   return (
     <div className="watchlist">
-      {/* {sendingRexy && <SendUserRexy />} */}
+      {sendingRexy && (
+        <SendUserRexy setSendingRexy={setSendingRexy} rexy={rexy} />
+      )}
       <div className="movies">
         <h2>Movies</h2>
         {watchlistMovies &&
@@ -20,6 +23,7 @@ function AccountWatchlist({ content }) {
                 item={item}
                 type={"movie"}
                 setSendingRexy={setSendingRexy}
+                setRexy={setRexy}
               />
             );
           })}
@@ -32,8 +36,9 @@ function AccountWatchlist({ content }) {
               <AccountWatchlistItem
                 key={item.id}
                 item={item}
-                type={"tvShow"}
+                type={"show"}
                 setSendingRexy={setSendingRexy}
+                setRexy={setRexy}
               />
             );
           })}

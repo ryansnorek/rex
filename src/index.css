@@ -135,8 +135,8 @@ button {
   border-radius: 3px;
 }
 .round-button {
-  width: 69px;
-  height: 69px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   border: 2px solid lavender;
   margin-top: 3%;
@@ -477,7 +477,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100vw;
+  width: 100%;
   height: 100px;
 }
 .user-component .left, 
@@ -598,6 +598,21 @@ p {
 }
 .edit-modal .button-container {
   margin-top: 6%;
+}
+.rexy-modal {
+  width: 400px;
+  height: 600px;
+  z-index: 6;
+  box-shadow: 0 0 20px rgb(47, 46, 48);
+  background-color: rgb(12, 12, 12);
+  border-radius: 12px;
+  padding-bottom: 0.6%;
+  position: absolute;
+  transition: 0.3s ease-in;
+}
+.rexy-users {
+  width: 350px;
+  overflow: scroll;
 }
 .rexys,
 .watchlist,
@@ -733,7 +748,8 @@ select,
 .watchlist,
 .friends,
 .account-item,
-.edit-modal {
+.edit-modal,
+.rexy-modal {
   -webkit-animation: fadein 0.618s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 0.618s; /* Firefox < 16 */
   -ms-animation: fadein 0.618s; /* Internet Explorer */

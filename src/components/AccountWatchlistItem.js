@@ -3,18 +3,27 @@ import { POSTER_URL } from "../constants";
 import { deleteWatchlistMovie, deleteWatchlistShow } from "../actions";
 import UserContentActionBar from "./UserContentActionBar";
 
-function AccountWatchlistItem({ dispatch, item, type, user, setSendingRexy }) {
+function AccountWatchlistItem({
+  dispatch,
+  item,
+  type,
+  user,
+  setSendingRexy,
+  setRexy,
+}) {
+  const { user_id } = user;
   const handleRemove = (item_id) => {
     dispatch(
       type === "movie"
-        ? deleteWatchlistMovie(item_id, user.user_id)
-        : deleteWatchlistShow(item_id, user.user_id)
+        ? deleteWatchlistMovie(item_id, user_id)
+        : deleteWatchlistShow(item_id, user_id)
     );
   };
-
-  const handleSend = () => {
+  const handleSend = (item_id) => {
     setSendingRexy(true);
-    // alert("cant send yet");
+    type === "movie"
+      ? setRexy({ movie_id: item_id, relative_user_id: user_id })
+      : setRexy({ show_id: item_id, relative_user_id: user_id });
   };
   const handleRating = () => {
     alert("cant rate yet");
@@ -43,6 +52,6 @@ function AccountWatchlistItem({ dispatch, item, type, user, setSendingRexy }) {
 }
 const mapStateToProps = (state) => ({
   user: state.user,
-  relationships: state.relationships
+  relationships: state.relationships,
 });
 export default connect(mapStateToProps)(AccountWatchlistItem);
