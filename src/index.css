@@ -471,12 +471,7 @@ p {
   border-radius: 100%;
   box-shadow: 1px 1px 3px #4f4f4f;
 }
-/* ---item */
-.item-wrapper {
-  display: flex;
-  align-items: center;
-  height: 100px;
-}
+/* ---user */
 .user-component {
   color: lavender;
   display: flex;

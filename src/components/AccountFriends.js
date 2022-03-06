@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import { addRelationship } from "../actions";
-import Item from "./common/Item";
 import User from "./common/User";
 
 function AccountFriends({ friends, user, relationships, dispatch }) {
@@ -27,7 +26,7 @@ function AccountFriends({ friends, user, relationships, dispatch }) {
     <div className="friends">
       {friends &&
         friends.map((friend) => {
-          return <Item key={friend.user_id} Component={User} user={friend} />;
+          return <User key={friend.user_id} user={friend} />;
         })}
     </div>
   );
