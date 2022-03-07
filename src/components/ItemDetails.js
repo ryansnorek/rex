@@ -23,7 +23,7 @@ function ItemDetails({ dispatch, item, user, handleItemClose }) {
         ? addWatchlistMovie(contentId, user.user_id)
         : addWatchlistShow(contentId, user.user_id)
     );
-    alert("added rexy");
+    alert("added to watchlist");
     handleItemClose();
   };
   return (
