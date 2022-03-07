@@ -5,6 +5,7 @@ import AccountAvatar from "./AccountAvatar";
 import NavButton from "./NavButton";
 import AccountWatchlist from "./AccountWatchlist";
 import AccountFriends from "./AccountFriends";
+import AccountRexys from "./AccountRexys";
 
 const buttons = ["Rexys", "Watchlist", "Following", "Followers"];
 
@@ -40,7 +41,7 @@ function Account({ isFetching, firstTimeUser, relationships }) {
           );
         })}
       </nav>
-      
+      {displayType === "rexys" && <AccountRexys />}
       {displayType === "watchlist" && <AccountWatchlist />}
       {displayType === "following" && <AccountFriends friends={following} type="following"/>}
       {displayType === "followers" && <AccountFriends friends={followers} type="followers"/>}

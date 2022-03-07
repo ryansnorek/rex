@@ -3,15 +3,17 @@ import User from "./common/User";
 import { sendUserRexyMovie, sendUserRexyShow } from "../actions";
 
 function SendUserRexy({ relationships, setSendingRexy, rexy, dispatch }) {
-  const { following } = relationships;
+  const { followers } = relationships;
   const sendRexy = (relative_user_id) => {
     const payload = { 
         ...rexy, 
         user_id: relative_user_id 
     };
-    dispatch(
-      rexy.movie_id ? sendUserRexyMovie(payload) : sendUserRexyShow(payload)
-    );
+    // if (rexy.movie_id) {
+    //   dispatch(sendUserRexyMovie(payload))
+    // } else {
+    //   dispatch(sendUserRexyShow(payload))
+    // }
     setSendingRexy(false);
   };
 
@@ -27,12 +29,14 @@ function SendUserRexy({ relationships, setSendingRexy, rexy, dispatch }) {
           />
         </nav>
         <div className="rexy-users">
-          {following.map((user) => {
+          {followers.map((user) => {
             return (
               <User
                 key={user.user_id}
                 user={user}
-                type={"sendRexy"}
+                type={"send"}
+                followUser={""}
+                unfollowUser={""}
                 sendRexy={sendRexy}
               />
             );

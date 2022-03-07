@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { getFriendContent, setFriend } from "../../actions";
 
 function User({
-  Component,
   user,
   type,
   followUser,
@@ -57,11 +56,11 @@ function User({
             </button>
           </div>
         )} 
-        {type === "sendRexy" && (
+        {type === "send" && (
           <div className="button-container">
             <button
               className="round-button"
-              // onClick={() => sendRexy(user.user_id)}
+              onClick={() => sendRexy(user.user_id)}
             >
               Send
             </button>
