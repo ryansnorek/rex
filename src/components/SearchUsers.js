@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
-import { addRelationship } from "../actions";
+import { addRelationship, addRelativeRelationship } from "../actions";
 import User from "./common/User";
 import useSearch from "../hooks/useSearch";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { createRelationship } from "../helper";
 
 function SearchUsers({
   dispatch,
@@ -14,13 +15,13 @@ function SearchUsers({
   const [, query, , handleQueryChange] = useSearch("users");
   const { user_id } = user;
   const followUser = (relative_user_id) => {
-    dispatch(
-      addRelationship({
-        user_id,
-        relative_user_id,
-        following: 1,
-      })
+    const [relationship, relativeRelationship] = createRelationship(
+      user_id,
+      relative_user_id,
+      "follow"
     );
+    dispatch(addRelationship(relationship));
+    dispatch(addRelativeRelationship(relativeRelationship));
   };
   return (
     <div className="friend-search search page">
