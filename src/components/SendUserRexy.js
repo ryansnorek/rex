@@ -4,21 +4,22 @@ import { sendUserRexyMovie, sendUserRexyShow } from "../actions";
 
 function SendUserRexy({ relationships, setSendingRexy, rexy, dispatch }) {
   const { followers } = relationships;
+
   const sendRexy = (relative_user_id) => {
     const payload = { 
         ...rexy, 
         user_id: relative_user_id 
     };
-    // if (rexy.movie_id) {
-    //   dispatch(sendUserRexyMovie(payload))
-    // } else {
-    //   dispatch(sendUserRexyShow(payload))
-    // }
+    if (rexy.movie_id) {
+      dispatch(sendUserRexyMovie(payload))
+    } else {
+      dispatch(sendUserRexyShow(payload))
+    }
     setSendingRexy(false);
   };
 
   return (
-    <section className="modal-wrapper">
+    <div className="modal-wrapper">
       <div className="rexy-modal">
         <nav>
           <img
@@ -35,15 +36,13 @@ function SendUserRexy({ relationships, setSendingRexy, rexy, dispatch }) {
                 key={user.user_id}
                 user={user}
                 type={"send"}
-                followUser={""}
-                unfollowUser={""}
                 sendRexy={sendRexy}
               />
             );
           })}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 const mapStateToProps = (state) => {

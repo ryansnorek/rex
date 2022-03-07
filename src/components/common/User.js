@@ -15,8 +15,6 @@ function User({
   const isFollowingUser = relationships.following.find(
     (rel) => rel.user_id === user.user_id
   );
-  const buttonLabel = type === "following" ? "Unfollow" : "Follow";
-  const handleClick = type === "following" ? unfollowUser : followUser;
   const handleClickUser = async () => {
     dispatch(setFriend(user));
     return await Promise.resolve(dispatch(getFriendContent(user.user_id)));
@@ -40,9 +38,9 @@ function User({
           <div className="button-container">
             <button
               className="round-button"
-              onClick={() => handleClick(user.user_id)}
+              onClick={() => followUser(user.user_id)}
             >
-              {buttonLabel}
+              Follow
             </button>
           </div>
         )}
@@ -50,9 +48,9 @@ function User({
           <div className="button-container">
             <button
               className="unfollow"
-              onClick={() => handleClick(user.user_id)}
+              onClick={() => unfollowUser(user.user_id)}
             >
-              {buttonLabel}
+              Unfollow
             </button>
           </div>
         )} 

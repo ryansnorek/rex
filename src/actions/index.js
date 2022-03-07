@@ -49,7 +49,7 @@ export const CLEAR_WATCHLIST_SHOW_LIST = "CLEAR_WATCHLIST_SHOW_LIST";
 export const REMOVE_WATCHLIST_MOVIE_CONTENT = "REMOVE_WATCHLIST_MOVIE_CONTENT";
 export const REMOVE_WATCHLIST_SHOW_CONTENT = "REMOVE_WATCHLIST_SHOW_CONTENT";
 export const ADD_REXY_MOVIE_CONTENT = "ADD_REXY_MOVIE_CONTENT";
-export const ADD_REXY_SHOW_CONTENT = "ADD_REXY_SHOW_CONTENT"
+export const ADD_REXY_SHOW_CONTENT = "ADD_REXY_SHOW_CONTENT";
 
 export const fetchStart = () => {
   return { type: FETCH_START };
@@ -114,11 +114,11 @@ export const setUser = (user) => {
 export const loginComplete = () => {
   return { type: LOGIN_COMPLETE };
 };
-export const setFollower = (profile) => {
-  return { type: SET_FOLLOWER, payload: profile };
+export const setFollower = (user) => {
+  return { type: SET_FOLLOWER, payload: user };
 };
-export const setFollowing = (profile) => {
-  return { type: SET_FOLLOWING, payload: profile };
+export const setFollowing = (user) => {
+  return { type: SET_FOLLOWING, payload: user };
 };
 export const setBlockedUsers = (blocked_users) => {
   return { type: SET_BLOCKED_USERS, payload: blocked_users };
@@ -353,18 +353,7 @@ export const setRelationships = (relationship) => {
       .finally(() => dispatch(fetchingComplete()));
   };
 };
-// function compare(a, b) {
-//   console.log(a, b)
-//   const userA = a.user_relationship_id.toUpperCase();
-//   const userB = b.user_relationship_id.toUpperCase();
-//   let comparison = 0;
-//   if (userA > userB) {
-//     comparison = 1;
-//   } else if (userA < userB) {
-//     comparison = -1;
-//   }
-//   return comparison;
-// }
+
 export const getRelationships = (user_id) => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -380,43 +369,6 @@ export const getRelationships = (user_id) => {
       .finally(() => dispatch(fetchingComplete()));
   };
 };
-export const handleRelativeRelationship = (relationship) => {
-  const { relative_user_id, user_id } = relationship;
-  const relativeRelationship = {
-    user_id: relative_user_id,
-    relative_user_id: user_id,
-    follower: 1,
-  };
-  return (dispatch) => {
-    axiosAuthorization()
-      .post(`/relationships`, relativeRelationship)
-      .then(() => {
-        console.log("success");
-      })
-      .catch((err) => {
-        dispatch(updateRelativeRelationship(relativeRelationship));
-        dispatch(fetchError(err));
-      });
-  };
-};
-export const addRelationship = (relationship) => {
-  return (dispatch) => {
-    dispatch(fetchStart());
-    axiosAuthorization()
-      .post("/relationships", relationship)
-      .then(() => {
-        dispatch(getRelationships(relationship.user_id));
-      })
-      .then(() => {
-        dispatch(handleRelativeRelationship(relationship));
-      })
-      .catch((err) => {
-        dispatch(updateRelationship(relationship));
-        dispatch(fetchError(err));
-      })
-      .finally(() => dispatch(fetchingComplete()));
-  };
-};
 export const updateRelationship = (relationship) => {
   return (dispatch) => {
     dispatch(fetchStart());
@@ -429,17 +381,42 @@ export const updateRelationship = (relationship) => {
       .finally(() => dispatch(fetchingComplete()));
   };
 };
-export const addRelativeRelationship = (relationship) => {
-  axiosAuthorization()
-    .post("/relationships", relationship)
-    .then(() => console.log("success"))
-    .catch((err) => console.log(err));
+export const addRelationship = (relationship) => {
+  return (dispatch) => {
+    dispatch(fetchStart());
+    axiosAuthorization()
+      .post("/relationships", relationship)
+      .then(() => {
+        dispatch(getRelationships(relationship.user_id));
+      })
+      .catch((err) => {
+        if (err.response.data.message === "relationship already exists") {
+          dispatch(updateRelationship(relationship));
+        }
+        dispatch(fetchError(err));
+      })
+      .finally(() => dispatch(fetchingComplete()));
+  };
 };
 export const updateRelativeRelationship = (relationship) => {
-  axiosAuthorization()
-    .put("/relationships", relationship)
-    .then(() => console.log("success"))
-    .catch((err) => console.log(err));
+  return () => {
+    axiosAuthorization()
+      .put("/relationships", relationship)
+      .then(() => console.log("success"))
+      .catch((err) => console.log(err));
+  };
+};
+export const addRelativeRelationship = (relationship) => {
+  return (dispatch) => {
+    axiosAuthorization()
+      .post("/relationships", relationship)
+      .then(() => console.log("success"))
+      .catch((err) => {
+        if (err.response.data.message === "relationship already exists") {
+          dispatch(updateRelativeRelationship(relationship));
+        }
+      });
+  };
 };
 // WATCHLIST //
 export const addWatchlistMovie = (movie_id, user_id) => {
@@ -555,18 +532,22 @@ export const getRexyShows = (user_id) => {
   };
 };
 export const sendUserRexyMovie = (rexy) => {
-  const { user_id, movie_id, relative_user_id } = rexy;
-  axiosAuthorization()
+  return () => {
+    const { user_id, movie_id, relative_user_id } = rexy;
+    axiosAuthorization()
     .post(`/content/movies/rexys`, { user_id, movie_id, relative_user_id })
     .then((res) => console.log("sent!", res.data))
     .catch((err) => console.log(err));
+  }
 };
 export const sendUserRexyShow = (rexy) => {
-  const { user_id, show_id, relative_user_id } = rexy;
-  axiosAuthorization()
+  return () => {
+    const { user_id, show_id, relative_user_id } = rexy;
+    axiosAuthorization()
     .post(`/content/shows/rexys`, { user_id, show_id, relative_user_id })
     .then((res) => console.log("sent!", res.data))
     .catch((err) => console.log(err));
+  }
 };
 export const findWatchlistContentById = (id, type) => {
   return (dispatch) => {
@@ -596,4 +577,3 @@ export const findRexyContentById = (id, type) => {
       .finally(() => dispatch(fetchingComplete()));
   };
 };
-
