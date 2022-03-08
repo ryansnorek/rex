@@ -53,7 +53,7 @@ function UserView({ authorized, friend, content, dispatch }) {
                 />
               );
             })}
-          <h2>Tv Shows</h2>
+          <h2>Shows</h2>
           {tvShows &&
             tvShows.map((item) => {
               return (

@@ -316,7 +316,7 @@ button {
 }
 .item-details {
   color: snow;
-  height: fit-content;
+  height: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
