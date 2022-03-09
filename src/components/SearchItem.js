@@ -41,12 +41,12 @@ function SearchItem({ dispatch, item, queryType, user, handleClickItem }) {
           </p>
         </div>
         <div className="actions">
-          <img
+          {/* <img
             className="icon"
             onClick={() => handleAddContent(item.id)}
             src="../../images/add.png"
             alt="add"
-          />
+          /> */}
         </div>
       </div>
     </div>

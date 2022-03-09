@@ -1,12 +1,12 @@
 function UserContentActionBar({ handleRating, handleRemove, handleSend, item }) {
   return (
     <div className="actions">
-      <img
+      {/* <img
         className="icon"
         src="../../images/heart.png"
         alt="rate"
         onClick={() => handleRating(item.id)}
-      />
+      /> */}
       <img
         className="icon"
         src="../../images/paper-plane.png"

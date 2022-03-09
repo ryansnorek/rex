@@ -6,12 +6,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { createRelationship } from "../helper";
 
-function SearchUsers({
-  dispatch,
-  queryResults,
-  isFetching,
-  user,
-}) {
+function SearchUsers({ dispatch, queryResults, isFetching, user }) {
   const [, query, , handleQueryChange] = useSearch("users");
   const { user_id } = user;
   const followUser = (relative_user_id) => {
@@ -46,6 +41,7 @@ function SearchUsers({
           </SkeletonTheme>
         ) : (
           queryResults.length > 0 &&
+          queryResults[0].username !== null &&
           queryResults.map((result) => {
             return (
               <User
