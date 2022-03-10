@@ -14,25 +14,26 @@ function AccountProfile({ user }) {
         {editAccount && <AccountEdit handleEdit={handleEditAccount} />}
         {editProfilePic && <AccountAvatar handleEdit={handleEditProfilePic} />}
       </div>
-        <div className="profile">
-          <div className="pic">
-            <img
-              onClick={handleEditProfilePic}
-              src={`${user.uploaded_image}`}
-              alt="profile-pic"
-            />
-          </div>
-          <div className="text">
-            <h3>{user.display_name}</h3>
-            <h3>@{user.username}</h3>
-          </div>
+      <div className="profile">
+        <div className="pic">
           <img
-            className="icon rotate"
-            onClick={handleEditAccount}
-            src="../../images/settings.png"
-            alt="search"
+            className="skeleton"
+            onClick={handleEditProfilePic}
+            src={`${user.uploaded_image}`}
+            alt="profile-pic"
           />
         </div>
+        <div className="text">
+          <h3>{user.display_name}</h3>
+          <h3>@{user.username}</h3>
+        </div>
+        <img
+          className="icon rotate"
+          onClick={handleEditAccount}
+          src="../../images/settings.png"
+          alt="search"
+        />
+      </div>
     </>
   );
 }

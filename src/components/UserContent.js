@@ -15,7 +15,7 @@ function UserContent({ item, type, handleClickItem }) {
     <div className="account-item">
       <div className="poster" onClick={() => handleClickItem(item.id, type)}>
         {item.backdrop_path !== null ? (
-          <img src={`${POSTER_URL}${item.backdrop_path}`} alt="poster" />
+          <img className="skeleton" src={`${POSTER_URL}${item.backdrop_path}`} alt="poster" />
         ) : (
           <img src="../../images/unavailable_poster.jpeg" alt="poster" />
         )}
