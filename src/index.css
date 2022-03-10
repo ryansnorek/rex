@@ -143,9 +143,9 @@ button {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  border: 2px solid lavender;
+  border: 1px solid lavender;
   margin-top: 3%;
-  font-size: 1.3rem;
+  font-size: 1rem;
   background-color: #1f1e1e;
   font-weight: bold;
   transition: 0.3s ease-in-out;
