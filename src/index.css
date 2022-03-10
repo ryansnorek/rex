@@ -907,7 +907,7 @@ select,
 }
 @media (max-width: 912px) {
   .item-details {
-    margin-top: 25vh;
+    /* margin-top: 25vh; */
   }
   .item-details .text {
     font-size: 1rem;
