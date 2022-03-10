@@ -9,7 +9,7 @@ export const AVATARS = [
     "../../images/avatars/cafe.jpg",
     "../../images/avatars/ghost.png",
     "../../images/avatars/pumpkin.jpg",
-    "../../images/avatars/space.jpg",
+    "../../images/avatars/instigatingcat.jpeg",
     "../../images/avatars/doghost.png",
     "../../images/avatars/zelda.png",
     "../../images/avatars/dogglasses.png"

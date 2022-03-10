@@ -1,12 +1,17 @@
 import AccountWatchlistItem from "./AccountWatchlistItem";
 import SendUserRexy from "./SendUserRexy";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { getRelationships } from "../actions";
 
-function AccountWatchlist({ content }) {
+function AccountWatchlist({ content, dispatch }) {
   const { watchlistMovies, watchlistShows } = content;
   const [sendingRexy, setSendingRexy] = useState(false);
   const [rexy, setRexy] = useState({});
+
+  useEffect(() => {
+    // dispatch(getRelationships(1));
+  },[dispatch])
 
   return (
     <div className="watchlist">

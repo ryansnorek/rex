@@ -3,12 +3,18 @@ import {
   addRelationship,
   updateRelationship,
   addRelativeRelationship,
+  getRelationships,
 } from "../actions";
 import User from "./common/User";
 import { createRelationship } from "../helper";
+import { useEffect } from "react";
 
 function AccountFriends({ friends, type, user, dispatch }) {
   const { user_id } = user;
+
+  useEffect(() => {
+    // return () => dispatch(getRelationships(user_id));
+  },[dispatch, user_id])
 
   const followUser = (relative_user_id) => {
     const [relationship, relativeRelationship] = createRelationship(
