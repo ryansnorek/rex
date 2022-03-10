@@ -744,6 +744,7 @@ p {
 input,
 select,
 .discover,
+.item-details,
 .item-details-wrapper,
 .rexys,
 .watchlist,
@@ -813,6 +814,17 @@ select,
   height: .5em;
   margin-bottom: .25rem;
   border-radius: .125rem;
+}
+.item-details-wrapper {
+  animation: grow-click 0.4s;
+}
+@keyframes grow-click {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 @keyframes skeleton-loading {
   0% {
