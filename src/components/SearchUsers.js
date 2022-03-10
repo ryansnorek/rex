@@ -33,12 +33,14 @@ function SearchUsers({ dispatch, queryResults, isFetching, user }) {
       </div>
       <div className="results">
         {isFetching && query ? (
-          <SkeletonTheme
-            baseColor="#1d1d1d"
-            highlightColor="rgb(176, 176, 194)"
-          >
-            <Skeleton count={8} height={220} />
-          </SkeletonTheme>
+          <div className="loading-wrapper">
+            <div className="lds-ellipsis">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
         ) : (
           queryResults.length > 0 &&
           queryResults[0].username !== null &&

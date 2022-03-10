@@ -23,6 +23,7 @@ function User({
     <div className="user-component">
       <div className="left">
         <img
+          className="skeleton"
           src={`${user.uploaded_image}`}
           alt="profile-pic"
           onClick={() => handleClickUser().then(navigate("/userview"))}
@@ -33,7 +34,6 @@ function User({
         </div>
       </div>
       <div className="right">
-        {/* Component */}
         {!isFollowingUser && (
           <div className="button-container">
             <button

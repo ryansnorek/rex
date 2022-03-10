@@ -12,11 +12,10 @@ export default function useSearch(initialValue) {
   const handleQueryChange = (e) => setQuery(e.target.value.toLowerCase());
 
   useEffect(() => {
-    const lastQuery = localStorage.getItem("query");
-    if (query && query !== lastQuery) {
+    if (query) {
       dispatch(getQueryResults(queryType, query));
     }
-  },[query, dispatch, queryType]);
+  },[queryType, query, dispatch]);
 
   return [queryType, query, handleSelectQueryType, handleQueryChange];
 }

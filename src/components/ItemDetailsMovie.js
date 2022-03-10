@@ -15,9 +15,10 @@ function ItemDetailsMovie({ movie }) {
     ? `${POSTER_URL}${backdrop_path}`
     : "../../images/backdrop_unavailable.jpeg";
 
+
   return (
     <div className="item-details">
-      <img className="backdrop" src={backdrop} alt="backdrop" />
+      <img className="backdrop skeleton" src={backdrop} alt="backdrop" />
       <h2>{title}</h2>
       <h3>{tagline}</h3>
       <div className="genres">

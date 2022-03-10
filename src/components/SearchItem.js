@@ -30,7 +30,7 @@ function SearchItem({ dispatch, item, queryType, user, handleClickItem }) {
         className="poster"
         onClick={() => handleClickItem(item.id, queryType)}
       >
-        <img src={poster} alt="poster" />
+        <img className="skeleton" src={poster} alt="poster" />
       </div>
       <div className="text" onClick={() => handleClickItem(item.id, queryType)}>
         <div className="title">

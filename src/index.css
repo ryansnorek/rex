@@ -316,7 +316,7 @@ button {
 }
 .item-details {
   color: snow;
-  height: 500px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -330,9 +330,10 @@ p {
   font-size: 1.5rem;
   text-align: center;
 }
-.backdrop,
-.backdrop img {
+.backdrop {
   width: 96%;
+  height: 100%;
+  min-height: 310px;
   box-shadow: 0 0 9px #1d1d1d;
   margin: 0;
   border-radius: 3px;
@@ -767,6 +768,11 @@ select,
 .grow:hover {
   transform: scale(1.06);
 }
+.loading-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .lds-ellipsis {
   display: inline-block;
   position: relative;
@@ -798,6 +804,23 @@ select,
 .lds-ellipsis div:nth-child(4) {
   left: 56px;
   animation: lds-ellipsis3 0.6s infinite;
+}
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+.skeleton-text {
+  width: 42%;
+  height: .5em;
+  margin-bottom: .25rem;
+  border-radius: .125rem;
+}
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(249, 17%, 84%);
+  }
+  100% {
+    background-color: hsl(0, 0%, 95%);
+  }
 }
 @keyframes lds-ellipsis1 {
   0% {
@@ -855,6 +878,9 @@ select,
 @media (max-width: 1460px) {
   .discover img {
     width: 25vw;
+  }
+  .backdrop {
+    min-height: 260px;
   }
 }
 /* iPad Pro */
@@ -915,6 +941,9 @@ select,
   }
   .tagline {
     font-size: 0.7rem;
+  }
+  .backdrop {
+    min-height: 230px;
   }
 }
 /* iPhone 6/7/8 Plus */

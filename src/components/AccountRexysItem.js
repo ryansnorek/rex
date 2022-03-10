@@ -1,6 +1,7 @@
 import { POSTER_URL } from "../constants";
 
 function AccountRexysItem({ item }) {
+  console.table(item);
   return (
     <div className="account-item">
       <div className="poster">

@@ -2,6 +2,7 @@ import { POSTER_URL } from "../constants";
 
 function HomeItem({ handleClickPoster, item }) {
   const type = item.first_air_date ? "tv" : "movie";
+
   return (
     <div
       className="discover-item grow"
@@ -10,7 +11,7 @@ function HomeItem({ handleClickPoster, item }) {
       }
     >
       {item.poster_path ? (
-        <img src={`${POSTER_URL}${item.poster_path}`} alt="poster" />
+        <img id="poster" className="skeleton" src={`${POSTER_URL}${item.poster_path}`} alt="poster" />
       ) : (
         <img src="../../images/unavailable_poster.jpeg" alt="poster" />
       )}

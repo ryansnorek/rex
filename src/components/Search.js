@@ -1,12 +1,10 @@
 import { connect } from "react-redux";
-import { useState, Suspense, lazy } from "react";
+import { useState } from "react";
 import { setItemMovie, setItemTvShow, unSetItem } from "../actions";
 
 import useSearch from "../hooks/useSearch";
 import ItemDetails from "./ItemDetails";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-const SearchItem = lazy(() => import("./SearchItem"));
+import SearchItem from "./SearchItem";
 
 function Search({ dispatch, queryResults, isFetching }) {
   const [queryType, query, handleSelectQueryType, handleQueryChange] =
@@ -45,24 +43,24 @@ function Search({ dispatch, queryResults, isFetching }) {
       </div>
       <div className={`results  ${itemClicked ? "blur" : ""}`}>
         {isFetching && query ? (
-          <SkeletonTheme
-            baseColor="#1d1d1d"
-            highlightColor="rgb(176, 176, 194)"
-          >
-            <Skeleton count={8} height={220} />
-          </SkeletonTheme>
+          <div className="loading-wrapper">
+            <div className="lds-ellipsis">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
         ) : (
           query &&
           queryResults.map((result) => {
             return (
-              <Suspense fallback={<Skeleton height={220} />}>
                 <SearchItem
                   item={result}
                   queryType={queryType}
                   handleClickItem={handleClickItem}
                   setItemClicked={setItemClicked}
                 />
-              </Suspense>
             );
           })
         )}
