@@ -816,7 +816,7 @@ select,
 }
 @keyframes skeleton-loading {
   0% {
-    background-color: hsl(249, 17%, 84%);
+    background-color: hsl(0, 0%, 0%);
   }
   100% {
     background-color: hsl(0, 0%, 95%);
@@ -906,7 +906,7 @@ select,
   }
 }
 @media (max-width: 912px) {
-  .item-details-wrapper {
+  .item-details {
     margin-top: 25vh;
   }
   .item-details .text {

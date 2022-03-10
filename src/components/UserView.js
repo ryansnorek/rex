@@ -12,14 +12,14 @@ function UserView({ authorized, friend, content, dispatch }) {
   const navigate = useNavigate();
 
   const handleClickItem = (id, type) => {
-    const content = type === "movie" ? movies : tvShows;
-    const item = content.find((di) => di.id === id);
-    dispatch(
-      type === "movie"
-        ? dispatch(setItemMovie(item))
-        : dispatch(setItemTvShow(item))
-    );
-    setItemClicked(true);
+    // const content = type === "movie" ? movies : tvShows;
+    // const item = content.find((di) => di.id === id);
+    // dispatch(
+    //   type === "movie"
+    //     ? dispatch(setItemMovie(item))
+    //     : dispatch(setItemTvShow(item))
+    // );
+    // setItemClicked(true);
   };
   const goBack = () => {
     navigate(authorized ? "/account" : "/users");
