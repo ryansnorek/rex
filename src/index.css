@@ -94,7 +94,7 @@ a {
   width: 20px;
   height: 20px;
   -webkit-filter: invert(100%);
-  filter: invert(100%);
+  filter: invert(99%);
   transition: 0.3s ease-out;
 }
 .icon:hover {
