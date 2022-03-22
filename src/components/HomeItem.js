@@ -11,7 +11,7 @@ function HomeItem({ handleClickPoster, item }) {
       }
     >
       {item.poster_path ? (
-        <img id="poster" className="skeleton" src={`${POSTER_URL}${item.poster_path}`} alt="poster" />
+        <img id="poster" src={`${POSTER_URL}${item.poster_path}`} alt="poster" />
       ) : (
         <img src="../../images/unavailable_poster.jpeg" alt="poster" />
       )}
