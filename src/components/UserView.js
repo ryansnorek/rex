@@ -36,7 +36,7 @@ function UserView({ authorized, friend, content, dispatch }) {
             alt="back"
           />
           <div className="pic">
-            <img className="skeleton" src={`${friend.uploaded_image}`} alt="profile-pic" />
+            <img className="temp-placeholder" src={`${friend.uploaded_image}`} alt="profile-pic" />
             <h3>{friend.display_name}</h3>
           </div>
         </div>
