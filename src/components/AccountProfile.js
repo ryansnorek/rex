@@ -17,7 +17,7 @@ function AccountProfile({ user }) {
       <div className="profile">
         <div className="pic">
           <img
-            className="skeleton"
+            className="temp-placeholder"
             onClick={handleEditProfilePic}
             src={`${user.uploaded_image}`}
             alt="profile-pic"

@@ -25,7 +25,7 @@ function AccountAvatar({ handleEdit, user, firstTimeUser, dispatch }) {
             return (
               <img
                 onClick={handleClick}
-                className="avatar"
+                className="avatar temp-placeholder"
                 name={avatar}
                 src={avatar}
                 alt="avatar"

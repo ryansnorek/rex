@@ -23,7 +23,7 @@ function User({
     <div className="user-component">
       <div className="left">
         <img
-          className="skeleton"
+          className="temp-placeholder"
           src={`${user.uploaded_image}`}
           alt="profile-pic"
           onClick={() => handleClickUser().then(navigate("/userview"))}

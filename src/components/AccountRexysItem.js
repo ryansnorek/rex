@@ -6,7 +6,7 @@ function AccountRexysItem({ item }) {
     <div className="account-item">
       <div className="poster">
         {item.backdrop_path !== null ? (
-          <img className="skeleton" src={`${POSTER_URL}${item.backdrop_path}`} alt="poster" />
+          <img className="temp-placeholder" src={`${POSTER_URL}${item.backdrop_path}`} alt="poster" />
         ) : (
           <img src="../../images/unavailable_poster.jpeg" alt="poster" />
         )}

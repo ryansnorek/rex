@@ -746,6 +746,11 @@ p {
   background-color: black;
 }
 /* ---------LOADING / ANIMATIONS----------- */
+.temp-placeholder {
+  background-color: black;
+  transition: .3s ease-in;
+}
+
 input,
 select,
 .discover,
@@ -814,12 +819,12 @@ select,
 /* .skeleton {
   animation: skeleton-loading 1s linear infinite alternate;
 } */
-.skeleton-text {
+/* .skeleton-text {
   width: 42%;
   height: .5em;
   margin-bottom: .25rem;
   border-radius: .125rem;
-}
+} */
 .item-details-wrapper {
   animation: grow-click 0.4s;
 }

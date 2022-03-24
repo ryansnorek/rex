@@ -18,7 +18,7 @@ function ItemDetailsTvShow({ tvShow }) {
     
   return (
     <div className="item-details">
-      <img className="backdrop" src={backdrop} alt="" />
+      <img className="backdrop temp-placeholder" src={backdrop} alt="" />
       <h2>{name}</h2>
       {tagline && <h3>{tagline}</h3>}
       <div className="genres">

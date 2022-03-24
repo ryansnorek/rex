@@ -18,7 +18,7 @@ function ItemDetailsMovie({ movie }) {
 
   return (
     <div className="item-details">
-      <img className="backdrop skeleton" src={backdrop} alt="backdrop" />
+      <img className="backdrop temp-placeholder" src={backdrop} alt="backdrop" />
       <h2>{title}</h2>
       <h3>{tagline}</h3>
       <div className="genres">
