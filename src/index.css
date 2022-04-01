@@ -185,6 +185,7 @@ button {
   height: 4vh;
   border-radius: 6px;
   border: none;
+  transition: .2s ease-in;
 }
 .activated {
   background-color: lavender;
