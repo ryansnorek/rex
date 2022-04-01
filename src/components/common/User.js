@@ -21,12 +21,14 @@ function User({
   };
   return (
     <div className="user-component">
-      <div className="left">
+      <div
+        className="left"
+        onClick={() => handleClickUser().then(navigate("/userview"))}
+      >
         <img
           className="temp-placeholder"
           src={`${user.uploaded_image}`}
           alt="profile-pic"
-          onClick={() => handleClickUser().then(navigate("/userview"))}
         />
         <div className="name">
           <h3>{user.display_name}</h3>
@@ -53,7 +55,7 @@ function User({
               Unfollow
             </button>
           </div>
-        )} 
+        )}
         {type === "send" && (
           <div className="button-container">
             <button

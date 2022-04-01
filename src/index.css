@@ -243,6 +243,9 @@ button {
   width: 66vw;
   box-shadow: 0 0 20px black;
 }
+.results .user-component .left {
+  cursor: pointer;
+}
 .item {
   color: snow;
   display: flex;
