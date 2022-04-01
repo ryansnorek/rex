@@ -3,9 +3,10 @@ import { unsetFirstTimeUser, updateUser } from "../actions";
 import { AVATARS } from "../constants";
 
 function AccountAvatar({ handleEdit, user, firstTimeUser, dispatch }) {
-  const handleClick = (e) => {
+  const handleSetAvatar = (e) => {
     const { user_id } = user;
-    dispatch(updateUser({ uploaded_image: e.target.name }, user_id));
+    const { name } = e.target;
+    dispatch(updateUser({ uploaded_image: name }, user_id));
     firstTimeUser && dispatch(unsetFirstTimeUser());
   };
   return (
@@ -24,7 +25,7 @@ function AccountAvatar({ handleEdit, user, firstTimeUser, dispatch }) {
           {AVATARS.map((avatar) => {
             return (
               <img
-                onClick={handleClick}
+                onClick={handleSetAvatar}
                 className="avatar temp-placeholder"
                 name={avatar}
                 src={avatar}

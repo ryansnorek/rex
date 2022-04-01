@@ -1,8 +1,9 @@
+import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useForm from "../hooks/useForm";
 import useInputMask from "../hooks/useInputMask";
 import { registerNewUser } from "../actions";
-import { connect } from "react-redux";
+import { createNewUser } from "../helper";
 
 import LoadingEllispis from "./common/LoadingEllipsis";
 
@@ -19,12 +20,8 @@ function Join({ isFetching, loginComplete, dispatch, errors }) {
   const [phone, inputPhone, handlePhoneChange] = useInputMask();
 
   const handleSubmit = (e) => {
-    values.phone = phone;
-    values.username = values.username.toLowerCase();
-    values.email = values.email.toLowerCase();
-    values.display_name = values.username;
-    values.uploaded_image = "../../images/blank_user.png";
-    dispatch(registerNewUser(values));
+    const newUser = createNewUser(values, phone);
+    dispatch(registerNewUser(newUser));
     clearForm(e);
   };
   if (loginComplete) {

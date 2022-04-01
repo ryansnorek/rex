@@ -9,6 +9,7 @@ import LoadingEllispis from "./common/LoadingEllipsis";
 function SearchUsers({ dispatch, queryResults, isFetching, user }) {
   const [, query, , handleQueryChange] = useSearch("users");
   const { user_id } = user;
+  
   const followUser = (relative_user_id) => {
     const [relationship, relativeRelationship] = createRelationship(
       user_id,
