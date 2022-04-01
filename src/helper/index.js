@@ -27,11 +27,24 @@ export const createRelationship = (user_id, relative_user_id, controller) => {
   return [relationship, relativeRelationship];
 };
 
-export function createNewUser(userInfo, phoneNumber) {
+export const createNewUser = (userInfo, phoneNumber) => {
   userInfo.phone = phoneNumber;
   userInfo.username = userInfo.username.toLowerCase();
   userInfo.email = userInfo.email.toLowerCase();
   userInfo.display_name = userInfo.username;
   userInfo.uploaded_image = "../../images/blank_user.png";
   return userInfo;
+}
+
+export const editUser = (userInfo, phoneNumber) => {
+  const editedUser = {};
+  userInfo.phone = phoneNumber;
+  userInfo.username = userInfo.username.toLowerCase();
+  userInfo.email = userInfo.email.toLowerCase();
+  for (let key in userInfo) {
+    if (userInfo[key] !== "") {
+      editedUser[key] = userInfo[key];
+    }
+  }
+  return editedUser;
 }

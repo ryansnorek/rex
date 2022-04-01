@@ -3,6 +3,8 @@ import useForm from "../hooks/useForm";
 import useInputMask from "../hooks/useInputMask";
 import { updateUser } from "../actions";
 
+import { editUser } from "../helper";
+
 const initialValues = {
   display_name: "",
   username: "",
@@ -15,17 +17,10 @@ const initialValues = {
 function AccountEdit({ handleEdit, user, dispatch }) {
   const [values, handleChange, clearForm] = useForm("edit", initialValues);
   const [phone, inputPhone, handlePhoneChange] = useInputMask();
+  
   const handleSubmit = (e) => {
-    const updatedUser = {};
-    values.phone = phone;
-    values.username = values.username.toLowerCase();
-    values.email = values.email.toLowerCase();
-    for (let key in values) {
-      if (values[key] !== "") {
-        updatedUser[key] = values[key];
-      }
-    }
-    dispatch(updateUser(updatedUser, user.user_id));
+    const editedUser = editUser(values, phone);
+    dispatch(updateUser(editedUser, user.user_id));
     clearForm(e);
     handleEdit();
   };

@@ -12,10 +12,6 @@ import { useEffect } from "react";
 function AccountFriends({ friends, type, user, dispatch }) {
   const { user_id } = user;
 
-  useEffect(() => {
-    // return () => dispatch(getRelationships(user_id));
-  },[dispatch, user_id])
-
   const followUser = (relative_user_id) => {
     const [relationship, relativeRelationship] = createRelationship(
       user_id,
@@ -25,6 +21,7 @@ function AccountFriends({ friends, type, user, dispatch }) {
     dispatch(addRelationship(relationship));
     dispatch(addRelativeRelationship(relativeRelationship));
   };
+
   const unfollowUser = (relative_user_id) => {
     const [relationship, relativeRelationship] = createRelationship(
       user_id,
@@ -34,6 +31,11 @@ function AccountFriends({ friends, type, user, dispatch }) {
     dispatch(updateRelationship(relationship));
     dispatch(addRelativeRelationship(relativeRelationship));
   };
+
+  // useEffect(() => {
+  //   return () => dispatch(getRelationships(user_id));
+  // },[dispatch, user_id])
+
   return (
     <div className="friends">
       {friends &&
@@ -51,6 +53,7 @@ function AccountFriends({ friends, type, user, dispatch }) {
     </div>
   );
 }
+
 const mapStateToProps = (state) => {
   return { user: state.user };
 };
