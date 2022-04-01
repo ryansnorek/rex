@@ -4,6 +4,8 @@ import useInputMask from "../hooks/useInputMask";
 import { registerNewUser } from "../actions";
 import { connect } from "react-redux";
 
+import LoadingEllispis from "./common/LoadingEllipsis";
+
 const initialValues = {
   username: "",
   password: "",
@@ -29,14 +31,7 @@ function Join({ isFetching, loginComplete, dispatch, errors }) {
     navigate("/account");
   }
   if (isFetching) {
-    return (
-      <div className="lds-ellipsis">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    );
+    return <LoadingEllispis />;
   }
   return (
     <div className="login join page">

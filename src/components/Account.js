@@ -1,28 +1,26 @@
 import useLocalStorage from "../hooks/useLocalStorage";
 import { connect } from "react-redux";
+
 import AccountProfile from "./AccountProfile";
 import AccountAvatar from "./AccountAvatar";
 import NavButton from "./NavButton";
 import AccountWatchlist from "./AccountWatchlist";
 import AccountFriends from "./AccountFriends";
 import AccountRexys from "./AccountRexys";
+import LoadingEllispis from "./common/LoadingEllipsis";
 
 const buttons = ["Rexys", "Watchlist", "Following", "Followers"];
 
 function Account({ isFetching, firstTimeUser, relationships }) {
   const { following, followers } = relationships;
-  const [displayType, setDisplayType] = useLocalStorage("display-type", "rexys");
+  const [displayType, setDisplayType] = useLocalStorage(
+    "display-type",
+    "rexys"
+  );
   const handleToggleItem = (e) => setDisplayType(e.target.name);
 
   if (isFetching) {
-    return (
-      <div className="lds-ellipsis">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    );
+    return <LoadingEllispis />;
   }
   if (firstTimeUser) {
     return <AccountAvatar />;
@@ -43,8 +41,12 @@ function Account({ isFetching, firstTimeUser, relationships }) {
       </nav>
       {displayType === "rexys" && <AccountRexys />}
       {displayType === "watchlist" && <AccountWatchlist />}
-      {displayType === "following" && <AccountFriends friends={following} type="following"/>}
-      {displayType === "followers" && <AccountFriends friends={followers} type="followers"/>}
+      {displayType === "following" && (
+        <AccountFriends friends={following} type="following" />
+      )}
+      {displayType === "followers" && (
+        <AccountFriends friends={followers} type="followers" />
+      )}
     </div>
   );
 }
@@ -54,7 +56,6 @@ const mapStateToProps = (state) => {
     isFetching: state.isFetching,
     firstTimeUser: state.firstTimeUser,
     relationships: state.relationships,
-
   };
 };
 export default connect(mapStateToProps)(Account);

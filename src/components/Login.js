@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import useForm from "../hooks/useForm";
 import { loginUser } from "../actions";
 
+import LoadingEllispis from "./common/LoadingEllipsis";
+
 const initialValues = {
   username: "",
   password: "",
@@ -23,14 +25,7 @@ function Login({ dispatch, isFetching, loginComplete, errors }) {
     navigate("/account");
   }
   if (isFetching) {
-    return (
-      <div className="lds-ellipsis">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    );
+    return <LoadingEllispis />;
   }
   // if (errors.response.status === 500) {
   //   setTimeout(() => navigate("/"), 6000);

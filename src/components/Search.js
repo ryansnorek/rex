@@ -5,6 +5,7 @@ import { setItemMovie, setItemTvShow, unSetItem } from "../actions";
 import useSearch from "../hooks/useSearch";
 import ItemDetails from "./ItemDetails";
 import SearchItem from "./SearchItem";
+import LoadingEllispis from "./common/LoadingEllipsis";
 
 function Search({ dispatch, queryResults, isFetching }) {
   const [queryType, query, handleSelectQueryType, handleQueryChange] =
@@ -44,23 +45,18 @@ function Search({ dispatch, queryResults, isFetching }) {
       <div className={`results  ${itemClicked ? "blur" : ""}`}>
         {isFetching && query ? (
           <div className="loading-wrapper">
-            <div className="lds-ellipsis">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
+            <LoadingEllispis />
           </div>
         ) : (
           query &&
           queryResults.map((result) => {
             return (
-                <SearchItem
-                  item={result}
-                  queryType={queryType}
-                  handleClickItem={handleClickItem}
-                  setItemClicked={setItemClicked}
-                />
+              <SearchItem
+                item={result}
+                queryType={queryType}
+                handleClickItem={handleClickItem}
+                setItemClicked={setItemClicked}
+              />
             );
           })
         )}

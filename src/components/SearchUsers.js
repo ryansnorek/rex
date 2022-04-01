@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import { addRelationship, addRelativeRelationship } from "../actions";
-import User from "./common/User";
-import useSearch from "../hooks/useSearch";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import { createRelationship } from "../helper";
+import useSearch from "../hooks/useSearch";
+
+import User from "./common/User";
+import LoadingEllispis from "./common/LoadingEllipsis";
 
 function SearchUsers({ dispatch, queryResults, isFetching, user }) {
   const [, query, , handleQueryChange] = useSearch("users");
@@ -34,12 +34,7 @@ function SearchUsers({ dispatch, queryResults, isFetching, user }) {
       <div className="results">
         {isFetching && query ? (
           <div className="loading-wrapper">
-            <div className="lds-ellipsis">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
+            <LoadingEllispis />
           </div>
         ) : (
           queryResults.length > 0 &&
