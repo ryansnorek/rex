@@ -27,14 +27,6 @@ function Login({ dispatch, isFetching, loginComplete, errors }) {
   if (isFetching) {
     return <LoadingEllispis />;
   }
-  // if (errors.response.status === 500) {
-  //   setTimeout(() => navigate("/"), 6000);
-  //   return (
-  //     <div className="page">
-  //       <p style={{ color: "lavender" }}>{errors.message}</p>
-  //     </div>
-  //   )
-  // }
   return (
     <div className="login page">
       <form onSubmit={handleSubmit}>
@@ -42,6 +34,7 @@ function Login({ dispatch, isFetching, loginComplete, errors }) {
           <input
             type="text"
             name="username"
+            required
             placeholder="Username"
             value={values.username}
             onChange={handleChange}
@@ -49,6 +42,7 @@ function Login({ dispatch, isFetching, loginComplete, errors }) {
           <input
             type="password"
             name="password"
+            required
             placeholder="Password"
             value={values.password}
             onChange={handleChange}

@@ -1,7 +1,6 @@
 import { POSTER_URL } from "../constants";
 
 function AccountRexysItem({ item }) {
-  console.table(item);
   return (
     <div className="account-item">
       <div className="poster">
@@ -17,7 +16,6 @@ function AccountRexysItem({ item }) {
       <div className="actions">
       <img
           className="icon"
-        //   onClick={() => handleAddContent()}
           src="../../images/add.png"
           alt="add"
         />
@@ -25,7 +23,6 @@ function AccountRexysItem({ item }) {
           className="icon delete"
           src="../../images/close.png"
           alt="delete"
-          // onClick={() => }
         />
       </div>
     </div>

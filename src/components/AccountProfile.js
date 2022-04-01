@@ -6,8 +6,10 @@ import AccountAvatar from "./AccountAvatar";
 function AccountProfile({ user }) {
   const [editAccount, setEditAccount] = useState(false);
   const [editProfilePic, setEditProfilePic] = useState(false);
+  
   const handleEditAccount = () => setEditAccount(!editAccount);
   const handleEditProfilePic = () => setEditProfilePic(!editProfilePic);
+
   return (
     <>
       <div className="editor-wrapper">

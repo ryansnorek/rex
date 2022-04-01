@@ -9,9 +9,9 @@ function AccountWatchlist({ content, dispatch }) {
   const [sendingRexy, setSendingRexy] = useState(false);
   const [rexy, setRexy] = useState({});
 
-  useEffect(() => {
-    // dispatch(getRelationships(1));
-  },[dispatch])
+  // useEffect(() => {
+  //   dispatch(getRelationships(1));
+  // },[dispatch])
 
   return (
     <div className="watchlist">
