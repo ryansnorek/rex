@@ -1,5 +1,3 @@
-// export const API_KEY = process.env.REACT_APP_API_KEY;
-// export const API_TOKEN = process.env.REACT_APP_API_TOKEN;
+export const API_KEY = process.env.REACT_APP_API_KEY;
+export const API_TOKEN = process.env.REACT_APP_API_TOKEN;
 
-export const API_KEY = "01649622450648f7ef39b2555f2960ba";
-export const API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMTY0OTYyMjQ1MDY0OGY3ZWYzOWIyNTU1ZjI5NjBiYSIsInN1YiI6IjYxYTE2YTJlMDU4MjI0MDA2NDIwYmIzYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.djxSIlvErKDyGchLOwQI6XYpJBW_lPfaqfxLOKau1ZQ";
