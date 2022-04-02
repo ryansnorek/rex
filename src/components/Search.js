@@ -22,6 +22,11 @@ function Search({ dispatch, queryResults, isFetching }) {
     dispatch(type === "movie" ? setItemMovie(item) : setItemTvShow(item));
     setItemClicked(true);
   };
+
+  const blur = (classname) => {
+    return `${classname} ${itemClicked && "blur"}`;
+  };
+
   return (
     <div className="search page">
       <div className="nav-bar">
@@ -42,7 +47,7 @@ function Search({ dispatch, queryResults, isFetching }) {
       <div className="container">
         {itemClicked && <ItemDetails handleItemClose={handleItemClose} />}
       </div>
-      <div className={`results  ${itemClicked ? "blur" : ""}`}>
+      <div className={blur("results")}>
         {isFetching && query ? (
           <div className="loading-wrapper">
             <LoadingEllispis />

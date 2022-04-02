@@ -34,11 +34,11 @@ function AccountWatchlistItem({
   return (
     <div className="account-item">
       <div className="poster">
-        {item.backdrop_path !== null ? (
-          <img className="temp-placeholder" src={poster} alt="poster" />
-        ) : (
-          <img src={UNAVAILABLE} alt="poster" />
-        )}
+        <img
+          className="temp-placeholder"
+          src={poster || UNAVAILABLE}
+          alt="poster"
+        />
       </div>
       <div className="text">
         <h3>{item.title || item.name}</h3>

@@ -24,6 +24,9 @@ function UserView({ authorized, friend, content, dispatch }) {
   const goBack = () => {
     navigate(authorized ? "/account" : "/users");
   };
+  const blur = (classname) => {
+    return `${classname} ${itemClicked && "blur"}`;
+  };
   return (
     <div className="page">
       <div className="friend-view">
@@ -40,7 +43,7 @@ function UserView({ authorized, friend, content, dispatch }) {
             <h3>{friend.display_name}</h3>
           </div>
         </div>
-        <div className={`rexys ${itemClicked ? "blur" : ""}`}>
+        <div className={blur("rexys")}>
           <h2>Movies</h2>
           {movies &&
             movies.map((item) => {

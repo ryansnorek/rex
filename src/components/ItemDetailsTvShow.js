@@ -1,4 +1,4 @@
-import { POSTER_URL } from "../constants";
+import { POSTER_URL, UNAVAILABLE } from "../constants";
 
 function ItemDetailsTvShow({ tvShow }) {
   const {
@@ -12,13 +12,15 @@ function ItemDetailsTvShow({ tvShow }) {
     networks,
   } = tvShow;
 
-  const backdrop = backdrop_path
-    ? `${POSTER_URL}${backdrop_path}`
-    : "../../images/backdrop_unavailable.jpeg";
-    
+  const poster = `${POSTER_URL}${backdrop_path}`;
+
   return (
     <div className="item-details">
-      <img className="backdrop temp-placeholder" src={backdrop} alt="" />
+      <img
+        className="backdrop temp-placeholder"
+        src={poster || UNAVAILABLE}
+        alt=""
+      />
       <h2>{name}</h2>
       {tagline && <h3>{tagline}</h3>}
       <div className="genres">

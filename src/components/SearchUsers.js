@@ -19,6 +19,9 @@ function SearchUsers({ dispatch, queryResults, isFetching, user }) {
     dispatch(addRelationship(relationship));
     dispatch(addRelativeRelationship(relativeRelationship));
   };
+  const validateResults = (results) => {
+    return (results.length > 0 && results[0].username !== null);
+  }
   return (
     <div className="friend-search search page">
       <div className="nav-bar">
@@ -38,8 +41,7 @@ function SearchUsers({ dispatch, queryResults, isFetching, user }) {
             <LoadingEllispis />
           </div>
         ) : (
-          queryResults.length > 0 &&
-          queryResults[0].username !== null &&
+          validateResults(queryResults) &&
           queryResults.map((result) => {
             return (
               <User

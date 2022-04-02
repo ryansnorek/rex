@@ -10,15 +10,13 @@ function ItemDetailsMovie({ movie }) {
     release_date,
     overview,
   } = movie;
-
   const poster = `${POSTER_URL}${backdrop_path}`;
-  const backdrop = poster || UNAVAILABLE;
 
   return (
     <div className="item-details">
       <img
         className="backdrop temp-placeholder"
-        src={backdrop}
+        src={poster || UNAVAILABLE}
         alt="backdrop"
       />
       <h2>{title}</h2>
