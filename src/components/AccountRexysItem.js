@@ -1,13 +1,12 @@
-import { POSTER_URL, UNAVAILABLE } from "../constants";
+import { createPoster } from "../helper";
 
 function AccountRexysItem({ item }) {
-  const poster = `${POSTER_URL}${item.backdrop_path}`;
   return (
     <div className="account-item">
       <div className="poster">
         <img
           className="temp-placeholder"
-          src={poster || UNAVAILABLE}
+          src={createPoster(item.backdrop_path)}
           alt="poster"
         />
       </div>

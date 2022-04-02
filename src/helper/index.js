@@ -62,3 +62,10 @@ export const createRexy = (contentID, userID, type) => {
     }
   }
 }
+
+export const createPoster = (path) => {
+  const unavailablePoster = "../../images/unavailable_poster.jpeg";
+  const posterURL = "https://image.tmdb.org/t/p/w500/";
+  const poster = `${posterURL}${path}`;
+  return poster ? poster : unavailablePoster;
+}

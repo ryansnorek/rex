@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
-import { POSTER_URL, UNAVAILABLE } from "../constants";
 import { deleteWatchlistMovie, deleteWatchlistShow } from "../actions";
-import { createRexy } from "../helper";
+import { createRexy, createPoster } from "../helper";
 import UserContentActionBar from "./UserContentActionBar";
 
 function AccountWatchlistItem({
@@ -12,7 +11,6 @@ function AccountWatchlistItem({
   setSendingRexy,
   setRexy,
 }) {
-  const poster = `${POSTER_URL}${item.backdrop_path}`;
   const { user_id } = user;
 
   const handleRemove = (item_id) => {
@@ -36,7 +34,7 @@ function AccountWatchlistItem({
       <div className="poster">
         <img
           className="temp-placeholder"
-          src={poster || UNAVAILABLE}
+          src={createPoster(item.backdrop_path)}
           alt="poster"
         />
       </div>

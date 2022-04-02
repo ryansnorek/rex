@@ -1,8 +1,7 @@
-import { POSTER_URL, UNAVAILABLE } from "../constants";
+import { createPoster } from "../helper";
 
 function HomeItem({ handleClickPoster, item }) {
   const type = item.first_air_date ? "tv" : "movie";
-  const poster = `${POSTER_URL}${item.poster_path}`;
 
   return (
     <div
@@ -13,7 +12,7 @@ function HomeItem({ handleClickPoster, item }) {
         <img
           className="temp-placeholder"
           id="poster"
-          src={poster || UNAVAILABLE}
+          src={createPoster(item.poster_path)}
           alt="poster"
         />
       )}

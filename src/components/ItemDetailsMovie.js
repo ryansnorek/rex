@@ -1,4 +1,4 @@
-import { POSTER_URL, UNAVAILABLE } from "../constants";
+import { createPoster } from "../helper";
 
 function ItemDetailsMovie({ movie }) {
   const {
@@ -10,13 +10,12 @@ function ItemDetailsMovie({ movie }) {
     release_date,
     overview,
   } = movie;
-  const poster = `${POSTER_URL}${backdrop_path}`;
 
   return (
     <div className="item-details">
       <img
         className="backdrop temp-placeholder"
-        src={poster || UNAVAILABLE}
+        src={createPoster(backdrop_path)}
         alt="backdrop"
       />
       <h2>{title}</h2>

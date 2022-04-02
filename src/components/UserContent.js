@@ -1,4 +1,4 @@
-import { POSTER_URL, UNAVAILABLE } from "../constants";
+import { createPoster } from "../helper";
 // import { addWatchlistMovie, addWatchlistShow } from "../actions";
 
 function UserContent({ item, type, handleClickItem }) {
@@ -11,13 +11,12 @@ function UserContent({ item, type, handleClickItem }) {
   //   alert("added rexy")
   // alert("not ready yet");
   // };
-  const poster = `${POSTER_URL}${item.backdrop_path}`;
   return (
     <div className="account-item">
       <div className="poster" onClick={() => handleClickItem(item.id, type)}>
         <img
           className="temp-placeholder"
-          src={poster || UNAVAILABLE}
+          src={createPoster(item.backdrop_path)}
           alt="poster"
         />
       </div>
