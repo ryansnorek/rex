@@ -16,7 +16,11 @@ function ItemDetailsMovie({ movie }) {
 
   return (
     <div className="item-details">
-      <img className="backdrop temp-placeholder" src={backdrop} alt="backdrop" />
+      <img
+        className="backdrop temp-placeholder"
+        src={backdrop}
+        alt="backdrop"
+      />
       <h2>{title}</h2>
       <h3>{tagline}</h3>
       <div className="genres">
@@ -29,7 +33,7 @@ function ItemDetailsMovie({ movie }) {
         </div>
         <p>Released: {release_date}</p>
         <div className="description">
-          <p>{overview ? overview : "overview unavailable"}</p>
+          <p>{overview || "overview unavailable"}</p>
         </div>
       </div>
     </div>
