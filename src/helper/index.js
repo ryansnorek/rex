@@ -48,3 +48,17 @@ export const editUser = (userInfo, phoneNumber) => {
   }
   return editedUser;
 }
+
+export const createRexy = (contentID, userID, type) => {
+  if (type === "movie") {
+    return {
+      movie_id: contentID,
+      relative_user_id: userID
+    }
+  } else {
+    return {
+      show_id: contentID,
+      relative_user_id: userID
+    }
+  }
+}

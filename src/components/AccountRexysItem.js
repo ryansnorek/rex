@@ -1,11 +1,12 @@
 import { POSTER_URL } from "../constants";
 
 function AccountRexysItem({ item }) {
+  const poster = `${POSTER_URL}${item.backdrop_path}`;
   return (
     <div className="account-item">
       <div className="poster">
         {item.backdrop_path !== null ? (
-          <img className="temp-placeholder" src={`${POSTER_URL}${item.backdrop_path}`} alt="poster" />
+          <img className="temp-placeholder" src={poster} alt="poster" />
         ) : (
           <img src="../../images/unavailable_poster.jpeg" alt="poster" />
         )}

@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
-import { POSTER_URL } from "../constants";
+import { POSTER_URL, UNAVAILABLE } from "../constants";
 import { deleteWatchlistMovie, deleteWatchlistShow } from "../actions";
+import { createRexy } from "../helper";
 import UserContentActionBar from "./UserContentActionBar";
 
 function AccountWatchlistItem({
@@ -11,7 +12,9 @@ function AccountWatchlistItem({
   setSendingRexy,
   setRexy,
 }) {
+  const poster = `${POSTER_URL}${item.backdrop_path}`;
   const { user_id } = user;
+
   const handleRemove = (item_id) => {
     dispatch(
       type === "movie"
@@ -21,9 +24,8 @@ function AccountWatchlistItem({
   };
   const handleSend = (item_id) => {
     setSendingRexy(true);
-    type === "movie"
-      ? setRexy({ movie_id: item_id, relative_user_id: user_id })
-      : setRexy({ show_id: item_id, relative_user_id: user_id });
+    const rexy = createRexy(item_id, user_id, type);
+    setRexy(rexy);
   };
   const handleRating = () => {
     alert("cant rate yet");
@@ -33,9 +35,9 @@ function AccountWatchlistItem({
     <div className="account-item">
       <div className="poster">
         {item.backdrop_path !== null ? (
-          <img className="temp-placeholder" src={`${POSTER_URL}${item.backdrop_path}`} alt="poster" />
+          <img className="temp-placeholder" src={poster} alt="poster" />
         ) : (
-          <img src="../../images/unavailable_poster.jpeg" alt="poster" />
+          <img src={UNAVAILABLE} alt="poster" />
         )}
       </div>
       <div className="text">

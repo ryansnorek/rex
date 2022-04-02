@@ -14,3 +14,4 @@ export const AVATARS = [
     "../../images/avatars/zelda.png",
     "../../images/avatars/dogglasses.png"
 ]
+export const UNAVAILABLE = "../../images/unavailable_poster.jpeg";
