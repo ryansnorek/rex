@@ -1,3 +1,5 @@
+import { POSTER_URL, UNAVAILABLE } from "../constants";
+
 export const createRelationship = (user_id, relative_user_id, controller) => {
   let relationship, relativeRelationship;
 
@@ -64,8 +66,6 @@ export const createRexy = (contentID, userID, type) => {
 }
 
 export const createPoster = (path) => {
-  const unavailablePoster = "../../images/unavailable_poster.jpeg";
-  const posterURL = "https://image.tmdb.org/t/p/w500/";
-  const poster = `${posterURL}${path}`;
-  return poster ? poster : unavailablePoster;
+  const poster = `${POSTER_URL}${path}`;
+  return poster ? poster : UNAVAILABLE;
 }
