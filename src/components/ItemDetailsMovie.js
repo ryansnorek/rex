@@ -1,4 +1,4 @@
-import { POSTER_URL } from "../constants";
+import { POSTER_URL, UNAVAILABLE } from "../constants";
 
 function ItemDetailsMovie({ movie }) {
   const {
@@ -11,10 +11,8 @@ function ItemDetailsMovie({ movie }) {
     overview,
   } = movie;
 
-  const backdrop = backdrop_path
-    ? `${POSTER_URL}${backdrop_path}`
-    : "../../images/backdrop_unavailable.jpeg";
-
+  const poster = `${POSTER_URL}${backdrop_path}`;
+  const backdrop = poster || UNAVAILABLE;
 
   return (
     <div className="item-details">

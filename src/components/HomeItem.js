@@ -1,19 +1,21 @@
-import { POSTER_URL } from "../constants";
+import { POSTER_URL, UNAVAILABLE } from "../constants";
 
 function HomeItem({ handleClickPoster, item }) {
   const type = item.first_air_date ? "tv" : "movie";
+  const poster = `${POSTER_URL}${item.poster_path}`;
 
   return (
     <div
       className="discover-item grow"
-      onClick={() =>
-        handleClickPoster(item.id, type)
-      }
+      onClick={() => handleClickPoster(item.id, type)}
     >
-      {item.poster_path ? (
-        <img className="temp-placeholder" id="poster" src={`${POSTER_URL}${item.poster_path}`} alt="poster" />
-      ) : (
-        <img src="../../images/unavailable_poster.jpeg" alt="poster" />
+      {item.poster_path && (
+        <img
+          className="temp-placeholder"
+          id="poster"
+          src={poster || UNAVAILABLE}
+          alt="poster"
+        />
       )}
     </div>
   );
