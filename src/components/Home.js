@@ -20,9 +20,13 @@ function Home({ dispatch, discover }) {
     setItemClicked(true);
   };
 
+  const blur = (classname) => {
+    return `${classname} ${itemClicked && "blur"}`;
+  };
+
   return (
     <div className="home page">
-      <nav className={`nav-bar  ${itemClicked ? "blur" : ""}`}>
+      <nav className={blur("nav-bar")}>
         {buttons.map((title) => {
           return (
             <NavButton
@@ -41,7 +45,7 @@ function Home({ dispatch, discover }) {
           />
         )}
       </div>
-      <div className={`discover  ${itemClicked ? "blur" : ""}`}>
+      <div className={blur("discover")}>
         {displayItems &&
           displayItems.map((item) => {
             return (

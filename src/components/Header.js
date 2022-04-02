@@ -5,6 +5,10 @@ import { logoutUser } from "../actions";
 
 function Header({ auth, dispatch }) {
   const navigate = useNavigate();
+  const home = "../../images/home.png";
+  const search = "../../images/magnifier.png";
+  const friends = "../../images/friends.png";
+  const user = "../../images/user.png";
   return (
     <header>
       <h1 className="logo" onClick={() => navigate("/")}>
@@ -14,7 +18,7 @@ function Header({ auth, dispatch }) {
         <ul>
           <li>
             <Link to="/">
-              {<img className="icon" src="../../images/home.png" alt="home" />}
+              {<img className="icon" src={home} alt="home" />}
             </Link>
           </li>
           <li>
@@ -22,7 +26,7 @@ function Header({ auth, dispatch }) {
               {
                 <img
                   className="icon"
-                  src="../../images/magnifier.png"
+                  src={search}
                   alt="search"
                 />
               }
@@ -33,7 +37,7 @@ function Header({ auth, dispatch }) {
               {
                 <img
                   className="icon"
-                  src="../../images/friends.png"
+                  src={friends}
                   alt="users"
                 />
               }
@@ -44,7 +48,7 @@ function Header({ auth, dispatch }) {
               {
                 <img
                   className="icon"
-                  src="../../images/user.png"
+                  src={user}
                   alt="user-account"
                 />
               }
