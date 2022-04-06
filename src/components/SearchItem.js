@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { POSTER_URL } from "../constants";
+import { POSTER_URL, UNAVAILABLE } from "../constants";
 import { useNavigate } from "react-router-dom";
 import { addWatchlistMovie, addWatchlistShow } from "../actions";
 
@@ -8,9 +8,7 @@ function SearchItem({ dispatch, item, queryType, user, handleClickItem }) {
   const type = queryType === "tv" ? "Show" : "movie";
   const title = item.original_name || item.title;
   const date = item.first_air_date || item.release_date;
-  const poster = item.poster_path
-    ? `${POSTER_URL}${item.poster_path}`
-    : "../../images/unavailable_poster.jpeg";
+  const poster = `${POSTER_URL}${item.poster_path}` || UNAVAILABLE;
 
   const handleAddContent = (contentId) => {
     if (!user.user_id) {
